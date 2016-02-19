@@ -29,7 +29,6 @@ $ git config core.autocrlf false
 
 ## プロキシの設定
 
-$ git config http.proxy http://hoge.com:8080/
+$ git config http.proxy http://hoge.com:8080/  
 $ git config https.proxy http://hoge.com:8080/
-
 
