@@ -1,4 +1,4 @@
-<div style="font-family: monospace;">
+<div style="font-family: monospace;"><pre>
 準備
 　・帳簿 (仕訳帳と総勘定元帳) を準備する
 
@@ -609,4 +609,4 @@ f: 借方の勘定科目
 ────────────────────────────────────────
 
 
-</div>
+</pre></div>
