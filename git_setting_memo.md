@@ -19,7 +19,7 @@ $ git config --global --list
 ```
 $ git config <キー名>
 ```
-例: user.name を表示する
+例: user.name を表示する  
 ```
 $ git config user.name
 ```
