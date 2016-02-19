@@ -3,6 +3,8 @@ name: Help3x
 # 未来日付のpostはしない
 future: false
 
+pygments: true
+
 markdown: kramdown
 
 kramdown:
