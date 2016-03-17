@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<title>jqPlot 技術調査</title>
+		<link rel="stylesheet" type="text/css" href="./jquery.jqplot.1.0.9/jquery.jqplot.css" />
+	</head>
+	<body>
+		<div>
+			<div id="chartdiv" style="width: 960px; height: 480px;">
+			</div>
+		</div>
+		
+		<script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
+		<script src="./jquery.jqplot.1.0.9/jquery.jqplot.min.js"></script>
+		<!--<script src="./jquery.jqplot.1.0.9/plugins/jqplot.canvasOverlay.js"></script>
+		<script src="./jquery.jqplot.1.0.9/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+		<script src="./jquery.jqplot.1.0.9/plugins/jqplot.dateAxisRenderer.min.js"></script>-->
+		<!--<script src="./jquery.jqplot.1.0.9/plugins/jqplot.highlighter.js"></script>-->
+		<script>
+			$(function () {
+				var chartData = [],
+					drawIndex = 0,
+					plot = null;
+				
+				chartData = [
+					[
+						[1,7.9, ""],
+						[2,7.6, ""],
+						[3,8.8, ""],
+						[4,4.2, ""],
+						[5,4.7, ""],
+						[6,6.8, ""],
+						[7,6.5, ""],
+						[8,3.7, ""],
+						[9,1.7, ""],
+						[10,1.6, ""],
+						[11,4.3, ""],
+						[12,1.8, ""],
+						[13,5.1, ""],
+						[14,4.6, ""],
+						[15,0.5, ""],
+						[16,0.7, ""],
+						[17,1.1, ""],
+						[18,2, ""],
+						[19,2.5, ""],
+						[20,2.7, ""],
+						[21,3.1, ""],
+						[22,3.8, ""],
+						[23,4.1, ""],
+						[24,4.2, ""],
+						[25,4.3, ""],
+						[26,4.2, ""],
+						[27,4.3, ""],
+						[28,4.8, ""],
+						[29,3.8, ""],
+						[30,4.8, ""],
+						[31,2.8, ""]
+					]
+				];
+				
+				$.jqplot.customMarkerRenderer = function (options) {
+					$.extend(true, this, options);
+				}
+				
+				$.jqplot.customMarkerRenderer.prototype.init = function (options) {
+					$.extend(true, this, options);
+				}
+				
+				$.jqplot.customMarkerRenderer.prototype.draw = function (ctx, points, options) {
+					var isInvalidSpc = false,
+						chartPointData = chartData[0][drawIndex];
+					
+					//TODO: forDebug >>>
+					console.log(drawIndex++);
+					console.log(this);
+					console.log(ctx);
+					console.log(points);
+					console.log(options);
+					console.log(chartPointData);
+					console.log("----------------------------------------")
+					//TODO: forDebug <<<
+					
+					// SPC判定結果を取得
+					if (chartPointData instanceof Array) {
+						if (chartPointData[3]) {
+							isInvalidSpc = chartPointData[3] === 1;
+						}
+					}
+					
+					ctx.save();
+					
+					// 通常のマーカー
+					// TODO: 通常時のマーカーは描画しない >>>
+					//ctx.lineWidth = 10;
+					//ctx.fillStyle = "deepskyblue";
+					//ctx.beginPath();
+					//ctx.arc(points[0], points[1], points[2], points[3], points[4], true);
+					//ctx.closePath();
+					//ctx.fill();
+					// TODO: 通常時のマーカーは描画しない <<<
+					
+					// SPC判定結果がNGであれば赤い円を描画
+					if (isInvalidSpc) {
+						ctx.lineWidth = 3;
+						ctx.strokeStyle = "rgba(255, 0, 0, 0.5)";
+						ctx.beginPath();
+						ctx.arc(points[0], points[1], points[2], points[3], points[4], true);
+						ctx.closePath();
+						//ctx.stroke();
+						ctx.stroke();
+					}
+					
+					ctx.restore();
+				}
+				
+				function test(ev, gridpos, datapos, neighbor, plot) {
+					console.log(ev);
+					console.log(gridpos);
+					console.log(datapos);
+					console.log(neighbor);
+					console.log(plot);
+					console.log("----------------------------------------");
+					
+					if (neighbor) {
+						
+					}
+				}
+				
+				plot = $.jqplot(
+					"chartdiv",
+					chartData,
+					{
+						title: "点検結果グラフ 技術調査",
+						seriesDefaults: {
+							markerOptions: {
+								show: true,
+								style: "circle",
+								size: 23,
+								color: "deepskyblue",
+								shadow: false,
+								shapeRenderer: new $.jqplot.customMarkerRenderer()
+							}
+						},
+						axes: {
+							xaxis: {
+								min: 0,
+								max: 32,
+								tickInterval: 1
+							}
+						}
+					}
+				);
+				
+				$("#chartdiv").on("jqplotDataClick", function (ev, seriesIndex, pointIndex, data) {
+					console.log(ev);
+					console.log(seriesIndex);
+					console.log(pointIndex);
+					console.log(data);
+					console.log("----------------------------------------")
+				//).on("jqplotDataHighlight", function (ev, seriesIndex, pointIndex, data) {
+				//	// 棒グラフでないと発火しない？
+				//	console.log("jqplotDataHighlight >>>");
+				//	console.log(ev);
+				//	console.log(seriesIndex);
+				//	console.log(pointIndex);
+				//	console.log(data);
+				//	console.log("----------------------------------------")
+				// }).on("jqplotDataMouseOver", function (ev, seriesIndex, pointIndex, data) {
+				// 	console.log("jqplotDataMouseOver >>>");
+				// 	console.log(ev);
+				// 	console.log(seriesIndex);
+				// 	console.log(pointIndex);
+				// 	console.log(data);
+				// 	console.log("----------------------------------------")
+				// });
+				// }).on("jqplotDataMouseOver", function (ev, seriesIndex, pointIndex, data) {
+				// 	console.log("jqplotDataMouseOver >>>");
+				// 	console.log(ev);
+				// 	console.log(seriesIndex);
+				// 	console.log(pointIndex);
+				// 	console.log(data);
+				// 	console.log("----------------------------------------")
+				}).on("jqplotMouseMove", function (ev, gridpos, datapos, neighbor, plot) {
+					var tooltip = null,
+						data = [],
+						isInvalidSpc = false;
+					
+					// 
+					if (neighbor) {
+						console.log("jqplotMouseMove");
+						console.log(ev);
+						console.log(gridpos);
+						console.log(datapos);
+						console.log(neighbor);
+						console.log(plot);
+						console.log("----------------------------------------")
+						
+						// SPC判定結果を取得
+						data = neighbor.data;
+						if (data instanceof Array) {
+							if (data[3]) {
+								isInvalidSpc = data[3] === 1;
+							}
+						}
+						
+						if (isInvalidSpc && $("#myTooltip").length === 0) {
+							tooltip = $("<div>")
+										.attr("id", "myTooltip")
+										.addClass("jqplot-highlighter-tooltip")
+										.css("font-size", "100%")
+										.css("position", "absolute")
+										.css("left", (gridpos.x - 30) + "px")
+										.css("top", (gridpos.y - 30) + "px")
+										.css("background", "white")
+										.css("padding", "0.3em")
+										.css("z-index", "20")
+										.html("連続偏り<br>連続上昇");
+							$("#chartdiv").append(tooltip);
+						}
+					} else {
+						$("#myTooltip").remove();
+					}
+				}).on("jqplotMouseEnter", function (ev, gridpos, datapos, neighbor, plot) {
+					console.log("jqplotMouseEnter");
+					console.log(ev);
+					console.log(gridpos);
+					console.log(datapos);
+					console.log(neighbor);
+					console.log(plot);
+					console.log("----------------------------------------")
+				}).on("jqplotMouseLeave", function (ev, gridpos, datapos, neighbor, plot) {
+					console.log("jqplotMouseLeave");
+					console.log(ev);
+					console.log(gridpos);
+					console.log(datapos);
+					console.log(neighbor);
+					console.log(plot);
+					console.log("----------------------------------------")
+					
+					$("#myTooltip").remove();
+				});
+			});
+		</script>
+	</body>
+</html>

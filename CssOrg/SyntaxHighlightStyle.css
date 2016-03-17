@@ -3,6 +3,7 @@
 .highlight {
   color: #faf6e4;
   background-color: #122b3b;
+  overflow: auto;
 }
 .highlight .gl {
   color: #dee5e7;
