@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <title>audio tag</title>
+    </head>
+    <body>
+        <audio id="alertAudio" src="mcks_alert.aac"></audio>
+        <input type="button" id="loadButton" value="Load" />
+        <input type="button" id="playButton" value="Play" />
+
+        <script type="text/javascript">
+            //<![CDATA[
+            
+            (function () {
+                var audio = document.getElementById("alertAudio"),
+                    loadButon = document.getElementById("loadButton"),
+                    playButton = document.getElementById("playButton");
+                
+                // iOS Safari の場合、画面表示時には再生されない
+                window.addEventListener("load", function () {
+                    console.log("window load");
+                    audio.play();
+                }, false);
+                
+                // ユーザーアクションで読み込み開始
+                loadButton.addEventListener((window.ontouchstart == undefined) ? "click" : "touchstart", function () {
+                    console.log("loadButton touchstart");
+                    audio.load();
+                    
+                    // TODO 10秒後に再生されるようにしてみる
+                    setTimeout(function () {
+                        console.log("loadButton touchstart setTimeout");
+                        audio.play();
+                    }, 10000);
+                }, false);
+                
+                // ユーザーアクションで再生
+                playButton.addEventListener((window.ontouchstart == undefined) ? "click" : "touchstart", function () {
+                    console.log("playButton touchstart");
+                    audio.play();
+                }, false);
+            })();
+            
+            //]]>
+        </script>
+    </body>
+</html>
