@@ -1,8 +1,9 @@
 ---
-layout: markdown_page
+layout: markdown-page
 title: AP Memo
 ---
-[AP PM Part2]: https://thinkit.co.jp/story/2013/12/26/4748
+
+[AP PM Part2](https://thinkit.co.jp/story/2013/12/26/4748)
 
 ## 情報セキュリティ分野のポイント
 
