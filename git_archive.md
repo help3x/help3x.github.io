@@ -15,9 +15,9 @@ git archive --format=tar HEAD | bzip2 > hoge.tar.bz2
 ```
 
 <dl>
-	<dt><pre>--format=<fmt></pre></dt>
+	<dt>--format=&lt;fmt&gt;</dt>
 	<dd>
-		<fmt>には "zip" または "tar" または "tar.gz" が指定可能。  
+		&lt;fmt&gt;には "zip" または "tar" または "tar.gz" が指定可能。  
 		指定しなければ "tar" で出力される。
 	</dd>
 </dl>
