@@ -54,6 +54,12 @@ git archive --format=tar HEAD ./Python | tar -C ../export/ -xf -
 git archive --format=tar HEAD ./Memo/001.png ./Memo/005.png | tar -C ../export/ -xf -
 ```
 
+### .gitattributeの設定を反映する
+
+```
+git archive --format=tar --worktree-attributes HEAD | tar -C ../export/ -xf -
+```
+
 
 Memo:  
 　コマンドでファイル名を指定するとき、ハイフンを指定すると標準入力（標準出力）として解釈してくれる。
