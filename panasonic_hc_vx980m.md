@@ -1,3 +1,8 @@
+---
+layout: markdown-page
+title: デジタル4Kビデオカメラ HC-VX980M
+---
+
 デジタル4Kビデオカメラ HC-VX980M
 =============
 
