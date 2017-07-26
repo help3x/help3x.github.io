@@ -1,6 +1,7 @@
 ---
 layout: markdown-page
 title: Windows7 で Gradle を使う
+highlighter: true
 ---
 
 # {{page.title}}

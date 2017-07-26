@@ -26,3 +26,9 @@ kramdown:
 
 # 未来日付のpostはしない
 future: false
+
+sass:
+    style: compressed
+
+#timezone: Asia/Tokyo
+#timezone: nil

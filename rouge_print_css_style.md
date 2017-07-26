@@ -1,6 +1,7 @@
 ---
 layout: markdown-page
 title: rougeのシンタックスハイライト用のCSSファイルを取得する方法
+highlighter: true
 ---
 
 # {{page.title}}
