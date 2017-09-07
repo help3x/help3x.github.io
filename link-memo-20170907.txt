@@ -1,0 +1,25 @@
+継続的インテグレーションで実現するWebメディアの執筆フロー - Qiita
+http://qiita.com/KeitaMoromizato/items/9b77c8202f2e5f49c471
+
+
+
+書籍「ドキュメント作成システム構築ガイド」を執筆しました
+http://atl.recruit-tech.co.jp/blog/3940/
+
+
+
+いかにしてテスト自動化エンジニアになったか
+https://yoshikiito.net/blog/archives/265
+
+
+
+仕事で開発する時に気をつけていること - Qiita
+http://qiita.com/Prof-Cheese/items/3e0886dab04b9fd7c100
+
+
+
+Javaバッチ処理　フレームワーク（OSS）ざっくりまとめ 
+http://tevasaki.hateblo.jp/entry/20170208/1486516901
+
+
+
