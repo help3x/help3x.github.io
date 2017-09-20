@@ -1,0 +1,52 @@
+﻿昼にやること
+
+・HuaweiのウェブサイトでP9の修理情報を探す。
+	・修理受け付け
+	・故障かどうか判断するためのフローみたいなページ
+
+	・[サポートページ](http://consumer.huawei.com/jp/support/phones/p9/)
+
+[修理申込 | ファーウェイお客様サポート](http://www.support-huawei.com/product_in_use/repair_application/)
+
+[Wi-Fiでインターネットに接続できない、あるいは通信速度が極端に低下してしまった | ファーウェイお客様サポート](http://faq.support-huawei.com/faq/show/38?back=front%2Fcategory%3Ashow&category_id=3&page=1&site_domain=default&sort=sort_access&sort_order=desc)
+
+
+故障かな？と思ったら（トラブルシューティング）
+
+指示通りに端末の再起動、最新への更新、初期化をやってみたがダメだった。
+サービスセンターに送らないと解決しないようだ。
+
+質問
+Wi-Fiでインターネットに接続できない、あるいは通信速度が極端に低下してしまった 
+
+
+発生している問題を選んでください
+
+☑インターネットに全く接続できない 
+↓
+☑上記のどれでもない 
+↓
+☑HUAWEI携帯電話のWi-Fi機能がONにならない（Wi-FiをONにしても、すぐに応答せず、一定のタイムラグが生じる。続けてタップしてもWi-FiがONにならない）。 
+↓
+以下の2つの方法でWi-FiをONにしてみてください。
+1. 設定→［Wi-Fi］でONにする
+2.画面上端から下方向にスワイプしてステータスバーを表示。［ショートカット］から、Wi-FiアイコンをタップしてONにする。
+☑いずれの方法でもONにならない。 
+↓
+HUAWEI携帯電話を再起動してやり直してみてください。
+☑問題が解決しない。 
+↓
+HUAWEI携帯電話を初期化、あるいはOSを最新の状態にアップデートしてやり直してみてください。
+☑問題が解決しない。 
+↓
+回答
+ファーウェイサービスセンターで点検、検査を受けてください。
+
+
+https://www.mdn.co.jp/di/articles/2742/?page=22
+
+
+NATURA 1600 生産終了が決まっていた。
+http://ffis.fujifilm.co.jp/information/articlein_0066.html
+
+

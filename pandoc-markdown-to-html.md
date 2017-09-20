@@ -84,3 +84,21 @@ Convert[pandoc AST to OutputFile] ... Writer
 OutputFile
 
 
+## textile を変換する
+
+### html 変換
+
+```
+C:\>pandoc -s -S first.textile -f textile -t html5 -o first.html
+```
+
+```
+C:\>pandoc -s -S hoge.textile -f textile -t html5 --template=mytemplate.html -M lang=ja -o hoge.html
+```
+
+### Markdown 変換
+
+```
+C:\>pandoc -s -S first.textile -f textile -t markdown -o first.md
+```
+
