@@ -1,0 +1,31 @@
+https://github.com/asciidoctor/asciidoctor/blob/master/README-jp.adoc[Asciidoctor - GitHubの日本語ReadMe]
+
+https://takumon.github.io/asciidoc-syntax-quick-reference-japanese-translation/[Asciidoctor 文法クイックリファレンス(日本語訳)]
+
+http://asciidoctor.org/docs/user-manual/[Asciidoctor User Manual（Version 1.5.6.1）]
+
+http://asciidoctor.org/docs/user-manual/#doc-header[17. Header]
+
+http://asciidoctor.org/docs/user-manual/#docinfo-file[52. Docinfo Files]
+
+
+これを例に適用しましょう：
+
+同じフォルダに保存された2つのAsciiDocドキュメントadventure.adocとinsurance.adocがあります。 両方のドキュメントがHTMLにレンダリングされるときに、両方のドキュメントの先頭に同じコンテンツを追加したいとします。
+
+1. <head>要素を含むdocinfoファイルを作成します。
+2. docinfo.htmlとして保存します。
+3. adventure.adocとinsurance.adocの "docinfo"属性を "shared"に設定します。
+
+さらにいくつかのコンテンツを追加したいが、adventure.adocの頭にのみ追加する。
+
+1. <head>要素を含む別のdocinfoファイルを作成します。
+
+adventure-docinfo.htmlとして保存してください。
+
+3. adventure.adocのdocinfo属性をshared、private-headに設定します。
+
+他のAsciiDocファイルが同じフォルダに追加され、それらのファイルでdocinfoが共有に設定されている場合、それらのファイルを変換するときにdocinfo.htmlファイルのみが追加されます。
+
+
+

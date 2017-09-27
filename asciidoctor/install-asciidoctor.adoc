@@ -1,0 +1,100 @@
+C:\Users\q40061wa>gem install asciidoctor
+Fetching: asciidoctor-1.5.6.1.gem (100%)
+Successfully installed asciidoctor-1.5.6.1
+Parsing documentation for asciidoctor-1.5.6.1
+Installing ri documentation for asciidoctor-1.5.6.1
+Done installing documentation for asciidoctor after 11 seconds
+WARNING:  Unable to pull data from 'https://rubygems.org/': SSL_connect returned
+=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (htt
+ps://rubygems.org/specs.4.8.gz)
+1 gem installed
+
+
+
+C:\Users\q40061wa>asciidoctor --version
+Asciidoctor 1.5.6.1 [http://asciidoctor.org]
+Runtime Environment (ruby 2.2.4p230 (2015-12-16 revision 53155) [i386-mingw32])
+(lc:Windows-31J fs:Windows-31J in:- ex:Windows-31J)
+
+
+UTF-8以外の文字コードだとエラーが発生する。
+メモ帳のBOM付きUTF-8もダメなので、違うテキストエディタで書くこと。
+
+C:\Users\q40061wa>asciidoctor C:\KitoWork\github\help3x.github.io\asciidoc\sampl
+e.adoc
+asciidoctor: FAILED: C:/KitoWork/github/help3x.github.io/asciidoc/sample.adoc: F
+ailed to load AsciiDoc document - invalid byte sequence in UTF-8
+  Use --trace for backtrace
+
+
+tilt をインストール
+
+C:\Work\asciidoc-root\first>gem install tilt
+Fetching: tilt-2.0.8.gem (100%)
+Successfully installed tilt-2.0.8
+Parsing documentation for tilt-2.0.8
+Installing ri documentation for tilt-2.0.8
+Done installing documentation for tilt after 4 seconds
+WARNING:  Unable to pull data from 'https://rubygems.org/': SSL_connect returned
+=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (htt
+ps://rubygems.org/specs.4.8.gz)
+1 gem installed
+
+
+
+thread_safe をインストール
+
+C:\Work\asciidoc-root\first>gem install thread_safe
+Fetching: thread_safe-0.3.6.gem (100%)
+Successfully installed thread_safe-0.3.6
+Parsing documentation for thread_safe-0.3.6
+Installing ri documentation for thread_safe-0.3.6
+Done installing documentation for thread_safe after 1 seconds
+WARNING:  Unable to pull data from 'https://rubygems.org/': SSL_connect returned
+=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (htt
+ps://rubygems.org/specs.4.8.gz)
+1 gem installed
+
+
+
+asciidoctor/asciidoctor-backends をクローンする。
+
+C:\Work\asciidoc-root\first>git clone https://github.com/asciidoctor/asciidoctor
+-backends.git
+Cloning into 'asciidoctor-backends'...
+remote: Counting objects: 2835, done.
+remote: Total 2835 (delta 0), reused 0 (delta 0), pack-reused 2835
+Receiving objects: 100% (2835/2835), 517.97 KiB | 164.00 KiB/s, done.
+Resolving deltas: 100% (1399/1399), done.
+Checking connectivity... done.
+Checking out files: 100% (294/294), done.
+
+
+
+tilt がインストールされていないとエラーが発生する。
+
+C:\Work\asciidoc-root\first>asciidoctor -T .\asciidoctor-backends\erb\html5 samp
+le.adoc
+asciidoctor: FAILED: 'tilt' could not be loaded
+  You must have the tilt gem installed (gem install tilt) to use custom backend
+templates
+  Use --trace for backtrace
+
+
+
+thread_safe がインストールされていないとエラーが発生する。
+
+C:\Work\asciidoc-root\first>asciidoctor -T .\asciidoctor-backends\erb\html5 samp
+le.adoc
+asciidoctor: WARNING: gem 'thread_safe' is not installed. This gem is recommende
+d when using custom backend templates.
+incompatible character encodings: Windows-31J and UTF-8
+  Use --trace for backtrace
+
+
+
+C:\Work\asciidoc-root\first>asciidoctor -T .\asciidoctor-backends\erb\html5 samp
+le.adoc
+
+
+
