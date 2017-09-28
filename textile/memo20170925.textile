@@ -105,6 +105,10 @@ EXテレコン（写真）（p157）
 写真撮影時: 1.4倍/2.0倍
 動画撮影時: 2.4倍/3.6倍/4.8倍
 
+↑
+使い方がよくわからん。
+
+
 
 クチコミより
 
@@ -247,6 +251,10 @@ http://engawa.kakaku.com/userbbs/925/ThreadID=925-898/
 
 
 
+h2. AsciidoctorのHTMLスタイルをカスタマイズする
+
+AsciidoctorではCSSファイルを一から作るのではなく、 @asciidoctor-stylesheet-factory@ を使って生成します。
+asciidoctor-stylesheet-factoryは、SCSSで書かれたスタイルシートです。
 
 
 
