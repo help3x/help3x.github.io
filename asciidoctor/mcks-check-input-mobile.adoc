@@ -1,5 +1,6 @@
 = 点検結果入力（タブレット）機能
 v1.0, 2017-10-01
+:lang: ja
 :encoding: utf-8
 // :doctitle: これがドキュメントタイトルになります。
 :description: 文書の説明を書きます。metaタグのdescriptionに設定されます。
@@ -7,6 +8,10 @@ v1.0, 2017-10-01
 // :title: titleタグに設定されます。
 :docinfo: shared
 :docinfodir: meta
+:sectids!:
+:linkcss:
+:hardbreaks:
+
 
 == 概要
 
@@ -222,6 +227,8 @@ image::2017-09-25_145002.png[, 80%]
 
 形式:: 「分子／分母（進捗率％）」
 進捗率:: 分子÷分母×100（小数点以下四捨五入）　←端数処理は要確認
+
+表示例:: 50／100（50％）
 
 
 ===== 全体
