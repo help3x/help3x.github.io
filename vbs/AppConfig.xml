@@ -10,4 +10,7 @@
 		<imgfile>1-1234-5678-X.gif</imgfile>
 	</item>
 	<rootDirectory>C:/Work</rootDirectory>
+	<imageMagicK>
+		<directory>C:\Users\q40061wa\Downloads\ImageMagick\ImageMagick-7.0.6-0-portable-Q16-x86</directory>
+	</imageMagicK>
 </configuration>

@@ -130,8 +130,9 @@ jpegの中のOrientationという属性に、一桁の数値が入っていて�
 
 [もうサムネイルで泣かないための ImageMagick ノウハウ集](http://blog.cybozu.io/entry/2016/01/06/080000)
 
-
-
+```
+convert right-mirrored.jpg -auto-orient out.png
+```
 
 
 
