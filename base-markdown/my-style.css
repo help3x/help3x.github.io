@@ -1,0 +1,112 @@
+﻿@charset "utf-8";
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-weight: normal;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+  color: black;
+}
+
+
+/* Default Table */
+table {
+  border-collapse: collapse;
+  text-align: left;
+  border-left: 1px solid #ccc;
+}
+
+table thead th {
+  padding: 0.5em;
+  font-weight: bold;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 2px solid #c00;
+  background: #dcdcd1;
+}
+
+table tbody td {
+  padding: 0.5em;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+table tbody td p {
+  margin: 0;
+}
+
+
+/* Default blockquote */
+/*
+blockquote {
+    position: relative;
+    padding: 30px 15px 8px 15px;
+    box-sizing: border-box;
+    font-style: italic;
+    background: #efefef;
+    color: #555;
+}
+
+blockquote:before{
+    display: inline-block;
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    vertical-align: middle;
+    content: "\f10d";
+    font-family: FontAwesome;
+    color: #cfcfcf;
+    font-size: 28px;
+    line-height: 1;
+}
+
+blockquote p {
+    padding: 0;
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+blockquote cite {
+    display: block;
+    text-align: right;
+    color: #888888;
+    font-size: 0.9em;
+}
+*/
+blockquote {
+    position: relative;
+    padding: 30px 15px 8px 15px;
+    box-sizing: border-box;
+    font-style: italic;
+    background: #efefef;
+    color: #555;
+}
+blockquote:before{
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    vertical-align: middle;
+    content: "“";
+    font-family: sans-serif;
+    color: #cfcfcf;
+    font-size: 90px;
+    line-height: 1;
+}
+blockquote p {
+    padding: 0;
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+blockquote cite {
+    display: block;
+    text-align: right;
+    color: #888888;
+    font-size: 0.9em;
+}
