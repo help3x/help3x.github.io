@@ -1,20 +1,77 @@
 ﻿@charset "utf-8";
 
-html {
-  font-size: 62.5%;
-}
-
 body {
-  font-size: 1.6rem;
-  line-height: 1.6;
+  line-height: 1.5rem;
   font-weight: normal;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
   color: black;
 }
 
+h1, h2, h3 {
+  line-height: 3.0rem;
+  margin: .5rem 0 1rem;
+}
+
+h4, h5, h6 {
+  margin: 1.5rem 0;
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.0rem;
+}
+
+h6 {
+  font-size: 0.75rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+ul,
+ol {
+  margin-left: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+dl {
+}
+
+dl dt {
+  font-style: italic;
+}
+
+dl dd {
+  margin-left: 1.25rem;
+}
 
 /* Default Table */
 table {
+  margin-bottom: 1.5rem;
   border-collapse: collapse;
   text-align: left;
   border-left: 1px solid #ccc;
@@ -79,6 +136,7 @@ blockquote cite {
 }
 */
 blockquote {
+    margin: 0 0 1.5rem 1rem;
     position: relative;
     padding: 30px 15px 8px 15px;
     box-sizing: border-box;
@@ -109,4 +167,55 @@ blockquote cite {
     text-align: right;
     color: #888888;
     font-size: 0.9em;
+}
+
+@media (max-width: 539px) {
+}
+
+@media (min-width: 540px) and (max-width: 767px) {
+}
+
+@media (min-width: 768px) and (max-width: 990px) {
+}
+
+@media (min-width: 991px) and (max-width: 1199px) {
+}
+
+@media (min-width: 1200px) {
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 3.0rem 1.25rem;
+}
+
+pre,
+code {
+  background-color: #efeff0;
+  color: #e528b0;
+  font-family: "MS Gothic", monospace;
+}
+
+code {
+  border-radius: 2px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: .25rem .25rem .15rem;
+}
+
+pre {
+  border-radius: 2px;
+  line-height: 1.5rem;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: .75rem .6rem;
+  margin: 0 0 1.5rem;
+}
+
+pre code {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
 }
