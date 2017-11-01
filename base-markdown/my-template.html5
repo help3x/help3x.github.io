@@ -40,6 +40,10 @@ $endfor$
 $for(include-before)$
 $include-before$
 $endfor$
+<div class="root-header">
+  <p class="site-title">$site-title$</p>
+</div>
+<div class="container">
 $if(title)$
 <header>
 <h1 class="title">$title$</h1>
@@ -60,6 +64,7 @@ $toc$
 </nav>
 $endif$
 $body$
+</div>
 $for(include-after)$
 $include-after$
 $endfor$

@@ -1,7 +1,6 @@
 ﻿@charset "utf-8";
 
 body {
-  line-height: 1.5rem;
   font-weight: normal;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
   color: black;
@@ -9,7 +8,7 @@ body {
 
 h1, h2, h3 {
   line-height: 3.0rem;
-  margin: .5rem 0 1rem;
+  margin: .5rem 0 1.5rem;
 }
 
 h4, h5, h6 {
@@ -22,14 +21,26 @@ h1 {
 
 h2 {
   font-size: 2rem;
+  background-color: #4caf50;
+  color: #fff;
+  padding: .5rem 0 .5rem .5rem;
 }
 
 h3 {
   font-size: 1.75rem;
+  border-left: solid 1rem #4caf50;
+  border-bottom: solid 3px #4caf50;
+  padding-left: .5rem;
+  color: #333;
 }
 
 h4 {
   font-size: 1.25rem;
+  border-left: solid 1rem #4caf50;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: .5rem;
+  color: #333
 }
 
 h5 {
@@ -42,6 +53,7 @@ h6 {
 
 p {
   margin-bottom: 1.5rem;
+  line-height: 1.5;
 }
 
 ul,
@@ -58,7 +70,28 @@ ol {
   list-style-type: decimal;
 }
 
+ul ul,
+ol ol {
+  margin-bottom: 0;
+}
+
+ul ul {
+  list-style-type: circle;
+}
+
+li,
+dl,
+dt,
+dd {
+  line-height: 1.5;
+}
+
+li p {
+  margin-bottom: 0;
+}
+
 dl {
+  margin-bottom: 1.5rem;
 }
 
 dl dt {
@@ -99,42 +132,6 @@ table tbody td p {
 
 
 /* Default blockquote */
-/*
-blockquote {
-    position: relative;
-    padding: 30px 15px 8px 15px;
-    box-sizing: border-box;
-    font-style: italic;
-    background: #efefef;
-    color: #555;
-}
-
-blockquote:before{
-    display: inline-block;
-    position: absolute;
-    top: 13px;
-    left: 15px;
-    vertical-align: middle;
-    content: "\f10d";
-    font-family: FontAwesome;
-    color: #cfcfcf;
-    font-size: 28px;
-    line-height: 1;
-}
-
-blockquote p {
-    padding: 0;
-    margin: 10px 0;
-    line-height: 1.7;
-}
-
-blockquote cite {
-    display: block;
-    text-align: right;
-    color: #888888;
-    font-size: 0.9em;
-}
-*/
 blockquote {
     margin: 0 0 1.5rem 1rem;
     position: relative;
@@ -206,7 +203,7 @@ code {
 
 pre {
   border-radius: 2px;
-  line-height: 1.5rem;
+  line-height: 1.5;
   overflow-y: hidden;
   overflow-x: auto;
   padding: .75rem .6rem;
@@ -219,3 +216,26 @@ pre code {
   border-radius: 0;
   padding: 0;
 }
+
+.root-header {
+  width: 100%;
+  height: 4.5rem;
+  border-top: solid 4px #4caf50;
+  border-bottom: solid 4px #4caf50;
+  /* repeating-linear-gradient(ストライプの角度, 色1 始点, 色1 終点, 色2 始点、色2 終点[, 色3 始点, 色3 終点, …]) */
+  background: -webkit-repeating-linear-gradient(-45deg, #4caf50, #4caf50 3px, #66bb6a 3px, #66bb6a 7px);
+  background: repeating-linear-gradient(-45deg, #4caf50, #4caf50 3px, #66bb6a 3px, #66bb6a 7px);
+  display: flex;
+  align-items: center;
+}
+
+.site-title {
+  margin-bottom: 0;
+  padding: 0 1rem;
+  /*color: #690;*/
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
