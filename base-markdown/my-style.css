@@ -1,0 +1,243 @@
+﻿@charset "utf-8";
+
+body {
+  font-weight: normal;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+  color: black;
+}
+
+h1, h2, h3 {
+  line-height: 3.0rem;
+  margin: .5rem 0 1.5rem;
+}
+
+h4, h5, h6 {
+  margin: 2rem 0 1.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 2rem;
+  background-color: #4caf50;
+  color: #fff;
+  padding: .5rem 0 .5rem .5rem;
+  margin-top: 3rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+  border-left: solid 1rem #4caf50;
+  border-bottom: solid 3px #4caf50;
+  padding-left: .5rem;
+  color: #333;
+  margin-top: 2rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  border-left: solid 1rem #4caf50;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: .5rem;
+  color: #333
+}
+
+h5 {
+  font-size: 1.0rem;
+}
+
+h6 {
+  font-size: 0.75rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+ul,
+ol {
+  margin-left: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ul ul,
+ol ol {
+  margin-bottom: 0;
+}
+
+ul ul {
+  list-style-type: circle;
+}
+
+li,
+dl,
+dt,
+dd {
+  line-height: 1.5;
+}
+
+li p {
+  margin-bottom: 0;
+}
+
+dl {
+  margin-bottom: 1.5rem;
+}
+
+dl dt {
+  font-style: italic;
+}
+
+dl dd {
+  margin-left: 1.25rem;
+}
+
+/* Default Table */
+table {
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
+  text-align: left;
+  border-left: 1px solid #ccc;
+}
+
+table thead th {
+  padding: 0.5em;
+  font-weight: bold;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 2px solid #c00;
+  background: #dcdcd1;
+}
+
+table tbody td {
+  padding: 0.5em;
+  vertical-align: top;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+table tbody td p {
+  margin: 0;
+}
+
+
+/* Default blockquote */
+blockquote {
+    margin: 0 0 1.5rem 1rem;
+    position: relative;
+    padding: 30px 15px 8px 15px;
+    box-sizing: border-box;
+    font-style: italic;
+    background: #efefef;
+    color: #555;
+}
+blockquote:before{
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    vertical-align: middle;
+    content: "“";
+    font-family: sans-serif;
+    color: #cfcfcf;
+    font-size: 90px;
+    line-height: 1;
+}
+blockquote p {
+    padding: 0;
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+blockquote cite {
+    display: block;
+    text-align: right;
+    color: #888888;
+    font-size: 0.9em;
+}
+
+@media (max-width: 539px) {
+}
+
+@media (min-width: 540px) and (max-width: 767px) {
+}
+
+@media (min-width: 768px) and (max-width: 990px) {
+}
+
+@media (min-width: 991px) and (max-width: 1199px) {
+}
+
+@media (min-width: 1200px) {
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 3.0rem 1.25rem;
+}
+
+pre,
+code {
+  background-color: #efeff0;
+  color: #e528b0;
+  font-family: "MS Gothic", monospace;
+}
+
+code {
+  border-radius: 2px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: .25rem .25rem .15rem;
+}
+
+pre {
+  border-radius: 2px;
+  line-height: 1.5;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: .75rem .6rem;
+  margin: 0 0 1.5rem;
+}
+
+pre code {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.root-header {
+  width: 100%;
+  height: 4.5rem;
+  border-top: solid 4px #4caf50;
+  border-bottom: solid 4px #4caf50;
+  /* repeating-linear-gradient(ストライプの角度, 色1 始点, 色1 終点, 色2 始点、色2 終点[, 色3 始点, 色3 終点, …]) */
+  background: -webkit-repeating-linear-gradient(-45deg, #4caf50, #4caf50 3px, #66bb6a 3px, #66bb6a 7px);
+  background: repeating-linear-gradient(-45deg, #4caf50, #4caf50 3px, #66bb6a 3px, #66bb6a 7px);
+  display: flex;
+  align-items: center;
+}
+
+.site-title {
+  margin-bottom: 0;
+  padding: 0 1rem;
+  /*color: #690;*/
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1;
+}
+

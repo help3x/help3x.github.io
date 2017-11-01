@@ -1,0 +1,1 @@
+﻿pandoc -f markdown -t html5 -o note-201710-5th.html -c base-markdown\my-style.css -s --self-contained base-markdown\note-201710-5th.md
