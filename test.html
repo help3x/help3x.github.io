@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Flexboxの基本</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="">
+<!--<link rel="stylesheet" href="file:///C:/Users/q40061wa/Downloads/gridlex-master/dist/gridlex.css">-->
+<!--<link rel="stylesheet" href="https://unpkg.com/mobi-plugin-flexbox/dist/mobi-plugin-flexbox.min.css" />-->
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css" />-->
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+<style>
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+.root-container,
+.wrapper {
+  display: flex;
+  flex-direction: column; /* 縦に並べる */
+}
+
+.root-container {
+  overflow: hidden;
+}
+
+.wrapper {
+  min-height: 100vh;  /* viewportの高さに対する比率 100% を指定 */
+}
+
+.header {
+  height: 100px;
+}
+
+.content {
+  flex: 1;
+}
+
+.footer {
+  height: 2rem;
+}
+
+.content > .main {
+}
+
+.content > .sidebar {
+}
+
+.grid {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -0.5rem;
+}
+
+.cell {
+  box-sizing: border-box;
+  padding: 0 0.5rem 1rem;
+  max-width: 100%;
+  flex: 1 1 0%;  /* 伸びる比率 縮む比率 ベース幅 */
+}
+
+.grid .cell,
+.grid [class*="cell-"] {
+  margin: 0;
+  padding: 0;
+}
+
+.grid > [class*="cell-1"] {
+  flex-basis: 8.33333%;
+  max-width: 8.33333%;
+}
+
+.grid > [class*="cell-2"] {
+  flex-basis: 16.66667%;
+  max-width: 16.66667%;
+}
+
+.grid > [class*="cell-3"] {
+  flex-basis: 25%;
+  max-width: 25%;
+}
+
+.grid > [class*="cell-4"] {
+  flex-basis: 33.33333%;
+  max-width: 33.33333%;
+}
+
+.grid > [class*="cell-5"] {
+  flex-basis: 41.66667%;
+  max-width: 41.66667%;
+}
+
+.grid > [class*="cell-6"] {
+  flex-basis: 50%;
+  max-width: 50%;
+}
+
+.grid > [class*="cell-7"] {
+  flex-basis: 58.33333%;
+  max-width: 58.33333%;
+}
+
+.grid > [class*="cell-8"] {
+  flex-basis: 66.66667%;
+  max-width: 66.66667%;
+}
+
+.grid > [class*="cell-9"] {
+  flex-basis: 75%;
+  max-width: 75%;
+}
+
+.grid > [class*="cell-10"] {
+  flex-basis: 83.33333%;
+  max-width: 83.33333%;
+}
+
+.grid > [class*="cell-11"] {
+  flex-basis: 91.66667%;
+  max-width: 91.66667%;
+}
+
+.grid > [class*="cell-12"] {
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+@media all and (min-width: 768px) {
+  /* タブレット */
+}
+
+@media all and (min-width: 992px) {
+  /* PC */
+}
+
+@media all and (min-width: 1120px) {
+  /* PC大画面 */
+}
+
+
+</style>
+<style>
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- Place your content here -->
+  <div class="root-container">
+    <div class="wrapper">
+    <header class="header">
+      <p>header text</p>
+    </header>
+    <main class="content">
+      <section class="main">
+        <p>ここがメインコンテンツです。</p>
+      </section>
+      <section class="sidebar">
+        <p>ここがサイドバーです。</p>
+      </section>
+    </div>
+    <footer class="footer">
+      <p>&copy; 2017 JSC
+    </footer>
+    </div>
+  </div>
+
+<!-- SCRIPTS -->
+<!-- Example: <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+</body>
+</html>
