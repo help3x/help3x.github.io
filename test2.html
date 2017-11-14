@@ -8,9 +8,7 @@
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="">
-<!--<link rel="stylesheet" href="file:///C:/Users/q40061wa/Downloads/gridlex-master/dist/gridlex.css">-->
-<!--<link rel="stylesheet" href="https://unpkg.com/mobi-plugin-flexbox/dist/mobi-plugin-flexbox.min.css" />-->
-<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css" />-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
 <!--[if lt IE 9]>
 <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -18,55 +16,7 @@
 <link rel="shortcut icon" href="">
 <style>
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-size: 1.6rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
-}
-
-.root-container {
-  display: flex;
-  flex-direction: column; /* 縦に並べる */
-  min-height: 100vh;
-  height: 100%;
-}
-
-.header {
-  height: 100px;
-}
-
-body,
-.wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.wrapper {
-  min-height: 100vh;
-}
-
-.content {
-  flex: 1 1 auto;
-}
-
-.footer {
-  height: 2rem;
-}
-
-.content > .main {
-}
-
-.content > .sidebar {
-}
+/* グリッドレイアウト用のクラスはFLOCSSの外に出しておく */
 
 .grid {
   box-sizing: border-box;
@@ -148,28 +98,90 @@ body,
   max-width: 100%;
 }
 
+/* Foundation Layer */
+/* Normalize.cssをロードしたあと... */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.5;   /* デフォルトフォントサイズ 16px x 1.5 = ベースライン 24px */
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', Segoe UI, 'メイリオ', Meiryo, sans-serif;
+}
+
+
+
+/* Layout Layer */
+
+body,
+.l-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.l-wrapper {
+  min-height: 100vh;
+}
+
+.l-header {
+  height: 4.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.l-content {
+  flex: 1 1 auto;
+}
+
+.l-content > .l-main {
+}
+
+.l-content > .l-sidebar {
+  margin-top: 4.8rem;
+}
+
+.l-footer {
+  height: 3.6rem;
+  margin-top: 1.2rem;
+  line-height: 3.6rem;
+}
+
 @media all and (min-width: 768px) {
   /* タブレット */
 }
 
 @media all and (min-width: 992px) {
   /* PC */
-  .content {
+  .l-content {
     display: flex;
     flex-flow: row nowrap;
   }
 
-  .content > .main,
-  .content > .sidebar {
-    box-sizing: border-box;
+  .l-content > .l-main,
+  .l-content > .l-sidebar {
+    margin-top: 0;
     padding: 0 .5rem 1rem;
   }
 
-  .content > .main {
+  .l-content > .l-main {
     flex: 1 1 0%;
   }
 
-  .content > .sidebar {
+  .l-content > .l-sidebar {
     width: 300px;
   }
 }
@@ -179,21 +191,26 @@ body,
 }
 
 
-</style>
-<style>
-img {
-  max-width: 100%;
-  height: auto;
-}
+
+/* Object Layer */
+
+/* Object-Component */
+
+/* Object-Project */
+
+/* Object-Utility */
+
+
+
 </style>
 </head>
 <body>
 
-  <div class="wrapper">
-    <header>Header</header>
-    <main class="content">
-      <section class="main">
-        <p>ここがメインコンテンツです。</p>
+  <div class="l-wrapper">
+    <header class="l-header">Header</header>
+    <main class="l-content">
+      <section class="l-main">
+        <p>ここがメインコンテンツです。<br>ここがメインコンテンツです。</p>
 
 <p>セロはラプソディのあんまセロ団を甘藍を思っ包みでた。ではどっかり勝手ましないって頭たた。下手たた方でしはますまたセロの上手らの限りへはさっさと大丈夫ないますて、みんななんてゴーシュをかかえれんたん。弾きすぎそれは扉がいいんと遠くのいっしょのまん中家で云い第六評判らのお世話をありとしまうましじ。</p>
 <p>赤は半分ねむらから行っず。ドレミファも一しテープのようがやっのにいで。糸はゴーシュ一つと君にあわててはじめなかっ。鳥は風がまたに出るが音楽を泣き声のようにひるて灰をしんで一寸セロを出しているた。こつこつもうかっこうを巨をめくりたござい。</p>
@@ -350,11 +367,11 @@ img {
 <p>それからトォテテテテテイでついばさっきかっこうをついてだしたときれますさっきのうをひるて「なあんだ療。そのときはしましましべ。やつも飛びたちだんまでましましのた。」と思っましです。</p>
 
       </section>
-      <section class="sidebar">
-        <p>ここがサイドコンテンツです。</p>
+      <section class="l-sidebar">
+        <p>ここがサイドコンテンツです。<br>ここがサイドコンテンツです。</p>
       </section>
     </main>
-    <footer>
+    <footer class="l-footer">
       &copy; 2017 J. S. Corporation
     </footer>
   </div>
