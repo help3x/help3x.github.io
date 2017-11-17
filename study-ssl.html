@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Note: SSL</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}</style>
+  <style type="text/css">@charset "utf-8";.grid {box-sizing: border-box;display: flex;flex-flow: row wrap;margin: 0 -0.5rem;}.cell {box-sizing: border-box;padding: 0 0.5rem 1rem;max-width: 100%;flex: 1 1 0%; }.grid .cell,.grid [class*="cell-"] {margin: 0;padding: 0;}.grid > [class*="cell-1"] {flex-basis: 8.33333%;max-width: 8.33333%;}.grid > [class*="cell-2"] {flex-basis: 16.66667%;max-width: 16.66667%;}.grid > [class*="cell-3"] {flex-basis: 25%;max-width: 25%;}.grid > [class*="cell-4"] {flex-basis: 33.33333%;max-width: 33.33333%;}.grid > [class*="cell-5"] {flex-basis: 41.66667%;max-width: 41.66667%;}.grid > [class*="cell-6"] {flex-basis: 50%;max-width: 50%;}.grid > [class*="cell-7"] {flex-basis: 58.33333%;max-width: 58.33333%;}.grid > [class*="cell-8"] {flex-basis: 66.66667%;max-width: 66.66667%;}.grid > [class*="cell-9"] {flex-basis: 75%;max-width: 75%;}.grid > [class*="cell-10"] {flex-basis: 83.33333%;max-width: 83.33333%;}.grid > [class*="cell-11"] {flex-basis: 91.66667%;max-width: 91.66667%;}.grid > [class*="cell-12"] {flex-basis: 100%;max-width: 100%;}html,body {margin: 0;padding: 0;width: 100%;}html {font-size: 62.5%;line-height: 1.5; box-sizing: border-box;}*,*:before,*:after {box-sizing: inherit;}body {font-size: 1.6rem;font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', Segoe UI, 'メイリオ', Meiryo, sans-serif;padding: 0 1.6rem;max-width: 99.2rem;}table {border-collapse: collapse;border-spacing: 0;text-align: left;max-width: 100%;}tbody tr:nth-of-type(odd) {background-color: #fcfcfc;}th,td {border-bottom: .1rem solid #efefef;padding: 1.5rem 1rem;}th {border-color: #c9c9c9;}@media all and (min-width: 76.8rem) {}@media all and (min-width: 99.2rem) {body {padding: 0 3.2rem;}}@media all and (min-width: 112rem) {}</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h2 id="共通鍵暗号">共通鍵暗号</h2>
+<p>暗号化と復号に同じ鍵（＝共通鍵）を使う。<br />
+暗号化と復号の処理が軽い。<br />
+送信者と受信者が、あらかじめ誰にも知られていない同じ鍵を持つ必要がある。<br />
+鍵を他人に盗まれたらそれで復号されてしまうので、他人に知られない方法で受け渡さなければならない。<br />
+… インターネットで送るなんてありえない。</p>
+<pre><code>送信者
+↓
+暗号化（秘密鍵）
+↓
+通信
+↓
+復号化（秘密鍵）
+↓
+受信者</code></pre>
+<h2 id="公開鍵暗号">公開鍵暗号</h2>
+<p>ペアになった公開鍵と秘密鍵を使う。<br />
+片方の鍵で暗号化した内容は、その鍵とペアになっているもう片方の鍵でしか復号できない。<br />
+片方の鍵をインターネットで公開しても、もう片方の鍵が非公開になっていれば安全にデータを送れる。</p>
+<p>つまり、こういうこと。</p>
+<ul>
+<li>公開鍵で暗号化した内容は、ペアとなる秘密鍵でしか復号できない。</li>
+<li>秘密鍵で暗号化した内容は、ペアとなる公開鍵でしか復号できない。</li>
+</ul>
+<pre><code>送信者 &lt;-----------------┐
+↓                       ↑
+暗号化（公開鍵）       復号化（公開鍵）
+↓                       ↑
+通信                   通信
+↓                       ↑
+復号化（秘密鍵）       暗号化（秘密鍵）
+↓                       ↑
+受信者 ------------------┘
+        ※逆も同様。</code></pre>
+<h2 id="ssl通信の仕組み">SSL通信の仕組み</h2>
+<p>共通鍵暗号と公開鍵暗号を組み合わせて通信する。</p>
+<p>事前に公開鍵暗号を使って両者に共通鍵を持たせる。<br />
+実際の通信は共通鍵を使って暗号化と復号化する。</p>
+<ol>
+<li>クライアントからサーバーにSSL通信要求が来る。</li>
+<li>サーバーがクライアントにサーバー証明書と自身の公開鍵を送信する。</li>
+<li>クライアントは、サーバーから受信したサーバー証明書から公開鍵を取り出す。それを使って共通鍵を暗号化して送信する。</li>
+<li>サーバーは自身の秘密鍵を使い、受信した内容を復号して、暗号通信に使う共通鍵を取り出す。</li>
+</ol>
+<p>この段階で両者は暗号通信に必要な共通鍵を手に入れた。<br />
+あとはこの共通鍵を使って暗号通信をする。</p>
+<p>実際には共通鍵自身ではなく、共通鍵の基になる情報（プレマスタ・シークレット）を暗号化して送っている。</p>
+<ol>
+<li><p>接続要求<br />
+クライアント側からSSL通信のリクエストをサーバ側へ送信。</p></li>
+<li><p>SSLサーバ証明書と公開鍵をクライアント側へ送付<br />
+サーバ側から、公開鍵付きのSSLサーバ証明書がクライアント側に送付。<br />
+クライアント側のブラウザに搭載されているルート証明書で署名を確認し、SSLサーバ証明書を検証。<br />
+※グローバルサインをはじめとする「信頼のある認証局」のルート証明書は、あらかじめ主要PCブラウザや携帯端末に搭載されているので、ユーザ側で新たにインストールする必要がありません。</p></li>
+<li><p>共通鍵(セッションキー）を暗号化しサーバ側へ送付<br />
+クライアント側で生成された暗号用の「共通鍵(セッションキー）」を、サーバ側から送られてきた公開鍵を用いて暗号化し、サーバ側へ送信。<br />
+サーバ側に送信された共通鍵は、サーバ側で保持している秘密鍵で復号化され、共通鍵が取り出される。</p></li>
+<li><p>SSL暗号化通信開始<br />
+個人情報などの機密性の高いデータを、クライアント側で保持している共通鍵で暗号化しサーバ側へ送信。<br />
+サーバ側は、受け取った暗号データをサーバ側で保持している共通鍵で復号してデータを取得する。<br />
+※共通鍵は、サーバとクライアントが使用するブラウザの双方が対応する、最も強度の高い暗号方式・鍵長が使用されます。</p></li>
+</ol>
+<p>○データを守る<br />
+送信するデータ＋取り出した公開鍵＝暗号化<br />
+　→相手の持つ秘密鍵でしか見られない。</p>
+<p>○相手を特定する<br />
+受信したデータ＋自身の秘密鍵＝署名<br />
+　→自分の証明書に含まれる鍵で開けられる。</p>
+<h2 id="サーバー証明書">サーバー証明書</h2>
+<p>通信相手のサーバーが信頼できるかどうかを確認する仕組み。</p>
+<dl>
+<dt>サーバー証明書</dt>
+<dd>サーバーの管理者が「認証局」と呼ばれる組織に申請して発行してもらう証明書。<br />
+発行組織名、有効期限、サーバーの公開鍵などが書き込まれている。<br />
+認証局の署名（証明書の内容を、認証局の秘密鍵で暗号化したデータ）が付いている。
+</dd>
+</dl>
+<p>申請＝CSR＝署名リクエスト（Certificate Signing Request）<br />
+　サーバー証明書を取得するために認証局へ提出する申請書のようなもの。<br />
+　サーバー証明書を導入するサーバーで生成する。<br />
+　実体は暗号化されたテキストデータで、申請者の公開鍵と、運営者情報（ディスティングイッシュネーム）が含まれる。</p>
+<h2 id="署名した認証局がそもそも信頼できるのか">署名した認証局がそもそも信頼できるのか？</h2>
+<p>クライアントにはサーバー証明書と一緒に、署名した認証局の証明書も送られている。 もし、認証局が別の認証局から署名を受けているときは、さらにその署名を受けた認証局の証明書も送られる。 最終的には最上位の「ルート認証局」と呼ばれる認証局の証明書が必ず送られてくる。</p>
+<p>まずはルート認証局が信頼できるかを確認する。<br />
+パソコンにはもともと信頼できるルート認証局の証明書（自己証明書）が複数インストールされている。<br />
+それらとサーバーから受信した証明書が一致するかを確認し、一致したら受信した証明書は信頼できると判断する。<br />
+信頼できた証明書から公開鍵を取り出し、そこから署名を受けた証明書を検証する。<br />
+この流れを繰り返し、受信したすべての証明書を検証する。</p>
+<p>具体的には次の内容が一致するかを検証する。</p>
+<ul>
+<li>署名をルート認証局の公開鍵で復号したデータ</li>
+<li>サーバー証明書のハッシュ値</li>
+</ul>
+<p>自己証明書＝自己署名証明書＝オレオレ証明書 自前の認証局＝オレオレ認証局＝プライベート認証局</p>
+<p>認証局 ＝ CA ＝ Certificate Authority / Certification Authority</p>
+<h2 id="公開鍵基盤pki">公開鍵基盤（PKI）</h2>
+<p>信頼できる第3者である認証局（CA）が、甲が本人であることを保証する仕組み。 甲が本人である＝甲本人だけが秘密鍵を保有し、公開鍵は電子証明書として公開すること</p>
+<pre><code>        申請                 電子証明書の有効性確認
+ +------------&gt; +--------+ &lt;-----------+
+ |  +---------- | 認証局 |             |
+ |  ￬   発行    +--------+             |
++----+                               +----+
+| 甲 | ----------------------------&gt; | 乙 |
++----+         署名付きファイル      +----+</code></pre>
+<ol>
+<li>甲が認証局に電子証明書の発行を依頼する。</li>
+<li>認証局は甲の本人確認をする。</li>
+<li>本人確認のあと、認証局は甲に電子証明書を発行する。電子証明書には公開鍵が含められる。</li>
+</ol>
+<p>キーペア（公開鍵と秘密鍵）の作成は、認証局が生成する場合もあれば、甲自身が生成する場合もある。</p>
+<p>Memo: （いずれも環境依存文字）<br />
+　半角の上向き矢印: 0xFFEA ￪<br />
+　半角の下向き矢印: 0xFFEC ￬</p>
+<h2 id="電子署名の仕組み">電子署名の仕組み</h2>
+<pre><code>平文をハッシュ化した結果を秘密鍵で暗号化
+↓
+送信（平文、暗号文、公開鍵を含んだ電子証明書）
+↓
+通信
+↓
+受信
+↓
+平文をハッシュ化する。
+↓
+電子証明書が信頼できるか確認し、その中から公開鍵を取り出して暗号文を復号する。
+↓
+ハッシュ値と復号したデータが一致すれば送信された平文は甲本人が作成し、改ざんされていないことが証明できる。</code></pre>
+<h2 id="インターネットにおける4つのリスク">インターネットにおける4つのリスク</h2>
+<ul>
+<li>なりすまし</li>
+<li>改ざん</li>
+<li>事後否認</li>
+<li>盗聴</li>
+</ul>
+<dl>
+<dt>電子証明書</dt>
+<dd>認証局と呼ばれる組織が、持ち主の身元情報を認証し発行する。
+</dd>
+</dl>
+<p>電子証明書に含まれるもの</p>
+<ul>
+<li>証明書の発行者</li>
+<li>有効期限</li>
+<li>名前</li>
+<li>鍵</li>
+</ul>
+<h2 id="sslサーバー証明書">SSLサーバー証明書</h2>
+<p>ウェブサイトの運営者の実在性を確認し、ブラウザとサーバー間で通信データの暗号化を行うための電子証明書。<br />
+認証局から発行される。</p>
+<ul>
+<li>運営者の情報</li>
+<li>暗号化に必要な鍵</li>
+<li>発行者の署名</li>
+</ul>
+<p>なりすまし、盗聴、改ざんのリスク防止に有効。</p>
+<h2 id="クライアント認証">クライアント認証</h2>
+<p>システムやサービス、メールを利用するユーザーのデバイスに証明書をインストールし、そのユーザーが正規の利用者であることを認証する。</p>
+<p>クライアント証明書の主な用途</p>
+<ul>
+<li>証明書がインストールされていない端末から、システムにアクセスされるのを防ぐ。
+<ul>
+<li>利用者が特定できるようになるので、毎回IDやパスワードを入力しなくてもよくなる。</li>
+</ul></li>
+<li>メールの送信主を証明し、なりすましや改ざん、盗聴を防ぐ。</li>
+</ul>
+<h2 id="windows-証明書サービス">Windows 証明書サービス</h2>
+<p>公的な認証局から証明書を発給してもらうのは費用がかかる。<br />
+社内システムなど特定少数ユーザーに対してのみサービスを提供するときは経済的ではない。<br />
+そんなときに使う。<br />
+　＝会社などの組織で内輪限定のサーバー証明書を用意したいという場面。</p>
+<p>このサービスは誰でも自由に立ち上げられるので、公的な証明力はまったくない。<br />
+インターネットで不特定多数に対して提供するサービスでは使えない。</p>
+<p>留意事項</p>
+<p>クライアントPCにも証明書サービスのCA証明書を配布する必要あり。<br />
+デフォルトでオレオレ証明書がインストールされているわけないからね。</p>
+<p>IISの制限</p>
+<ul>
+<li>1つのWebサイトに割り当てられるサーバー証明書は1つだけです。</li>
+<li>複数のWebサイトに同じサーバー証明書を割り当てることはできます。</li>
+<li>同じWebサーバーでSSLの使用・不使用を使い分けるときは、SSLを使うWebサイトと使わないWebサイトに分けます。</li>
+</ul>
+<p>Windows Server 2008 での証明書サービスの名前は「Active Directory 証明書サービス」です。<br />
+サーバーマネージャで追加できます。</p>
+<p>役割サービスは次の2つにチェックをつけます。</p>
+<ul>
+<li>証明機関</li>
+<li>証明機関Web登録</li>
+</ul>
+<p>証明書サービスによって運営するCAは「スタンドアロンCA」を選択します。<br />
+（「エンタープライズCA」はいつ使うんでしょうか？）</p>
+<p>CAの種類の指定は「ルートCA」にします。</p>
+<p>新しい秘密鍵を作成してください。</p>
+<p>CAの共通名、証明書の有効期間などは規定値でいいでしょう。</p>
+<p>最終的にウィザードの最終画面でインストールを選択すれば、証明書サービスの組み込みとCAの立ち上げが行われます。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="http://www.webtech.co.jp/blog/optpix_labs/server/1159/">オレオレ認証局の作り方～SSL証明書を無料で作る方法 on CentOS 5</a></li>
+<li><a href="http://www.webtech.co.jp/blog/optpix_labs/server/1780/">オレオレ認証局でクライアント認証 ～ ウェブの Basic 認証をリプレース</a></li>
+<li>にわか管理者のためのWindowsサーバ入門
+<ul>
+<li><a href="https://news.mynavi.jp/itsearch/article/hardware/897">【第65回】証明書サービスとオレオレ証明書</a></li>
+<li><a href="https://news.mynavi.jp/itsearch/article/hardware/898">【第66回】証明書サービスからSSLサーバ証明書を導入する</a></li>
+<li><a href="https://news.mynavi.jp/itsearch/article/hardware/899">【第67回】オレオレ証明書を使用する際のクライアント側の作業</a></li>
+<li><a href="https://news.mynavi.jp/itsearch/article/hardware/900">【第68回】一般のCAからSSLサーバ証明書を導入する</a></li>
+</ul></li>
+<li><a href="http://blogs.gine2.jp/kusa/archives/2071">IIS7.5をスタンドアロンルートCAで発行したクライアント認証証明書を要求するように設定する</a></li>
+</ul>
+</body>
+</html>
