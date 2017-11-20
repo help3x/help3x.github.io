@@ -107,7 +107,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', Segoe UI, 'メイリオ', Meiryo, sans-serif;
-  padding: 0 1.6rem;
+  padding: 0 3.2rem;
   max-width: 99.2rem;
 }
 
@@ -125,13 +125,16 @@ tbody tr:nth-of-type(odd) {
 th,
 td {
   border-bottom: .1rem solid #efefef;
-  padding: 1.5rem 1rem;
+  padding: 1.6rem 1rem;
 }
 
 th {
   border-color: #c9c9c9;
 }
 
+dd + dt {
+  margin-top: 1.6rem;
+}
 
 /* Layout Layer */
 
