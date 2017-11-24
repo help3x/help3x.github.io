@@ -141,6 +141,10 @@ dd + dt {
   margin-top: 1.6rem;
 }
 
+blockquote > p {
+  margin: 0;
+}
+
 /* Layout Layer */
 
 /*body,
@@ -213,6 +217,45 @@ dd + dt {
 /* Object Layer */
 
 /* Object-Component */
+
+blockquote {
+  position: relative;
+  background-color: #efefef;
+  color: #555;
+  padding: 1.6rem 5.6rem;
+}
+
+blockquote::before,
+blockquote::after {
+  position: absolute;
+  display: inline-block;
+  font-size: 4rem;
+  font-family: "MS Gothic", sans-serif;
+  line-height: 1;
+  color: #9dd4ff;
+}
+
+blockquote::before {
+  top: 0;
+  left: 0;
+  content: "“";
+}
+
+blockquote::after {
+  bottom: 0;
+  right: 0;
+  content: "”";
+}
+
+blockquote cite {
+  display: block;
+  text-align: right;
+  color: #888;
+}
+
+blockquote cite::before {
+  content: "― ";
+}
 
 /* Object-Project */
 

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Raspberry Pi 事始め</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:0;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}code,kbd,samp{font-family:monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type="button"]{-webkit-appearance:button}[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-cancel-button,[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}[hidden],template{display:none}</style>
+  <style type="text/css">@charset "utf-8";.grid {box-sizing: border-box;display: flex;flex-flow: row wrap;margin: 0 -0.5rem;}.cell {box-sizing: border-box;padding: 0 0.5rem 1rem;max-width: 100%;flex: 1 1 0%; }.grid .cell,.grid [class*="cell-"] {margin: 0;padding: 0;}.grid > [class*="cell-1"] {flex-basis: 8.33333%;max-width: 8.33333%;}.grid > [class*="cell-2"] {flex-basis: 16.66667%;max-width: 16.66667%;}.grid > [class*="cell-3"] {flex-basis: 25%;max-width: 25%;}.grid > [class*="cell-4"] {flex-basis: 33.33333%;max-width: 33.33333%;}.grid > [class*="cell-5"] {flex-basis: 41.66667%;max-width: 41.66667%;}.grid > [class*="cell-6"] {flex-basis: 50%;max-width: 50%;}.grid > [class*="cell-7"] {flex-basis: 58.33333%;max-width: 58.33333%;}.grid > [class*="cell-8"] {flex-basis: 66.66667%;max-width: 66.66667%;}.grid > [class*="cell-9"] {flex-basis: 75%;max-width: 75%;}.grid > [class*="cell-10"] {flex-basis: 83.33333%;max-width: 83.33333%;}.grid > [class*="cell-11"] {flex-basis: 91.66667%;max-width: 91.66667%;}.grid > [class*="cell-12"] {flex-basis: 100%;max-width: 100%;}html,body {margin: 0;padding: 0;width: 100%;}html {font-size: 62.5%;line-height: 1.5; box-sizing: border-box;}*,*:before,*:after {box-sizing: inherit;}body {font-size: 1.6rem;font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', Segoe UI, 'メイリオ', Meiryo, sans-serif;padding: 0 3.2rem;max-width: 99.2rem;}pre,code {font-family: "MS Gothic", monospace;}table {border-collapse: collapse;border-spacing: 0;text-align: left;max-width: 100%;}tbody tr:nth-of-type(odd) {background-color: #fcfcfc;}th,td {border-bottom: .1rem solid #efefef;padding: 1.6rem 1rem;}th {border-color: #c9c9c9;}dd + dt {margin-top: 1.6rem;}blockquote > p {margin: 0;}@media all and (min-width: 76.8rem) {}@media all and (min-width: 99.2rem) {body {padding: 0 3.2rem;}}@media all and (min-width: 112rem) {}blockquote {position: relative;background-color: #efefef;color: #555;padding: 1.6rem 5.6rem;}blockquote::before,blockquote::after {position: absolute;display: inline-block;font-size: 4rem;font-family: "MS Gothic", sans-serif;line-height: 1;color: #9dd4ff;}blockquote::before {top: 0;left: 0;content: "“";}blockquote::after {bottom: 0;right: 0;content: "”";}blockquote cite {display: block;text-align: right;color: #888;}blockquote cite::before {content: "― ";}</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<p>RaspberryPi A+　（ラズベリーパイエープラス） [Raspberry Pi A+ (833-2699)] 通販コード　M-08886 発売日　2014/12/26 メーカーカテゴリ　RSコンポーネンツ株式会社</p>
+<p>ARMベースの超小型コンピュータです。 キャッシュカードサイズの本体に電源、キーボード、マウス、ディスプレイ、 マイクロSDカードなどをつなぐことによって、 PCのように様々なアプリケーションを実行することができます。 モデルA+は、B+よりUSBハブの機能を減らし、CPUはそのままでより安価に小型になりました。 そのため、モデルA+はUSBホストｘ1のみの構成となります。</p>
+<p>◆主な仕様 ・SoC：Broadcom BCM2835 700MHz ARM1176JZFS ・GPU：Broadcom VideoCore IV 250MHz ・RAM：512MB SDRAM ・ストレージ：MicroSDカードスロット ・ビデオ出力：HDMI、Composite 3.5mm 4極ジャック ・オーディオ出力：ステレオ　3.5mm　4極ジャック、HDMI ・USBポート：USB 2.0×1 ・GPIO：40（2×20）ピン（UART、SPIを含む） ・電源：DC5V（2A）、給電はmicroUSBから ・サイズと重さ：65ｘ56×17mm、25g　　　　※B+は、85×56×17mm、45g ・サポートOS：Debian、Fedora、Arch Linux</p>
+<p>※RAMが256MBのモデルと512MBのモデルがある。 　マイナーアップデート後のモデルが512MB。</p>
+<dl>
+<dt>Soc</dt>
+<dd>System on a Chip<br />
+ひとつのチップ上にシステムの動作に必要な機能（たとえば、CPUとメモリ、ビデオチップ、I/Oなど）を実装する設計手法。<br />
+またその設計手法で作られたチップ自体のことを指す。
+</dd>
+</dl>
+<p>Wi-Fiドングル（無線LAN子機） IODATA WN-G150UMW が使えるらしい。</p>
+<p>次のページが参考になる。 <a href="https://qiita.com/yukoba/items/d36930f4b8149ca36d36">LinuxのUSB無線LAN子機の対応状況</a></p>
+<p><a href="http://carol-net.co.jp/ikakashi/%E7%84%A1%E7%B7%9Alan%E3%81%AE%E8%A8%AD%E5%AE%9A/">農家のIoTデバイス iKakashi</a></p>
+<p><a href="http://paiza.hatenablog.com/entry/2015/12/09/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E5%88%9D%E5%BF%83%E8%80%85%E3%81%8C%E3%80%81%E7%B4%A0%E6%97%A9%E3%81%8F%E5%AD%A6%E3%81%B9%E3%82%8B%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E3%81%A8%E3%83%A9">機械学習初心者が、素早く学べるコンテンツとライブラリ20選（Python編）</a></p>
+<p><a href="https://amg-solution.jp/blog/4557">Raspberry Pi × Wiring Pi でクリスマスツリーを作ってみた【準備編】</a></p>
+<p><a href="https://amg-solution.jp/blog/4578">Raspberry Pi × Wiring Pi でクリスマスツリーを作ってみた【完成編】</a></p>
+<p><a href="https://github.com/naptha/tesseract.js">GitHub - naptha/tesseract.js: Pure Javascript OCR for 62 Languages 📖🎉🖥</a></p>
+<p><a href="http://tesseract.projectnaptha.com/">Tesseract.js | Pure Javascript OCR for 62 Languages!</a></p>
+<h2 id="環境">環境</h2>
+<ul>
+<li>Windows 7 Professional SP1</li>
+</ul>
+<h2 id="準備する物">準備する物</h2>
+<ul>
+<li>Raspberry Pi 本体<br />
+　→ 頂き物の A+ を使う。</li>
+<li>USBハブ　セルフパワータイプにする。<br />
+　→ USB3.0対応のものがいいなあ。</li>
+<li>Wi-Fiドングル（無線LAN子機）<br />
+　→ 候補は「IODATA WN-G150UMW」</li>
+<li>USBキーボード</li>
+<li>USBマウス</li>
+<li>HDMIケーブル</li>
+<li>USB電源ケーブル（microB）</li>
+<li>ディスプレイ<br />
+HDMI端子を持つテレビでもOK。</li>
+<li>SDカードリーダー・ライター</li>
+<li>MicroSDHCカード（最低8GB）</li>
+</ul>
+<h2 id="noobsとかraspbianって何">NOOBSとかRASPBIANって何？</h2>
+<dl>
+<dt>NOOBS</dt>
+<dd>SDカードにファイルをそのままコピーし、ラズベリーパイの初回起動時にインストールをする。
+</dd>
+<dt>RASPBIAN</dt>
+<dd>SDカードにOSのイメージを書き込む必要がある。<br />
+書き込んでしまえばすぐにRaspbianを使うことができる。
+</dd>
+</dl>
+<h2 id="やること">やること</h2>
+<ol>
+<li><p>OSイメージのダウンロード<br />
+公式サイトからダウンロードする。</p></li>
+<li><p>SDカードのフォーマット<br />
+「SDカードフォーマッター」を使ってフォーマットする。 TODO: 要バージョン、消去設定、論理サイズ</p></li>
+<li><p>SDカードにOSのイメージを焼く。<br />
+DD or Win32DiskImager を使う。<br />
+<br />
+WIn32DiskImagerは「管理者として実行」する。</p></li>
+<li><p>周辺機器を接続、SDカードを挿入して起動。</p></li>
+</ol>
+<h2 id="用語">用語</h2>
+<dl>
+<dt>GPIO</dt>
+<dd>入出力端子のことを指す。<br />
+General Purpose Input/Output（汎用入出力）の略。
+</dd>
+</dl>
+<h2 id="市立図書館で借りられる電子工作の本">市立図書館で借りられる電子工作の本</h2>
+<ul>
+<li>Raspberry Piで学ぶ電子工作　超小型コンピュータで電子回路を制御する　ブルーバックス　B-1891</li>
+<li>実例で学ぶRaspberry Pi電子工作　作りながら応用力を身につける　ブルー・バックス　B-1950
+<ul>
+<li>推奨するRaspberry Pi<br />
+Raspberry Pi Model B+、Raspberry Pi 2 Model B、Raspberry Pi 3 Model B</li>
+</ul></li>
+<li>カラー図解最新Raspberry Piで学ぶ電子工作　作って動かしてしくみがわかる　ブルーバックス　B-1977</li>
+<li>よくわかるLED・発光ダイオードのしくみ　光るメカニズムから青色発光ダイオードまで　子供の科学★サイエンスブックス</li>
+</ul>
+<h2 id="参考">参考</h2>
+<ul>
+<li><p><a href="https://innovarth.co.jp/writing/copyright.html">ブログ記事で著作権のある画像や写真の正しい引用の書き方</a></p></li>
+<li><p><a href="https://innovarth.co.jp/writing/writing.html">文章力が向上する初めてのブログ記事の書き方トレーニング26選</a></p></li>
+<li><p>デザイン入門教室[特別講義] 確かな力を身に付けられる ～学び、考え、作る授業～ (Design&amp;IDEA)<br />
+坂本 伸二　著<br />
+SBクリエイティブ　出版</p></li>
+</ul>
+</body>
+</html>
