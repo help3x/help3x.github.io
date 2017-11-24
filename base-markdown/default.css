@@ -206,6 +206,10 @@ blockquote > p {
   body {
     padding: 0 3.2rem;
   }
+  
+  blockquote {
+
+  }
 }
 
 @media all and (min-width: 112rem) {
@@ -220,41 +224,37 @@ blockquote > p {
 
 blockquote {
   position: relative;
-  background-color: #efefef;
-  color: #555;
-  padding: 1.6rem 5.6rem;
+  border: 1px solid #666;
+  padding: 0px;
+  margin: 1.6rem 0 1.6rem 3.2rem;
 }
 
-blockquote::before,
-blockquote::after {
-  position: absolute;
-  display: inline-block;
-  font-size: 4rem;
-  font-family: "MS Gothic", sans-serif;
-  line-height: 1;
-  color: #9dd4ff;
-}
-
-blockquote::before {
-  top: 0;
-  left: 0;
-  content: "“";
-}
-
-blockquote::after {
-  bottom: 0;
-  right: 0;
-  content: "”";
+blockquote p {
+  padding: 1.6rem 3.2rem;
 }
 
 blockquote cite {
   display: block;
+  padding: 0 3.2rem 1.6rem 1.6rem;
   text-align: right;
-  color: #888;
 }
 
-blockquote cite::before {
-  content: "― ";
+blockquote > p > cite {
+  padding: 0.8rem 0 0;
+}
+
+blockquote::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: url(data:image/gif;base64,R0lGODlhHgAeALMAAHBwcI+Pj7i4uKOjo+Dg4Ovr662trdbW1vX19ZmZmczMzHp6esLCwoWFhWZmZv///yH5BAAAAAAALAAAAAAeAB4AAASJ8MlJq7046827/2AojiRGDIAjXAeqcoYjO4wVz8o2zEBe7TLAYSPgESzF4FGDSMlWlYLzReRdko5FJzALXBrdzkxmWE7GjvIGLUsgzuyBhv2Es6EXusMr0csxC3R8D1NjgxZAaH8PiWN4Fk1sQxJSbAUaBQMBmwmTE5mbAQk+JaWmp6ipqqusIxEAOw==)
+}
+
+blockquote::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: url(data:image/gif;base64,R0lGODlhHgAeALMAAMLCwnBwcMzMzJmZmY+Pj62trfX19Xp6eri4uNbW1uDg4GZmZv///wAAAAAAAAAAACH5BAAAAAAALAAAAAAeAB4AAAR9kMlJq7046827/2AojmT5FcGiHkKFpGubJWqtJhNg10pW7KrBZABcCDGE4mKSBAZ8ymEUI5gydEUNAGajvIAcAXdZEdeenOaCcFEfNQYuwGKwzTe/lcGSXxw4WDcWgQs4Ggh2fImHZzJeNSxhBAMAe4OTlSaam5ydnp+gHhEAOw==);
 }
 
 /* Object-Project */
