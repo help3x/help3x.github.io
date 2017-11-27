@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Note Nov. 006</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:0;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}code,kbd,samp{font-family:monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type="button"]{-webkit-appearance:button}[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-cancel-button,[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}[hidden],template{display:none}</style>
+  <style type="text/css">@charset "utf-8";.grid {box-sizing: border-box;display: flex;flex-flow: row wrap;margin: 0 -0.5rem;}.cell {box-sizing: border-box;padding: 0 0.5rem 1rem;max-width: 100%;flex: 1 1 0%; }.grid .cell,.grid [class*="cell-"] {margin: 0;padding: 0;}.grid > [class*="cell-1"] {flex-basis: 8.33333%;max-width: 8.33333%;}.grid > [class*="cell-2"] {flex-basis: 16.66667%;max-width: 16.66667%;}.grid > [class*="cell-3"] {flex-basis: 25%;max-width: 25%;}.grid > [class*="cell-4"] {flex-basis: 33.33333%;max-width: 33.33333%;}.grid > [class*="cell-5"] {flex-basis: 41.66667%;max-width: 41.66667%;}.grid > [class*="cell-6"] {flex-basis: 50%;max-width: 50%;}.grid > [class*="cell-7"] {flex-basis: 58.33333%;max-width: 58.33333%;}.grid > [class*="cell-8"] {flex-basis: 66.66667%;max-width: 66.66667%;}.grid > [class*="cell-9"] {flex-basis: 75%;max-width: 75%;}.grid > [class*="cell-10"] {flex-basis: 83.33333%;max-width: 83.33333%;}.grid > [class*="cell-11"] {flex-basis: 91.66667%;max-width: 91.66667%;}.grid > [class*="cell-12"] {flex-basis: 100%;max-width: 100%;}html,body {margin: 0;padding: 0;width: 100%;}html {font-size: 62.5%;line-height: 1.5; box-sizing: border-box;}*,*:before,*:after {box-sizing: inherit;}body {font-size: 1.6rem;font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', Segoe UI, 'メイリオ', Meiryo, sans-serif;padding: 0 3.2rem;max-width: 99.2rem;}pre,code {font-family: "MS Gothic", monospace;}table {border-collapse: collapse;border-spacing: 0;text-align: left;max-width: 100%;}tbody tr:nth-of-type(odd) {background-color: #fcfcfc;}th,td {border-bottom: .1rem solid #efefef;padding: 1.6rem 1rem;}th {border-color: #c9c9c9;}dd + dt {margin-top: 1.6rem;}blockquote > p {margin: 0;}@media all and (min-width: 76.8rem) {}@media all and (min-width: 99.2rem) {body {padding: 0 3.2rem;}blockquote {}}@media all and (min-width: 112rem) {}blockquote {position: relative;border: 1px solid #666;padding: 0px;margin: 1.6rem 0 1.6rem 3.2rem;}blockquote p {padding: 1.6rem 3.2rem;}blockquote cite {display: block;padding: 0 3.2rem 1.6rem 1.6rem;text-align: right;}blockquote > p > cite {padding: 0.8rem 0 0;}blockquote::before {position: absolute;top: 0;left: 0;content: url(data:image/gif;base64,R0lGODlhHgAeALMAAHBwcI+Pj7i4uKOjo+Dg4Ovr662trdbW1vX19ZmZmczMzHp6esLCwoWFhWZmZv///yH5BAAAAAAALAAAAAAeAB4AAASJ8MlJq7046827/2AojiRGDIAjXAeqcoYjO4wVz8o2zEBe7TLAYSPgESzF4FGDSMlWlYLzReRdko5FJzALXBrdzkxmWE7GjvIGLUsgzuyBhv2Es6EXusMr0csxC3R8D1NjgxZAaH8PiWN4Fk1sQxJSbAUaBQMBmwmTE5mbAQk+JaWmp6ipqqusIxEAOw==)}blockquote::after {position: absolute;bottom: 0;right: 0;content: url(data:image/gif;base64,R0lGODlhHgAeALMAAMLCwnBwcMzMzJmZmY+Pj62trfX19Xp6eri4uNbW1uDg4GZmZv///wAAAAAAAAAAACH5BAAAAAAALAAAAAAeAB4AAAR9kMlJq7046827/2AojmT5FcGiHkKFpGubJWqtJhNg10pW7KrBZABcCDGE4mKSBAZ8ymEUI5gydEUNAGajvIAcAXdZEdeenOaCcFEfNQYuwGKwzTe/lcGSXxw4WDcWgQs4Ggh2fImHZzJeNSxhBAMAe4OTlSaam5ydnp+gHhEAOw==);}</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="マジ文章書けないんだけど-朝日新聞ベテラン校閲記者が教える一生モノの文章術">マジ文章書けないんだけど ～朝日新聞ベテラン校閲記者が教える一生モノの文章術～</h1>
+<p>前田 安正　著<br />
+大和書房　出版</p>
+<blockquote>
+<p>ある状況から行動を起こして変化する。だから、人が文章を書くってことは、そういう要素から離れることはできないんじゃないかな。</p>
+</blockquote>
+<p>文章の要素は大きく3つに分かれる。 それは「状況」「行動」「変化」の3つ。</p>
+<p>つまらない文章は「状況」ばかり書かれている。 「行動」「変化」がない文章では読み手を動かすことができない。 ヒトは「ある状況から行動を起こして変化する」生き物だから。</p>
+<p>SNSは「状況」を伝えて終わり、というのが多い。</p>
+<p>5W1H</p>
+<ul>
+<li>When　いつ</li>
+<li>Where　どこで</li>
+<li>Who　誰が</li>
+<li>What　何を</li>
+<li>Why　なぜ、どうして</li>
+<li>How　どうやって</li>
+</ul>
+<blockquote>
+<p>5W1Hで一番大切なのが「Why」なんだよ。「なぜ」「どうして」っていう問いに応えるように書いていかないと、読み手がフラストレーションを持ってしまうんだ。</p>
+</blockquote>
+<p>「なぜ」「どうして」を書いていくことで、自然と「行動」「変化」の要素が文章に盛り込まれることになる。 平板な文章だと感じたときは、文章に「Why」があるかを確認してみるとよい。</p>
+<p>「なぜ」「どうして」についての大切さは「TODO: 書籍名を調べる」にも書かれている。</p>
+<p><a href="https://useacc.com/2017/04/26/book-of-writing-power/" class="uri">https://useacc.com/2017/04/26/book-of-writing-power/</a></p>
+<p><a href="https://lf8.jp/catch-the-writing/">自腹購入したCatch the Writingレビューと3つのライティング商材を徹底比較！</a></p>
+<h2 id="ビジネスマンのための読書力養成講座">ビジネスマンのための「読書力」養成講座</h2>
+<p>著者の言う「頭のよい」状態というのは「高い論理的思考力」を兼ね備えた状態のことである。</p>
+<p>読書法は目的によって使い分けるべきであり、それにより次の5つがあると紹介されている。<br />
+（☆印が頭をよくする読書法）</p>
+<ol>
+<li>速読</li>
+<li>通読 Lv1</li>
+<li>通読 Lv2 ☆</li>
+<li>熟読 ☆</li>
+<li>重読</li>
+</ol>
+<h3 id="速読">速読</h3>
+<p>自分が得たい情報を決めてかかり、そこだけをピンポイントで読む方法。<br />
+読む場所と捨てる場所を見分ける力が必要になる。</p>
+<h3 id="通読">通読</h3>
+<p>最初から最後まで通しで読むこと。</p>
+<p>通読 Lv1 は、メモなどは取らずにざっと通しで読み、一定の知識を習得する読み方。<br />
+通読 Lv2 は、感じたことや思いついたことをメモしたり、本に線を引いたりする読み方。</p>
+<p>通読 Lv2 で読む本で、知識や論理的思考のベースを作る。<br />
+このレベルの本をどのくらい読むかにより、速読や通読 Lv1 で読み取れるインプット量やインスピレーション量が決まる。</p>
+<h3 id="熟読">熟読</h3>
+<p>「自分の専門分野や興味のある分野のものを、必要なところだけ読み、多くのことと関連付けながら、きっちり論理立てて読んでいく」こと。<br />
+書いてあることに納得し、きっちり理解することが重要。<br />
+　⇒書いてあることをほかのことと関連付けて考えることができるか。</p>
+<h3 id="重読">重読</h3>
+<p>同じ本を繰り返して読むこと。<br />
+本を読んだ数ではなく、本から何をどれだけ学んだか、自分のものとなったかが重要。</p>
+<p>熟読に向いた論理的な本ではなく、人間としての成長を促すような、人が生きるためのひらめきを与える本がふさわしい。</p>
+<p>松下幸之助の「道をひらく」、ドラッカーの「抄訳マネジメント」などが紹介されている。</p>
+<h2 id="ちょっと脱線">ちょっと脱線</h2>
+<h3 id="galaxy-feel">Galaxy Feel</h3>
+<ul>
+<li>カメラ機能について公式サイトから情報を集める。</li>
+<li>レビュー記事からできることをおさらい。
+<ul>
+<li>どんなモードがあるのか。</li>
+<li>そのモードで何ができるのか。</li>
+<li>そのモードはどのような場面で使うのか。</li>
+<li>たとえば、、、<br />
+プロモードはホワイトバランスやISO感度などを撮影者が変更できる。変更できるISO感度は100、200、400、800 … 。といったイメージ。</li>
+</ul></li>
+<li>作例＆一言をまとめる。</li>
+<li>今のところ、素材として手元にあるのは、田んぼアート、ラーメン、居酒屋メニュー、夜景。</li>
+<li>センサーサイズが小さい。感度を上げるとノイズが目立つ。ノイズを消すためのノイズリダクションで塗り絵のようになる。</li>
+<li>パソコンなどの大きなディスプレイで見ると粗が目立つ。しかし、スマホのディスプレイでは綺麗に見える。</li>
+</ul>
+<p><a href="https://www.nissin.com/jp/news/6552">「カップヌードル チリチリ♪チリトマトヌードル」(11月27日発売)</a></p>
+<h2 id="雑記">雑記</h2>
+<p>私が読んだ限りで、大相撲については、（1）「大相撲の経済学」、（2）「大相撲 見かた楽しみかた」、そして（3）本書、三種の書だ。　</p>
+<p>Amazonのレビューより。 本書というのは「大相撲の見かた（平凡社新書）　桑森真介（著）」のこと。</p>
+<ul>
+<li><p>バカ論<br />
+ビートたけし／著<br />
+新潮新書<br />
+※市立図書館にある。</p></li>
+<li><p>ビジネスマンのための「読書力」養成講座<br />
+小宮一慶　著<br />
+ディスカヴァー・トゥエンティワン　出版</p></li>
+<li><p>らーめん とことん<br />
+Ｗねぎ山らーめん　￥950</p></li>
+<li><p>エックスサーバーで立ち上げる。<br />
+X10プラン（ひとまず3ヶ月）<br />
+DokuWikiとWordPressの環境を作る。<br />
+無料SSLも入れてサブドメインを割り当てる。</p></li>
+</ul>
+</body>
+</html>
