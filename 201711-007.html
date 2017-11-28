@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Note Nov. 007</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.line-block{white-space: pre-line;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+div.sourceLine, a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; }
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+div.sourceLine, a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource div.sourceLine, .numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource div.sourceLine::before, .numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; color: #aaaaaa;  padding-left: 4px; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; color: initial; }
+}
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.bn { color: #40a070; } /* BaseN */
+code span.fl { color: #40a070; } /* Float */
+code span.ch { color: #4070a0; } /* Char */
+code span.st { color: #4070a0; } /* String */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.ot { color: #007020; } /* Other */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.fu { color: #06287e; } /* Function */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.cn { color: #880000; } /* Constant */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.im { } /* Import */
+code span.va { color: #19177c; } /* Variable */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.op { color: #666666; } /* Operator */
+code span.bu { } /* BuiltIn */
+code span.ex { } /* Extension */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.at { color: #7d9029; } /* Attribute */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <style type="text/css">html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:0;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}code,kbd,samp{font-family:monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type="button"]{-webkit-appearance:button}[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-cancel-button,[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}[hidden],template{display:none}</style>
+  <style type="text/css">@charset "utf-8";.grid {box-sizing: border-box;display: flex;flex-flow: row wrap;margin: 0 -0.5rem;}.cell {box-sizing: border-box;padding: 0 0.5rem 1rem;max-width: 100%;flex: 1 1 0%; }.grid .cell,.grid [class*="cell-"] {margin: 0;padding: 0;}.grid > [class*="cell-1"] {flex-basis: 8.33333%;max-width: 8.33333%;}.grid > [class*="cell-2"] {flex-basis: 16.66667%;max-width: 16.66667%;}.grid > [class*="cell-3"] {flex-basis: 25%;max-width: 25%;}.grid > [class*="cell-4"] {flex-basis: 33.33333%;max-width: 33.33333%;}.grid > [class*="cell-5"] {flex-basis: 41.66667%;max-width: 41.66667%;}.grid > [class*="cell-6"] {flex-basis: 50%;max-width: 50%;}.grid > [class*="cell-7"] {flex-basis: 58.33333%;max-width: 58.33333%;}.grid > [class*="cell-8"] {flex-basis: 66.66667%;max-width: 66.66667%;}.grid > [class*="cell-9"] {flex-basis: 75%;max-width: 75%;}.grid > [class*="cell-10"] {flex-basis: 83.33333%;max-width: 83.33333%;}.grid > [class*="cell-11"] {flex-basis: 91.66667%;max-width: 91.66667%;}.grid > [class*="cell-12"] {flex-basis: 100%;max-width: 100%;}html,body {margin: 0;padding: 0;width: 100%;}html {font-size: 62.5%;line-height: 1.5; box-sizing: border-box;}*,*:before,*:after {box-sizing: inherit;}body {font-size: 1.6rem;font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', Segoe UI, 'メイリオ', Meiryo, sans-serif;padding: 0 3.2rem;max-width: 99.2rem;}pre,code {font-family: "MS Gothic", monospace;}table {border-collapse: collapse;border-spacing: 0;text-align: left;max-width: 100%;}tbody tr:nth-of-type(odd) {background-color: #fcfcfc;}th,td {border-bottom: .1rem solid #efefef;padding: 1.6rem 1rem;}th {border-color: #c9c9c9;}dd + dt {margin-top: 1.6rem;}blockquote > p {margin: 0;}@media all and (min-width: 76.8rem) {}@media all and (min-width: 99.2rem) {body {padding: 0 3.2rem;}blockquote {}}@media all and (min-width: 112rem) {}blockquote {position: relative;border: 1px solid #666;padding: 0px;margin: 1.6rem 0 1.6rem 3.2rem;}blockquote p {padding: 1.6rem 3.2rem;}blockquote cite {display: block;padding: 0 3.2rem 1.6rem 1.6rem;text-align: right;}blockquote > p > cite {padding: 0.8rem 0 0;}blockquote::before {position: absolute;top: 0;left: 0;content: url(data:image/gif;base64,R0lGODlhHgAeALMAAHBwcI+Pj7i4uKOjo+Dg4Ovr662trdbW1vX19ZmZmczMzHp6esLCwoWFhWZmZv///yH5BAAAAAAALAAAAAAeAB4AAASJ8MlJq7046827/2AojiRGDIAjXAeqcoYjO4wVz8o2zEBe7TLAYSPgESzF4FGDSMlWlYLzReRdko5FJzALXBrdzkxmWE7GjvIGLUsgzuyBhv2Es6EXusMr0csxC3R8D1NjgxZAaH8PiWN4Fk1sQxJSbAUaBQMBmwmTE5mbAQk+JaWmp6ipqqusIxEAOw==)}blockquote::after {position: absolute;bottom: 0;right: 0;content: url(data:image/gif;base64,R0lGODlhHgAeALMAAMLCwnBwcMzMzJmZmY+Pj62trfX19Xp6eri4uNbW1uDg4GZmZv///wAAAAAAAAAAACH5BAAAAAAALAAAAAAeAB4AAAR9kMlJq7046827/2AojmT5FcGiHkKFpGubJWqtJhNg10pW7KrBZABcCDGE4mKSBAZ8ymEUI5gydEUNAGajvIAcAXdZEdeenOaCcFEfNQYuwGKwzTe/lcGSXxw4WDcWgQs4Ggh2fImHZzJeNSxhBAMAe4OTlSaam5ydnp+gHhEAOw==);}</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h2 id="pandocが入力としてサポートするwiki">Pandocが入力としてサポートするWiki</h2>
+<ul>
+<li>mediawiki (MediaWiki markup)</li>
+<li>twiki (TWiki markup)</li>
+<li>tikiwiki (TikiWiki markup)</li>
+</ul>
+<p>Note:<br />
+表のセル結合は反映されませんでした（「rowspan」「colspan」が付かない）。<br />
+table要素へのclass指定も同様です。</p>
+<p>Pandocを介してWiki構文をHTMLに変換するより、Wikiが出力したHTMLをそのまま使う方針にしたほうが良いでしょう。</p>
+<h2 id="雑記">雑記</h2>
+<ul>
+<li><p>PandocではなくMediaWikiに含まれるパーサーを使って、MediaWikiフォーマットのテキストをHTMLに変換することもできます。<br />
+<a href="https://qiita.com/taku/items/c2333d7734e67ea56679">リンク先</a></p></li>
+<li><p>MediaWikiのデータベースにはMySQLのほか、SQLiteやPostgreSQLを使うことも可能です。</p></li>
+</ul>
+<h2 id="windows7-の-iis-で-mediawiki-を立ち上げる">Windows7 の IIS で MediaWiki を立ち上げる</h2>
+<p><a href="https://technet.microsoft.com/ja-jp/library/ff454060.aspx">IIS への MediaWiki のインストール</a></p>
+<h3 id="今回構築する環境">今回構築する環境</h3>
+<ul>
+<li>Windows 7 Professional Service Pack 1</li>
+<li>IIS 7.5</li>
+<li>MediaWiki 1.29.2</li>
+<li>SQLite 3</li>
+</ul>
+<h3 id="環境構築に必要なもの">環境構築に必要なもの</h3>
+<p>参考ページ: <a href="https://www.mediawiki.org/wiki/Manual:Installation_requirements/ja">インストール要件</a></p>
+<ul>
+<li>MediaWiki本体（安定版をダウンロードする）</li>
+<li>Webサーバー - Apache や IIS 、 nginx など。</li>
+<li>PHP - Version 5.5.9 以降。</li>
+<li>DBサーバー - 次のうちいずれか。
+<ul>
+<li>MySQL 5.5.8 以降</li>
+<li>MariaDB</li>
+<li>PostgreSQL 8.3 以降</li>
+<li>SQLite</li>
+</ul></li>
+</ul>
+<p>ざっくりやることを分類します。</p>
+<ol>
+<li>IIS を構築する。</li>
+<li>PHP の実行環境を構築する。</li>
+<li>IIS で PHP を実行できるようにする。</li>
+<li>MediaWiki をインストールする。</li>
+</ol>
+<h3 id="手順">手順</h3>
+<p><a href="https://www.mediawiki.org/wiki/MediaWiki/ja">MediaWiki/ja</a>にアクセスします。<br />
+ダウンロードをクリックしてダウンロードページに移動します。<br />
+最新リリースから「MediaWiki 1.29.2 をダウンロード」をクリックして、ファイルを任意の場所にダウンロードしてください。</p>
+<p><a href="http://www.php.net/">PHP</a>にアクセスします。<br />
+Downloadから最新版をクリックします（2017年11月28日時点では 7.1.12）。<br />
+「Current Stable」から「Windows downloads 」をクリックします。<br />
+「VC14 x86 Non Thread Safe」の「Zip」をクリックして、ファイルを任意の場所にダウンロードしてください。</p>
+<p>理由:<br />
+FastCGIはプロセスモデルでアプリケーションランタイムをホストするから。<br />
+（TODO: つまりどういうこと？）</p>
+<p>PHPランタイムはスレッドセーフである必要はなく、パフォーマンスに優れるノンスレッドセーフを使うことができる。</p>
+<p>Note:<br />
+Windows用のファイルが複数ありますが、どれをダウンロードすればいいのかは、サイドバーの「Which version do I choose?」で説明されています。</p>
+<p>32bit - x86<br />
+64bit - x64</p>
+<p>IIS で使う - Non-Thread Safe (NTS)<br />
+Apache で使う - Thread Safe (TS)</p>
+<p>Apache を使うときは <a href>Apache Lounge</a> が提供する Apache ビルドを使えとなっています。 そこでは、x86、x64用の Apache のVC11、VC14、VC15ビルドが提供されている。 バイナリを使用してApache SAPIを構築してください。</p>
+<p>…よくわからん。</p>
+<p>参考:</p>
+<ul>
+<li><a href="https://msdn.microsoft.com/ja-jp/gg535422.aspx">PHP on Windows ガイドライン (ドラフト)</a><br />
+※「第 2 章 PHP 稼働環境の構築」が参考になります。</li>
+<li><a href="https://technet.microsoft.com/ja-jp/library/ff454027.aspx">FastCGI を使用した IIS 7 での PHP アプリケーションのホスト</a></li>
+</ul>
+<p>ざっくり手順。</p>
+<ol>
+<li>PHPランタイムを入手してインストールします。</li>
+<li>PHP をインストールしたフォルダにアクセス権を設定します。</li>
+<li>IIS に FastCGI 機能を追加します。</li>
+<li>IIS に PHP ファイルとランタイムのマッピングを追加します。</li>
+</ol>
+<h3 id="php-のインストール">PHP のインストール</h3>
+<ol>
+<li><p>ダウンロードしたzipファイルを任意の場所に解凍します。<br />
+たとえば、<code>C:\php-7.1.12</code>に解凍した場合、ファイル構成は次のようになります。<br />
+（抜粋です。本当はもっとたくさんあります）</p>
+<pre><code>C:\php-7.1.12
+     +-- dev
+     +-- ext
+     +-- extras
+     +-- lib
+     +-- sasl2
+     +-- deplister.exe
+     +-- php.exe
+     +-- php-cgi.exe
+     :
+     略</code></pre></li>
+<li><p>フォルダ内のファイル「php.ini-production」をコピーして、名前を「php.ini」に変更します。</p></li>
+<li><p>テキストエディタで「php.ini」ファイルを開きます。</p></li>
+<li>以下の設定を変更し保存します。
+<ul>
+<li><code>fastcgi.impersonate = 1</code>のコメントを解除します。</li>
+<li><code>cgi.fix_pathinfo=1</code>のコメントを解除します。</li>
+<li><code>cgi.force_redirect = 1</code>のコメントを解除し、値を「1」から「0」に変更します。</li>
+<li><code>open_basedir</code>にPHPからアクセスできるフォルダを指定します。<br />
+複数設定するときはパスをセミコロン（ <code>;</code> ）で区切ります。<br />
+例: open_basedir=“C:\Inetpub\wwwroot;C:\hoge\fuga”</li>
+<li><code>extension_dir = &quot;ext&quot;</code>のコメントを解除します。</li>
+<li><code>log_errors</code>を「On」にします。</li>
+<li><code>error_log</code>にエラーログの出力先を指定します。<br />
+例: error_log = “C:\logs\php_error.log”</li>
+</ul></li>
+<li><p><code>php.exe</code>に<code>info</code>オプションを付けて実行します。<br />
+PHPが正しくインストールされていれば、PHPの構成情報が表示されます。</p>
+<pre><code>C:\php-7.1.12&gt;php.exe -info</code></pre></li>
+</ol>
+<h3 id="phpへのアクセス権設定">PHPへのアクセス権設定</h3>
+<p>IISの動作プロセス（ワーカープロセス）がPHPを呼び出せるよう、PHPの各ファイルでワーカープロセスが使用するアカウントに対し適切なアクセス権を付与する必要があります。</p>
+<p>具体的には<code>IIS_IUSRS</code>グループに設定します。</p>
+<ol>
+<li>PHPのフォルダで右クリックして「プロパティ」を開きます。</li>
+<li>「セキュリティ」タブをクリックします。</li>
+<li>「編集」ボタンをクリックします。</li>
+<li>「追加」ボタンをクリックします。</li>
+<li>「場所の指定」が自分のコンピュータ名になっていることを確認します。<br />
+なっていなければ「場所」ボタンをクリックして選択してください。</li>
+<li>選択するオブジェクト名の欄に「iis_usrs」と入力し、「名前の確認」ボタンをクリックします。<br />
+表示内容が「コンピュータ名_USRS」となったら、「OK」ボタンをクリックしてダイアログを閉じます。</li>
+</ol>
+<h3 id="iis-で-fastcgi-を有効にする">IIS で FastCGI を有効にする</h3>
+<ol>
+<li>［コントロールパネル］－［プログラム］－［Windows の機能の有効化または無効化］をクリックして「Windows の機能」ダイアログを起動します。</li>
+<li>一覧の項目を次のように展開し「CGI」にチェックを付けます。<br />
+インターネット インフォメーション サービス<br />
+　　└ World Wide Web サービス<br />
+　　　　　└ アプリケーション開発機能<br />
+　　　　　　　　└ CGI ←コレ</li>
+<li>「OK」ボタンをクリックして機能を追加します。</li>
+</ol>
+<h3 id="iisへのphpランタイムの登録">IISへのPHPランタイムの登録</h3>
+<p>PHPファイルのスクリプトをPHPランタイムに処理させるために、拡張子「.php」へのリクエストをPHPランタイムに送るように設定します。<br />
+拡張子に対するリクエストの処理（ハンドリング）とランタイムへのマッピングをハンドラーマッピングと言います。</p>
+<p>IISでのハンドラーマッピングのスコープ</p>
+<p>Webサイト、仮想ディレクトリ、アプリケーションのそれぞれに設定できます。<br />
+設定は継承されるため、たとえば最上位の公開場所であるWebサイトでPHPのハンドラーマッピングをした場合は、その配下にあるすべての仮想ディレクトリとアプリケーションでPHPが実行可能になります。</p>
+<p>個々に設定することもできます。<br />
+複数のアプリケーションで異なるバージョンのPHPを実行させるといったこともできます。</p>
+<h4 id="ハンドラーマッピングの設定手順webサイトに対して設定する例">ハンドラーマッピングの設定手順（Webサイトに対して設定する例）</h4>
+<p>Memo:<br />
+この例での Default Web Site の物理パスは「C:\inetpub\wwwroot」です。</p>
+<ol>
+<li><p>［管理ツール］－［インターネット インフォメーション サービス (IIS) マネージャー］を起動します。</p></li>
+<li><p>［接続］ウインドウのツリーから「Default Web Site」を選択します。</p></li>
+<li><p>［機能ビュー］の「IIS」から「ハンドラー マッピング」を選択します。</p></li>
+<li><p>［操作］ウインドウから「モジュール マップの追加」を選択します。</p></li>
+<li>ダイアログの入力項目に、次のように指定します。
+<ul>
+<li>要求パス - *.php</li>
+<li>モジュール - FastCgiModule</li>
+<li>実行可能ファイル - PHPの解凍フォルダにある <code>php-cgi.exe</code> のパス。たとえば、<code>C:\php-7.1.12\php-cgi.exe</code></li>
+<li>名前 - 適当に。「PHP」とか「PHP-via-FastCGI」とか分かりやすいものを指定。</li>
+</ul></li>
+<li><p>「OK」ボタンをクリックします。</p></li>
+<li><p>「モジュールマップの追加」アラート（実行可能ファイルのFastCGIアプリケーションを作成するかどうかの確認）が表示されたら「はい」をクリックしてください。</p></li>
+</ol>
+<h3 id="動作確認">動作確認</h3>
+<p>次の手順でPHPアプリケーションが実行できるかどうか確認します。<br />
+…ブラウザからPHPファイルにアクセスして、プログラムが実行されるかどうか確認するだけです。</p>
+<ol>
+<li><p>C:\Inetpub\wwwroot の配下に info.php という名前のファイルを作ります。<br />
+ファイルに以下のコードを入力して保存してください。</p>
+<pre class="sourceCode php" id="cb3"><code class="sourceCode php"><div class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">&lt;?php</span> <span class="fu">phpinfo</span><span class="ot">();</span></div></code></pre></li>
+<li><p>ブラウザから次のURLにアクセスします。<br />
+<a href="http://localhost/info.php" class="uri">http://localhost/info.php</a></p></li>
+<li><p>PHPランタイムの情報が表示されれば設定は有効です。</p></li>
+</ol>
+<p>Note:<br />
+PHPスクリプトファイルであれば、PHPの閉じタグをつけないことが推奨されています。</p>
+<blockquote>
+<p>ファイル全体が純粋な PHP コードである場合は、ファイルの最後の終了タグは省略するのがおすすめです。 終了タグの後に余分な空白や改行があると、予期せぬ挙動を引き起こす場合があるからです。 余分な空白や改行のせいで PHP が出力バッファリングを開始し、その時点の内容を意図せず出力してしまうことになります。 <cite><a href="http://php.net/manual/ja/language.basic-syntax.phptags.php">PHP: PHP タグ - Manual</a>より</cite></p>
+</blockquote>
+<h3 id="mediawiki-のインストール">MediaWiki のインストール</h3>
+<ul>
+<li><a href="https://www.mediawiki.org/wiki/Manual:Installation_guide/ja">Manual:インストール ガイド</a></li>
+<li><a href="https://www.mediawiki.org/wiki/Manual:Installing_MediaWiki/ja">Manual:MediaWiki のインストール</a></li>
+</ul>
+<h4 id="phpからsqliteを利用できるようにする">PHPからSQLiteを利用できるようにする</h4>
+<p>今回はMediaWikiのデータベースをSQLiteにしたいので、PHPからSQLiteを利用できるように設定します。<br />
+php.iniを変更します。</p>
+<ul>
+<li><code>extension=php_pdo_sqlite.dll</code> のコメントを解除します。</li>
+<li><code>extension=php_sqlite3.dll</code> のコメントを解除します。</li>
+<li><code>sqlite3.extension_dir</code> に PHP の拡張フォルダを指定します。<br />
+例: <code>sqlite3.extension_dir = &quot;C:\php-7.1.12\ext&quot;</code><br />
+TODO: この設定はしなくていいかもしれません。</li>
+</ul>
+<p>変更が済んだらDefault Web Siteに関連付けられているアプリケーションプールを再起動します。</p>
+<p>info.phpにアクセスして、SQLiteに関連する内容が表示されていれば設定は有効です。</p>
+<h4 id="mbstring">mbstring</h4>
+<p>php.iniを編集。</p>
+<ul>
+<li><code>extension=php_mbstring.dll</code> のコメントを解除します。</li>
+<li><code>mbstring.language = Japanese</code> のコメントを解除します。</li>
+<li>~<code>mbstring.internal_encoding</code> のコメントを解除し、値に「<code>UTF-8</code>」を指定します。~ … 非推奨でした。</li>
+<li>~<code>mbstring.http_input</code> のコメントを解除し、値に「<code>auto</code>」を指定します。~ … 非推奨でした。</li>
+<li>~<code>mbstring.http_output</code> のコメントを解除し、値に「<code>UTF-8</code>」を指定します。~ … 非推奨でした。</li>
+<li><code>mbstring.encoding_translation</code> のコメントを解除し、値に「On」を指定します。</li>
+<li><code>mbstring.detect_order</code> のコメントを解除し、値に「UTF-8,SJIS,EUC-JP,JIS,ASCII」を指定します。</li>
+</ul>
+<h4 id="mediawikiの展開">MediaWikiの展開</h4>
+<p>ダウンロードしたファイルを 7-Zip を使って解凍します。<br />
+解凍先は <code>C:\Inetpub\wwwroot\MediaWiki</code> としました（下記は階層図の抜粋）。</p>
+<pre><code>C:\Inetpub\wwwroot
+  +-- MediaWiki
+      +-- cache
+      +-- docs
+      :
+      +-- mw-config
+      |   +-- index.php
+      :</code></pre>
+<p>MediaWiki構成フォルダ（<code>C:\Inetpub\wwwroot\MediaWiki\mw-config</code>）のアクセス権を設定します。<br />
+<code>IIS_IUSRS</code>グループに書き込み許可を付与します。</p>
+<p>ブラウザで <a href="http://localhost/MediaWiki/mw-config/index.php" class="uri">http://localhost/MediaWiki/mw-config/index.php</a> にアクセスします。</p>
+<h2 id="tikiwiki">TikiWiki</h2>
+<p><a href="http://shall.dip.jp/mediawiki/index.php/TikiWiki%E5%B0%8E%E5%85%A5%E6%89%8B%E9%A0%86#tiki-install.php_.E3.81.AE.E5.AE.9F.E8.A1.8C">TikiWiki導入手順</a></p>
+</body>
+</html>
