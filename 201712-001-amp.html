@@ -2,8 +2,8 @@
 <html amp>
 <head>
   <meta charset="utf-8">
-  <title>AMP Template</title>
-  <link rel="canonical" href="/TestAmp.html">
+  <title>Note Dec. No 001</title>
+  <link rel="canonical" href="/201712-001-amp.html">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
   <style amp-custom>
@@ -100,6 +100,57 @@
   <header>
   </header>
   <main>
+    <!-- MainContents Begin -->
+
+<p>自前のHTMLで行列固定したテーブルを作る方法を再確認する。<br />
+実際にサンプルも作る。</p>
+<p>WordPressのテンプレを探す。<br />
+TumblrのZenのようなシンプルなものが好ましい。</p>
+<p>トラベラーズノート？　VOICEで見つけたやつ。 所有したくなるメモ。</p>
+<p>もうPukiWikiでいいんじゃない？ 自動インストールできるし。</p>
+<ul>
+<li><p>「読ませる」ための文章センスが身につく本</p></li>
+<li><p>実践的ライター入門 単行本 – 2004/12/2<br />
+松枝 史明 (著)</p></li>
+<li><p><a href="https://productforums.google.com/forum/#!topic/webmaster-ja/w-vyL7Nhn88">AMPキャッシュの更新頻度について</a></p></li>
+<li><p><a href="https://ampbyexample.com/">AMP by Example</a></p></li>
+<li><p><a href="https://www.ampproject.org/ja/docs/reference/components">コンポーネント / タグ - AMP</a></p></li>
+<li><p>1000文字の記事は15分で書ける！長文ライティングが苦手な人向け超実践的マニュアル</p></li>
+</ul>
+<h2 id="windows7にmariddbをインストールする">Windows7にMaridDBをインストールする</h2>
+<p>MariaDB のバイナリファイルをダウンロードします。</p>
+<p>安定版（Stable）にします。</p>
+<p>32bit向けのインストーラー（<code>mariadb-10.2.11-win32.msi</code>）をダウンロードしました。</p>
+<p>ダウンロードは <a href="https://mariadb.com/" class="uri">https://mariadb.com/</a> ではなく <a href="https://mariadb.org/" class="uri">https://mariadb.org/</a> のサイトからするので注意してください。</p>
+<p>MariaDB | Open Source Database (RDBMS) for the Enterprise https://mariadb.com/</p>
+<p>ではなく</p>
+<p>MariaDB.org - Supporting continuity and open collaboration https://mariadb.org/</p>
+<p>なので注意してください。</p>
+<p>インストーラを起動します。</p>
+<p>確認</p>
+<ol>
+<li><p>スタートメニューより［MariaDB 10.2］－［MySQL Client (MariaDB 10.2)］を起動します。</p>
+<p>Memo:<br />
+　ショートカットの中身は、コマンドプロンプトで mysql をオプション指定して実行しているだけです。<br />
+　<code>C:\windows\system32\cmd.exe /k &quot; &quot;C:\Program Files\MariaDB 10.2\bin\mysql.exe&quot; &quot;--defaults-file=C:\Program Files\MariaDB 10.2\data\my.ini&quot; -uroot -p&quot;</code></p></li>
+<li><p>rootユーザーのパスワードを入力し、Enter押下してください。<br />
+「Welcome to the MariaDB monitor.」などの文字列に続いて、以下のMariaDBのプロンプトが表示されれば接続できています。</p>
+<pre><code>MariaDB [(none)]&gt;</code></pre></li>
+<li><p>バージョンを確認してみます。<br />
+<code>select version();</code> を実行し、バージョンが表示されることを確認します。</p>
+<pre><code>MariaDB [(none)]&gt; select version();
++-----------------+
+| version()       |
++-----------------+
+| 10.2.11-MariaDB |
++-----------------+
+1 row in set (0.06 sec)</code></pre></li>
+<li><p>MariaDBとの接続を切断します。 <code>exit</code> コマンドを実行し、「Bye」と表示されれば切断されています。</p>
+<pre><code>MariaDB [(none)]&gt; exit
+Bye</code></pre></li>
+</ol>
+
+    <!-- MainContents End -->
   </main>
   <footer>
   </footer>
