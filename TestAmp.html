@@ -1,0 +1,150 @@
+<!doctype html>
+<html amp>
+ <head>
+   <meta charset="utf-8">
+   <link rel="canonical" href="/TestAmp.html">
+   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+   <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+   <style amp-custom>
+     @font-face {
+       font-family: 'SubsetSourceHanSans';
+       font-style: normal;
+       src: url('/fonts/SourceHanSans-Regular-Subset.woff') format('woff'),
+            url('/fonts/SourceHanSans-Regular-Subset.woff2') format('woff2');
+     }
+     html,
+     body {
+       margin: 0;
+       padding: 0;
+       width: 100%;
+     }
+     html {
+       font-size: 62.5%;
+       line-height: 1.5;	/* DefaultFontSize 16px x 1.5 = BaseLine 24px */
+       box-sizing: border-box;
+     }
+     *,
+     *:before,
+     *:after {
+       box-sizing: inherit;
+     }
+     body {
+       font-size: 1.6rem;
+       font-family: "SubsetSourceHanSans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", Segoe UI, "メイリオ", Meiryo, sans-serif;
+       padding: 0 2.4rem;
+       max-width: 99.2rem;
+     }
+     pre,
+     code {
+       font-family: "MS Gothic", monospace;
+     }
+     blockquote {
+       position: relative;
+       border: 1px solid #666;
+       padding: 0px;
+       margin: 1.6rem 0 1.6rem 3.2rem;
+     }
+     blockquote p {
+       padding: 1.6rem 3.2rem;
+     }
+     blockquote cite {
+       display: block;
+       padding: 0 3.2rem 1.6rem 1.6rem;
+       text-align: right;
+     }
+     blockquote > p > cite {
+       padding: 0.8rem 0 0;
+     }
+     blockquote::before {
+       position: absolute;
+       top: 0;
+       left: 0;
+       content: url(data:image/gif;base64,R0lGODlhHgAeALMAAHBwcI+Pj7i4uKOjo+Dg4Ovr662trdbW1vX19ZmZmczMzHp6esLCwoWFhWZmZv///yH5BAAAAAAALAAAAAAeAB4AAASJ8MlJq7046827/2AojiRGDIAjXAeqcoYjO4wVz8o2zEBe7TLAYSPgESzF4FGDSMlWlYLzReRdko5FJzALXBrdzkxmWE7GjvIGLUsgzuyBhv2Es6EXusMr0csxC3R8D1NjgxZAaH8PiWN4Fk1sQxJSbAUaBQMBmwmTE5mbAQk+JaWmp6ipqqusIxEAOw==)
+     }
+     blockquote::after {
+       position: absolute;
+       bottom: 0;
+       right: 0;
+       content: url(data:image/gif;base64,R0lGODlhHgAeALMAAMLCwnBwcMzMzJmZmY+Pj62trfX19Xp6eri4uNbW1uDg4GZmZv///wAAAAAAAAAAACH5BAAAAAAALAAAAAAeAB4AAAR9kMlJq7046827/2AojmT5FcGiHkKFpGubJWqtJhNg10pW7KrBZABcCDGE4mKSBAZ8ymEUI5gydEUNAGajvIAcAXdZEdeenOaCcFEfNQYuwGKwzTe/lcGSXxw4WDcWgQs4Ggh2fImHZzJeNSxhBAMAe4OTlSaam5ydnp+gHhEAOw==);
+     }
+     dd + dt {
+       margin-top: 1.6rem;
+     }
+     h1 {
+       font-size: 3.2rem;	/* 32px */
+       margin-top: 1.6rem;
+       margin-bottom: 3.2rem;
+     }
+     h2 {
+       font-size: 2.4rem;	/* 24px */
+       margin-top: 2.4rem;
+       margin-bottom: 2.4rem;
+       line-height: 2em;	/* FontSize 24px x 2 = 48px */
+       border-bottom: 1px solid #000;
+     }
+     h3 {
+       font-size: 2rem;	/* 20px */
+       margin-top: 3rem;
+       margin-bottom: 3rem;
+       line-height: 3.6rem;	/* FontSize 10px x 3.6rem = 36px */
+     }
+     h3::before {
+       content: "◆";
+     }
+   </style>
+   <script async src="https://cdn.ampproject.org/v0.js"></script>
+ </head>
+ <body>
+   <h1>ＯＰ配置モニタ</h1>
+   <h2>スプレッドシートからの値の取得</h2>
+   <p>
+     クリックしたセルからオペレータの表示名称を取得します。<br>
+     次に隠しセルからＯＰＩＤを取得します。<br>
+     あとはＯＰＩＤに該当するオペレータの情報を、内部保持している出退勤区分情報から探します。
+   </p>
+   <amp-img alt="ScreenImage"
+            src="//help3x.github.io/img/2017-04-07_101723.png"
+            width="601"
+            height="177">
+   </amp-img>
+   <amp-img alt="ScreenImage"
+            src="//help3x.github.io/img/2017-04-07_101723.png"
+            width="601"
+            height="177"
+            layout="responsive">
+   </amp-img>
+   <h3>「CellTag」プロパティの用途</h3>
+   <p>オペレータのスキル区分が「ＱＣ／マスク」かどうか、またはオペレータが生産外作業中であるかどうかの判定に使います。<br>格納される値は次のとおりです。</p>
+   <dl>
+     <dt>"4"</dt>
+     <dd>オペレータのスキル区分が「ＱＣ／マスク」のときに設定する値</dd>
+     <dt>"生産外"</dt>
+     <dd>オペレータが生産外作業中であるときに設定する値</dd>
+   </dl>
+   <table border="1">
+     <thead>
+       <tr>
+         <th>設定値</th>
+         <th>説明</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td>"4"</td>
+         <td>オペレータのスキル区分が「ＱＣ／マスク」のときに設定する値</td>
+       </tr>
+       <tr>
+         <td>"生産外"</td>
+         <td>オペレータが生産外作業中であるときに設定する値</td>
+       </tr>
+     </tbody>
+   </table>
+   <p>Q: スキル区分が「ＱＣ／マスク」かつ生産外作業中であるときに設定される値は何でしょうか。</p>
+
+   <h2>勤務状態の特定方法</h2>
+   <blockquote>
+     <p>オペレータの勤務状態の特定には、セルの背景色（BackColor）と文字色（ForeColor）を使います。「休暇不在時」は背景色が灰色、文字色が白色または青色になります。</p>
+     <cite>人員配置モニターより</cite>
+   </blockquote>
+ </body>
+</html>
