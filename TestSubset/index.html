@@ -21,7 +21,8 @@
 @font-face {
   font-family: 'SubsetSourceHanSans';
   font-style: normal;
-  src: url('./SourceHanSans-Regular-Subset.woff') format('woff');
+  src: url('./SourceHanSans-Regular-Subset.woff') format('woff'),
+       url('./SourceHanSans-Regular-Subset.woff2') format('woff2');
 }
 
 html,
@@ -173,6 +174,18 @@ img {
 </style>
 </head>
 <body>
+
+  <p style="font-family: sans-serif;">
+    ここのフォントは sans-serif です。<br>
+    ウェブフォントの最適化は全体的なパフォーマンス戦略における重要な要素です。<br>
+    フォントはそれぞれ追加のリソースです。フォントによってはテキストのレンダリングがブロックされることがありますが、ページでウェブフォントを使っているからといったレンダリングが遅くなるわけではありません。
+  </p>
+
+  <p>
+    ここのフォントは Source Han Sans です。<br>
+    ウェブフォントの最適化は全体的なパフォーマンス戦略における重要な要素です。<br>
+    フォントはそれぞれ追加のリソースです。フォントによってはテキストのレンダリングがブロックされることがありますが、ページでウェブフォントを使っているからといったレンダリングが遅くなるわけではありません。
+  </p>
 
 <!-- Place your content here -->
   <div class="root-container">
