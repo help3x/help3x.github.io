@@ -229,6 +229,11 @@ namespace Program
             for (var i = 0; i < files.Length; i++)
             {
                 var file = files[i];
+                // min を使うので通常版は除く
+                if (file.Name == "normalize.css")
+                {
+                    continue;
+                }
                 // TODO: OpenText()ってメソッドでもいけるのでは？
                 using (var fs = file.OpenRead())
                 {

@@ -1,6 +1,7 @@
 ---
 lang: ja
 pagetitle: Visual C# Compiler を使ってみる
+template: amp-2col.html
 ---
 
 # Visual C# Compiler を使ってみる
@@ -30,7 +31,8 @@ csc /platform:x86 /out:<生成する実行ファイル> /target:<target> /codepa
     たとえば、ソースファイルが `hoge.cs` だとしたら `hoge.exe` が生成されます。
 
 /target:<target>
-:   生成するファイルの種類を指定します。
+:   生成するファイルの種類を指定します。  
+    
     * `/target:exe` - コンソール実行可能ファイル
     * `/target:winexe` - Windows 実行可能ファイル
     * `/target:library` - ライブラリ
