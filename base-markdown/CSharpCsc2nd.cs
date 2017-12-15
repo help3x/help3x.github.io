@@ -15,6 +15,10 @@ namespace Program
         private static DirectoryInfo homeDirInfo;
         private static DirectoryInfo inputDirInfo;
         private static DirectoryInfo outputDirInfo;
+        private static int pandocStartedCount;
+        private static int pandocExitedCount;
+        private static bool pandocExited;
+        private static int elapsedTime;
         
         static void Main(string[] args)
         {
@@ -97,9 +101,11 @@ namespace Program
                 //
                 var templateFi = GetTemplateFileInfo();
                 
-//                var pandocTasks = new List<Task>();
-                
                 // 入力フォルダ配下のMarkdownファイルを読み込む
+                pandocStartedCount = 0;
+                pandocExitedCount = 0;
+                pandocExited = false;
+                elapsedTime = 0;
                 foreach (var mdf in inputDirInfo.GetFiles("*.md"))
                 {
 //                    var tsk = Task.Run(async () =>
@@ -150,12 +156,15 @@ namespace Program
                         var p = new Process();
                         
                         // プロセス終了時にイベントを発生させる
-                        p.Exited += new EventHandler(proc_Exited);
+                        p.Exited += new EventHandler(pandoc_Exited);
                         p.EnableRaisingEvents = true;
 
                         // 起動
                         p.StartInfo = psi;
-                        p.Start();
+                        if (p.Start())
+                        {
+                            pandocStartedCount++;
+                        }
                     }
                     catch (Exception e)
                     {
@@ -184,9 +193,21 @@ namespace Program
                                                                  copyDi.Name)));
                 }
 
-                // TODO: 非同期テスト
-                // 非同期処理が終わるまで待つ
-                TestAsync().Wait();
+                // // TODO: 非同期テスト
+                // // 非同期処理が終わるまで待つ
+                // TestAsync().Wait();
+
+                // すべてのプロセスが終了するまで待つ
+                // ただし、30秒を超えたら待つのをやめる
+                while (! pandocExited)
+                {
+                    elapsedTime += 500;
+                    if (elapsedTime > 30000)
+                    {
+                        break;
+                    }
+                    Thread.Sleep(500);
+                }
 
                 // 処理終了
                 Console.WriteLine(string.Empty);
@@ -201,25 +222,53 @@ namespace Program
             }
         }
 
-        // TODO: 非同期テスト
-        private static async Task TestAsync()
-        {
-            var t1 = Task.Run(async () =>
-                     {
-                        Console.WriteLine("Task1 Begin");
-                        await Task.Delay(1000);
-                        Console.WriteLine("Task1 End");
-                     });
-            var t2 = Task.Run(async () =>
-                     {
-                        Console.WriteLine("Task2 Begin");
-                        await Task.Delay(5000);
-                        Console.WriteLine("Task2 End");
-                     });
+        // // TODO: 非同期テスト
+        // private static async Task TestAsync()
+        // {
+        //     var t1 = Task.Run(async () =>
+        //              {
+        //                 Console.WriteLine("Task1 Begin");
+        //                 await Task.Delay(1000);
+        //                 Console.WriteLine("Task1 End");
+        //              });
+        //     var t2 = Task.Run(async () =>
+        //              {
+        //                 Console.WriteLine("Task2 Begin");
+        //                 await Task.Delay(5000);
+        //                 Console.WriteLine("Task2 End");
+        //              });
 
-             // すべてのTaskが終わるまで待つ
-            await Task.WhenAll(t1, t2);
-        }
+        //      // すべてのTaskが終わるまで待つ
+        //     await Task.WhenAll(t1, t2);
+        // }
+
+        // private static async Task ConvertMarkdown()
+        // {
+        //     var pandocTasks = new List<Task>();
+        //     foreach (var mdf in inputDirInfo.GetFiles("*.md"))
+        //     {
+        //         var tsk = Task.Run(async () =>
+        //         {
+        //             var psi = new ProcessStartInfo();
+        //             psi.FileName = "notepad.exe";
+        //             psi.Arguments = mdf.FullName;
+        //             psi.CreateNoWindow = true;
+        //             psi.UseShellExecute = false;
+
+        //             var p = new Process();
+        //             p.Exited += new EventHandler(proc_Exited);
+        //             p.EnableRaisingEvents = true;
+        //             p.StartInfo = psi;
+        //             p.Start();
+        //         });
+        //         pandocTasks.Add(tsk);
+        //     }
+
+        //     if (pandocTasks.Count() > 0)
+        //     {
+        //         await Task.WhenAll(pandocTasks);
+        //     }
+        // }
 
 //        private static async Task SubAsync()
 //        {
@@ -243,8 +292,13 @@ namespace Program
 //            await Task.Delay(1000);
 //        }
 
-        private static void proc_Exited(object sender, EventArgs e)
+        private static void pandoc_Exited(object sender, EventArgs e)
         {
+            pandocExitedCount++;
+            if (pandocStartedCount >= pandocExitedCount)
+            {
+                pandocExited = true;
+            }
             Console.WriteLine("pandoc completed.");
         }
 
