@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using YamlDotNet.RepresentationModel;
 
 namespace Program
 {
@@ -24,6 +25,9 @@ namespace Program
         {
             try
             {
+                // TODO: YAMLを読めるようにしてみる
+                var yaml = new YamlStream();
+
                 // いずれも実行ファイルの場所ではなく、カレントディレクトリを返してきた
                 // Console.WriteLine(System.Environment.CurrentDirectory);
                 // Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
