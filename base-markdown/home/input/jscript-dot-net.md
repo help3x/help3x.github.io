@@ -1,6 +1,8 @@
 ---
 lang: ja
 pagetitle: JScript.NET 事始め
+created-at: 2017-11-27T11:33:18Z
+updated-at: 2017-11-27T15:06:56Z
 ---
 
 # JScript.NET 事始め
