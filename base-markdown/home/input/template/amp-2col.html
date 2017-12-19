@@ -21,13 +21,10 @@ $body$
         <!-- MainContents End -->
     </main>
     <aside class="sidebar">
-      <ul>
-        <li>Side 1</li>
-        <li>Side 2</li>
-        <li>Side 3</li>
-        <li>Side 4</li>
-        <li>Side 5</li>
-      </ul>
+      $if(recent-posts)$<section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>$for(recent-posts)$<li>$recent-posts$</li>$endfor$</ul>
+      </section>$endif$
     </aside>
   </div>
   <footer>

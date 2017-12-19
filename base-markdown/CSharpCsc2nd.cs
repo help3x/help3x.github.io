@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using YamlDotNet.RepresentationModel;
+using RazorEngine;
+using RazorEngine.Templating;
 
 namespace Program
 {
@@ -25,6 +27,10 @@ namespace Program
         {
             try
             {
+                var template = "Hello @Model.Name, welcome to RazorEngine!";
+                var result = Engine.Razor.RunCompile(template, "templateKey", null, new { Name = "World"  });
+                Console.WriteLine(result);
+                
                 // いずれも実行ファイルの場所ではなく、カレントディレクトリを返してきた
                 // Console.WriteLine(System.Environment.CurrentDirectory);
                 // Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
@@ -94,24 +100,12 @@ namespace Program
                 //
                 var templateFi = GetTemplateFileInfo();
                 
-                // 入力フォルダ配下のMarkdownファイルを読み込む
-                pandocStartedCount = 0;
-                pandocExitedCount = 0;
-                pandocExited = false;
-                elapsedTime = 0;
+                // 入力フォルダ配下のMarkdownファイルよりYAMLメタデータを読み取る
+                var posts = new Dictionary<string, YamlMetaData>();
                 foreach (var mdf in inputDirInfo.GetFiles("*.md"))
                 {
                     try
                     {
-                        var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(mdf.FullName);
-                        
-                        var outDir = new DirectoryInfo(Path.Combine(outputDirInfo.FullName, fileNameWithoutExtension));
-                        if (outDir.Exists)
-                        {
-                            outDir.Delete(true);
-                        }
-                        outDir.Create();
-                        
                         // YAMLフロントメーターを読み取る
                         var yamlSetting = new StringBuilder();
                         using (var fs = mdf.Open(FileMode.Open, FileAccess.Read))
@@ -145,46 +139,131 @@ namespace Program
                                 }
                             }
                         }
-                        // 読み込んだYAMLを解析する
-                        YamlMetaData yamlObject = null;
-                        if (yamlSetting.Length > 0)
+
+                        if (yamlSetting.Length == 0)
                         {
-                            yamlObject = new YamlMetaData();
-                            using (var reader = new StringReader(yamlSetting.ToString()))
+                            continue;
+                        }
+
+                        // 読み込んだYAMLを解析する
+                        YamlMetaData yamlObject = new YamlMetaData();
+                        using (var reader = new StringReader(yamlSetting.ToString()))
+                        {
+                            var yaml = new YamlStream();
+                            yaml.Load(reader);
+                            
+                            var mapping = (YamlMappingNode)yaml.Documents[0].RootNode;
+                            foreach (var entry in mapping.Children)
                             {
-                                var yaml = new YamlStream();
-                                yaml.Load(reader);
-                                
-                                var mapping = (YamlMappingNode)yaml.Documents[0].RootNode;
-                                foreach (var entry in mapping.Children)
+                                var key = ((YamlScalarNode)entry.Key).Value;
+                                var text = string.Empty;
+
+                                if (string.IsNullOrEmpty(key))
                                 {
-                                    var key = ((YamlScalarNode)entry.Key).Value;
-                                    var text = ((YamlScalarNode)entry.Value).Value;
+                                    continue;
+                                }
 
-                                    if (string.IsNullOrEmpty(key))
-                                    {
-                                        continue;
-                                    }
-
-                                    switch (key.ToLower())
-                                    {
-                                        case "template":
-                                            yamlObject.Template = text;
-                                            break;
-                                        case "created-at":
-                                            yamlObject.CreatedAt = ToDateTime(text);
-                                            break;
-                                        case "updated-at":
-                                            yamlObject.UpdatedAt = ToDateTime(text);
-                                            break;
-                                        default:
-                                            break;
-                                    }
+                                switch (key.ToLower())
+                                {
+                                    case "lang":
+                                        text = ((YamlScalarNode)entry.Value).Value;
+                                        yamlObject.Lang = text;
+                                        break;
+                                    case "pagetitle":
+                                        text = ((YamlScalarNode)entry.Value).Value;
+                                        yamlObject.PageTitle = text;
+                                        break;
+                                    case "template":
+                                        text = ((YamlScalarNode)entry.Value).Value;
+                                        yamlObject.Template = text;
+                                        break;
+                                    case "created-at":
+                                        text = ((YamlScalarNode)entry.Value).Value;
+                                        yamlObject.CreatedAt = ToDateTime(text);
+                                        break;
+                                    case "updated-at":
+                                        text = ((YamlScalarNode)entry.Value).Value;
+                                        yamlObject.UpdatedAt = ToDateTime(text);
+                                        break;
+                                    case "categories":
+                                        {
+                                            var list = new List<string>();
+                                            foreach (YamlScalarNode item in (YamlSequenceNode)entry.Value)
+                                            {
+                                                if (! list.Contains(item.Value))
+                                                {
+                                                    list.Add(item.Value);
+                                                }
+                                            }
+                                            if (list.Count() > 0)
+                                            {
+                                                yamlObject.Categories = list;
+                                            }
+                                        }
+                                        break;
+                                    case "tags":
+                                        {
+                                            var list = new List<string>();
+                                            foreach (YamlScalarNode item in (YamlSequenceNode)entry.Value)
+                                            {
+                                                if (! list.Contains(item.Value))
+                                                {
+                                                    list.Add(item.Value);
+                                                }
+                                            }
+                                            if (list.Count() > 0)
+                                            {
+                                                yamlObject.Tags = list;
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        break;
                                 }
                             }
                         }
                         
-                        if (yamlObject != null)
+                        // ファイルのフルパスをキーにYAMLメタデータを追加
+                        posts.Add(mdf.FullName, yamlObject);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(mdf.FullName);
+                        Console.WriteLine(e.ToString());
+                    }
+                }
+
+                // foreach (var postMetaData in posts)
+                // {
+                //     Console.WriteLine(string.Format("{0}\t{1}", postMetaData.PageTitle, postMetaData.CreatedAt));
+                // }
+                // foreach (var postMetaData in posts.OrderByDescending(p => p.CreatedAt))
+                // {
+                //     Console.WriteLine(string.Format("{0}\t{1}", postMetaData.PageTitle, postMetaData.CreatedAt));
+                // }
+                
+                // 直近の記事
+
+                // 入力フォルダ配下のMarkdownファイルを読み込む
+                pandocStartedCount = 0;
+                pandocExitedCount = 0;
+                pandocExited = false;
+                elapsedTime = 0;
+                foreach (var mdf in inputDirInfo.GetFiles("*.md"))
+                {
+                    try
+                    {
+                        var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(mdf.FullName);
+                        
+                        var outDir = new DirectoryInfo(Path.Combine(outputDirInfo.FullName, fileNameWithoutExtension));
+                        if (outDir.Exists)
+                        {
+                            outDir.Delete(true);
+                        }
+                        outDir.Create();
+
+                        YamlMetaData yamlObject = null;
+                        if (posts.TryGetValue(mdf.FullName, out yamlObject))
                         {
                             templateFi = GetTemplateFileInfo(yamlObject.Template);
                         }
@@ -203,14 +282,20 @@ namespace Program
                             argCustomCss = string.Format(" -V custom-css=\"{0}\"", escapedCss);
                         }
                         
+                        var argRecentPosts = string.Empty;
+                        //argRecentPosts = " -V recent-posts=[\"Visual C# Compiler, すなわち CSC を使ってみる\", \"2件目\"]";
+                        argRecentPosts  = " -V recent-posts=\"Visual C# Compiler, すなわち CSC を使ってみる\"";
+                        argRecentPosts += " -V recent-posts=\"2件目\"";
+
                         var psi = new ProcessStartInfo();
                         psi.FileName = "pandoc.exe";
-                        psi.Arguments = string.Format("-f markdown-auto_identifiers -t html5 -o {0}\\index.html -s {2}{3}{4} {1}",
+                        psi.Arguments = string.Format("-f markdown-auto_identifiers -t html5 -o {0}\\index.html -s {2}{3}{4}{5} {1}",
                                                       outDir.FullName,
                                                       mdf.FullName,
                                                       argTemplate,
                                                       argFolderName,
-                                                      argCustomCss);
+                                                      argCustomCss,
+                                                      argRecentPosts);
                         // コンソール・ウィンドウを開かない
                         psi.CreateNoWindow = true;
                         
@@ -240,7 +325,7 @@ namespace Program
                         Console.WriteLine(e.ToString());
                     }
                 }
-                
+
                 // コピーから除外するフォルダ名
                 var excludeDirNames = new List<string>() { "css", "script", "template" };
                 
@@ -315,7 +400,7 @@ namespace Program
                 // TODO: OpenText()ってメソッドでもいけるのでは？
                 using (var fs = file.OpenRead())
                 {
-                    using (var reader = new StreamReader(fs, Encoding.UTF8))
+                    using (var reader = new StreamReader(fs, System.Text.Encoding.UTF8))
                     {
                         sb.Append(reader.ReadToEnd());
                     }
@@ -468,5 +553,15 @@ namespace Program
         /// 更新日時
         /// </summary>
         public DateTime? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// カテゴリ
+        /// </summary>
+        public IEnumerable<string> Categories { get; set; }
+
+        /// <summary>
+        /// タグ
+        /// </summary>
+        public IEnumerable<string> Tags { get; set; }
     }
 }

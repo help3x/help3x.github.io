@@ -4,6 +4,13 @@ pagetitle: Visual C# Compiler を使ってみる
 template: amp-2col.html
 created-at: 2017-12-13T15:55:43Z
 updated-at: 2017-12-15T11:46:46Z
+categories:
+  - C#
+  - プログラミング
+tags:
+  - C#
+  - コンパイラ
+  - csc
 ---
 
 # Visual C# Compiler を使ってみる
