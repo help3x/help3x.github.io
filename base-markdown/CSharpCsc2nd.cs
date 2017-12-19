@@ -25,9 +25,6 @@ namespace Program
         {
             try
             {
-                // TODO: YAMLを読めるようにしてみる
-                var yaml = new YamlStream();
-
                 // いずれも実行ファイルの場所ではなく、カレントディレクトリを返してきた
                 // Console.WriteLine(System.Environment.CurrentDirectory);
                 // Console.WriteLine(System.IO.Directory.GetCurrentDirectory());
@@ -115,6 +112,83 @@ namespace Program
                         }
                         outDir.Create();
                         
+                        // YAMLフロントメーターを読み取る
+                        var yamlSetting = new StringBuilder();
+                        using (var fs = mdf.Open(FileMode.Open, FileAccess.Read))
+                        {
+                            using (var reader = new StreamReader(fs))
+                            {
+                                var canRead = false;
+                                while (reader.Peek() >= 0)
+                                {
+                                    var readText = reader.ReadLine();
+                                    if (! string.IsNullOrEmpty(readText) &&
+                                        readText.StartsWith("---"))
+                                    {
+                                        if (canRead)
+                                        {
+                                            // 読み込み許可状態であれば終了
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            // 読み込み禁止状態であれば次の行から読み取る
+                                            canRead = true;
+                                            continue;
+                                        }
+                                    }
+                                    
+                                    if (canRead)
+                                    {
+                                        yamlSetting.AppendLine(readText);
+                                    }
+                                }
+                            }
+                        }
+                        // 読み込んだYAMLを解析する
+                        YamlMetaData yamlObject = null;
+                        if (yamlSetting.Length > 0)
+                        {
+                            yamlObject = new YamlMetaData();
+                            using (var reader = new StringReader(yamlSetting.ToString()))
+                            {
+                                var yaml = new YamlStream();
+                                yaml.Load(reader);
+                                
+                                var mapping = (YamlMappingNode)yaml.Documents[0].RootNode;
+                                foreach (var entry in mapping.Children)
+                                {
+                                    var key = ((YamlScalarNode)entry.Key).Value;
+                                    var text = ((YamlScalarNode)entry.Value).Value;
+
+                                    if (string.IsNullOrEmpty(key))
+                                    {
+                                        continue;
+                                    }
+
+                                    switch (key.ToLower())
+                                    {
+                                        case "template":
+                                            yamlObject.Template = text;
+                                            break;
+                                        case "created-at":
+                                            yamlObject.CreatedAt = ToDateTime(text);
+                                            break;
+                                        case "updated-at":
+                                            yamlObject.UpdatedAt = ToDateTime(text);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        if (yamlObject != null)
+                        {
+                            templateFi = GetTemplateFileInfo(yamlObject.Template);
+                        }
+
                         var argTemplate = string.Empty;
                         if (templateFi != null)
                         {
@@ -259,13 +333,33 @@ namespace Program
                 return null;
             }
             
-            var fis = templateDi.GetFiles();
-            if (fis.Length == 0)
+            var defaultTemplateFi =
+                templateDi.GetFiles().Where(p => p.Name.ToLower().StartsWith("default."))
+                                     .FirstOrDefault();
+            
+            return defaultTemplateFi;
+        }
+
+        private static FileInfo GetTemplateFileInfo(string fileName)
+        {
+            var templateDi = new DirectoryInfo(Path.Combine(inputDirInfo.FullName, "template"));
+            if (! templateDi.Exists)
             {
                 return null;
             }
             
-            return fis[0];
+            if (string.IsNullOrEmpty(fileName))
+            {
+                return GetTemplateFileInfo();
+            }
+
+            var templateFi = new FileInfo(Path.Combine(templateDi.FullName, fileName));
+            if (! templateFi.Exists)
+            {
+                return GetTemplateFileInfo();
+            }
+            
+            return templateFi;
         }
 
         private static void CopyDirectory(string src, string dest)
@@ -313,5 +407,66 @@ namespace Program
                               new DirectoryInfo(Path.Combine(destDi.FullName, copyDi.Name)));
             }
         }
+
+        private static DateTime? ToDateTime(string dateString)
+        {
+            var formats = new List<string>()
+            {
+                "yyyy-MM-dd'T'HH:mm:ss'Z'",
+                "yyyy-MM-dd'T'HH:mm:ss",
+                "yyyy-MM-dd HH:mm:ss",
+                "yyyy-MM-dd"
+            };
+
+            DateTime? parsedDt = null;
+            foreach (var format in formats)
+            {
+                DateTime tempDt;
+                var result = 
+                    DateTime.TryParseExact(dateString,
+                                        format,
+                                        System.Globalization.CultureInfo.InvariantCulture,
+                                        System.Globalization.DateTimeStyles.None,
+                                        out tempDt);
+                if (result)
+                {
+                    parsedDt = tempDt;
+                    break;
+                }
+            }
+
+            return parsedDt;
+        }
+    }
+
+    /// <summary>
+    /// Yamlメタデータブロックの内容を保持します。
+    /// </summary>
+    class YamlMetaData
+    {
+        /// <summary>
+        /// 言語
+        /// </summary>
+        public string Lang { get; set; }
+
+        /// <summary>
+        /// ページタイトル
+        /// </summary>
+        public string PageTitle { get; set; }
+
+        /// <summary>
+        /// テンプレートファイル名
+        /// </summary>
+        public string Template { get; set; }
+
+        /// <summary>
+        /// 作成日時
+        /// </summary>
+        public DateTime? CreatedAt { get; set; }
+
+        /// <summary>
+        /// 更新日時
+        /// </summary>
+        public DateTime? UpdatedAt { get; set; }
     }
 }
