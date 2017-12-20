@@ -11,23 +11,34 @@
 </head>
 <body>
   <header>
+    <p><a href="/">Title</a></p>
+    <nav>
+      <ul>
+        <li><a href="#">Navi1</a></li>
+        <li><a href="#">Navi2</a></li>
+        <li><a href="#">Navi3</a></li>
+      </ul>
+    </nav>
   </header>
-  <div class="container">
-    <main class="main">
-        <!-- MainContents Begin -->
+  <div class="container1000">
+    <div class="container">
+      <main class="main">
+          <!-- MainContents Begin -->
 
 $body$
 
-        <!-- MainContents End -->
-    </main>
-    <aside class="sidebar">
-      $if(recent-posts)$<section class="recent-posts">
-        <h2>Recent Posts</h2>
-        <ul>$for(recent-posts)$<li>$recent-posts$</li>$endfor$</ul>
-      </section>$endif$
-    </aside>
+          <!-- MainContents End -->
+      </main>
+      <aside class="sidebar">
+        $if(recent-posts)$<section class="recent-posts">
+          <h2>Recent Posts</h2>
+          <ul>$for(recent-posts)$<li>$recent-posts$</li>$endfor$</ul>
+        </section>$endif$
+      </aside>
+    </div>
   </div>
   <footer>
+    <!-- Copyright -->
     $if(copyright)$<p class="copyright">$copyright$</p>$endif$
   </footer>
 </body>

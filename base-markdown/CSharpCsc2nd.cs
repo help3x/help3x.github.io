@@ -18,6 +18,7 @@ namespace Program
         private static DirectoryInfo homeDirInfo;
         private static DirectoryInfo inputDirInfo;
         private static DirectoryInfo outputDirInfo;
+        private static Dictionary<int, StringBuilder> convertedDict;
         private static int pandocStartedCount;
         private static int pandocExitedCount;
         private static bool pandocExited;
@@ -86,7 +87,9 @@ namespace Program
                 
                 Console.WriteLine(String.Format("ホームフォルダ: {0}", homeDirInfo.FullName));
                 
-                
+                // TODO: とりあえずここでインスタンス化
+                convertedDict = new Dictionary<int, StringBuilder>();
+
                 // CSSファイルを読み込む
                 //
                 var rawCss = GetCssString();
@@ -233,17 +236,6 @@ namespace Program
                     }
                 }
 
-                // foreach (var postMetaData in posts)
-                // {
-                //     Console.WriteLine(string.Format("{0}\t{1}", postMetaData.PageTitle, postMetaData.CreatedAt));
-                // }
-                // foreach (var postMetaData in posts.OrderByDescending(p => p.CreatedAt))
-                // {
-                //     Console.WriteLine(string.Format("{0}\t{1}", postMetaData.PageTitle, postMetaData.CreatedAt));
-                // }
-                
-                // 直近の記事
-
                 // 入力フォルダ配下のMarkdownファイルを読み込む
                 pandocStartedCount = 0;
                 pandocExitedCount = 0;
@@ -283,13 +275,19 @@ namespace Program
                         }
                         
                         var argRecentPosts = string.Empty;
-                        //argRecentPosts = " -V recent-posts=[\"Visual C# Compiler, すなわち CSC を使ってみる\", \"2件目\"]";
                         argRecentPosts  = " -V recent-posts=\"Visual C# Compiler, すなわち CSC を使ってみる\"";
                         argRecentPosts += " -V recent-posts=\"2件目\"";
 
                         var psi = new ProcessStartInfo();
                         psi.FileName = "pandoc.exe";
-                        psi.Arguments = string.Format("-f markdown-auto_identifiers -t html5 -o {0}\\index.html -s {2}{3}{4}{5} {1}",
+                        // psi.Arguments = string.Format("-f markdown-auto_identifiers -t html5 -o {0}\\index.html -s {2}{3}{4}{5} {1}",
+                        //                               outDir.FullName,
+                        //                               mdf.FullName,
+                        //                               argTemplate,
+                        //                               argFolderName,
+                        //                               argCustomCss,
+                        //                               argRecentPosts);
+                        psi.Arguments = string.Format("-f markdown-auto_identifiers -t html5 {1}",
                                                       outDir.FullName,
                                                       mdf.FullName,
                                                       argTemplate,
@@ -306,18 +304,31 @@ namespace Program
                         // UseShellExecute を true にしておくと、OSのファイル関連付けに応じてファイルの開き方を決める。
                         // たとえば、xlsxであればExcelで開き、txtはメモ帳で開く。exeならそのまま実行する。
 
-                        var p = new Process();
-                        
-                        // プロセス終了時にイベントを発生させる
-                        p.Exited += new EventHandler(pandoc_Exited);
-                        p.EnableRaisingEvents = true;
+                        // 標準出力をストリームに書き込む
+                        psi.RedirectStandardOutput = true;
 
-                        // 起動
-                        p.StartInfo = psi;
-                        if (p.Start())
-                        {
-                            pandocStartedCount++;
-                        }
+                        var p = new Process();
+                        // using (var p = new Process())
+                        // {
+                            // プロセス終了時にイベントを発生させる
+                            p.Exited += new EventHandler(pandoc_Exited);
+                            p.EnableRaisingEvents = true;
+
+                            // 
+                            p.OutputDataReceived += pandoc_OutputDataReceived;
+
+                            // 起動
+                            p.StartInfo = psi;
+                            if (p.Start())
+                            {
+                                pandocStartedCount++;
+                                p.BeginOutputReadLine();
+                                // p.WaitForExit();
+                                // p.CancelOutputRead();
+                                // Console.WriteLine("非同期になるの？");
+                                convertedDict.Add(p.Id, new StringBuilder());
+                            }
+                        // }
                     }
                     catch (Exception e)
                     {
@@ -371,12 +382,47 @@ namespace Program
 
         private static void pandoc_Exited(object sender, EventArgs e)
         {
-            pandocExitedCount++;
-            if (pandocStartedCount >= pandocExitedCount)
+            try
             {
-                pandocExited = true;
+                pandocExitedCount++;
+                if (pandocStartedCount >= pandocExitedCount)
+                {
+                    pandocExited = true;
+                }
+
+                var prcs = sender as Process;
+                if (prcs != null)
+                {
+                    Console.WriteLine(prcs.Id);
+                    Console.WriteLine(convertedDict[prcs.Id].ToString());
+                    prcs.Dispose();
+                }
             }
-            Console.WriteLine("pandoc completed.");
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        private static void pandoc_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            try
+            {
+                var prcs = sender as Process;
+                if (prcs == null)
+                {
+                    Console.WriteLine(sender.GetType());
+                    return;
+                }
+                if (convertedDict.ContainsKey(prcs.Id))
+                {
+                    convertedDict[prcs.Id].AppendLine(e.Data);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         private static string GetCssString()

@@ -25,8 +25,6 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "SubsetSourceHanSans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", Segoe UI, "メイリオ", Meiryo, sans-serif;
-  padding: 0 2.4rem;
-  max-width: 99.2rem;
 }
 pre,
 code {
@@ -114,6 +112,11 @@ h3::before {
   content: "◆";
 }
 
+.container1000 {
+  padding: 0 2.4rem;
+  /* max-width: 99.2rem; */
+  max-width: 128rem;
+}
 
 .container {
 }
@@ -125,22 +128,66 @@ h3::before {
   margin-top: 4.8rem;
 }
 
+header {
+  text-align: right;
+  min-height: 4rem;
+  margin-bottom: 1.6rem;
+  padding: 1.6rem 2.4rem;
+}
+header p,
+header nav ul {
+  margin: 0;
+  padding: 0;
+}
+header p {
+  font-size: 2rem;
+  font-weight: bold;
+}
+header p a {
+  position: absolute;
+  left: 2.4rem;
+  top: 1.6rem;
+}
+header nav ul {
+  list-style: none;
+}
+header nav ul li {
+  display: inline-block;
+  margin-left: 2.4rem;
+}
+header a {
+  text-decoration: none;
+  color: MidnightBlue;
+}
+header li a:hover {
+  text-decoration: underline;
+}
+
+
 
 @media all and (min-width: 768px) {
   /* タブレット */
 }
 
-@media all and (min-width: 920px) {
+@media all and (min-width: 980px) {
  /* デスクトップ */
  .container {
    display: flex;
  }
- .sidebar {
-   width: 30rem;
-   order: 2;
- }
  .main {
    flex: 1;
    order: 1;
+   margin-right: 2.4rem;
+ }
+ .sidebar {
+   width: 30rem;
+   order: 2;
+   margin-top: 0;
+   margin-left: 2.4rem;
+ }
+ 
+ .sidebar h2:first-child {
+   margin-top: 0;
+   border-bottom: none;
  }
 }
