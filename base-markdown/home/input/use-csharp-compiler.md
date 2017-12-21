@@ -1,7 +1,7 @@
 ---
 lang: ja
 pagetitle: Visual C# Compiler を使ってみる
-template: amp-2col.html
+template: amp-2col.cshtml
 created-at: 2017-12-13T15:55:43Z
 updated-at: 2017-12-15T11:46:46Z
 categories:
