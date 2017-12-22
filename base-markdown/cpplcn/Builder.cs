@@ -10,7 +10,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using YamlDotNet.RepresentationModel;
 using RazorEngine;
+using RazorEngine.Configuration;
 using RazorEngine.Templating;
+using RazorEngine.Text;
 
 namespace Bld
 {
@@ -32,7 +34,8 @@ namespace Bld
                 "script",
                 "template"
             };
-		
+		private string EmbeddedCssString;
+
         private int pandocStartedCount;
         private int pandocExitedCount;
         private bool pandocExited;
@@ -91,6 +94,15 @@ namespace Bld
 			convertedDict = new Dictionary<int, StringBuilder>();
 			this.MarkdownFiles = new Dictionary<int, MyContent>();
 
+			// CSSファイルを読み込む
+			var rawCss = GetCssString();
+			this.EmbeddedCssString = string.Empty;
+			if (! string.IsNullOrEmpty(rawCss))
+			{
+				this.EmbeddedCssString = 
+					rawCss.Replace("\"", "\\\"").Replace("\t", " ").Replace("\r\n", "");
+			}
+			
 			// Pandocによる変換が完了するまで待機するための変数を初期化
 			pandocStartedCount = 0;
 			pandocExitedCount = 0;
@@ -107,130 +119,11 @@ namespace Bld
 				elapsedTime += 500;
 				if (elapsedTime > 30000)
 				{
+					Console.WriteLine("Timeover!");
 					break;
 				}
 				Thread.Sleep(500);
 			}
-
-			return;
-
-			// // CSSファイルを読み込む
-			// //
-			// var rawCss = GetCssString();
-			// var escapedCss = string.Empty;
-			// if (! string.IsNullOrEmpty(rawCss))
-			// {
-			// 	escapedCss = rawCss.Replace("\"", "\\\"").Replace("\t", " ").Replace("\r\n", "");
-			// }
-			
-			// // テンプレートファイルのパスを取得
-			// //
-			// var templateFi = GetTemplateFileInfo();
-			
-			// // 入力フォルダ配下のMarkdownファイルを読み込む
-			// pandocStartedCount = 0;
-			// pandocExitedCount = 0;
-			// pandocExited = false;
-			// elapsedTime = 0;
-			// foreach (var mdf in this.InputDi.GetFiles("*.md"))
-			// {
-			// 	try
-			// 	{
-			// 		var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(mdf.FullName);
-					
-			// 		var outDir = new DirectoryInfo(Path.Combine(this.OutputDi.FullName, fileNameWithoutExtension));
-			// 		if (outDir.Exists)
-			// 		{
-			// 			outDir.Delete(true);
-			// 		}
-			// 		outDir.Create();
-
-			// 		YamlMetaData yamlObject = null;
-			// 		if (posts.TryGetValue(mdf.FullName, out yamlObject))
-			// 		{
-			// 			templateFi = GetTemplateFileInfo(yamlObject.Template);
-			// 		}
-
-			// 		var argTemplate = string.Empty;
-			// 		if (templateFi != null)
-			// 		{
-			// 			argTemplate = string.Format(" --template=\"{0}\"", templateFi.FullName);
-			// 		}
-					
-			// 		var argFolderName = string.Format(" -V folder-name=\"{0}\"", fileNameWithoutExtension);
-					
-			// 		var argCustomCss = string.Empty;
-			// 		if (! string.IsNullOrEmpty(escapedCss))
-			// 		{
-			// 			argCustomCss = string.Format(" -V custom-css=\"{0}\"", escapedCss);
-			// 		}
-					
-			// 		var argRecentPosts = string.Empty;
-			// 		argRecentPosts  = " -V recent-posts=\"Visual C# Compiler, すなわち CSC を使ってみる\"";
-			// 		argRecentPosts += " -V recent-posts=\"2件目\"";
-
-			// 		var psi = new ProcessStartInfo();
-			// 		psi.FileName = "pandoc.exe";
-			// 		// psi.Arguments = string.Format("-f markdown-auto_identifiers -t html5 -o {0}\\index.html -s {2}{3}{4}{5} {1}",
-			// 		//                               outDir.FullName,
-			// 		//                               mdf.FullName,
-			// 		//                               argTemplate,
-			// 		//                               argFolderName,
-			// 		//                               argCustomCss,
-			// 		//                               argRecentPosts);
-			// 		psi.Arguments = string.Format("-f markdown-auto_identifiers -t html5 {0}",
-			// 										mdf.FullName);
-			// 		// コンソール・ウィンドウを開かない
-			// 		psi.CreateNoWindow = true;
-					
-			// 		// シェル機能を使わない
-			// 		// コンソールアプリの場合、シェル機能を使うにしておくとコンソール･ウィンドウが開いてしまうため。
-			// 		psi.UseShellExecute = false;
-					
-			// 		// UseShellExecute を true にしておくと、OSのファイル関連付けに応じてファイルの開き方を決める。
-			// 		// たとえば、xlsxであればExcelで開き、txtはメモ帳で開く。exeならそのまま実行する。
-
-			// 		// 標準出力をストリームに書き込む
-			// 		psi.RedirectStandardOutput = true;
-
-			// 		// プロセス終了時にイベントを発生させる
-			// 		var p = new Process();
-			// 		p.Exited += new EventHandler(pandoc_Exited);
-			// 		p.EnableRaisingEvents = true;
-
-			// 		// 
-			// 		p.OutputDataReceived += pandoc_OutputDataReceived;
-
-			// 		// 起動
-			// 		p.StartInfo = psi;
-			// 		if (p.Start())
-			// 		{
-			// 			pandocStartedCount++;
-			// 			p.BeginOutputReadLine();
-			// 			// WaitForExitを指定すると、おそらく非同期にならない
-			// 			// p.WaitForExit();
-			// 			// p.CancelOutputRead();
-			// 			convertedDict.Add(p.Id, new StringBuilder());
-			// 		}
-			// 	}
-			// 	catch (Exception e)
-			// 	{
-			// 		Console.WriteLine(mdf.FullName);
-			// 		Console.WriteLine(e.ToString());
-			// 	}
-			// }
-
-			// // すべてのプロセスが終了するまで待つ
-			// // ただし、待つのは30秒までとする
-			// while (! pandocExited)
-			// {
-			// 	elapsedTime += 500;
-			// 	if (elapsedTime > 30000)
-			// 	{
-			// 		break;
-			// 	}
-			// 	Thread.Sleep(500);
-			// }
 		}
 
 		/// <summary>
@@ -362,6 +255,7 @@ namespace Bld
 
 							// 標準出力をストリームに書き込む
 							psi.RedirectStandardOutput = true;
+							psi.StandardOutputEncoding = new System.Text.UTF8Encoding(false);	// 標準出力の文字コードを指定
 
 							// プロセス終了時にイベントを発生させる
 							var p = new Process();
@@ -403,10 +297,10 @@ namespace Bld
 		/// </summary>
         private void pandoc_Exited(object sender, EventArgs e)
         {
+			int? processId = null;
+
             try
             {
-				int processId;
-
                 var prcs = sender as Process;
                 if (prcs != null)
                 {
@@ -417,7 +311,7 @@ namespace Bld
 
 					// 変換結果をファイルに出力
 					MyContent inf;
-					if (MarkdownFiles.TryGetValue(processId, out inf))
+					if (MarkdownFiles.TryGetValue(processId.Value, out inf))
 					{
 						CreateFile(inf);
 					}
@@ -431,7 +325,7 @@ namespace Bld
 			{
 				// 変換完了
                 pandocExitedCount++;
-                if (pandocStartedCount >= pandocExitedCount)
+                if (pandocStartedCount <= pandocExitedCount)
                 {
                     pandocExited = true;
                 }
@@ -553,7 +447,7 @@ namespace Bld
 								break;
 							case "template":
 								text = ((YamlScalarNode)entry.Value).Value;
-								yamlObject.Template = text;
+								yamlObject.TemplateFileName = text;
 								break;
 							case "created-at":
 								text = ((YamlScalarNode)entry.Value).Value;
@@ -614,10 +508,129 @@ namespace Bld
 		/// </summary>
 		private void CreateFile(MyContent inf)
 		{
+			var convertedData = string.Empty;
 			if (inf.ConvertedData != null &&
 				! string.IsNullOrEmpty(inf.ConvertedData.ToString()))
 			{
-				Console.WriteLine(inf.ConvertedData.ToString());
+				convertedData = inf.ConvertedData.ToString();
+			}
+
+			// テンプレートファイルを取得
+			var templateFi = GetTemplateFileInfo(inf.Yaml.TemplateFileName);
+			var templateData = string.Empty;
+			if (templateFi.Exists &&
+				templateFi.Extension == ".cshtml")
+			{
+				using ( var reader = templateFi.OpenText())
+				{
+					templateData = reader.ReadToEnd();
+				}
+			}
+
+			FileInfo destFi = null;
+			if (inf.PostDateFromFileName.HasValue)
+			{
+				// Article
+				var odi = new DirectoryInfo(Path.Combine(this.OutputDi.FullName, 
+														 inf.OutputBaseFolderName));
+				if (odi.Exists)
+				{
+					// すでに存在したらYMDをつけて作る
+					odi = new DirectoryInfo(Path.Combine(this.OutputDi.FullName,
+														 string.Format("{0}-{1}", 
+														 			   inf.OutputBaseFolderName,
+																	   inf.PostDateFromFileName.Value.ToString("yyyyMMdd"))));
+					if (odi.Exists)
+					{
+						// TODO: YMDをつけても存在したら諦める？
+					}
+					else
+					{
+						odi.Create();
+					}
+				}
+				else
+				{
+					odi.Create();
+				}
+
+				destFi = new FileInfo(Path.Combine(odi.FullName, "index.html"));
+			}
+			else
+			{
+				// Page
+				destFi = new FileInfo(inf.OutputFilePath);
+			}
+
+			if (! string.IsNullOrEmpty(templateData) &&
+				destFi != null)
+			{
+				try
+				{
+					var canonicalLink = string.Empty;
+					{
+						var rp = destFi.FullName.Replace(this.OutputDi.FullName, string.Empty);
+						if (string.IsNullOrEmpty(rp))
+						{
+							canonicalLink = "/";
+						}
+						else
+						{
+							// if (rp.Substring(0, 1) == Path.DirectorySeparatorChar.ToString())
+							// {
+							// 	rp = rp.Substring(1);
+							// }
+							canonicalLink = rp.Replace(Path.DirectorySeparatorChar.ToString(), "/");
+						}
+					}
+					var model = new
+								{
+									PageTitle = inf.Yaml.PageTitle,
+									Body = convertedData,
+									Copyright = string.Empty,
+									RecentPosts = new List<string>(),
+									EmbeddedCssString = this.EmbeddedCssString,
+									CanonicalLink = canonicalLink
+								};
+					try
+					{
+						var config = new TemplateServiceConfiguration()
+									 {
+										 BaseTemplateType = typeof(HtmlSupportTemplateBase<>)
+									 };
+						var result = string.Empty;
+						using (var service = RazorEngineService.Create(config))
+						{
+							result = service.RunCompile(templateData,
+														templateFi.Name,
+														null,
+														model);
+						}
+
+						// 1行ずつファイル出力
+						// がばっと書いてもいいんだけどね。
+						using (var reader = new StringReader(result))
+						{
+							using (var writer = new StreamWriter(destFi.FullName,
+																 true,
+																 new System.Text.UTF8Encoding(false)))
+							{
+								while (reader.Peek() > -1)
+								{
+									writer.WriteLine(reader.ReadLine());
+								}
+							}
+						}
+					}
+					catch (Exception ex)
+					{
+						Console.WriteLine(ex.ToString());
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.ToString());
+				}
 			}
 		}
 
@@ -784,4 +797,35 @@ namespace Bld
             return parsedDt;
         }
 	}
+
+	public class MyHtmlHelper
+	{
+		public IEncodedString Raw(string rawString)
+		{
+			return new RawString(rawString);
+		}
+	}
+
+	public abstract class HtmlSupportTemplateBase<T> : TemplateBase<T>
+	{
+		// public MyClassImplementingTemplateBase()
+		public HtmlSupportTemplateBase()
+		{
+			Html = new MyHtmlHelper();
+		}
+
+		public MyHtmlHelper Html { get; set; }
+	}
 }
+
+/*
+Note: YAMLメタデータブロック
+
+最初の行が3つのハイフン(---)の行、
+最後の行が3つのハイフン(---)または3つのドット(...)であるブロックです。
+
+YAMLメタデータブロックは文書中の任意の場所に置くことができますが、
+先頭に置く場合を除いて、必ず空行の後にこのブロックを置く必要があります。
+
+でないとヘッダーと区別できないからね。
+ */

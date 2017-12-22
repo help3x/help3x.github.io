@@ -1,3 +1,11 @@
+---
+lang: ja
+pagetitle: 本番環境と開発Debug環境の打刻データを同期する
+template: amp-2col.cshtml
+created-at: 2017-12-13T15:55:43Z
+updated-at: 2017-12-15T11:46:46Z
+---
+
 本番環境と開発Debug環境の打刻データを同期する
 =============
 

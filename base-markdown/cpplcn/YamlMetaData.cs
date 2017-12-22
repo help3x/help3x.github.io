@@ -21,7 +21,7 @@ namespace Bld
         /// <summary>
         /// テンプレートファイル名
         /// </summary>
-        public string Template { get; set; }
+        public string TemplateFileName { get; set; }
 
         /// <summary>
         /// 作成日時
