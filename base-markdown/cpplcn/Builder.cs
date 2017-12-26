@@ -210,6 +210,10 @@ namespace Bld
 							contentInfo.OutputBaseFolderName = title;
 							contentInfo.PostDateFromFileName = ymd;
 						}
+						else
+						{
+							// TODO: ArticleっぽいのにPageに判定されそうなやつは警告出しませんか。
+						}
 					}
 
 					// ArticleでなければPageにする
@@ -235,7 +239,7 @@ namespace Bld
 					{
 						try
 						{
-							// YAMLメタデータを取得
+							// YAMLメタデータの解析結果を格納
 							SetYamlMetaData(contentInfo);
 
 							// Pandocの起動設定
@@ -383,28 +387,52 @@ namespace Bld
 				using (var reader = new StreamReader(fs))
 				{
 					var canRead = false;
+					var linePos = 0;
+					var isPrevLineNewLine = false;	// 前の行が空行
+
 					while (reader.Peek() >= 0)
 					{
 						var readText = reader.ReadLine();
-						if (! string.IsNullOrEmpty(readText) &&
-							readText.StartsWith("---"))
+						linePos++;
+
+						if (readText != null)
 						{
 							if (canRead)
 							{
-								// 読み込み許可状態であれば終了
-								break;
+								// 読み込み終了
+								if (readText.StartsWith("---"))
+								{
+									break;
+								}
+
+								yamlSetting.AppendLine(readText);
 							}
 							else
 							{
-								// 読み込み禁止状態であれば次の行から読み取る
-								canRead = true;
-								continue;
+								if (readText.StartsWith("---"))
+								{
+									// 先頭行からの読み込み、または前の行が空行であれば、
+									// YAMLメタデータブロックの開始とみなす
+									if (linePos == 1 || isPrevLineNewLine)
+									{
+										canRead = true;
+										isPrevLineNewLine = false;
+										continue;
+									}
+									else
+									{
+										isPrevLineNewLine = false;
+									}
+								}
+								else if (readText.Length == 0)
+								{
+									isPrevLineNewLine = true;
+								}
+								else
+								{
+									isPrevLineNewLine = false;
+								}
 							}
-						}
-						
-						if (canRead)
-						{
-							yamlSetting.AppendLine(readText);
 						}
 					}
 				}
@@ -576,15 +604,12 @@ namespace Bld
 						}
 						else
 						{
-							// if (rp.Substring(0, 1) == Path.DirectorySeparatorChar.ToString())
-							// {
-							// 	rp = rp.Substring(1);
-							// }
 							canonicalLink = rp.Replace(Path.DirectorySeparatorChar.ToString(), "/");
 						}
 					}
 					var model = new
 								{
+									SiteLogo = "Title（仮）",
 									PageTitle = inf.Yaml.PageTitle,
 									Body = convertedData,
 									Copyright = string.Empty,

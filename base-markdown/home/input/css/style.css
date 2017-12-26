@@ -114,7 +114,6 @@ h3::before {
 
 .container1000 {
   padding: 0 2.4rem;
-  /* max-width: 99.2rem; */
   max-width: 128rem;
 }
 
@@ -167,27 +166,27 @@ header li a:hover {
 
 @media all and (min-width: 768px) {
   /* タブレット */
-}
-
-@media all and (min-width: 980px) {
- /* デスクトップ */
  .container {
    display: flex;
  }
  .main {
    flex: 1;
    order: 1;
-   margin-right: 2.4rem;
+   width: 70%;
  }
  .sidebar {
-   width: 30rem;
+   width: 24%;
    order: 2;
    margin-top: 0;
-   margin-left: 2.4rem;
+   padding-left: 2.4rem;
  }
  
  .sidebar h2:first-child {
    margin-top: 0;
    border-bottom: none;
  }
+}
+
+@media all and (min-width: 980px) {
+ /* デスクトップ */
 }

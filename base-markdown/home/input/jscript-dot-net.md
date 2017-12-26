@@ -1,3 +1,5 @@
+<!-- 先頭行からYAMLメタデータが始まらないパターン -->
+
 ---
 lang: ja
 pagetitle: JScript.NET 事始め
