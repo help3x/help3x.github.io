@@ -13,9 +13,9 @@ namespace Bld
     public class YamlMetaDataParser
     {
 		/// <summary>
-		/// 解析結果を保持します。
+		/// 解析結果のYAMLメタデータです。
 		/// </summary>
-		private IDictionary<string, object> ParsedDict;
+		private YamlMetaData YamlMetaData;
 
 		/// <summary>
 		/// 
@@ -28,30 +28,29 @@ namespace Bld
 		public YamlMetaDataParser(FileStream inputStream)
 		{
 			this.InputStream = inputStream;
-			this.ParsedDict = new Dictionary<string, object>();
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
-		public IDictionary<string, object> Parse()
+		public YamlMetaData Parse()
 		{
 			if (this.InputStream == null)
 			{
-				return this.ParsedDict;
+				return null;
 			}
 
 			// YAMLメタデータを読み取る
 			var yamlText = ReadYamlMetaData();
 			if (string.IsNullOrEmpty(yamlText))
 			{
-				return this.ParsedDict;
+				return null;
 			}
 
 			// 読み込んだYAMLメタデータを解析する
 			SetParsedYamlMetaData(yamlText);
 			
-			return this.ParsedDict;
+			return this.YamlMetaData;
 		}
 
 		/// <summary>
@@ -205,6 +204,8 @@ namespace Bld
 			{
 				Console.WriteLine(ex.ToString());
 			}
+
+			this.YamlMetaData = yamlObject;
 		}
 		
 		/// <summary>

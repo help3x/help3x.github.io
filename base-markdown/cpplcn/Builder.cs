@@ -323,7 +323,7 @@ namespace Bld
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(processId + "\t" + ex.ToString());
             }
 			finally
 			{
@@ -378,157 +378,9 @@ namespace Bld
 				return;
 			}
 
-			var fi = inf.InputFi;
-
-			// YAMLフロントメーターを読み取る
-			var yamlSetting = new StringBuilder();
-			using (var fs = fi.Open(FileMode.Open, FileAccess.Read))
-			{
-				using (var reader = new StreamReader(fs))
-				{
-					var canRead = false;
-					var linePos = 0;
-					var isPrevLineNewLine = false;	// 前の行が空行
-
-					while (reader.Peek() >= 0)
-					{
-						var readText = reader.ReadLine();
-						linePos++;
-
-						if (readText != null)
-						{
-							if (canRead)
-							{
-								// 読み込み終了
-								if (readText.StartsWith("---"))
-								{
-									break;
-								}
-
-								yamlSetting.AppendLine(readText);
-							}
-							else
-							{
-								if (readText.StartsWith("---"))
-								{
-									// 先頭行からの読み込み、または前の行が空行であれば、
-									// YAMLメタデータブロックの開始とみなす
-									if (linePos == 1 || isPrevLineNewLine)
-									{
-										canRead = true;
-										isPrevLineNewLine = false;
-										continue;
-									}
-									else
-									{
-										isPrevLineNewLine = false;
-									}
-								}
-								else if (readText.Length == 0)
-								{
-									isPrevLineNewLine = true;
-								}
-								else
-								{
-									isPrevLineNewLine = false;
-								}
-							}
-						}
-					}
-				}
-			}
-
-			if (yamlSetting.Length == 0)
-			{
-				return;
-			}
-
-			// 読み込んだYAMLを解析する
-			var yamlObject = new YamlMetaData();
-			try
-			{
-				using (var reader = new StringReader(yamlSetting.ToString()))
-				{
-					var yaml = new YamlStream();
-					yaml.Load(reader);
-					
-					var mapping = (YamlMappingNode)yaml.Documents[0].RootNode;
-					foreach (var entry in mapping.Children)
-					{
-						var key = ((YamlScalarNode)entry.Key).Value;
-						var text = string.Empty;
-
-						if (string.IsNullOrEmpty(key))
-						{
-							continue;
-						}
-
-						switch (key.ToLower())
-						{
-							case "lang":
-								text = ((YamlScalarNode)entry.Value).Value;
-								yamlObject.Lang = text;
-								break;
-							case "pagetitle":
-								text = ((YamlScalarNode)entry.Value).Value;
-								yamlObject.PageTitle = text;
-								break;
-							case "template":
-								text = ((YamlScalarNode)entry.Value).Value;
-								yamlObject.TemplateFileName = text;
-								break;
-							case "created-at":
-								text = ((YamlScalarNode)entry.Value).Value;
-								yamlObject.CreatedAt = ToDateTime(text);
-								break;
-							case "updated-at":
-								text = ((YamlScalarNode)entry.Value).Value;
-								yamlObject.UpdatedAt = ToDateTime(text);
-								break;
-							case "categories":
-								{
-									var list = new List<string>();
-									foreach (YamlScalarNode item in (YamlSequenceNode)entry.Value)
-									{
-										if (! list.Contains(item.Value))
-										{
-											list.Add(item.Value);
-										}
-									}
-									if (list.Count() > 0)
-									{
-										yamlObject.Categories = list;
-									}
-								}
-								break;
-							case "tags":
-								{
-									var list = new List<string>();
-									foreach (YamlScalarNode item in (YamlSequenceNode)entry.Value)
-									{
-										if (! list.Contains(item.Value))
-										{
-											list.Add(item.Value);
-										}
-									}
-									if (list.Count() > 0)
-									{
-										yamlObject.Tags = list;
-									}
-								}
-								break;
-							default:
-								break;
-						}
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.ToString());
-			}
-
-			inf.Yaml = yamlObject;
+			// YAMLを読み込み解析する
+			var yamlParser = new YamlMetaDataParser(inf.InputFi.Open(FileMode.Open, FileAccess.Read));
+			inf.Yaml = yamlParser.Parse();
 		}
 
 		/// <summary>
@@ -544,7 +396,7 @@ namespace Bld
 			}
 
 			// テンプレートファイルを取得
-			var templateFi = GetTemplateFileInfo(inf.Yaml.TemplateFileName);
+			var templateFi = GetTemplateFileInfo(inf.Yaml == null ? null : inf.Yaml.TemplateFileName);
 			var templateData = string.Empty;
 			if (templateFi.Exists &&
 				templateFi.Extension == ".cshtml")
@@ -610,7 +462,7 @@ namespace Bld
 					var model = new
 								{
 									SiteLogo = "Title（仮）",
-									PageTitle = inf.Yaml.PageTitle,
+									PageTitle = inf.Yaml == null ? "no-title" : inf.Yaml.PageTitle,
 									Body = convertedData,
 									Copyright = string.Empty,
 									RecentPosts = new List<string>(),
@@ -736,58 +588,6 @@ namespace Bld
             return templateFi;
         }
 
-		// /// <summary>
-		// /// 
-		// /// </summary>
-        // private void copyDirectory(string src, string dest)
-        // {
-        //     if (string.IsNullOrEmpty(src) ||
-        //         string.IsNullOrEmpty(dest))
-        //     {
-        //         return;
-        //     }
-
-        //     copyDirectory(
-        //         new DirectoryInfo(src),
-        //         new DirectoryInfo(dest)
-        //     );
-        // }
-        
-		// /// <summary>
-		// /// 
-		// /// </summary>
-        // private void copyDirectory(DirectoryInfo srcDi, DirectoryInfo destDi)
-        // {
-        //     if (srcDi == null ||
-        //         destDi == null)
-        //     {
-        //         return;
-        //     }
-            
-        //     if (! srcDi.Exists)
-        //     {
-        //         return;
-        //     }
-            
-        //     if (! destDi.Exists)
-        //     {
-        //         destDi.Create();
-        //     }
-            
-        //     // フォルダ配下のファイルをすべてコピー
-        //     foreach (var copyFi in srcDi.GetFiles())
-        //     {
-        //         copyFi.CopyTo(Path.Combine(destDi.FullName, copyFi.Name));
-        //     }
-            
-        //     // サブフォルダもコピー
-        //     foreach (var targetDi in srcDi.GetDirectories())
-        //     {
-        //         copyDirectory(targetDi,
-        //                       new DirectoryInfo(Path.Combine(destDi.FullName, targetDi.Name)));
-        //     }
-        // }
-
 		/// <summary>
 		/// 日付文字列を日付型に変換します。
 		/// </summary>
@@ -823,6 +623,9 @@ namespace Bld
         }
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
 	public class MyHtmlHelper
 	{
 		public IEncodedString Raw(string rawString)
@@ -831,6 +634,9 @@ namespace Bld
 		}
 	}
 
+	/// <summary>
+	/// 
+	/// </summary>
 	public abstract class HtmlSupportTemplateBase<T> : TemplateBase<T>
 	{
 		// public MyClassImplementingTemplateBase()
@@ -842,15 +648,3 @@ namespace Bld
 		public MyHtmlHelper Html { get; set; }
 	}
 }
-
-/*
-Note: YAMLメタデータブロック
-
-最初の行が3つのハイフン(---)の行、
-最後の行が3つのハイフン(---)または3つのドット(...)であるブロックです。
-
-YAMLメタデータブロックは文書中の任意の場所に置くことができますが、
-先頭に置く場合を除いて、必ず空行の後にこのブロックを置く必要があります。
-
-でないとヘッダーと区別できないからね。
- */
