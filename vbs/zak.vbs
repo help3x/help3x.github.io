@@ -1,3 +1,9 @@
+''' 任意のフォルダ内にあるJPEGファイルを、任意のフォルダにコピーします。
+''' コピーしたファイルの名前は、Exifの撮影日時をもとに yyyy-MM-dd HH.mm.ss になります。
+''' JPEGファイル以外またはJPEGファイルであってもExifの撮影日時がないファイルは対象から除きます。
+''' 
+''' Usage:
+''' CScript zak.vbs SrcFolder DestFolder
 ''' 
 ''' スクリプトの実行には ImageMagicK が必要です。
 ''' 
