@@ -20,10 +20,16 @@ updated-at: 2017-11-27T15:06:56Z
 開発者コマンドプロンプトを使うとパスが通っているので、コンパイラを探す手間が省けます。
 （開発者コマンドプロンプトは Visual Studio をインストールするとショートカットが作られます）
 
-`jsc`コマンドの入力イメージ
+### jscコマンドの入力イメージ
 
 ```
 jsc /platform:x86 /out:<生成する実行ファイル> /codepage:65001<ソースファイル>
+```
+
+```java
+public static void Main(String args[]) {
+    System.out.println("Hello World !");
+}
 ```
 
 `jsc /?`でコマンドの書式とコンパイラオプションが確認できます。
