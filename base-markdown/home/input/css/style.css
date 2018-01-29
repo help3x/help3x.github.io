@@ -110,9 +110,6 @@ h3 {
   padding-left: .5em;
   border-left: .5em solid gray;
 }
-/*h3::before {
-  content: "◆";
-}*/
 
 .container1000 {
   padding: 0 2.4rem;

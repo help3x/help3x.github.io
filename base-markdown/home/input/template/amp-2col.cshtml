@@ -43,6 +43,10 @@
       </aside>
     </div>
   </div>
+  <div class="pagenation">
+    @if (Model.NextEntry != null) { @Model.NextEntry.ContentType.ToString() }
+    @if (Model.PrevEntry != null) {  }
+  </div>
   <footer>
     <p class="copyright">@Model.Copyright</p>
   </footer>
