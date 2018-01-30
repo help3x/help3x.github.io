@@ -1,0 +1,10 @@
+<article class="post">
+  $if(created-at)$<time datetime="$created-at$">$if(display-created-at)$$display-created-at$$else$$created-at$$endif$</time>$else$$if(date)$<time datetime="$date$">$date$</time>$endif$$endif$
+  <header>
+    <h1>$pagetitle$</h1>
+  </header>
+  <div class="content">
+$body$
+  </div>
+  <footer><!-- for Expansion --></footer>
+</article>

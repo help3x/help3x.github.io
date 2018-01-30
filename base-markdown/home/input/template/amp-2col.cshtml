@@ -10,8 +10,8 @@
   <script async src="https://cdn.ampproject.org/v0.js"></script>
 </head>
 <body>
-  <header>
-    <p><a href="/">@Model.SiteLogo</a></p>
+  <header class="top-header">
+    <p><a href="/">@Model.Site.Name</a></p>
     <nav>
       @* <ul>
         @for (var i = 0; i < 3; i++) {
@@ -22,14 +22,18 @@
       </ul> *@
     </nav>
   </header>
-  <div class="container1000">
-    <div class="container">
+  <div class="container">
+    <div class="flex-container">
       <main class="main">
           <!-- MainContents Begin -->
 
 @Html.Raw(Model.Body)
 
           <!-- MainContents End -->
+        <div class="pagenation">
+          <div class="left">@if (Model.PrevEntry != null) { <a href="@Model.PrevEntry.RelativePath" class="pure-button">&lt; Prev</a> }</div>
+          <div class="right">@if (Model.NextEntry != null) { <a href="@Model.NextEntry.RelativePath" class="pure-button">Next &gt;</a> }</div>
+        </div>
       </main>
       <aside class="sidebar">
         @if (@Model.RecentPosts != null && @Model.RecentPosts.Count() > 0) {
@@ -42,10 +46,6 @@
         }
       </aside>
     </div>
-  </div>
-  <div class="pagenation">
-    @if (Model.NextEntry != null) { @Model.NextEntry.ContentType.ToString() }
-    @if (Model.PrevEntry != null) {  }
   </div>
   <footer>
     <p class="copyright">@Model.Copyright</p>
