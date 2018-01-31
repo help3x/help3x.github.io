@@ -1,0 +1,391 @@
+/* CustomCss */
+@font-face {
+  font-family: "SubsetSourceHanSans";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/SourceHanSans-Regular-Subset.woff") format("woff"),
+       url("/fonts/SourceHanSans-Regular-Subset.woff2") format("woff2");
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+html {
+  font-size: 62.5%;
+  line-height: 1.5;  // DefaultFontSize 16px x 1.5 = BaseLine 24px
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  font-size: 1.6rem;
+  font-family: "SubsetSourceHanSans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", Segoe UI, "メイリオ", Meiryo, sans-serif;
+}
+pre,
+code {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  font-family: "MS Gothic", monospace;
+}
+code {
+  background-color: whitesmoke;
+  color: #f03;
+  font-size: 1.4rem;
+  font-weight: normal;
+  padding: 0.25em 0.5em;
+}
+pre {
+  -webkit-overflow-scrolling: touch;
+  background-color: whitesmoke;
+  color: #333;
+  font-size: 1.4rem;
+  overflow-x: auto;
+  padding: 2rem 2.4rem;
+  white-space: pre;
+  word-wrap: normal;
+}
+pre code {
+  background-color: transparent;  // 透明
+  color: currentcolor;            // 親の配色を継承
+  font-size: 1em;
+  padding: 0;
+}
+blockquote {
+  position: relative;
+  border: 1px solid #666;
+  padding: 0px;
+  margin: 1.6rem 0 1.6rem 3.2rem;
+}
+blockquote p {
+  padding: 1.6rem 3.2rem;
+}
+blockquote cite {
+  display: block;
+  padding: 0 3.2rem 1.6rem 1.6rem;
+  text-align: right;
+}
+blockquote > p > cite {
+  padding: 0.8rem 0 0;
+}
+blockquote::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: url(data:image/gif;base64,R0lGODlhHgAeALMAAHBwcI+Pj7i4uKOjo+Dg4Ovr662trdbW1vX19ZmZmczMzHp6esLCwoWFhWZmZv///yH5BAAAAAAALAAAAAAeAB4AAASJ8MlJq7046827/2AojiRGDIAjXAeqcoYjO4wVz8o2zEBe7TLAYSPgESzF4FGDSMlWlYLzReRdko5FJzALXBrdzkxmWE7GjvIGLUsgzuyBhv2Es6EXusMr0csxC3R8D1NjgxZAaH8PiWN4Fk1sQxJSbAUaBQMBmwmTE5mbAQk+JaWmp6ipqqusIxEAOw==)
+}
+blockquote::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: url(data:image/gif;base64,R0lGODlhHgAeALMAAMLCwnBwcMzMzJmZmY+Pj62trfX19Xp6eri4uNbW1uDg4GZmZv///wAAAAAAAAAAACH5BAAAAAAALAAAAAAeAB4AAAR9kMlJq7046827/2AojmT5FcGiHkKFpGubJWqtJhNg10pW7KrBZABcCDGE4mKSBAZ8ymEUI5gydEUNAGajvIAcAXdZEdeenOaCcFEfNQYuwGKwzTe/lcGSXxw4WDcWgQs4Ggh2fImHZzJeNSxhBAMAe4OTlSaam5ydnp+gHhEAOw==);
+}
+dd + dt {
+  margin-top: 1.6rem;
+}
+dd > p {
+  margin: 0;
+}
+h1 {
+  font-size: 3.2rem;    /* 32px */
+  margin-top: 1.6rem;
+  margin-bottom: 3.2rem;
+}
+h2 {
+  font-size: 2.4rem; /* 24px */
+  margin-top: 4.8rem;
+  margin-bottom: 2.4rem;
+  line-height: 2em;  /* FontSize 24px x 2 = 48px */
+  border-bottom: 1px solid #000;
+}
+h3 {
+  font-size: 2rem;  /* 20px */
+  margin-top: 3.6rem;
+  margin-bottom: 2.4rem;
+  line-height: 3.6rem;  /* FontSize 10px x 3.6rem = 36px */
+  padding-left: .5em;
+  border-left: .5em solid gray;
+}
+
+.flex-wrapper {
+  padding: 0 2.4rem;
+  max-width: 128rem;
+}
+
+.flex-container {
+}
+
+.main {
+}
+
+.sidebar {
+  margin-top: 4.8rem;
+}
+
+.top-header {
+  text-align: right;
+  min-height: 4rem;
+  margin-bottom: 1.6rem;
+  padding: 1.6rem 2.4rem;
+}
+.top-header p,
+.top-header nav ul {
+  margin: 0;
+  padding: 0;
+}
+.top-header p {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.top-header p a {
+  position: absolute;
+  left: 2.4rem;
+  top: 1.6rem;
+}
+.top-header nav ul {
+  list-style: none;
+}
+.top-header nav ul li {
+  display: inline-block;
+  margin-left: 2.4rem;
+}
+.top-header a {
+  text-decoration: none;
+  color: MidnightBlue;
+}
+.top-header li a:hover {
+  text-decoration: underline;
+}
+
+.post {
+  margin-top: 4.8rem;
+}
+
+.pagenation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4.8rem;
+  margin-bottom: 2.4rem;
+  line-height: 4.8rem;
+}
+.pagenation .left {
+}
+.pagenation .right {
+}
+
+
+
+@media all and (min-width: 768px) {
+  /* タブレット */
+ .flex-container {
+   display: flex;
+ }
+ .main {
+   flex: 1;
+   order: 1;
+   width: 70%;
+ }
+ .sidebar {
+   width: 24%;
+   order: 2;
+   margin-top: 0;
+   padding-left: 2.4rem;
+ }
+ 
+ .sidebar h2:first-child {
+   margin-top: 0;
+   border-bottom: none;
+ }
+}
+
+@media all and (min-width: 980px) {
+ /* デスクトップ */
+}
+
+/* SyntaxHighlight from Pandoc, style is Pygments */
+div.sourceLine, a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; }
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+div.sourceLine, a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource div.sourceLine, .numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource div.sourceLine::before, .numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; color: #aaaaaa;  padding-left: 4px; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; color: initial; }
+}
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.bn { color: #40a070; } /* BaseN */
+code span.fl { color: #40a070; } /* Float */
+code span.ch { color: #4070a0; } /* Char */
+code span.st { color: #4070a0; } /* String */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.ot { color: #007020; } /* Other */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.fu { color: #06287e; } /* Function */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.cn { color: #880000; } /* Constant */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.im { } /* Import */
+code span.va { color: #19177c; } /* Variable */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.op { color: #666666; } /* Operator */
+code span.bu { } /* BuiltIn */
+code span.ex { } /* Extension */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.at { color: #7d9029; } /* Attribute */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+
+
+
+/*!
+Pure v1.0.0
+Copyright 2013 Yahoo!
+Licensed under the BSD License.
+https://github.com/yahoo/pure/blob/master/LICENSE.md
+*/
+.pure-button {
+    /* Structure */
+    display: inline-block;
+    zoom: 1;
+    line-height: normal;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    box-sizing: border-box;
+}
+
+/* Firefox: Get rid of the inner focus border */
+.pure-button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+/* Inherit .pure-g styles */
+.pure-button-group {
+    letter-spacing: -0.31em; /* Webkit: collapse white-space between units */
+    *letter-spacing: normal; /* reset IE < 8 */
+    *word-spacing: -0.43em; /* IE < 8: collapse white-space between units */
+    text-rendering: optimizespeed; /* Webkit: fixes text-rendering: optimizeLegibility */
+}
+
+.opera-only :-o-prefocus,
+.pure-button-group {
+    word-spacing: -0.43em;
+}
+
+.pure-button-group .pure-button {
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+}
+
+/*csslint outline-none:false*/
+
+.pure-button {
+    font-family: inherit;
+    font-size: 100%;
+    padding: 0.5em 1em;
+    color: #444; /* rgba not supported (IE 8) */
+    color: rgba(0, 0, 0, 0.80); /* rgba supported */
+    border: 1px solid #999;  /*IE 6/7/8*/
+    border: none rgba(0, 0, 0, 0);  /*IE9 + everything else*/
+    background-color: #E6E6E6;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.pure-button-hover,
+.pure-button:hover,
+.pure-button:focus {
+    /* csslint ignore:start */
+    filter: alpha(opacity=90);
+    /* csslint ignore:end */
+    background-image: -webkit-linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+    background-image: linear-gradient(transparent, rgba(0,0,0, 0.05) 40%, rgba(0,0,0, 0.10));
+}
+.pure-button:focus {
+    outline: 0;
+}
+.pure-button-active,
+.pure-button:active {
+    box-shadow: 0 0 0 1px rgba(0,0,0, 0.15) inset, 0 0 6px rgba(0,0,0, 0.20) inset;
+    border-color: #000\9;
+}
+
+.pure-button[disabled],
+.pure-button-disabled,
+.pure-button-disabled:hover,
+.pure-button-disabled:focus,
+.pure-button-disabled:active {
+    border: none;
+    background-image: none;
+    /* csslint ignore:start */
+    filter: alpha(opacity=40);
+    /* csslint ignore:end */
+    opacity: 0.40;
+    cursor: not-allowed;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+.pure-button-hidden {
+    display: none;
+}
+
+.pure-button-primary,
+.pure-button-selected,
+a.pure-button-primary,
+a.pure-button-selected {
+    background-color: rgb(0, 120, 231);
+    color: #fff;
+}
+
+/* Button Groups */
+.pure-button-group .pure-button {
+    margin: 0;
+    border-radius: 0;
+    border-right: 1px solid #111;  /* fallback color for rgba() for IE7/8 */
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+
+}
+
+.pure-button-group .pure-button:first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.pure-button-group .pure-button:last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-right: none;
+}

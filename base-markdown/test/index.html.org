@@ -1,0 +1,145 @@
+<!doctype html>
+<html amp>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>本番環境と開発Debug環境の打刻データを同期する</title>
+  <link rel="canonical" href="//index.html">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <style amp-custom>{{custom-css}}</style>
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="top-header">
+      <p><a href="/"></a></p>
+      <nav>
+      </nav>
+    </header>
+    <div class="flex-wrapper">
+      <div class="flex-container">
+        <main>
+          <!-- MainContents Begin -->
+          <article class="post">
+            <time datetime="2017-12-13T15:55:43Z">2017.12.13</time>
+            <header>
+              <h1>本番環境と開発Debug環境の打刻データを同期する</h1>
+            </header>
+            <div class="content">
+<h2 id="打刻データ-テーブル定義">打刻データ テーブル定義</h2>
+
+<table>
+<thead>
+<th>No</th>
+<th>カラム名</th>
+<th>データ型</th>
+<th>全体桁</th>
+<th>小数桁</th>
+<th>NULL許容</th>
+<th>PrimaryKey</th>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>従業員番号</td>
+<td>NUMBER</td>
+<td>8</td>
+<td></td>
+<td>N</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>打刻時刻</td>
+<td>DATE</td>
+<td></td>
+<td></td>
+<td>N</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>入出区分</td>
+<td>CHAR</td>
+<td>1</td>
+<td></td>
+<td>N</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>レコーダNO</td>
+<td>CHAR</td>
+<td>2</td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>収集時刻</td>
+<td>DATE</td>
+<td></td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>送信時刻</td>
+<td>DATE</td>
+<td></td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>ステータス</td>
+<td>CHAR</td>
+<td>1</td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="同期のタイミング">同期のタイミング</h2>
+
+<p>AQUA 打刻データを IWAUXHS の打刻データに取り込むバッチがある。<br/>それの起動時刻の1分後とする。（具体的には以下の時刻となる）</p>
+
+<ol>
+<li>1:07</li>
+<li>7:32</li>
+<li>9:27</li>
+<li>19:37</li>
+<li>21:27</li>
+</ol>
+
+<h2 id="処理概要">処理概要</h2>
+
+<ol>
+<li>IWAUXHS の打刻データを全件検索。</li>
+<li>IWAUXO の打刻データを全件削除。</li>
+<li>IWAUXHS の打刻データの検索結果をすべて登録。</li>
+</ol>
+            </div>
+            <footer><!-- for Expansion --></footer>
+          </article>
+          <!-- MainContents End -->
+          <!-- Pagenation Begin -->
+          <div class="pageneation">
+            <div class="left"></div>
+            <div class="right"></div>
+          </div>
+          <!-- Pagenation End -->
+        </main>
+      </div>
+    </div>
+    <footer>
+    </footer>
+  </div>
+</body>
+</html>
