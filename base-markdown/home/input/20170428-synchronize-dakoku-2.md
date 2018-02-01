@@ -1,9 +1,6 @@
 ---
 lang: ja
 pagetitle: 本番環境と開発Debug環境の打刻データを同期する
-template: default.cshtml
-pandoc-custom-writer: amphtml.lua
-pandoc-template: article.html
 created-at: 2017-12-13T15:55:43Z
 display-created-at: 2017.12.13
 updated-at: 2017-12-15T11:46:46Z

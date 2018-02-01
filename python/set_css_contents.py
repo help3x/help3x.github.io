@@ -19,8 +19,6 @@ import tempfile
 
 def main():
     read_file = None
-    #write_file = None
-    #temp_file = "temp_file"
 
     css_content = None
     with open(sys.argv[3], "r") as f:
@@ -29,34 +27,29 @@ def main():
     write_contents = ""
     try:
         read_file = open(sys.argv[1], 'r')
-        #write_file = open(temp_file, 'w')
         for line in read_file:
             if line.find(sys.argv[2]) != -1:
                 line = re.sub(sys.argv[2], css_content, line)
-            #write_file.write(line)
+            
+            # テーブルの行に自動で追加されたクラスを削除
+            line = re.sub('<tr( class="(header|odd|even)"?)>', "<tr>", line)
+            
+            # AMP HTML 向け img 要素を変換
+            line = re.sub("<img ", "<amp-img ", line)
+            
             write_contents += line
     finally:
         read_file.close()
-        #write_file.close()
 
-    # 既定だとバイナリモード（w+b）になるのでテキストモード（w+t）で作る
-    #temp = tempfile.TemporaryFile()
-    #temp = tempfile.TemporaryFile(mode="w+t")
-    #try:
-        #print "temp: ", temp
-        #print "temp.name: ", temp.name
-    #finally:
-        #temp.close()
-
-    # Note: delete=Falseを指定しないとクローズ時に削除される
+    # Note:
+    #   ・既定だとバイナリモード（w+b）になるので、テキストモード（w+t）を指定する。
+    #   ・一時ファイルのクローズと同時に削除されてしまうため、delete=Falseを指定して削除されないようにする。
     temp_file = None
     with tempfile.NamedTemporaryFile(mode="w+t", delete=False) as f:
         temp_file = f.name
         f.write(write_contents)
-        
-    #with open(temp_file, "w") as f:
-    #    f.write(write_contents)
-
+    
+    # 一時ファイルの名前を正規のファイル名にリネーム
     if os.path.isfile(sys.argv[1]) and os.path.isfile(temp_file):
         os.remove(sys.argv[1])
         os.rename(temp_file, sys.argv[1])

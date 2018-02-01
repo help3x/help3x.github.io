@@ -137,10 +137,36 @@ function Link(s, src, tit, attr)
          escape(tit,true) .. "'>" .. s .. "</a>"
 end
 
+-- s: 代替テキスト
+-- src: ImageのURL
+-- tit: title?
+-- attr: table型
 function Image(s, src, tit, attr)
---  return "<img src='" .. escape(src,true) .. "' title='" ..
-  return "<amp-img src='" .. escape(src,true) .. "' " ..
-          "/>"
+  -- Note: for Debug >>>
+--  print("s:", s)
+--  print("src:", src)
+--  print("tit:", tit)
+--  print("attr:", attr)
+--  for key, val in pairs(attr) do
+--    print("", key, val)
+--  end
+--  print(type(attributes(attr)))
+  -- Note: <<< for Debug
+
+  local attr_table = {}
+  
+  if s and s ~= "" then
+    table.insert(attr_table, ' alt="' .. s .. '"')
+  end
+
+  if tit and tit ~= "" then
+    table.insert(attr_table, ' title="' .. tit .. '"')
+  end
+
+  table.insert(attr_table, attributes(attr))
+
+  return "<amp-img src='" .. escape(src,true) .. "'" ..
+          table.concat(attr_table) .. " />"
 end
 
 function Code(s, attr)
@@ -246,11 +272,31 @@ end
 -- Revisit association list STackValue instance.
 function DefinitionList(items)
   local buffer = {}
+  -- Note: For Debug >>>
+--  for key1, val1 in pairs(items) do
+--    print(key1, val1)
+--    
+--    for key2, val2 in pairs(val1) do
+--      print("", key2, val2, type(val2))
+--      
+--      if "table" == type(val2) then
+--        for key3, val3 in pairs(val2) do
+--          print("", "", key3, val3, type(val3))
+--        end
+--      end
+--    end
+--  end
+  -- Note: <<< For Debug
   for _,item in pairs(items) do
-    for k, v in pairs(item) do
-      table.insert(buffer,"<dt>" .. k .. "</dt>\n<dd>" ..
-                        table.concat(v,"</dd>\n<dd>") .. "</dd>")
-    end
+    print(item[1], item[2])
+    -- Note: オリジナルのソース。しかしエラーが出る。table.concat()に指定している v は必ずしも table ではない。 >>>
+--    for k, v in pairs(item) do
+--      table.insert(buffer,"<dt>" .. k .. "</dt>\n<dd>" ..
+--                        table.concat(v,"</dd>\n<dd>") .. "</dd>")
+--    end
+    -- Note: <<< オリジナルのソース。しかしエラーが出る。table.concat()に指定している v は必ずしも table ではない。
+    table.insert(buffer,"<dt>" .. item[1] .. "</dt>\n<dd>" ..
+                      table.concat(item[2],"</dd>\n<dd>") .. "</dd>")
   end
   return "<dl>\n" .. table.concat(buffer, "\n") .. "\n</dl>"
 end
