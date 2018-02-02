@@ -1,0 +1,11 @@
+{
+  "name": "Title1",
+  "namePrefix": "Prefix",
+  "nameSuffix": "Suffix",
+  "ignoreDirectoryNames": [
+    "css",
+    "script",
+    "template"
+  ],
+  "pythonExePath": "C:\\Python27\\python.exe"
+}
