@@ -1,1 +1,1 @@
-pandoc -f markdown-auto_identifiers -t html5 -s --template=".\default.html" -o index.html .\20170428-synchronize-dakoku-2.md
+pandoc -f markdown-auto_identifiers-implicit_figures -t html5 -s --template=".\default.html" -o index.html .\20170428-synchronize-dakoku-2.md

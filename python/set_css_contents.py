@@ -27,15 +27,38 @@ def main():
     write_contents = ""
     try:
         read_file = open(sys.argv[1], 'r')
+        table_class = ""
         for line in read_file:
             if line.find(sys.argv[2]) != -1:
                 line = re.sub(sys.argv[2], css_content, line)
             
+            match = re.match('<table.*', line)
+            if match:
+                # テーブルに自動で追加されたstyle属性を削除
+                line = re.sub('(<table)( style="(.*?)")', '\g<1>', line)
+                
+                if table_class:
+                    line = re.sub('(<table)(.*?)(>)', '\g<1>\g<2>' + table_class + '\g<3>', line)
+                    table_class = ""
+            
+            match = re.match('<!-- *( class *= *"(.*?)")', line)
+            if match:
+                table_class = match.group(1)
+            else:
+                table_class = ""
+            
+            # テーブルの列幅の指定も削除
+            line = re.sub('</*colgroup>[\r|\n|\r\n]', '', line)
+            line = re.sub('<col(.*?)/>[\r|\n|\r\n]', '', line)
+            
             # テーブルの行に自動で追加されたクラスを削除
             line = re.sub('<tr( class="(header|odd|even)"?)>', "<tr>", line)
             
+            # img 要素の閉じタグを消す
+            line = re.sub("(<img(.*?)) */(>)', '\g<1>\g<3>', line)
             # AMP HTML 向け img 要素を変換
             line = re.sub("<img ", "<amp-img ", line)
+            # TODO: amp-imgの閉じタグを追加
             
             write_contents += line
     finally:
