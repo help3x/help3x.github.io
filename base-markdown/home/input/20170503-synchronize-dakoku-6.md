@@ -1,11 +1,48 @@
 ---
 lang: ja
 pagetitle: 本番環境と開発Debug環境の打刻データを同期する
-created-at: 2017-12-13T15:55:43Z
+prev-entry-link: /synchronize-dakoku-5/index.html
+prev-entry-name: 本番環境と開発Debug環境の打刻データを同期する
+next-entry-link: /synchronize-dakoku-7/index.html
+next-entry-name: 本番環境と開発Debug環境の打刻データを同期する
+created-at: 2017-12-13T15:55:43+09:00
 display-created-at: 2017.12.13
-updated-at: 2017-12-15T11:46:46Z
+updated-at: 2017-12-15T11:46:46+09:00
 display-updated-at: 2017.12.15
 ---
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://google.com/article"
+  },
+  "headline": "本番環境と開発Debug環境の打刻データを同期する",
+  "image": [
+    "https://example.com/photos/1x1/photo.jpg",
+    "https://example.com/photos/4x3/photo.jpg",
+    "https://example.com/photos/16x9/photo.jpg"
+   ],
+  "datePublished": "2017-12-13T15:55:43+09:00",
+  "dateModified": "2017-12-15T11:46:46+09:00",
+  "author": {
+    "@type": "Person",
+    "name": "John Doe"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Google",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://google.com/logo.jpg"
+    }
+  },
+  "description": "A most wonderful article"
+}
+</script>
+
 
 
 打刻データ テーブル定義

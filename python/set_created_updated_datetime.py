@@ -12,45 +12,43 @@
 
 import re
 import sys
-import json
 import dateutil.parser
 import os
 import tempfile
+import json_ld_reader
+import my_module
+
+
 
 def main():
-    read_file = None
 
-#     yaml_content = read_yaml_string(sys.argv[1])
-#     if yaml_content is None or len(yaml_content) == 0:
-#         sys.exit(0)
+    if not os.path.isfile(sys.argv[1]):
+        print("file is not found.")
+        sys.exit(1)
 
-#     with open(sys.argv[1], "r") as f:
-#         read_file = f.readlines()
-# 
-#     # JSON-LDを読み込む
-#     cnt = 0
-#     can_set = False
-#     json_ld_content = ""
-#     for line in read_file:
-#         # 読み取り状態時に、scriptの閉じタグに達したら読み取り終了
-#         if can_set:
-#             if line.find('</script>') != -1:
-#                 can_set = False
-#                 cnt += 1
-#         
-#         if can_set:
-#             json_ld_content += line
-#         
-#         # scriptの開始タグであれば読み取り開始
-#         if line.find('<script type="application/ld+json">') != -1:
-#             if cnt == 0:
-#                 can_set = True
-    
-    # JSON-LDを読み込む
-    parsed_json = read_json_ld(sys.argv[1])
-    if parsed_json is None:
+    # 対象ファイルの親ディレクトリの配下にある
+    # Markdownファイルを取得
+    parent_directory = os.path.dirname(sys.argv[1])
+    articles = my_module.articles_getter(parent_directory)
+
+    target_entry = None
+    target_entries = filter(lambda x: os.path.basename(x.file_path) == os.path.basename(sys.argv[1]), articles)
+    if len(target_entries) > 0:
+        target_entry = target_entries[0]
+
+    if target_entry is None:
+        print("target entry is not found.")
         sys.exit(0)
-    
+
+    # 前と後ろの情報を取得
+    dict = my_module.get_prev_and_next_link(target_entry, articles)
+
+    # JSON-LDを読み込む
+    parsed_json = json_ld_reader.JsonLdReader(sys.argv[1]).read()
+    if parsed_json is None:
+        print("JSON-LD is not found or invalid.")
+        sys.exit(0)
+
     # 読み取ったJSONから値を取得
     date_published = None
     if parsed_json.has_key("datePublished"):
@@ -67,6 +65,7 @@ def main():
             date_modified = None
 
     if date_published is None:
+        print("datePublished is not specified.")
         sys.exit(0)
 
     # YAMLメタデータブロックを置き換える
@@ -78,7 +77,12 @@ def main():
     has_date_modified = False
     has_display_date_published = False
     has_display_date_modified = False
+    has_prev_entry_link = False
+    has_prev_entry_name = False
+    has_next_entry_link = False
+    has_next_entry_name = False
 
+    is_yaml_ended = False
     is_yaml_block = False
     is_yaml_block_end_before = False
     write_content = ""
@@ -87,10 +91,27 @@ def main():
         if is_yaml_block:
             if line.find('---') == 0:
                 is_yaml_block = False
+                is_yaml_ended = True
                 is_yaml_block_end_before = True
         
         # そのまま書き込むか置換するか
         if is_yaml_block:
+            if dict.has_key("prev-entry-link") and dict.has_key("prev-entry-name"):
+                if line.find("prev-entry-link") == 0:
+                    line = re.sub('^(prev-entry-link:)(.*)', '\g<1> ' + dict["prev-entry-link"], line)
+                    has_prev_entry_link = True
+                elif line.find("prev-entry-name") == 0:
+                    line = re.sub('^(prev-entry-name:)(.*)', '\g<1> ' + dict["prev-entry-name"], line)
+                    has_prev_entry_name = True
+                
+            if dict.has_key("next-entry-link") and dict.has_key("next-entry-name"):
+                if line.find("next-entry-link") == 0:
+                    line = re.sub('^(next-entry-link:)(.*)', '\g<1> ' + dict["next-entry-link"], line)
+                    has_next_entry_link = True
+                elif line.find("next-entry-name") == 0:
+                    line = re.sub('^(next-entry-name:)(.*)', '\g<1> ' + dict["next-entry-name"], line)
+                    has_next_entry_name = True
+                
             if date_published is not None:
                 # 作成日時
                 m = re.match('^created-at:', line)
@@ -129,6 +150,16 @@ def main():
 
         else:
             if is_yaml_block_end_before:
+                if not has_prev_entry_link and not has_prev_entry_name:
+                    if dict.has_key("prev-entry-link") and dict.has_key("prev-entry-name"):
+                        write_content += "prev-entry-link: " + dict["prev-entry-link"] + "\n"
+                        write_content += "prev-entry-name: " + dict["prev-entry-name"] + "\n"
+                
+                if not has_next_entry_link and not has_next_entry_name:
+                    if dict.has_key("next-entry-link") and dict.has_key("next-entry-name"):
+                        write_content += "next-entry-link: " + dict["next-entry-link"] + "\n"
+                        write_content += "next-entry-name: " + dict["next-entry-name"] + "\n"
+                
                 if date_published is not None:
                     if not has_date_published:
                         write_content += "created-at: " + date_published.isoformat() + "\n"
@@ -147,9 +178,10 @@ def main():
             write_content += line
         
         # YAMLメタデータブロック開始判定
-        if not is_yaml_block:
-            if line.find('---') == 0:
-                is_yaml_block = True
+        if not is_yaml_ended:
+            if not is_yaml_block:
+                if line.find('---') == 0:
+                    is_yaml_block = True
 
     # 一時ファイルに書き込み
     temp_file = None
@@ -164,86 +196,6 @@ def main():
 
     # 終了
     sys.exit(0)
-
-
-
-#
-# JSON-LDを読み込みます
-#
-def read_json_ld(file):
-
-    read_file = None
-    with open(file, "r") as f:
-        read_file = f.readlines()
-
-    can_set = False
-    json_ld_content = ""
-    for line in read_file:
-        # 読み取り状態時に、scriptの閉じタグに達したら読み取り終了
-        if can_set:
-            if line.find('</script>') != -1:
-                can_set = False
-                break
-        
-        if can_set:
-            json_ld_content += line
-        
-        # scriptの開始タグであれば読み取り開始
-        if line.find('<script type="application/ld+json">') != -1:
-            can_set = True
-
-    parsed_json = None
-    if len(json_ld_content) > 0:
-        try:
-            parsed_json = json.loads(json_ld_content)
-        except:
-            parsed_json = None
-
-    return parsed_json
-
-
-
-#
-# YAMLメタデータブロックを読み込み、文字列で返します。
-#
-def read_yaml_string(file):
-    read_file = None
-    with open(file, "r") as f:
-        read_file = f.readlines()
-
-    is_started = False
-    can_set = False
-    can_set2 = False
-    temp_content = None
-    yaml_content = ""
-    for line in read_file:
-        # --- で開始、--- に続いて空行なら終了
-        if can_set2:
-            if len(line) == 0:
-                break
-            elif line.find("\n") == 0:
-                break
-            else:
-                can_set = True
-                can_set2 = False
-                yaml_content += temp_content
-                temp_content = None
-        
-        if is_started:
-            if line.find('---') == 0:
-                can_set = False
-                can_set2 = True
-                temp_content = line
-        
-        if can_set:
-            yaml_content += line
-        
-        if not is_started:
-            if line.find('---') == 0:
-                can_set = True
-                is_started = True
-
-    return yaml_content
 
 
 

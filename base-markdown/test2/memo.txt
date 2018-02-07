@@ -1,1 +1,3 @@
 pandoc -f markdown-auto_identifiers-implicit_figures -t html5 -s --template=".\default.html" -o index.html .\20170428-synchronize-dakoku-2.md
+
+python set_created_updated_datetime.py ..\base-markdown\home\input\20170503-synchronize-dakoku-6.md

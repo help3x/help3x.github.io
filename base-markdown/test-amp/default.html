@@ -35,9 +35,11 @@ $body$
           </article>
           <!-- MainContents End -->
           <!-- Pagenation Begin -->
-          <div class="pagenation">
-            <div class="left">$if(prev-entry-link)$<a href="$prev-entry-link$" class="pure-button">&lt; $if(prev-entry-name)$$prev-entry-name$$else$PREV$endif$</a>$endif$</div>
-            <div class="right">$if(next-entry-link)$<a href="$next-entry-link$" class="pure-button">$if(next-entry-name)$$next-entry-name$$else$NEXT$endif$ &gt;</a>$endif$</div>
+          <div class="pagenation clearfix">
+            <dl>
+              $if(prev-entry-link)$<dt>PREV</dt><dd><a href="$prev-entry-link$">$if(prev-entry-name)$$prev-entry-name$$else$no-title$endif$</a></dd>$endif$
+              $if(next-entry-link)$<dt>NEXT</dt><dd><a href="$next-entry-link$">$if(next-entry-name)$$next-entry-name$$else$no-title$endif$</a></dd>$endif$
+            </dl>
           </div>
           <!-- Pagenation End -->
         </main>

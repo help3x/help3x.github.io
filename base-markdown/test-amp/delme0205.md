@@ -1,3 +1,41 @@
+---
+created-at: 2017-02-05T09:00:00+09:00
+display-created-at: 2017.02.05
+---
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://google.com/article"
+  },
+  "headline": "Article headline",
+  "image": [
+    "https://example.com/photos/1x1/photo.jpg",
+    "https://example.com/photos/4x3/photo.jpg",
+    "https://example.com/photos/16x9/photo.jpg"
+   ],
+  "datePublished": "2017-02-05T09:00:00+09:00",
+  "dateModified": "2017-02-05T09:20:00+09:00",
+  "author": {
+    "@type": "Person",
+    "name": "John Doe"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Google",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://google.com/logo.jpg"
+    }
+  },
+  "description": "A most wonderful article"
+}
+</script>
+
+
 # 金魚鉢
 
 | サイズ | 寸法                     | 重さ  | 水容量 | 総重量 |
@@ -32,7 +70,7 @@
 - 不食（断食）→良食→美食のサイクルを1ヶ月の間、繰り返す。減量目標は5kg。
 
 月曜日
-: 不食（断食）  
+: 不食（断食）。  
   この日は朝昼晩、何も食べません。原則、水だけを飲んで過ごします。
 
 火曜日～金曜日
@@ -241,3 +279,20 @@
 }
 </script>
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
