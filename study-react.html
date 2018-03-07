@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>React学習 事始め</title>
+  <title>React蟄ｦ鄙・莠句ｧ九ａ</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -89,27 +89,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>npm 4.0.5</li>
 </ul>
 <h2>はじめに</h2>
-<p>React Webの見た目を作ることに特化したJavaScriptライブラリ。 Viewに関連する機能だけを持つ。</p>
-<p>Flux 見た目とデータの分離のアーキテクチャ。</p>
+<dl>
+<dt>React</dt>
+<dd>Webの見た目を作ることに特化したJavaScriptライブラリ。 Viewに関連する機能だけを持つ。
+</dd>
+<dt>Flux</dt>
+<dd><p>見た目とデータの分離のアーキテクチャ。 次のように、データの流れを一方向だけに流れるようにして、不整合が発生しにくい仕組みになっている。</p>
+<ol>
+<li>View はユーザーの入力から Action を作成する。</li>
+<li>Action を Dispatch することで Store にデータを保存する。</li>
+<li>Store を View に反映する。</li>
+</ol>
+<!-- -->
+<pre><code>              ┌─── Action ←─┐
+              ↓                  ｜
+Action → Dispatcher → Store → View</code></pre>
+</dd>
+</dl>
 <p>Redux Fluxアーキテクチャの実装。</p>
-<ul>
-<li>View</li>
-<li>Action</li>
-<li>Store</li>
-<li>Dispatcher</li>
-<li>Reducer 状態を変化させるための関数です。Actionの内容によって既存の状態を変化させます。</li>
-</ul>
+<!--
+- View
+- Action
+- Store
+- Dispatcher
+- Reducer
+    状態を変化させるための関数です。Actionの内容によって既存の状態を変化させます。
+-->
 <p>オブジェクトや配列の操作を行う場合は、基本的には参照渡しでなく値のコピーを渡します。 参照を切る方法としてES2015で標準化された<code>Object.assign()</code>メソッドを使ってもよいです。</p>
 <p>Spread Operatorでも可。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">return</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">  ...<span class="at">state</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="dt">status</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="op">};</span></a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="cf">return</span> <span class="va">Object</span>.<span class="at">assign</span>(<span class="op">{},</span> state<span class="op">,</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="dt">state</span><span class="op">:</span> <span class="dv">1</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="cf">return</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">  ...<span class="at">state</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">  <span class="dt">status</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="op">};</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="cf">return</span> <span class="va">Object</span>.<span class="at">assign</span>(<span class="op">{},</span> state<span class="op">,</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="dt">state</span><span class="op">:</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
 <h2>環境構築</h2>
-<p>node.jsのインストール create-react-appのインストール 簡単なアプリケーションの作成</p>
+<h3>node.jsのインストール</h3>
+<p>割愛します。</p>
+<p>Windowsユーザーであれば nodist を入れればよいかと。</p>
 <h3>create-react-app のインストール</h3>
 <p>作業フォルダを作りその中にインストールします。</p>
 <pre><code>&gt; mkdir react1st &amp; cd react1st
@@ -150,12 +168,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <h3>Hello, World! の表示</h3>
 <p><code>src\App.js</code>ファイルを以下のように編集します。</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="op">&lt;</span>h1 className<span class="op">=</span><span class="st">&quot;App-title&quot;</span><span class="op">&gt;</span>Welcome to React&lt;/h1<span class="op">&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="op">&lt;</span>h1 className<span class="op">=</span><span class="st">&quot;App-title&quot;</span><span class="op">&gt;</span>Welcome to React&lt;/h1<span class="op">&gt;</span></a></code></pre></div>
 <p>↓</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="op">&lt;</span>h1 className<span class="op">=</span><span class="st">&quot;App-title&quot;</span><span class="op">&gt;</span>Hello<span class="op">,</span> World<span class="op">!</span>&lt;/h1<span class="op">&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="op">&lt;</span>h1 className<span class="op">=</span><span class="st">&quot;App-title&quot;</span><span class="op">&gt;</span>Hello<span class="op">,</span> World<span class="op">!</span>&lt;/h1<span class="op">&gt;</span></a></code></pre></div>
 <p>保存に伴い、ブラウザが自動でリロードされ、修正内容が反映されます。</p>
 <h2>JSX</h2>
-<p>JSX JavaScriptを拡張した言語。 ReactとJSXを一緒に使うことが推奨されています（必須ではない）。</p>
+<dl>
+<dt>JSX</dt>
+<dd>JavaScriptを拡張した言語。 ReactとJSXを一緒に使うことが推奨されています（必須ではない）。
+</dd>
+</dl>
 <ul>
 <li>JSXでは、JavaScriptのなかにHTMLのタグや属性を（ほぼ）同じように書くことができる。</li>
 <li>最終的にトランスパイラでJavaScriptに変換して使う。 このとき、JSXに書いたタグは、<code>React.createElement</code>関数の呼び出しに変換される。</li>
@@ -232,70 +254,74 @@ ES ModulesやNode.jsで利用されているCommonJSのモジュール方式で�
 <p>Webpackのバージョンを表示</p>
 <pre><code>.\node_modules\.bin\webpack --version
 4.1.0</code></pre>
-<p>Hello.js</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">'react'</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb22-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="co">// export default function で</span></a>
-<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="co">// Hello コンポーネントを持っていることを外部に知らせる</span></a>
-<a class="sourceLine" id="cb22-5" data-line-number="5"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">Hello</span>() <span class="op">{</span></a>
-<a class="sourceLine" id="cb22-6" data-line-number="6">  <span class="cf">return</span> <span class="op">&lt;</span>h1<span class="op">&gt;</span>Hello<span class="op">!</span> webpack&lt;/h1<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb22-7" data-line-number="7"><span class="op">}</span></a></code></pre></div>
-<p>entry.js</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">'react'</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="im">import</span> ReactDOM <span class="im">from</span> <span class="st">'react-dom'</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="im">import</span> Hello <span class="im">from</span> <span class="st">'./Hello'</span><span class="op">;</span>    <span class="co">// ← Hello.js の読み込み</span></a>
-<a class="sourceLine" id="cb23-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="va">ReactDOM</span>.<span class="at">render</span>(</a>
-<a class="sourceLine" id="cb23-6" data-line-number="6">  <span class="op">&lt;</span>Hello /<span class="op">&gt;,</span></a>
-<a class="sourceLine" id="cb23-7" data-line-number="7">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">'root'</span>)</a>
-<a class="sourceLine" id="cb23-8" data-line-number="8">)<span class="op">;</span></a></code></pre></div>
+<dl>
+<dt>Hello.js</dt>
+<dd><div class="sourceCode" id="cb23"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">'react'</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="co">// export default function で</span></a>
+<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="co">// Hello コンポーネントを持っていることを外部に知らせる</span></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">Hello</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb23-6" data-line-number="6">  <span class="cf">return</span> <span class="op">&lt;</span>h1<span class="op">&gt;</span>Hello<span class="op">!</span> webpack&lt;/h1<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb23-7" data-line-number="7"><span class="op">}</span></a></code></pre></div>
+</dd>
+<dt>entry.js</dt>
+<dd><div class="sourceCode" id="cb24"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">'react'</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="im">import</span> ReactDOM <span class="im">from</span> <span class="st">'react-dom'</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb24-3" data-line-number="3"><span class="im">import</span> Hello <span class="im">from</span> <span class="st">'./Hello'</span><span class="op">;</span>    <span class="co">// ← Hello.js の読み込み</span></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb24-5" data-line-number="5"><span class="va">ReactDOM</span>.<span class="at">render</span>(</a>
+<a class="sourceLine" id="cb24-6" data-line-number="6">  <span class="op">&lt;</span>Hello /<span class="op">&gt;,</span></a>
+<a class="sourceLine" id="cb24-7" data-line-number="7">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">'root'</span>)</a>
+<a class="sourceLine" id="cb24-8" data-line-number="8">)<span class="op">;</span></a></code></pre></div>
+</dd>
+</dl>
 <p>importのパスが絶対パスでも相対パスでもない場合、webpackはnpmモジュールから読み込みます。</p>
 <p>webpack.config.js</p>
 <p>webpackの設定ファイルは、JSON、XML、YAMLなどのフォーマットを記述できます。<br />
 フォーマットの判別は設定ファイルの拡張子で行います。</p>
 <p>JavaScriptであれば、Node.jsのモジュールとして扱うので、<code>module.exports</code>に代入しているオブジェクトが設定ファイルとして利用されます。</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb24-2" data-line-number="2">  <span class="co">// entryフィールド</span></a>
-<a class="sourceLine" id="cb24-3" data-line-number="3">  <span class="co">// 実行の起点となるファイルの指定</span></a>
-<a class="sourceLine" id="cb24-4" data-line-number="4">  <span class="dt">entry</span><span class="op">:</span> <span class="st">'./entry.js'</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb24-5" data-line-number="5">  </a>
-<a class="sourceLine" id="cb24-6" data-line-number="6">  <span class="co">// outputフィールド</span></a>
-<a class="sourceLine" id="cb24-7" data-line-number="7">  <span class="co">// 出力に関する設定</span></a>
-<a class="sourceLine" id="cb24-8" data-line-number="8">  <span class="dt">output</span><span class="op">:</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb24-9" data-line-number="9">    <span class="dt">filename</span><span class="op">:</span> <span class="st">'output.js'</span></a>
-<a class="sourceLine" id="cb24-10" data-line-number="10">  <span class="op">},</span></a>
-<a class="sourceLine" id="cb24-11" data-line-number="11">  </a>
-<a class="sourceLine" id="cb24-12" data-line-number="12">  <span class="dt">module</span><span class="op">:</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb24-13" data-line-number="13">    <span class="dt">rules</span><span class="op">:</span> [</a>
-<a class="sourceLine" id="cb24-14" data-line-number="14">      <span class="co">// babel-loader の設定</span></a>
-<a class="sourceLine" id="cb24-15" data-line-number="15">      <span class="co">// ファイルごとに適応するLoaderの設定を書く</span></a>
-<a class="sourceLine" id="cb24-16" data-line-number="16">      <span class="op">{</span></a>
-<a class="sourceLine" id="cb24-17" data-line-number="17">        <span class="dt">loader</span><span class="op">:</span> <span class="st">'babel-loader'</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb24-18" data-line-number="18">        <span class="dt">test</span><span class="op">:</span> <span class="ss">/</span><span class="sc">\.</span><span class="ss">js</span><span class="sc">$</span><span class="ss">/</span><span class="op">,</span></a>
-<a class="sourceLine" id="cb24-19" data-line-number="19">        <span class="dt">options</span><span class="op">:</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb24-20" data-line-number="20">          <span class="dt">presets</span><span class="op">:</span> [<span class="st">'react'</span>]</a>
-<a class="sourceLine" id="cb24-21" data-line-number="21">        <span class="op">}</span></a>
-<a class="sourceLine" id="cb24-22" data-line-number="22">      <span class="op">}</span></a>
-<a class="sourceLine" id="cb24-23" data-line-number="23">    ]</a>
-<a class="sourceLine" id="cb24-24" data-line-number="24">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb24-25" data-line-number="25"><span class="op">};</span></a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="va">module</span>.<span class="at">exports</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2">  <span class="co">// entryフィールド</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">  <span class="co">// 実行の起点となるファイルの指定</span></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4">  <span class="dt">entry</span><span class="op">:</span> <span class="st">'./entry.js'</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5">  </a>
+<a class="sourceLine" id="cb25-6" data-line-number="6">  <span class="co">// outputフィールド</span></a>
+<a class="sourceLine" id="cb25-7" data-line-number="7">  <span class="co">// 出力に関する設定</span></a>
+<a class="sourceLine" id="cb25-8" data-line-number="8">  <span class="dt">output</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb25-9" data-line-number="9">    <span class="dt">filename</span><span class="op">:</span> <span class="st">'output.js'</span></a>
+<a class="sourceLine" id="cb25-10" data-line-number="10">  <span class="op">},</span></a>
+<a class="sourceLine" id="cb25-11" data-line-number="11">  </a>
+<a class="sourceLine" id="cb25-12" data-line-number="12">  <span class="dt">module</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb25-13" data-line-number="13">    <span class="dt">rules</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb25-14" data-line-number="14">      <span class="co">// babel-loader の設定</span></a>
+<a class="sourceLine" id="cb25-15" data-line-number="15">      <span class="co">// ファイルごとに適応するLoaderの設定を書く</span></a>
+<a class="sourceLine" id="cb25-16" data-line-number="16">      <span class="op">{</span></a>
+<a class="sourceLine" id="cb25-17" data-line-number="17">        <span class="dt">loader</span><span class="op">:</span> <span class="st">'babel-loader'</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb25-18" data-line-number="18">        <span class="dt">test</span><span class="op">:</span> <span class="ss">/</span><span class="sc">\.</span><span class="ss">js</span><span class="sc">$</span><span class="ss">/</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb25-19" data-line-number="19">        <span class="dt">options</span><span class="op">:</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb25-20" data-line-number="20">          <span class="dt">presets</span><span class="op">:</span> [<span class="st">'react'</span>]</a>
+<a class="sourceLine" id="cb25-21" data-line-number="21">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb25-22" data-line-number="22">      <span class="op">}</span></a>
+<a class="sourceLine" id="cb25-23" data-line-number="23">    ]</a>
+<a class="sourceLine" id="cb25-24" data-line-number="24">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb25-25" data-line-number="25"><span class="op">};</span></a></code></pre></div>
 <p>webpackを実行</p>
 <p><code>dist\output.js</code>が出力されます。</p>
 <pre><code>&gt; .\node_modules\.bin\webpack --config webpack.config.js</code></pre>
 <p><code>dist\index.html</code>を作成します。</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
-<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;ja&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
-<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;X-UA-Compatible&quot;</span><span class="ot"> content=</span><span class="st">&quot;IE=edge&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb26-5" data-line-number="5"><span class="kw">&lt;title&gt;</span>webpack test<span class="kw">&lt;/title&gt;</span></a>
-<a class="sourceLine" id="cb26-6" data-line-number="6"><span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb26-7" data-line-number="7"><span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, initial-scale=1&quot;</span><span class="kw">&gt;</span></a>
-<a class="sourceLine" id="cb26-8" data-line-number="8"><span class="kw">&lt;/head&gt;</span></a>
-<a class="sourceLine" id="cb26-9" data-line-number="9"><span class="kw">&lt;body&gt;</span></a>
-<a class="sourceLine" id="cb26-10" data-line-number="10">  <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;root&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></a>
-<a class="sourceLine" id="cb26-11" data-line-number="11">  <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;./output.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
-<a class="sourceLine" id="cb26-12" data-line-number="12"><span class="kw">&lt;/body&gt;</span></a>
-<a class="sourceLine" id="cb26-13" data-line-number="13"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode html"><code class="sourceCode html"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;ja&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="kw">&lt;head&gt;</span></a>
+<a class="sourceLine" id="cb27-4" data-line-number="4"><span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;X-UA-Compatible&quot;</span><span class="ot"> content=</span><span class="st">&quot;IE=edge&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="kw">&lt;title&gt;</span>webpack test<span class="kw">&lt;/title&gt;</span></a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb27-7" data-line-number="7"><span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, initial-scale=1&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb27-8" data-line-number="8"><span class="kw">&lt;/head&gt;</span></a>
+<a class="sourceLine" id="cb27-9" data-line-number="9"><span class="kw">&lt;body&gt;</span></a>
+<a class="sourceLine" id="cb27-10" data-line-number="10">  <span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;root&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></a>
+<a class="sourceLine" id="cb27-11" data-line-number="11">  <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;./output.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></a>
+<a class="sourceLine" id="cb27-12" data-line-number="12"><span class="kw">&lt;/body&gt;</span></a>
+<a class="sourceLine" id="cb27-13" data-line-number="13"><span class="kw">&lt;/html&gt;</span></a></code></pre></div>
 <p>ブラウザで表示。</p>
 <p><code>output.js</code>の読み込みだけで表示されました。 動作に必要なスクリプト（<code>react.min.js</code>や<code>react-dom.min.js</code>）が、webpackによってすべて<code>output.js</code>に束ねられているからです。</p>
 <h2>Reactコンポーネント</h2>
@@ -303,18 +329,18 @@ ES ModulesやNode.jsで利用されているCommonJSのモジュール方式で�
 <h3>Reactコンポーネントの種類</h3>
 <h4>Functional Component</h4>
 <p>関数によって定義されるコンポーネント。</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">'react'</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb27-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="kw">const</span> Hello <span class="op">=</span> (props) <span class="op">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb27-4" data-line-number="4">  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、<span class="op">{</span><span class="va">props</span>.<span class="at">name</span><span class="op">}</span>さん&lt;/div<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb27-5" data-line-number="5"><span class="op">};</span></a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">'react'</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="kw">const</span> Hello <span class="op">=</span> (props) <span class="op">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、<span class="op">{</span><span class="va">props</span>.<span class="at">name</span><span class="op">}</span>さん&lt;/div<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="op">};</span></a></code></pre></div>
 <h4>Class Component</h4>
 <p>クラスによって定義されるコンポーネント。</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">class</span> Hello <span class="kw">extends</span> <span class="va">React</span>.<span class="at">Component</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb28-2" data-line-number="2">  <span class="at">render</span>() <span class="op">{</span></a>
-<a class="sourceLine" id="cb28-3" data-line-number="3">    <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、<span class="op">{</span><span class="kw">this</span>.<span class="va">props</span>.<span class="at">name</span><span class="op">}</span>さん&lt;/div<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb28-4" data-line-number="4">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb28-5" data-line-number="5"><span class="op">};</span></a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">class</span> Hello <span class="kw">extends</span> <span class="va">React</span>.<span class="at">Component</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">  <span class="at">render</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">    <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、<span class="op">{</span><span class="kw">this</span>.<span class="va">props</span>.<span class="at">name</span><span class="op">}</span>さん&lt;/div<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb29-4" data-line-number="4">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="op">};</span></a></code></pre></div>
 <h5>Functional Componentとの違い</h5>
 <ul>
 <li><code>React.Component</code>を明示的に継承している。</li>
@@ -323,18 +349,18 @@ ES ModulesやNode.jsで利用されているCommonJSのモジュール方式で�
 <li>ライフサイクルメソッドという特殊なメソッドが定義できる。</li>
 </ul>
 <h3>コンポーネントの再利用</h3>
-<div class="sourceCode" id="cb29"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">const</span> Hello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb29-2" data-line-number="2">  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、坂本竜馬さん&lt;/div<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="op">};</span></a>
-<a class="sourceLine" id="cb29-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="va">ReactDOM</span>.<span class="at">render</span>(</a>
-<a class="sourceLine" id="cb29-6" data-line-number="6">  <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb29-7" data-line-number="7">    <span class="op">&lt;</span>Hello /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb29-8" data-line-number="8">    <span class="op">&lt;</span>Hello /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb29-9" data-line-number="9">    <span class="op">&lt;</span>Hello /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb29-10" data-line-number="10">  &lt;/div<span class="op">&gt;,</span></a>
-<a class="sourceLine" id="cb29-11" data-line-number="11">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;root&quot;</span>)</a>
-<a class="sourceLine" id="cb29-12" data-line-number="12">)<span class="op">;</span></a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">const</span> Hello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、坂本竜馬さん&lt;/div<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="op">};</span></a>
+<a class="sourceLine" id="cb30-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb30-5" data-line-number="5"><span class="va">ReactDOM</span>.<span class="at">render</span>(</a>
+<a class="sourceLine" id="cb30-6" data-line-number="6">  <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb30-7" data-line-number="7">    <span class="op">&lt;</span>Hello /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb30-8" data-line-number="8">    <span class="op">&lt;</span>Hello /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb30-9" data-line-number="9">    <span class="op">&lt;</span>Hello /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb30-10" data-line-number="10">  &lt;/div<span class="op">&gt;,</span></a>
+<a class="sourceLine" id="cb30-11" data-line-number="11">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;root&quot;</span>)</a>
+<a class="sourceLine" id="cb30-12" data-line-number="12">)<span class="op">;</span></a></code></pre></div>
 <dl>
 <dt>Reactコンポーネント</dt>
 <dd>設計図のようなもの。 オブジェクト指向でいえば〝クラス〟にあたる。
@@ -343,94 +369,392 @@ ES ModulesやNode.jsで利用されているCommonJSのモジュール方式で�
 <dd>設計図（Reactコンポーネント）を元に作られた実体のこと。 オブジェクト指向でいえば〝インスタンス〟にあたる。
 </dd>
 </dl>
-<div class="sourceCode" id="cb30"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="co">// こちらはReactコンポーネント</span></a>
-<a class="sourceLine" id="cb30-2" data-line-number="2"><span class="kw">const</span> Hello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb30-3" data-line-number="3">  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、坂本竜馬さん&lt;/div<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb30-4" data-line-number="4"><span class="op">};</span></a>
-<a class="sourceLine" id="cb30-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb30-6" data-line-number="6"><span class="va">ReactDOM</span>.<span class="at">render</span>(</a>
-<a class="sourceLine" id="cb30-7" data-line-number="7">  <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb30-8" data-line-number="8">    以下のHello3つはどれも React エレメント</a>
-<a class="sourceLine" id="cb30-9" data-line-number="9">    <span class="op">&lt;</span>Hello /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb30-10" data-line-number="10">    <span class="op">&lt;</span>Hello /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb30-11" data-line-number="11">    <span class="op">&lt;</span>Hello /<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb30-12" data-line-number="12">  &lt;/div<span class="op">&gt;,</span></a>
-<a class="sourceLine" id="cb30-13" data-line-number="13">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;root&quot;</span>)</a>
-<a class="sourceLine" id="cb30-14" data-line-number="14">)<span class="op">;</span></a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="co">// こちらはReactコンポーネント</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="kw">const</span> Hello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、坂本竜馬さん&lt;/div<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="op">};</span></a>
+<a class="sourceLine" id="cb31-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb31-6" data-line-number="6"><span class="va">ReactDOM</span>.<span class="at">render</span>(</a>
+<a class="sourceLine" id="cb31-7" data-line-number="7">  <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb31-8" data-line-number="8">    以下のHello3つはどれも React エレメント</a>
+<a class="sourceLine" id="cb31-9" data-line-number="9">    <span class="op">&lt;</span>Hello /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb31-10" data-line-number="10">    <span class="op">&lt;</span>Hello /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb31-11" data-line-number="11">    <span class="op">&lt;</span>Hello /<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb31-12" data-line-number="12">  &lt;/div<span class="op">&gt;,</span></a>
+<a class="sourceLine" id="cb31-13" data-line-number="13">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;root&quot;</span>)</a>
+<a class="sourceLine" id="cb31-14" data-line-number="14">)<span class="op">;</span></a></code></pre></div>
 <h3>Fragmentコンポーネント</h3>
 <p>Reactコンポーネントは単一の親からなる要素しか表現できません。 複数の要素をラップする要素を使ってもよいのですが、これではもともと表現したかったHTML構造にならないことがあります。</p>
 <p>React.Fragmentコンポーネントを使うとこの制約をクリアすることができます。</p>
 <p>↓ダメな例</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">const</span> Hello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb31-2" data-line-number="2">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb31-3" data-line-number="3">    <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは&lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb31-4" data-line-number="4">    <span class="op">&lt;</span>div<span class="op">&gt;</span>坂本竜馬さん&lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb31-5" data-line-number="5">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb31-6" data-line-number="6"><span class="op">};</span></a></code></pre></div>
-<p>↓こうする</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="kw">const</span> Hello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="op">{</span></a>
 <a class="sourceLine" id="cb32-2" data-line-number="2">  <span class="cf">return</span> (</a>
-<a class="sourceLine" id="cb32-3" data-line-number="3">    <span class="op">&lt;</span><span class="va">React</span>.<span class="at">Fragment</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb32-4" data-line-number="4">      <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは&lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb32-5" data-line-number="5">      <span class="op">&lt;</span>div<span class="op">&gt;</span>坂本竜馬さん&lt;/div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb32-6" data-line-number="6">    &lt;/<span class="va">React</span>.<span class="at">Fragment</span><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb32-7" data-line-number="7">  )<span class="op">;</span></a>
-<a class="sourceLine" id="cb32-8" data-line-number="8"><span class="op">};</span></a></code></pre></div>
+<a class="sourceLine" id="cb32-3" data-line-number="3">    <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは&lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb32-4" data-line-number="4">    <span class="op">&lt;</span>div<span class="op">&gt;</span>坂本竜馬さん&lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb32-5" data-line-number="5">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb32-6" data-line-number="6"><span class="op">};</span></a></code></pre></div>
+<p>↓ラップして対処する方法</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">const</span> Hello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb33-3" data-line-number="3">    <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb33-4" data-line-number="4">      <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは&lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb33-5" data-line-number="5">      <span class="op">&lt;</span>div<span class="op">&gt;</span>坂本竜馬さん&lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb33-6" data-line-number="6">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb33-7" data-line-number="7">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb33-8" data-line-number="8"><span class="op">};</span></a></code></pre></div>
+<p>↓こうする</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">const</span> Hello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb34-3" data-line-number="3">    <span class="op">&lt;</span><span class="va">React</span>.<span class="at">Fragment</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4">      <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは&lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb34-5" data-line-number="5">      <span class="op">&lt;</span>div<span class="op">&gt;</span>坂本竜馬さん&lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb34-6" data-line-number="6">    &lt;/<span class="va">React</span>.<span class="at">Fragment</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb34-7" data-line-number="7">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb34-8" data-line-number="8"><span class="op">};</span></a></code></pre></div>
 <h3>データの受け渡し（props）</h3>
-<div class="sourceCode" id="cb33"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">const</span> Hello <span class="op">=</span> (props) <span class="op">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb33-2" data-line-number="2">  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、<span class="op">{</span><span class="va">props</span>.<span class="at">name</span><span class="op">}</span>さん&lt;/div<span class="op">&gt;;</span></a>
-<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="op">};</span></a>
-<a class="sourceLine" id="cb33-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb33-5" data-line-number="5"><span class="va">ReactDOM</span>.<span class="at">render</span>(</a>
-<a class="sourceLine" id="cb33-6" data-line-number="6">  <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb33-7" data-line-number="7">    <span class="op">&lt;</span>Hello name<span class="op">=</span><span class="st">&quot;A&quot;</span> /&gt;</a>
-<a class="sourceLine" id="cb33-8" data-line-number="8">    <span class="op">&lt;</span>Hello name<span class="op">=</span><span class="st">&quot;B&quot;</span> /&gt;</a>
-<a class="sourceLine" id="cb33-9" data-line-number="9">    <span class="op">&lt;</span>Hello name<span class="op">=</span><span class="st">&quot;C&quot;</span> /&gt;</a>
-<a class="sourceLine" id="cb33-10" data-line-number="10">  &lt;/div<span class="op">&gt;,</span></a>
-<a class="sourceLine" id="cb33-11" data-line-number="11">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;root&quot;</span>)</a>
-<a class="sourceLine" id="cb33-12" data-line-number="12">)<span class="op">;</span></a></code></pre></div>
-<p>Helloの関数の引数に<code>props</code>を追加します。引数の名前はなんでもいいですが、<code>props</code>にするのが一般的。</p>
-<p><code>props</code>の引数にはコンポーネントを使う側で指定した内容が入ります。</p>
-<p>上記でいえば、<code>&lt;Hello name=&quot;A&quot; /&gt;</code>として使っているので、<code>props.name</code>というプロパティを持ち、その値は「A」となります。同様に<code>&lt;Hello name=&quot;B&quot; /&gt;</code>であれば、<code>props.name</code>の値は「B」になります。</p>
-<p><code>props</code>には文字列、数値、配列、オブジェクト、関数など任意の値を指定できます。 渡す値は<code>{}</code>で囲みます。</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co">// 文字列</span></a>
-<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="op">&lt;</span>Component stringValue<span class="op">={</span> <span class="st">&quot;坂本竜馬&quot;</span> <span class="op">}</span> /&gt;</a>
-<a class="sourceLine" id="cb34-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="co">// 数値</span></a>
-<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="op">&lt;</span>Component numberValue<span class="op">={</span><span class="dv">42</span><span class="op">}</span> /&gt;</a>
-<a class="sourceLine" id="cb34-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb34-7" data-line-number="7"><span class="co">// 真偽値</span></a>
-<a class="sourceLine" id="cb34-8" data-line-number="8"><span class="op">&lt;</span>Component boolValue<span class="op">={</span><span class="kw">true</span><span class="op">}</span> /&gt;</a>
-<a class="sourceLine" id="cb34-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb34-10" data-line-number="10"><span class="co">// 配列</span></a>
-<a class="sourceLine" id="cb34-11" data-line-number="11"><span class="op">&lt;</span>Component arrayValue<span class="op">={</span>[<span class="st">&quot;Aさん&quot;</span><span class="op">,</span> <span class="st">&quot;Bさん&quot;</span><span class="op">,</span> <span class="st">&quot;Cさん&quot;</span>]<span class="op">}</span> /&gt;</a>
-<a class="sourceLine" id="cb34-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb34-13" data-line-number="13"><span class="co">// オブジェクト</span></a>
-<a class="sourceLine" id="cb34-14" data-line-number="14"><span class="op">&lt;</span>Component objectValue<span class="op">={{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Aさん&quot;</span><span class="op">,</span> <span class="dt">birthDay</span><span class="op">:</span> <span class="st">&quot;1836/01/03&quot;</span><span class="op">}}</span> /&gt;</a>
-<a class="sourceLine" id="cb34-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb34-16" data-line-number="16"><span class="co">// 関数</span></a>
-<a class="sourceLine" id="cb34-17" data-line-number="17"><span class="op">&lt;</span>Component funcValue<span class="op">={</span>(name) <span class="op">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(name)<span class="op">;}</span> /&gt;</a>
-<a class="sourceLine" id="cb34-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb34-19" data-line-number="19"><span class="co">// 変数</span></a>
-<a class="sourceLine" id="cb34-20" data-line-number="20"><span class="kw">const</span> name <span class="op">=</span> <span class="st">&quot;Aさん&quot;</span><span class="op">;</span></a>
-<a class="sourceLine" id="cb34-21" data-line-number="21"><span class="op">&lt;</span>Component value<span class="op">={</span>name<span class="op">}</span> /&gt;</a>
-<a class="sourceLine" id="cb34-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb34-23" data-line-number="23"><span class="co">// 複数の値も渡せます</span></a>
-<a class="sourceLine" id="cb34-24" data-line-number="24"><span class="op">&lt;</span>Component name<span class="op">={</span> <span class="st">&quot;Aさん&quot;</span> <span class="op">}</span> birthDay<span class="op">={</span> <span class="kw">new</span> <span class="at">Date</span>(<span class="dv">1836</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">3</span>) <span class="op">}</span> /&gt;</a></code></pre></div>
-<p><code>props.children</code></p>
-<p>Reactコンポーネントの子要素が渡されるプロパティです。</p>
-<p>次の場合、<code>props.children</code>には「坂本竜馬」が渡されます。</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">const</span> Hello <span class="op">=</span> (props) <span class="op">=&gt;</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2">  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、<span class="op">{</span><span class="va">props</span>.<span class="at">children</span><span class="op">}</span>さん&lt;/div<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2">  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、<span class="op">{</span><span class="va">props</span>.<span class="at">name</span><span class="op">}</span>さん&lt;/div<span class="op">&gt;;</span></a>
 <a class="sourceLine" id="cb35-3" data-line-number="3"><span class="op">};</span></a>
 <a class="sourceLine" id="cb35-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb35-5" data-line-number="5"><span class="va">ReactDOM</span>.<span class="at">render</span>(</a>
 <a class="sourceLine" id="cb35-6" data-line-number="6">  <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb35-7" data-line-number="7">    <span class="op">&lt;</span>Hello<span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb35-8" data-line-number="8">      坂本竜馬      ←Helloコンポーネントの子要素が渡される</a>
-<a class="sourceLine" id="cb35-9" data-line-number="9">    &lt;/Hello<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb35-7" data-line-number="7">    <span class="op">&lt;</span>Hello name<span class="op">=</span><span class="st">&quot;A&quot;</span> /&gt;</a>
+<a class="sourceLine" id="cb35-8" data-line-number="8">    <span class="op">&lt;</span>Hello name<span class="op">=</span><span class="st">&quot;B&quot;</span> /&gt;</a>
+<a class="sourceLine" id="cb35-9" data-line-number="9">    <span class="op">&lt;</span>Hello name<span class="op">=</span><span class="st">&quot;C&quot;</span> /&gt;</a>
 <a class="sourceLine" id="cb35-10" data-line-number="10">  &lt;/div<span class="op">&gt;,</span></a>
 <a class="sourceLine" id="cb35-11" data-line-number="11">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;root&quot;</span>)</a>
 <a class="sourceLine" id="cb35-12" data-line-number="12">)<span class="op">;</span></a></code></pre></div>
+<p>Helloの関数の引数に<code>props</code>を追加します。引数の名前はなんでもいいですが、<code>props</code>にするのが一般的。</p>
+<p><code>props</code>の引数にはコンポーネントを使う側で指定した内容が入ります。</p>
+<p>上記でいえば、<code>&lt;Hello name=&quot;A&quot; /&gt;</code>として使っているので、<code>props</code>には<code>name</code>というプロパティが追加され、「A」が格納されます。同様に<code>&lt;Hello name=&quot;B&quot; /&gt;</code>であれば、<code>props.name</code>の値は「B」になります。</p>
+<p><code>props</code>には文字列、数値、配列、オブジェクト、関数など任意の値を指定できます。 渡す値は<code>{}</code>で囲みます。</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="co">// 文字列</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="op">&lt;</span>Component stringValue<span class="op">={</span> <span class="st">&quot;坂本竜馬&quot;</span> <span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4"><span class="co">// 数値</span></a>
+<a class="sourceLine" id="cb36-5" data-line-number="5"><span class="op">&lt;</span>Component numberValue<span class="op">={</span><span class="dv">42</span><span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb36-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb36-7" data-line-number="7"><span class="co">// 真偽値</span></a>
+<a class="sourceLine" id="cb36-8" data-line-number="8"><span class="op">&lt;</span>Component boolValue<span class="op">={</span><span class="kw">true</span><span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb36-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb36-10" data-line-number="10"><span class="co">// 配列</span></a>
+<a class="sourceLine" id="cb36-11" data-line-number="11"><span class="op">&lt;</span>Component arrayValue<span class="op">={</span>[<span class="st">&quot;Aさん&quot;</span><span class="op">,</span> <span class="st">&quot;Bさん&quot;</span><span class="op">,</span> <span class="st">&quot;Cさん&quot;</span>]<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb36-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb36-13" data-line-number="13"><span class="co">// オブジェクト</span></a>
+<a class="sourceLine" id="cb36-14" data-line-number="14"><span class="op">&lt;</span>Component objectValue<span class="op">={{</span><span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Aさん&quot;</span><span class="op">,</span> <span class="dt">birthDay</span><span class="op">:</span> <span class="st">&quot;1836/01/03&quot;</span><span class="op">}}</span> /&gt;</a>
+<a class="sourceLine" id="cb36-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb36-16" data-line-number="16"><span class="co">// 関数</span></a>
+<a class="sourceLine" id="cb36-17" data-line-number="17"><span class="op">&lt;</span>Component funcValue<span class="op">={</span>(name) <span class="op">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(name)<span class="op">;}</span> /&gt;</a>
+<a class="sourceLine" id="cb36-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb36-19" data-line-number="19"><span class="co">// 変数</span></a>
+<a class="sourceLine" id="cb36-20" data-line-number="20"><span class="kw">const</span> name <span class="op">=</span> <span class="st">&quot;Aさん&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb36-21" data-line-number="21"><span class="op">&lt;</span>Component value<span class="op">={</span>name<span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb36-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb36-23" data-line-number="23"><span class="co">// 複数の値も渡せます</span></a>
+<a class="sourceLine" id="cb36-24" data-line-number="24"><span class="op">&lt;</span>Component name<span class="op">={</span> <span class="st">&quot;Aさん&quot;</span> <span class="op">}</span> birthDay<span class="op">={</span> <span class="kw">new</span> <span class="at">Date</span>(<span class="dv">1836</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">3</span>) <span class="op">}</span> /&gt;</a></code></pre></div>
+<p><code>props.children</code></p>
+<p>Reactコンポーネントの子要素が渡されるプロパティです。</p>
+<p>次の場合、<code>props.children</code>には「坂本竜馬」が渡されます。</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">const</span> Hello <span class="op">=</span> (props) <span class="op">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、<span class="op">{</span><span class="va">props</span>.<span class="at">children</span><span class="op">}</span>さん&lt;/div<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb37-3" data-line-number="3"><span class="op">};</span></a>
+<a class="sourceLine" id="cb37-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb37-5" data-line-number="5"><span class="va">ReactDOM</span>.<span class="at">render</span>(</a>
+<a class="sourceLine" id="cb37-6" data-line-number="6">  <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb37-7" data-line-number="7">    <span class="op">&lt;</span>Hello<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb37-8" data-line-number="8">      坂本竜馬      ←Helloコンポーネントの子要素が渡される</a>
+<a class="sourceLine" id="cb37-9" data-line-number="9">    &lt;/Hello<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb37-10" data-line-number="10">  &lt;/div<span class="op">&gt;,</span></a>
+<a class="sourceLine" id="cb37-11" data-line-number="11">  <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&quot;root&quot;</span>)</a>
+<a class="sourceLine" id="cb37-12" data-line-number="12">)<span class="op">;</span></a></code></pre></div>
+<h3>propsの型チェック</h3>
+<p>コンポーネントがどのようなpropsを受け取るのか記述することができます。 インターフェイスに合わない値が渡されたときに、エディタや実行時に警告を受け取ることができます。</p>
+<p>別パッケージになっているので追加でインストールします。</p>
+<pre><code>&gt; npm install --save prop-types</code></pre>
+<p>ReactコンポーネントのpropTypesプロパティに型情報を記述します。 Functional Component/Class Componentのどちらでも記述できます。</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="im">import</span> PropTypes <span class="im">from</span> <span class="st">'prop-types'</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb39-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb39-3" data-line-number="3"><span class="kw">const</span> Hello <span class="op">=</span> (props) <span class="op">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb39-4" data-line-number="4">  <span class="cf">return</span> <span class="op">&lt;</span>div<span class="op">&gt;</span>こんにちは、<span class="op">{</span><span class="va">props</span>.<span class="at">name</span><span class="op">}</span>さん&lt;/div<span class="op">&gt;;</span></a>
+<a class="sourceLine" id="cb39-5" data-line-number="5"><span class="op">};</span></a>
+<a class="sourceLine" id="cb39-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb39-7" data-line-number="7"><span class="co">// ここに型情報を書きます</span></a>
+<a class="sourceLine" id="cb39-8" data-line-number="8"><span class="co">// ↓</span></a>
+<a class="sourceLine" id="cb39-9" data-line-number="9"><span class="va">Hello</span>.<span class="at">propTypes</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb39-10" data-line-number="10">  <span class="dt">name</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">string</span>    <span class="co">// nameの型はstring</span></a>
+<a class="sourceLine" id="cb39-11" data-line-number="11"><span class="op">}</span></a></code></pre></div>
+<p>propTypesの種類</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="im">import</span> React <span class="im">from</span> <span class="st">'react'</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="im">import</span> PropTypes <span class="im">from</span> <span class="st">'prop-types'</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb40-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb40-4" data-line-number="4"><span class="kw">class</span> SomeComponent <span class="kw">extends</span> <span class="va">React</span>.<span class="at">Component</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb40-5" data-line-number="5"><span class="op">}</span></a>
+<a class="sourceLine" id="cb40-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb40-7" data-line-number="7"><span class="va">SomeComponent</span>.<span class="at">propTypes</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb40-8" data-line-number="8">  <span class="dt">someString</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">string</span><span class="op">,</span> <span class="co">// 文字列</span></a>
+<a class="sourceLine" id="cb40-9" data-line-number="9">  <span class="dt">someNumber</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">number</span><span class="op">,</span> <span class="co">// 数値</span></a>
+<a class="sourceLine" id="cb40-10" data-line-number="10">  <span class="dt">someBool</span><span class="op">:</span>   <span class="va">PropTypes</span>.<span class="at">bool</span><span class="op">,</span>   <span class="co">// 真偽値</span></a>
+<a class="sourceLine" id="cb40-11" data-line-number="11">  <span class="dt">someArray</span><span class="op">:</span>  <span class="va">PropTypes</span>.<span class="at">array</span><span class="op">,</span>  <span class="co">// 配列</span></a>
+<a class="sourceLine" id="cb40-12" data-line-number="12">  <span class="dt">someObject</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">object</span><span class="op">,</span> <span class="co">// オブジェクト</span></a>
+<a class="sourceLine" id="cb40-13" data-line-number="13">  <span class="dt">someFunc</span><span class="op">:</span>   <span class="va">PropTypes</span>.<span class="at">func</span><span class="op">,</span>   <span class="co">// 関数</span></a>
+<a class="sourceLine" id="cb40-14" data-line-number="14">  <span class="dt">someSymbol</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">symbol</span><span class="op">,</span> <span class="co">// シンボル</span></a>
+<a class="sourceLine" id="cb40-15" data-line-number="15">  </a>
+<a class="sourceLine" id="cb40-16" data-line-number="16">  <span class="co">// 配列の中身を指定</span></a>
+<a class="sourceLine" id="cb40-17" data-line-number="17">  <span class="dt">someArray2</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">arayOf</span>(<span class="va">PropTypes</span>.<span class="at">number</span>)<span class="op">,</span></a>
+<a class="sourceLine" id="cb40-18" data-line-number="18">  </a>
+<a class="sourceLine" id="cb40-19" data-line-number="19">  <span class="co">// オブジェクトの中身を指定</span></a>
+<a class="sourceLine" id="cb40-20" data-line-number="20">  <span class="dt">someObj2</span><span class="op">:</span>   <span class="va">PropTypes</span>.<span class="at">objectOf</span>(<span class="va">PropTypes</span>.<span class="at">number</span>)<span class="op">,</span></a>
+<a class="sourceLine" id="cb40-21" data-line-number="21">  </a>
+<a class="sourceLine" id="cb40-22" data-line-number="22">  <span class="co">// オブジェクトの個別のプロパティの中身を指定</span></a>
+<a class="sourceLine" id="cb40-23" data-line-number="23">  <span class="dt">someObj3</span><span class="op">:</span>   <span class="va">PropTypes</span>.<span class="at">shape</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb40-24" data-line-number="24">    <span class="dt">name</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">string</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb40-25" data-line-number="25">    <span class="dt">age</span><span class="op">:</span>  <span class="va">PropTypes</span>.<span class="at">number</span></a>
+<a class="sourceLine" id="cb40-26" data-line-number="26">  <span class="op">}</span>)<span class="op">,</span></a>
+<a class="sourceLine" id="cb40-27" data-line-number="27">  </a>
+<a class="sourceLine" id="cb40-28" data-line-number="28">  <span class="co">// Reactエレメント</span></a>
+<a class="sourceLine" id="cb40-29" data-line-number="29">  <span class="dt">someElement</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">element</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb40-30" data-line-number="30">  </a>
+<a class="sourceLine" id="cb40-31" data-line-number="31">  <span class="co">// コンポーネントの子要素となるもの</span></a>
+<a class="sourceLine" id="cb40-32" data-line-number="32">  <span class="co">// （string, number, element, array ならOK）</span></a>
+<a class="sourceLine" id="cb40-33" data-line-number="33">  <span class="dt">someNode</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">node</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb40-34" data-line-number="34">  </a>
+<a class="sourceLine" id="cb40-35" data-line-number="35">  <span class="co">// Helloコンポーネントのインスタンスを指定</span></a>
+<a class="sourceLine" id="cb40-36" data-line-number="36">  <span class="dt">helloElement</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">instanceOf</span>(Hello)<span class="op">,</span></a>
+<a class="sourceLine" id="cb40-37" data-line-number="37">  </a>
+<a class="sourceLine" id="cb40-38" data-line-number="38">  <span class="co">// 指定した値のいずれかであること</span></a>
+<a class="sourceLine" id="cb40-39" data-line-number="39">  <span class="dt">dayOfTheWeek</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">oneOf</span>([<span class="st">&quot;月&quot;</span><span class="op">,</span> <span class="st">&quot;火&quot;</span><span class="op">,</span> <span class="st">&quot;水&quot;</span>])<span class="op">,</span></a>
+<a class="sourceLine" id="cb40-40" data-line-number="40">  </a>
+<a class="sourceLine" id="cb40-41" data-line-number="41">  <span class="co">// 配列で指定した型のいずれかであること</span></a>
+<a class="sourceLine" id="cb40-42" data-line-number="42">  <span class="dt">union</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">oneOfType</span>([</a>
+<a class="sourceLine" id="cb40-43" data-line-number="43">    <span class="va">PropTypes</span>.<span class="at">string</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb40-44" data-line-number="44">    <span class="va">PropTypes</span>.<span class="at">number</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb40-45" data-line-number="45">    <span class="va">PropTypes</span>.<span class="at">instanceOf</span>(Hello)<span class="op">,</span></a>
+<a class="sourceLine" id="cb40-46" data-line-number="46">  ])<span class="op">,</span></a>
+<a class="sourceLine" id="cb40-47" data-line-number="47">  </a>
+<a class="sourceLine" id="cb40-48" data-line-number="48">  <span class="co">// 何でもオーケー</span></a>
+<a class="sourceLine" id="cb40-49" data-line-number="49">  <span class="dt">any</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="at">any</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb40-50" data-line-number="50">  </a>
+<a class="sourceLine" id="cb40-51" data-line-number="51">  <span class="co">// 必須項目</span></a>
+<a class="sourceLine" id="cb40-52" data-line-number="52">  <span class="dt">requiredString</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="va">string</span>.<span class="at">isRequired</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb40-53" data-line-number="53">  </a>
+<a class="sourceLine" id="cb40-54" data-line-number="54">  <span class="co">// どんな型でもいいから何かしら指定</span></a>
+<a class="sourceLine" id="cb40-55" data-line-number="55">  <span class="dt">requiredAny</span><span class="op">:</span> <span class="va">PropTypes</span>.<span class="va">any</span>.<span class="at">isRequired</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb40-56" data-line-number="56"><span class="op">};</span></a>
+<a class="sourceLine" id="cb40-57" data-line-number="57"></a>
+<a class="sourceLine" id="cb40-58" data-line-number="58"><span class="co">// propsの値が undefined だったときの規定値を指定する</span></a>
+<a class="sourceLine" id="cb40-59" data-line-number="59"><span class="va">SomeComponent</span>.<span class="at">defaultProps</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb40-60" data-line-number="60">  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;坂本竜馬&quot;</span>    <span class="co">// name が undefined のときに設定する内容</span></a>
+<a class="sourceLine" id="cb40-61" data-line-number="61"><span class="op">};</span></a></code></pre></div>
+<dl>
+<dt><code>Array.map</code>メソッド</dt>
+<dd><p>配列の各要素について、引数に与えられた関数の処理に従って処理をし、新たな配列を返すメソッド。</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co">// tasksの各要素をTodoItemコンポーネントにして返す</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"><span class="kw">const</span> list <span class="op">=</span> <span class="kw">this</span>.<span class="va">props</span>.<span class="va">tasks</span>.<span class="at">map</span>(todo <span class="op">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb41-3" data-line-number="3">  <span class="cf">return</span> <span class="op">&lt;</span>TodoItem <span class="op">{</span>...<span class="at">todo</span><span class="op">}</span> key<span class="op">={</span><span class="va">todo</span>.<span class="at">id</span><span class="op">}</span> /&gt;<span class="op">;</span></a>
+<a class="sourceLine" id="cb41-4" data-line-number="4"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+</dd>
+</dl>
+<h3>stateの初期値</h3>
+<p><code>constructor</code>で設定します。</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="at">constructor</span>(props) <span class="op">{</span></a>
+<a class="sourceLine" id="cb42-2" data-line-number="2">  <span class="kw">super</span>(props)<span class="op">;</span></a>
+<a class="sourceLine" id="cb42-3" data-line-number="3">  <span class="kw">this</span>.<span class="at">state</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb42-4" data-line-number="4">    <span class="dt">tasks</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb42-5" data-line-number="5">      <span class="op">{</span> <span class="dt">title</span><span class="op">:</span> <span class="st">&quot;Todo-1&quot;</span><span class="op">,</span> <span class="dt">id</span><span class="op">:</span> <span class="dv">0</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb42-6" data-line-number="6">      <span class="op">{</span> <span class="dt">title</span><span class="op">:</span> <span class="st">&quot;Todo-2&quot;</span><span class="op">,</span> <span class="dt">id</span><span class="op">:</span> <span class="dv">1</span> <span class="op">},</span></a>
+<a class="sourceLine" id="cb42-7" data-line-number="7">    ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb42-8" data-line-number="8">    <span class="dt">uniqueId</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb42-9" data-line-number="9">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb42-10" data-line-number="10"><span class="op">}</span></a></code></pre></div>
+<ul>
+<li><code>state</code>の名前は変更できません。</li>
+<li><code>this.state</code>に直接値を入れていいのは<code>constructor</code>で初期値を設定するときだけです。 それ以外の場面で直接編集してしまうと、Reactコンポーネントに値の変更を通知することができません。</li>
+<li><code>this.state</code>を更新するときは<code>this.setState</code>メソッドを使います。 いまあるstateと比べて、変更があった内容を反映します。stateをごっそり置き換えるわけではありません。</li>
+<li><code>this.state</code>を直接参照するのはありです。</li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="at">constructor</span>(props) <span class="op">{</span></a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">  ...略</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb43-4" data-line-number="4">  <span class="co">// bindメソッド</span></a>
+<a class="sourceLine" id="cb43-5" data-line-number="5">  <span class="co">// 指定したメソッドでAppコンポーネントのstateを変更するために必要</span></a>
+<a class="sourceLine" id="cb43-6" data-line-number="6">  <span class="co">// ↓</span></a>
+<a class="sourceLine" id="cb43-7" data-line-number="7">  <span class="kw">this</span>.<span class="at">methodName</span> <span class="op">=</span> <span class="kw">this</span>.<span class="va">methodName</span>.<span class="at">bind</span>(<span class="kw">this</span>)<span class="op">;</span></a></code></pre></div>
+<dl>
+<dt><code>bind</code>メソッド</dt>
+<dd><p>関数の中で使用する<code>this</code>を強制する（バインドする）メソッド。</p>
+<p>methodNameメソッドを実行するのは、Appコンポーネントではない別のコンポーネントやDOMになります。 それらのコンテキストである<code>this</code>には<code>state</code>が存在しないのでエラーが発生します。</p>
+</dd>
+</dl>
+<p>ほかのバインドの方法</p>
+<ul>
+<li><p>アロー関数を使う</p>
+<p>アロー関数を使うときは、constructorにbindメソッドを書く必要がありません。 ですが、同じメソッドを複数のコンポーネントに渡したい場合、その数だけアロー関数を書く必要があります。</p>
+<p>毎回新しいアロー関数を作ることになるので、パフォーマンスも少し劣ります。</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="co">// アロー関数を使う</span></a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="op">&lt;</span>Component methodName<span class="op">={</span> (hoge) <span class="op">=&gt;</span> <span class="op">{</span> <span class="kw">this</span>.<span class="at">methodName</span>(hoge) <span class="op">}</span> <span class="op">}</span> /&gt;</a></code></pre></div></li>
+<li><p>property initializer syntax を使う</p>
+<p>最初からバインドされたメソッドを作ることができます。 アロー関数のようなパフォーマンスの懸念もありません。</p>
+<p>ただし、ECMAScriptに公式なシンタックスとして採用されていないため、babelにプラグインを追加しておく必要があります。</p>
+<p>Class properties transform・Babel（transform-class-properties）</p></li>
+</ul>
+<h3>イベントハンドリング</h3>
+<p>イベントハンドラを追加します。</p>
+<p>下記の例では、クリック時のイベントを<code>handleClick</code>メソッドに定義しています。 イベントとの関連付けは、button要素のonClick属性に<code>handleClick</code>メソッドを設定しています。</p>
+<p>Reactでは<code>onClick</code>といった属性に関数を渡して、イベントの関連付けをします。</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="at">constructor</span>(props) <span class="op">{</span></a>
+<a class="sourceLine" id="cb45-2" data-line-number="2">  <span class="kw">super</span>(props)<span class="op">;</span></a>
+<a class="sourceLine" id="cb45-3" data-line-number="3">  <span class="kw">this</span>.<span class="at">handleClick</span> <span class="op">=</span> <span class="kw">this</span>.<span class="va">handleClick</span>.<span class="at">bind</span>(<span class="kw">this</span>)<span class="op">;</span>   <span class="co">// バインドする</span></a>
+<a class="sourceLine" id="cb45-4" data-line-number="4"><span class="op">}</span></a>
+<a class="sourceLine" id="cb45-5" data-line-number="5"><span class="co">// Eventオブジェクトを引数に持つ</span></a>
+<a class="sourceLine" id="cb45-6" data-line-number="6"><span class="at">handleClick</span>(e) <span class="op">{</span></a>
+<a class="sourceLine" id="cb45-7" data-line-number="7">  <span class="kw">this</span>.<span class="va">props</span>.<span class="at">methodName</span>(<span class="st">&quot;hoge&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb45-8" data-line-number="8"><span class="op">}</span></a>
+<a class="sourceLine" id="cb45-9" data-line-number="9"><span class="at">render</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb45-10" data-line-number="10">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb45-11" data-line-number="11">    <span class="op">&lt;</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb45-12" data-line-number="12">      <span class="op">&lt;</span>input placeholder<span class="op">=</span><span class="st">&quot;何か入力してください&quot;</span> /&gt;</a>
+<a class="sourceLine" id="cb45-13" data-line-number="13">      <span class="op">&lt;</span>button onClick<span class="op">={</span> <span class="kw">this</span>.<span class="at">handleClick</span> <span class="op">}</span> <span class="op">&gt;</span>登録&lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb45-14" data-line-number="14">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb45-15" data-line-number="15"><span class="op">}</span></a></code></pre></div>
+<p>イベントハンドラの引数は、Eventオブジェクトを受け取ります。 ブラウザ本来のEventオブジェクトとほぼ同じものです。</p>
+<h3>formの操作</h3>
+<p>Reactではフォームに入力された値も<code>state</code>として扱います。</p>
+<p>以下は、ユーザーの入力で state を変更するコードです。</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="at">constructor</span>(props) <span class="op">{</span></a>
+<a class="sourceLine" id="cb46-2" data-line-number="2">  <span class="kw">super</span>(props)<span class="op">;</span></a>
+<a class="sourceLine" id="cb46-3" data-line-number="3">  <span class="kw">this</span>.<span class="at">state</span> <span class="op">=</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb46-4" data-line-number="4">    <span class="dt">inputValue</span><span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb46-5" data-line-number="5">  <span class="op">};</span></a>
+<a class="sourceLine" id="cb46-6" data-line-number="6">  <span class="kw">this</span>.<span class="at">handleChange</span> <span class="op">=</span> <span class="kw">this</span>.<span class="va">handleChange</span>.<span class="at">bind</span>(<span class="kw">this</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb46-7" data-line-number="7">  <span class="kw">this</span>.<span class="at">handleClick</span> <span class="op">=</span> <span class="kw">this</span>.<span class="va">handleClick</span>.<span class="at">bind</span>(<span class="kw">this</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb46-8" data-line-number="8"><span class="op">}</span></a>
+<a class="sourceLine" id="cb46-9" data-line-number="9"><span class="at">handleChange</span>(e) <span class="op">{</span></a>
+<a class="sourceLine" id="cb46-10" data-line-number="10">  <span class="co">// ユーザーの入力した値をstate.inputValueに格納する</span></a>
+<a class="sourceLine" id="cb46-11" data-line-number="11">  <span class="kw">this</span>.<span class="at">setState</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb46-12" data-line-number="12">    <span class="dt">inputValue</span><span class="op">:</span> <span class="va">e</span>.<span class="va">target</span>.<span class="at">value</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb46-13" data-line-number="13">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb46-14" data-line-number="14"><span class="op">}</span></a>
+<a class="sourceLine" id="cb46-15" data-line-number="15"><span class="at">handleClick</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb46-16" data-line-number="16">  <span class="kw">const</span> inputValue <span class="op">=</span> <span class="kw">this</span>.<span class="va">state</span>.<span class="at">inputValue</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb46-17" data-line-number="17">  <span class="kw">this</span>.<span class="va">props</span>.<span class="at">methodName</span>(inputValue)<span class="op">;</span></a>
+<a class="sourceLine" id="cb46-18" data-line-number="18"><span class="op">}</span></a>
+<a class="sourceLine" id="cb46-19" data-line-number="19"><span class="at">render</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb46-20" data-line-number="20">  <span class="cf">return</span> (</a>
+<a class="sourceLine" id="cb46-21" data-line-number="21">    <span class="op">&lt;</span>div className<span class="op">=</span><span class="st">&quot;TodoInput&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb46-22" data-line-number="22">      ▼valueに<span class="va">state</span>.<span class="at">inputValue</span>を設定、onChangeにhandleChangeメソッドを関連付け</a>
+<a class="sourceLine" id="cb46-23" data-line-number="23">      <span class="op">&lt;</span>input placeholder<span class="op">=</span><span class="st">&quot;何か入力してください&quot;</span> value<span class="op">={</span><span class="kw">this</span>.<span class="va">state</span>.<span class="at">inputValue</span><span class="op">}</span> onChange<span class="op">={</span><span class="kw">this</span>.<span class="at">handleChange</span><span class="op">}</span> /&gt;</a>
+<a class="sourceLine" id="cb46-24" data-line-number="24">      <span class="op">&lt;</span>button onClick<span class="op">={</span><span class="kw">this</span>.<span class="at">handleClick</span><span class="op">}</span> <span class="op">&gt;</span>登録&lt;/button<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb46-25" data-line-number="25">    &lt;/div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb46-26" data-line-number="26">  )<span class="op">;</span></a>
+<a class="sourceLine" id="cb46-27" data-line-number="27"><span class="op">}</span></a></code></pre></div>
+<h3>まとめ: Reactコンポーネントの作成手順</h3>
+<ol>
+<li>UIをコンポーネントに分割する</li>
+<li>propsやstateによって、どのようにUIが変化するかを定義する（JSXの作成）</li>
+<li>ユーザー操作によって、どのようにstateが変化するかを定義する（メソッドの作成）</li>
+<li>UIとメソッドを関連付ける（onClick属性などを設定）</li>
+</ol>
+<p>コンポーネントごとの責務を明らかにすること。</p>
+<h3>ライフサイクル</h3>
+<p>Reactコンポーネントにはライフサイクルメソッドと呼ばれる特殊なメソッドがあります。 Reactコンポーネントの状態に応じて、次の3つのうち対応するメソッドが呼ばれます。</p>
+<ul>
+<li>コンポーネントのマウントに対応して呼ばれるメソッド。</li>
+<li>コンポーネントで扱うデータの変化に対応して呼ばれるメソッド。</li>
+<li>エラーハンドリングに用いるメソッド。</li>
+</ul>
+<h4>マウントに関するライフサイクルメソッド</h4>
+<p>Reactコンポーネントが新しく配置されるときに呼び出されるメソッドです。 コンポーネントの<code>render</code>メソッドが初めて呼ばれたときに、コンポーネントがマウントされた状態となります。</p>
+<ul>
+<li>コンポーネントのマウント ＝ コンポーネントの<code>render</code>メソッドが初めて呼ばれたとき</li>
+<li>コンポーネントのアップデート ＝ 2回目以降の<code>render</code>メソッドの呼び出し</li>
+<li>コンポーネントのアンマウント ＝ DOM上からなくなったとき</li>
+</ul>
+<dl>
+<dt>componentWillMount</dt>
+<dd><p>コンポーネントがマウントされる直前に呼ばれます。 コンポーネントを描画する<code>render</code>メソッドよりも先に呼ばれます。</p>
+<p>ただ、コンストラクターも<code>render</code>メソッドより先に呼ばれるので、マウント前にしたい処理はここではなくコンストラクターで実行すれば十分です。</p>
+</dd>
+<dt>componentDidMount</dt>
+<dd><p>コンポーネントがマウントされた直後に呼ばれます。 DOMがブラウザにレンダリングされたあとなので、DOMに対してイベントリスナーを設定したりサブスクライブなどの処理をしたりします。</p>
+<p>TODO: サブスクライブって何でしょう？？</p>
+<p><code>setState</code>は行わないこと。</p>
+<p>stateが変更されるとrenderメソッドが実行されます。 render → componentDidMount → setState → renderとなり、renderメソッドが2回実行されてしまうためです。</p>
+</dd>
+<dt>componentWillUnmount</dt>
+<dd><p>コンポーネントがアンマウントされる直前に呼ばれます。 各種コンポーネントに関連付けた処理の後始末をします。</p>
+<p>たとえば、setInterval関数に対するclearIntervalの実行や、APIリクエストのキャンセルなどです。</p>
+</dd>
+</dl>
+<h4>データのアップデートに関するライフサイクルメソッド</h4>
+<p>アップデートはコンポーネントのpropsかstateが変更されたときに行われます。 初回のレンダリングはマウントとして扱われるため、マウント時にはこれらのメソッドは実行されません。</p>
+<dl>
+<dt>componentWillReceiveProps</dt>
+<dd><p>引数に受け取る予定のpropsをとります。</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="at">componentWillReceiveProps</span>(nextProps)</a></code></pre></div>
+<p>propsがアップデートされようとしているときのみ実行されます。 propsの受け取りで実行されるため、変更の有無は関係なく実行されます。</p>
+<p>this.propsには以前に受け取ったpropsが入っています。 引数のnextPropsと比較する処理をすることができます。</p>
+<p>setStateをすることも可能です。</p>
+</dd>
+<dt>shouldComponentUpdate</dt>
+<dd><p>propsやstateに変更が合った場合に呼ばれます。 引数は次に受け取るpropsとstateです。 this.propsとthis.stateには前回の内容が入っています。</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="at">shouldComponentUpdate</span>(nextProps<span class="op">,</span> nextStaet)</a></code></pre></div>
+<p>renderを行うべきかどうかをtrue/falseで返す必要があります。</p>
+<p>このメソッドを指定しなかった場合、どのような変更でもrenderメソッドが呼び出されます（常にtrueを返すように指定したのと同じ）。</p>
+<p>このメソッドはパフォーマンスチューニングをする際に利用します。 表示に使っていないpropを受け取ったときや、そもそもpropsやstateに変更がなかったときは不要なrenderを行わないようにします。</p>
+<p>変更がないpropやstateを受け取ったときに再描画させないようにするもう一つの方法。</p>
+<p><code>React.Component</code>を継承する代わりに<code>React.PureComponent</code>を継承すると、Reactが自動的に浅い比較（オブジェクトや配列の中身までは確認しない比較）を行うので、通常はこちらを利用する方が便利です。 なにか特別な比較を行い、renderの有無を決めるときだけ<code>shouldComponentUpdate</code>を利用することを推奨します。</p>
+</dd>
+<dt>componentWillUpdate</dt>
+<dd><p>renderが呼ばれる前に呼ばれる最後のメソッドです。</p>
+<p>引数は次に受け取るpropsとstateです。 this.propsとthis.stateには前回の内容が入っています。</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="at">componentWillUpdate</span>(nextProps<span class="op">,</span> nextStaet)</a></code></pre></div>
+<p><code>setState</code>などコンポーネントの再レンダリングを促すような処理はしないこと。 変更に対して<code>componentWillUpdate</code>、<code>render</code>が実行され、処理がループする可能性があるためです。</p>
+<p>propsの値を使ってstateを変更したいときは<code>componentWillReceiveProps</code>メソッドを使います。</p>
+<p><code>shouldComponentUpdate</code>でfalseを返した場合、このメソッドは呼ばれません。</p>
+</dd>
+<dt>componentDidUpdate</dt>
+<dd><p>renderの直後に呼ばれます。</p>
+<p>引数は前のpropsとstateです。 this.propsとthis.stateは、いまの値（renderに使った内容）が格納されています。</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="at">componentDidUpdate</span>(prevProps<span class="op">,</span> prevStaet)</a></code></pre></div>
+<p>アップデート後のDOMにアクセスするときや、変更が完了したことをAPIに通知するときなどに利用します。</p>
+<p><code>shouldComponentUpdate</code>でfalseを返した場合、このメソッドは呼ばれません。</p>
+</dd>
+</dl>
+<h4>エラーハンドリングに関するライフサイクルメソッド</h4>
+<p>エラーが起きたときだけ呼ばれるライフサイクルメソッドです。 React v16 から実装されています。</p>
+<dl>
+<dt>componentDidCatch</dt>
+<dd><p>子コンポーネントでエラーが起こったときに呼ばれます。</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="at">componentDidCatch</span>(error<span class="op">,</span> info)</a></code></pre></div>
+<p>引数にスタックとレースが入ったerror、その他の情報が入ったinfoをとります。</p>
+<p>infoはオブジェクトで、現時点では<code>componentStack</code>プロパティしか持っていません。 これにはどのコンポーネントでエラーが発生したかが入っています。</p>
+<p>エラー解析の手がかりとなるので、どちらもログとして送信するようにしておくと便利。</p>
+<p><code>setState</code>などの処理を行うことも可能。</p>
+<p>このメソッドを記述したコンポーネント自体のエラーは検知できません。 子コンポーネントのエラーを検知するためのメソッドです。</p>
+</dd>
+</dl>
+<h2>Reduxによるアプリケーションの状態管理</h2>
+<dl>
+<dt>Store</dt>
+<dd>アプリケーションの状態（<code>state</code>）とロジックを保持している居場所。
+</dd>
+<dt>Reducer</dt>
+<dd>Storeが保持している状態を変化させるための関数。
+</dd>
+<dt>Action</dt>
+<dd><p>何らかの状態変化を引き起こす現象。たとえば、ユーザー入力、APIから取得した情報。</p>
+<p>Actionの形式を標準化した〝Flux Standard Action〟というものがあります。 Actionを扱うライブラリ（<code>redux-actions</code>や<code>redux-promise</code>など）でも、これを採用したものが多いので、この形式に沿っておくのがよいでしょう。</p>
+</dd>
+</dl>
+<p>ファイルを機能ごとに分割する</p>
+<pre><code>src/
++---index.js
++---containers/
+|     Container Component を置く
++---components/
+|     Presentational Component を置く
++---actions/
+`---reducers/</code></pre>
+<p>TODO: 明日やります。</p>
 </body>
 </html>
