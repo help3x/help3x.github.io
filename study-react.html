@@ -1165,12 +1165,12 @@ ES ModulesやNode.jsで利用されているCommonJSのモジュール方式で�
 <h3>react-reduxの機能</h3>
 <p>次の2つの機能があります。</p>
 <ul>
-<li><Provider></li>
+<li>&lt;Provider&gt;</li>
 <li>connect</li>
 </ul>
-<h4><Provider></h4>
+<h4>&lt;Provider&gt;</h4>
 <p>dispatchはStoreが持つメソッドなので、ReactコンポーネントからActionをdispatchさせるにはStoreが必要になります。 dispatchしたいコンポーネントすべてに対し、Storeを最上位から渡していくのは得策ではありません。</p>
-<p><Provider>を使うことで<code>connect</code>という関数を使えるようになり、任意のコンポーネントに対してStoreとの紐付けができるようになります。</p>
+<p>&lt;Provider&gt;を使うことで<code>connect</code>という関数を使えるようになり、任意のコンポーネントに対してStoreとの紐付けができるようになります。</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="co">// 最上位のコンポーネントを&lt;Provider&gt;でラップして、propsにStoreを与える</span></a>
 <a class="sourceLine" id="cb78-2" data-line-number="2"><span class="co">// （内部的にはReactのcontext経由でStoreを保持する仕組み）</span></a>
 <a class="sourceLine" id="cb78-3" data-line-number="3"><span class="va">ReactDOM</span>.<span class="at">render</span>(</a>
