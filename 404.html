@@ -10,13 +10,17 @@ permalink: /404.html
     <meta http-equiv="refresh" content="0;URL=./">
     <title>refresh</title>
     <script>
-      if (!sessionStorage) {
-        return;
-      }
-      sessionStorage.redirect = {
-        origin: location.origin,
-        pathname: location.pathname
-      };
+      (function () {
+        var redirect = {
+              origin: location.origin,
+              pathname: location.pathname
+            };
+
+        if (!sessionStorage) {
+          return;
+        }
+        sessionStorage.redirect = JSON.stringify(redirect);
+      }());
     </script>
   </head>
   <body>
