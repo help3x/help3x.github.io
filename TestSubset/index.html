@@ -25,6 +25,13 @@
        url('/fonts/SourceHanSans-Regular-Subset.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'SubsetSourceHanCodeJp';
+  font-style: normal;
+  src: url('/fonts/Subset-SourceHanCodeJP-Regular.woff') format('woff'),
+       url('/fonts/Subset-SourceHanCodeJP-Regular.woff2') format('woff2');
+}
+
 html,
 body {
   margin: 0;
@@ -186,7 +193,13 @@ img {
     ウェブフォントの最適化は全体的なパフォーマンス戦略における重要な要素です。<br>
     フォントはそれぞれ追加のリソースです。フォントによってはテキストのレンダリングがブロックされることがありますが、ページでウェブフォントを使っているからといったレンダリングが遅くなるわけではありません。
   </p>
-  
+
+  <p style="font-family: 'SubsetSourceHanCodeJp';">
+    ここのフォントは Source Han Code JP です。<br>
+    ウェブフォントの最適化は全体的なパフォーマンス戦略における重要な要素です。<br>
+    フォントはそれぞれ追加のリソースです。フォントによってはテキストのレンダリングがブロックされることがありますが、ページでウェブフォントを使っているからといったレンダリングが遅くなるわけではありません。
+  </p>
+
   <p>
     JIS第2水準の漢字表示を検証します。<br>
     まずは48区から5文字です。弌、丐、丕、个、丱。<br>
