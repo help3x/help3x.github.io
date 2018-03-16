@@ -14,6 +14,126 @@
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+  <style>
+    /* CustomCss */
+    @font-face {
+      font-family: "SubsetSourceHanSans";
+      font-style: normal;
+      font-weight: normal;
+      src: url("/fonts/SourceHanSans-Regular-Subset.woff") format("woff"), url("/fonts/SourceHanSans-Regular-Subset.woff2") format("woff2");
+    }
+  
+    @font-face {
+      font-family: 'SubsetSourceHanCodeJp';
+      font-style: normal;
+      src: url('/fonts/Subset-SourceHanCodeJP-Regular.woff') format('woff'),
+           url('/fonts/Subset-SourceHanCodeJP-Regular.woff2') format('woff2');
+    }
+  
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+  
+    html {
+      font-size: 62.5%;
+      line-height: 1.5;
+      box-sizing: border-box;
+    }
+  
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+  
+    body {
+      font-size: 1.6rem;
+      font-family: "SubsetSourceHanCodeJp", "SubsetSourceHanSans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", Segoe UI, "メイリオ", Meiryo, sans-serif;
+    }
+  
+    /* Pygments - perldoc : background-color: #eed; color: #000; */
+    /* Pygments - monokai : background-color: #272822; color: #f8f8f2; */
+  
+    pre,
+    code {
+      -webkit-font-smoothing: auto;
+      -moz-osx-font-smoothing: auto;
+      font-family: "MS Gothic", monospace;
+    }
+  
+    code {
+      background-color: #eed;
+      color: #000;
+      font-size: 1.4rem;
+      font-weight: normal;
+      padding: 0.25em 0.5em;
+    }
+  
+    pre {
+      -webkit-overflow-scrolling: touch;
+      background-color: #eed;
+      color: #000;
+      font-size: 1.4rem;
+      overflow-x: scroll;
+      padding: 2rem 2.4rem;
+      white-space: pre;
+      word-wrap: normal;
+    }
+  
+    pre code {
+      background-color: transparent;
+      color: currentcolor;
+      font-size: 1em;
+      padding: 0;
+    }
+  
+    blockquote {
+      position: relative;
+      border: 1px solid #666;
+      padding: 0px;
+      margin: 1.6rem 0 1.6rem 3.2rem;
+    }
+  
+    blockquote p {
+      padding: 1.6rem 3.2rem;
+    }
+  
+    blockquote cite {
+      display: block;
+      padding: 0 3.2rem 1.6rem 1.6rem;
+      text-align: right;
+    }
+  
+    blockquote > p > cite {
+      padding: 0.8rem 0 0;
+    }
+  
+    blockquote::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: url(data:image/gif;base64,R0lGODlhHgAeALMAAHBwcI+Pj7i4uKOjo+Dg4Ovr662trdbW1vX19ZmZmczMzHp6esLCwoWFhWZmZv///yH5BAAAAAAALAAAAAAeAB4AAASJ8MlJq7046827/2AojiRGDIAjXAeqcoYjO4wVz8o2zEBe7TLAYSPgESzF4FGDSMlWlYLzReRdko5FJzALXBrdzkxmWE7GjvIGLUsgzuyBhv2Es6EXusMr0csxC3R8D1NjgxZAaH8PiWN4Fk1sQxJSbAUaBQMBmwmTE5mbAQk+JaWmp6ipqqusIxEAOw==);
+    }
+  
+    blockquote::after {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      content: url(data:image/gif;base64,R0lGODlhHgAeALMAAMLCwnBwcMzMzJmZmY+Pj62trfX19Xp6eri4uNbW1uDg4GZmZv///wAAAAAAAAAAACH5BAAAAAAALAAAAAAeAB4AAAR9kMlJq7046827/2AojmT5FcGiHkKFpGubJWqtJhNg10pW7KrBZABcCDGE4mKSBAZ8ymEUI5gydEUNAGajvIAcAXdZEdeenOaCcFEfNQYuwGKwzTe/lcGSXxw4WDcWgQs4Ggh2fImHZzJeNSxhBAMAe4OTlSaam5ydnp+gHhEAOw==);
+    }
+  
+    dd + dt {
+      margin-top: 1.6rem;
+    }
+  
+    dd > p {
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
 <header>
@@ -136,13 +256,13 @@ Action → Dispatcher → Store → View</code></pre>
 <h3>JSXの使い方</h3>
 <ul>
 <li><p>JSXのタグは<code>React.createElement</code>に変換されるため、Reactのインポートが必要です。</p>
-<pre><code>  import React from 'react';</code></pre></li>
+<pre><code>  import React from &#39;react&#39;;</code></pre></li>
 <li><p><code>{}</code>で囲むと式をJSXに埋め込むことができます。</p>
 <pre><code>  const fullnames = {
-    ryoma: '坂本竜馬'
+    ryoma: &#39;坂本竜馬&#39;
   };
   const getFullname = nickname =&gt; fullnames[nickname];
-  const element = &lt;h1&gt;Hello, {getFullname('ryoma')}&lt;/h1&gt;;</code></pre></li>
+  const element = &lt;h1&gt;Hello, {getFullname(&#39;ryoma&#39;)}&lt;/h1&gt;;</code></pre></li>
 </ul>
 <h2>babelのインストール</h2>
 <ol>
@@ -202,7 +322,7 @@ ES ModulesやNode.jsで利用されているCommonJSのモジュール方式で�
 4.1.0</code></pre>
 <dl>
 <dt>Hello.js</dt>
-<dd><pre class="javascript"><code>import React from 'react';
+<dd><pre class="javascript"><code>import React from &#39;react&#39;;
 
 // export default function で
 // Hello コンポーネントを持っていることを外部に知らせる
@@ -211,13 +331,13 @@ export default function Hello() {
 }</code></pre>
 </dd>
 <dt>entry.js</dt>
-<dd><pre class="javascript"><code>import React from 'react';
-import ReactDOM from 'react-dom';
-import Hello from './Hello';    // ← Hello.js の読み込み
+<dd><pre class="javascript"><code>import React from &#39;react&#39;;
+import ReactDOM from &#39;react-dom&#39;;
+import Hello from &#39;./Hello&#39;;    // ← Hello.js の読み込み
 
 ReactDOM.render(
   &lt;Hello /&gt;,
-  document.getElementById('root')
+  document.getElementById(&#39;root&#39;)
 );</code></pre>
 </dd>
 </dl>
@@ -229,12 +349,12 @@ ReactDOM.render(
 <pre class="javascript"><code>module.exports = {
   // entryフィールド
   // 実行の起点となるファイルの指定
-  entry: './entry.js',
+  entry: &#39;./entry.js&#39;,
   
   // outputフィールド
   // 出力に関する設定
   output: {
-    filename: 'output.js'
+    filename: &#39;output.js&#39;
   },
   
   module: {
@@ -242,10 +362,10 @@ ReactDOM.render(
       // babel-loader の設定
       // ファイルごとに適応するLoaderの設定を書く
       {
-        loader: 'babel-loader',
+        loader: &#39;babel-loader&#39;,
         test: /\.js$/,
         options: {
-          presets: ['react']
+          presets: [&#39;react&#39;]
         }
       }
     ]
@@ -275,7 +395,7 @@ ReactDOM.render(
 <h3>Reactコンポーネントの種類</h3>
 <h4>Functional Component</h4>
 <p>関数によって定義されるコンポーネント。</p>
-<pre class="javascript"><code>import React from 'react';
+<pre class="javascript"><code>import React from &#39;react&#39;;
 
 const Hello = (props) =&gt; {
   return &lt;div&gt;こんにちは、{props.name}さん&lt;/div&gt;;
@@ -418,7 +538,7 @@ ReactDOM.render(
 <p>別パッケージになっているので追加でインストールします。</p>
 <pre><code>&gt; npm install --save prop-types</code></pre>
 <p>ReactコンポーネントのpropTypesプロパティに型情報を記述します。 Functional Component/Class Componentのどちらでも記述できます。</p>
-<pre class="javascript"><code>import PropTypes from 'prop-types';
+<pre class="javascript"><code>import PropTypes from &#39;prop-types&#39;;
 
 const Hello = (props) =&gt; {
   return &lt;div&gt;こんにちは、{props.name}さん&lt;/div&gt;;
@@ -430,8 +550,8 @@ Hello.propTypes = {
   name: PropTypes.string    // nameの型はstring
 }</code></pre>
 <p>propTypesの種類</p>
-<pre class="javascript"><code>import React from 'react';
-import PropTypes from 'prop-types';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import PropTypes from &#39;prop-types&#39;;
 
 class SomeComponent extends React.Component {
 }
@@ -718,7 +838,7 @@ render() {
 // 第2引数は、どのような操作をしたのかを示すActionオブジェクト
 function tasksReducer(state = initialState, action) {
   switch (action.type) {
-    case 'ADD_TASK':
+    case &#39;ADD_TASK&#39;:
       return {
         ...state,
         tasks: state.tasks.concat([action.task])    // TODO: action.payload.taskでは？　→　そのとおりでした。
@@ -729,9 +849,9 @@ function tasksReducer(state = initialState, action) {
 }</code></pre>
 <p>Actionオブジェクトのイメージ</p>
 <pre class="javascript"><code>{
-  type: 'ADD_TASK',
+  type: &#39;ADD_TASK&#39;,
   payload: {
-    task: 'Study Reducer'
+    task: &#39;Study Reducer&#39;
   }
 }</code></pre>
 <h3>ActionCreatorの定義</h3>
@@ -740,7 +860,7 @@ function tasksReducer(state = initialState, action) {
 <pre class="javascript"><code>// ActionCreatorの定義
 // 追加するtaskを引数に取り、Actionオブジェクトを返す
 const addTask = (task) =&gt; ({
-  type: 'ADD_TASK',
+  type: &#39;ADD_TASK&#39;,
   payload: {
     task
   }
@@ -749,7 +869,7 @@ const addTask = (task) =&gt; ({
 <p>Reduxの<code>createStore</code>関数を使ってStoreを生成します。 生成したStoreはアプリケーション内で唯一のものです。 アプリケーション全体のさまざまな状態をこのStoreで集約管理します。</p>
 <p>ReduxのStoreを生成するにはReducerが必要となります。</p>
 <p>Storeの作成［index.js］</p>
-<pre class="javascript"><code>import { createStore } from 'redux';
+<pre class="javascript"><code>import { createStore } from &#39;redux&#39;;
 
 // Reducerの定義
 function tasksReducer(state = initialState, action) {
@@ -788,7 +908,7 @@ store.dispatch(addTask(&quot;Study Store&quot;));</code></pre></li>
 <pre class="javascript"><code>console.log(store.getState());
 ↓
 {
-  tasks: ['Study Store']
+  tasks: [&#39;Study Store&#39;]
 }</code></pre></li>
 <li><p>subscribe</p>
 <p>Storeの状態が変更されたときに呼び出されるコールバック関数を指定します。</p>
@@ -838,12 +958,12 @@ const inputTask = (task) =&gt; ({
 
 function tasksReducer(state = initialState, action) {
   switch (action.type) {
-    case 'INPUT_TASK':    // INPUT_TASKのCaseを追加
+    case &#39;INPUT_TASK&#39;:    // INPUT_TASKのCaseを追加
       return {
         ...state,
         task: action.payload.task
       };
-    case 'ADD_TASK':
+    case &#39;ADD_TASK&#39;:
       return {
         ...state,
         tasks: state.tasks.concat([action.payload.task])
@@ -873,18 +993,18 @@ function tasksReducer(state = initialState, action) {
 }</code></pre></li>
 <li><p>Reactコンポーネントを描画する関数の準備</p>
 <p>importを次のように変更する。</p>
-<pre class="javascript"><code>import ReactDOM from 'react-dom';</code></pre>
+<pre class="javascript"><code>import ReactDOM from &#39;react-dom&#39;;</code></pre>
 <p>↓</p>
-<pre class="javascript"><code>import { render } from 'react-dom';</code></pre>
+<pre class="javascript"><code>import { render } from &#39;react-dom&#39;;</code></pre>
 <p>Viewを描画する関数を追加する。</p>
 <pre class="javascript"><code>function renderApp(store) {
   render(
     &lt;TodoApp store={store} /&gt;,
-    document.getElementById('root')
+    document.getElementById(&#39;root&#39;)
   );
 }</code></pre>
 <p>もともとあった描画の処理は削除する。</p>
-<pre class="javascript"><code>ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
+<pre class="javascript"><code>ReactDOM.render(&lt;App /&gt;, document.getElementById(&#39;root&#39;));
 registerServiceWorker();</code></pre></li>
 <li><p>Viewに反映する関数の準備</p>
 <p>Storeの状態変化に応じてViewを変化させる関数を定義します。 Storeの<code>subscribe</code>メソッドを使います。</p>
@@ -894,14 +1014,14 @@ registerServiceWorker();</code></pre></li>
 <pre class="javascript"><code>renderApp(store);</code></pre></li>
 </ol>
 <h3>index.jsの全体</h3>
-<pre class="javascript"><code>import React from 'react';
-import { render } from 'react-dom';
-import { createStore } from 'redux';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import { render } from &#39;react-dom&#39;;
+import { createStore } from &#39;redux&#39;;
 
 // Note: 使わないのでコメント化 &gt;&gt;&gt;
-// import './index.css';
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
+// import &#39;./index.css&#39;;
+// import App from &#39;./App&#39;;
+// import registerServiceWorker from &#39;./registerServiceWorker&#39;;
 /// Note: &lt;&lt;&lt; 使わないのでコメント化
 
 const initialState = {
@@ -914,12 +1034,12 @@ const initialState = {
 // 第2引数は、どのような操作をしたのかを示すActionオブジェクト
 function tasksReducer(state = initialState, action) {
   switch (action.type) {
-    case 'INPUT_TASK':
+    case &#39;INPUT_TASK&#39;:
       return {
         ...state,
         task: action.payload.task
       };
-    case 'ADD_TASK':
+    case &#39;ADD_TASK&#39;:
       return {
         ...state,
         tasks: state.tasks.concat([action.payload.task])
@@ -936,7 +1056,7 @@ const store = createStore(tasksReducer);
 // ActionCreatorの定義
 // 追加するtaskを引数に取り、Actionオブジェクトを返す
 const addTask = (task) =&gt; ({
-  type: 'ADD_TASK',
+  type: &#39;ADD_TASK&#39;,
   payload: {
     task
   }
@@ -975,7 +1095,7 @@ function TodoApp({ store }) {
 function renderApp(store) {
   render(
     &lt;TodoApp store={store} /&gt;,
-    document.getElementById('root')
+    document.getElementById(&#39;root&#39;)
   );
 }
 
@@ -1008,12 +1128,12 @@ renderApp(store);</code></pre>
 // 第2引数は、どのような操作をしたのかを示すActionオブジェクト
 export default function tasksReducer(state = initialState, action) {
   switch (action.type) {
-    case 'INPUT_TASK':
+    case &#39;INPUT_TASK&#39;:
       return {
         ...state,
         task: action.payload.task
       };
-    case 'ADD_TASK':
+    case &#39;ADD_TASK&#39;:
       return {
         ...state,
         tasks: state.tasks.concat([action.payload.task])
@@ -1027,7 +1147,7 @@ export default function tasksReducer(state = initialState, action) {
 <pre class="javascript"><code>// ActionCreatorの定義
 // 追加するtaskを引数に取り、Actionオブジェクトを返す
 export const addTask = (task) =&gt; ({
-  type: 'ADD_TASK',
+  type: &#39;ADD_TASK&#39;,
   payload: {
     task
   }
@@ -1045,8 +1165,8 @@ export const inputTask = (task) =&gt; ({
 <p>componentsからActionをDispatchするため、先ほど移動したActionCreatorのファイルをインポートします。</p>
 <p>（<code>import { inputTask, addTask } from '../actions/tasks';</code> の部分）</p>
 <p>関数には <code>export default</code> を付けてください。</p>
-<pre class="javascript"><code>import React from 'react';
-import { inputTask, addTask } from '../actions/tasks';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import { inputTask, addTask } from &#39;../actions/tasks&#39;;
 
 export default function TodoApp({ store }) {
   const { task, tasks } = store.getState();
@@ -1067,16 +1187,16 @@ export default function TodoApp({ store }) {
   );
 }</code></pre></li>
 <li><p><code>src\index.js</code> は、分割したファイルをインポートするように変更します。</p>
-<pre class="javascript"><code>import React from 'react';
-import { render } from 'react-dom';
-import tasksReducer from './reducers/tasks';    // Reducerのインポート
-import TodoApp from './components/TodoApp';     // Componentのインポート
-import { createStore } from 'redux';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import { render } from &#39;react-dom&#39;;
+import tasksReducer from &#39;./reducers/tasks&#39;;    // Reducerのインポート
+import TodoApp from &#39;./components/TodoApp&#39;;     // Componentのインポート
+import { createStore } from &#39;redux&#39;;
 
 // Note: 使わないのでコメント化 &gt;&gt;&gt;
-// import './index.css';
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
+// import &#39;./index.css&#39;;
+// import App from &#39;./App&#39;;
+// import registerServiceWorker from &#39;./registerServiceWorker&#39;;
 /// Note: &lt;&lt;&lt; 使わないのでコメント化
 
 // Storeの生成
@@ -1085,7 +1205,7 @@ const store = createStore(tasksReducer);
 function renderApp(store) {
   render(
     &lt;TodoApp store={store} /&gt;,
-    document.getElementById('root')
+    document.getElementById(&#39;root&#39;)
   );
 }
 
@@ -1123,7 +1243,7 @@ ReactDOM.render(
   &lt;Provider store={store}&gt;
     &lt;MyRootComponent /&gt;
   &lt;/Provider&gt;,
-  document.getElementById('root')
+  document.getElementById(&#39;root&#39;)
 );</code></pre>
 <h4>connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])</h4>
 <p>特定のComponentに対して、Reactのcontextで保持しているStoreを提供します。 Storeさえあれば<code>getState</code>で状態が取得できますし、Actionの<code>dispatch</code>もできます。</p>
@@ -1208,9 +1328,9 @@ storeKey - String
 <li>addTask - タスクを追加する関数</li>
 <li>inputTask - タスクを入力する関数</li>
 </ul>
-<pre class="javascript"><code>import { connect } from 'react-redux';
-import TodoApp from '../components/TodoApp';
-import { inputTask, addTask } from '../actions/tasks';
+<pre class="javascript"><code>import { connect } from &#39;react-redux&#39;;
+import TodoApp from &#39;../components/TodoApp&#39;;
+import { inputTask, addTask } from &#39;../actions/tasks&#39;;
 
 // Storeにある task と tasks という State を Props に渡す
 function mapStateToProps({ task, tasks }) {
@@ -1244,7 +1364,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);</code></pr
 <p>これにより、コンポーネントのRedux依存が消え、再利用性も高まりました。</p>
 </dd>
 </dl>
-<pre class="javascript"><code>import React from 'react';
+<pre class="javascript"><code>import React from &#39;react&#39;;
 
 // 引数を store から変更
 export default function TodoApp({ task, tasks, inputTask, addTask }) {
@@ -1272,17 +1392,17 @@ export default function TodoApp({ task, tasks, inputTask, addTask }) {
 <li>Storeのsubscribeでコンポーネントの再描画を行っていた処理を削除する</li>
 <li>function renderApp の処理を外に出す（render()をfunctionではなくする）</li>
 </ul>
-<pre class="javascript"><code>import React from 'react';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { render } from 'react-dom';
-import tasksReducer from './reducers/tasks';
-import TodoApp from './containers/TodoApp';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import { Provider } from &#39;react-redux&#39;;
+import { createStore } from &#39;redux&#39;;
+import { render } from &#39;react-dom&#39;;
+import tasksReducer from &#39;./reducers/tasks&#39;;
+import TodoApp from &#39;./containers/TodoApp&#39;;
 
 // Note: 使わないのでコメント化 &gt;&gt;&gt;
-// import './index.css';
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
+// import &#39;./index.css&#39;;
+// import App from &#39;./App&#39;;
+// import registerServiceWorker from &#39;./registerServiceWorker&#39;;
 /// Note: &lt;&lt;&lt; 使わないのでコメント化
 
 // Storeの生成
@@ -1293,7 +1413,7 @@ render(
   &lt;Provider store={store}&gt;
     &lt;TodoApp /&gt;
   &lt;/Provider&gt;,
-  document.getElementById('root')
+  document.getElementById(&#39;root&#39;)
 );</code></pre>
 <h4>connectAdvanced</h4>
 <p>通常の<code>connect</code>よりも自由度を高くpropsの受け渡しをしたい場合、<code>connectAdvanced</code>を使うことができます。</p>
@@ -1365,9 +1485,9 @@ render(
   createStore as reduxCreateStore,
   combineReducers,
   applyMiddleware
-} from 'redux';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
-import tasksReducer from '../reducers/tasks';
+} from &#39;redux&#39;;
+import { routerReducer, routerMiddleware } from &#39;react-router-redux&#39;;
+import tasksReducer from &#39;../reducers/tasks&#39;;
 
 // Storeを生成するための関数を定義
 // historyはsrc/index.jsからもらう
@@ -1401,18 +1521,18 @@ export default function createStore(history) {
 <li><ConnectedRouter>にhistoryを渡す処理を追加。</li>
 <li>createStoreの引数を<code>tasksReducer</code>から<code>history</code>に変更。</li>
 </ul>
-<pre class="javascript"><code>import React from 'react';
-import { Provider } from 'react-redux';
-import { render } from 'react-dom';
-import { ConnectedRouter } from 'react-router-redux';             // 追加
-import createBrowserHistory from 'history/createBrowserHistory';  // 追加
-import TodoApp from './containers/TodoApp';
-import createStore from './store';                                // 追加
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import { Provider } from &#39;react-redux&#39;;
+import { render } from &#39;react-dom&#39;;
+import { ConnectedRouter } from &#39;react-router-redux&#39;;             // 追加
+import createBrowserHistory from &#39;history/createBrowserHistory&#39;;  // 追加
+import TodoApp from &#39;./containers/TodoApp&#39;;
+import createStore from &#39;./store&#39;;                                // 追加
 
 // Note: 使わないのでコメント化 &gt;&gt;&gt;
-// import './index.css';
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
+// import &#39;./index.css&#39;;
+// import App from &#39;./App&#39;;
+// import registerServiceWorker from &#39;./registerServiceWorker&#39;;
 /// Note: &lt;&lt;&lt; 使わないのでコメント化
 
 // history のインスタンスを生成
@@ -1428,7 +1548,7 @@ render(
       &lt;TodoApp /&gt;
     &lt;/ConnectedRouter&gt;
   &lt;/Provider&gt;,
-  document.getElementById('root')
+  document.getElementById(&#39;root&#39;)
 );</code></pre>
 <p><code>src/store/index.js</code>でReducerの合成をしたため、Reducerの構成が変更になっています。</p>
 <p>Storeの構成</p>
@@ -1473,8 +1593,8 @@ render(
 </dl>
 <h4>ボタンを押すとエラーページに移動するサンプル</h4>
 <p><code>src/components/Error.js</code>ファイルを作成します。</p>
-<pre class="javascript"><code>import React from 'react';
-import { Link } from 'react-router-dom';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import { Link } from &#39;react-router-dom&#39;;
 
 export default function Error() {
   return (
@@ -1485,20 +1605,20 @@ export default function Error() {
   );
 }</code></pre>
 <p><code>src/index.js</code>を変更して、エラーページに移動できるようにします。</p>
-<pre class="javascript"><code>import React from 'react';
-import { render } from 'react-dom';
-import { Route } from 'react-router-dom';     // 追加
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
-import createBrowserHistory from 'history/createBrowserHistory';
-import TodoApp from './containers/TodoApp';
-import Error from './components/Error';       // 追加
-import createStore from './store';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import { render } from &#39;react-dom&#39;;
+import { Route } from &#39;react-router-dom&#39;;     // 追加
+import { Provider } from &#39;react-redux&#39;;
+import { ConnectedRouter } from &#39;react-router-redux&#39;;
+import createBrowserHistory from &#39;history/createBrowserHistory&#39;;
+import TodoApp from &#39;./containers/TodoApp&#39;;
+import Error from &#39;./components/Error&#39;;       // 追加
+import createStore from &#39;./store&#39;;
 
 // Note: 使わないのでコメント化 &gt;&gt;&gt;
-// import './index.css';
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
+// import &#39;./index.css&#39;;
+// import App from &#39;./App&#39;;
+// import registerServiceWorker from &#39;./registerServiceWorker&#39;;
 /// Note: &lt;&lt;&lt; 使わないのでコメント化
 
 // history のインスタンスを生成
@@ -1518,15 +1638,15 @@ render(
       &lt;/div&gt;
     &lt;/ConnectedRouter&gt;
   &lt;/Provider&gt;,
-  document.getElementById('root')
+  document.getElementById(&#39;root&#39;)
 );</code></pre>
 <p><code>react-router-dom</code>のRouteコンポーネントを使ってルーティングを用意しています。</p>
 <p><code>/</code> であれば、Todoアプリを表示。 <code>/error</code>であれば、エラーページを表示。</p>
 <p><code>src/containers/TodoApp.js</code>にエラーページにリダイレクトさせる処理を追加します。</p>
-<pre class="javascript"><code>import { connect } from 'react-redux';
-import { push } from 'react-router-redux';    // 追加
-import TodoApp from '../components/TodoApp';
-import { inputTask, addTask } from '../actions/tasks';
+<pre class="javascript"><code>import { connect } from &#39;react-redux&#39;;
+import { push } from &#39;react-router-redux&#39;;    // 追加
+import TodoApp from &#39;../components/TodoApp&#39;;
+import { inputTask, addTask } from &#39;../actions/tasks&#39;;
 
 // Storeにある task と tasks という State を Props に渡す
 function mapStateToProps({ tasks }) {
@@ -1548,14 +1668,14 @@ function mapDispatchToProps(dispatch) {
     // リダイレクト処理を追加
     // react-router-reduxが提供しているpushというActionCreatorを使う
     redirectToError() {
-      dispatch(push('/error'));
+      dispatch(push(&#39;/error&#39;));
     },
   };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);</code></pre>
 <p>リダイレクトする処理を呼び出せるように、<code>src/components/TodoApp.js</code>を変更します。</p>
-<pre class="javascript"><code>import React from 'react';
+<pre class="javascript"><code>import React from &#39;react&#39;;
 
 // 引数に redirectToError を追加
 export default function TodoApp({ task, tasks, inputTask, addTask, redirectToError }) {
@@ -1596,10 +1716,10 @@ export default function TodoApp({ task, tasks, inputTask, addTask, redirectToErr
 <h4>ミドルウェアの適用</h4>
 <p>Reduxにミドルウェアを適用するには、<code>applyMiddleware</code>関数を利用します。</p>
 <pre class="javascript"><code>// ミドルウェアの適用に必要な applyMiddleware 関数をインポートします
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from &#39;redux&#39;;
 
 // ミドルウェアをインポートします
-import logger from 'redux-logger';
+import logger from &#39;redux-logger&#39;;
 
 // createStoreの第2引数に applyMiddleware を指定し、その引数にミドルウェアを指定します
 const store = createStore(
@@ -1631,7 +1751,7 @@ console.log(&quot;end&quot;);</code></pre>
 <p>ReduxではAPIから何かレスポンスが返ってきたら、これをActionとして扱うという作法があります。 これを通常のActionCreatorで記述しようとすると、実はうまく書けません。</p>
 <pre class="javascript"><code>const requestAPI = (parameter) =&gt; {
   const response = 
-    fetch('APIのURL', parameter).then((response) =&gt; {
+    fetch(&#39;APIのURL&#39;, parameter).then((response) =&gt; {
       // ここで返してもうまく動かない
       return {
         type: &quot;REQUEST_API&quot;,
@@ -1644,10 +1764,10 @@ console.log(&quot;end&quot;);</code></pre>
 <p>Reduxで非同期処理をする代表的なミドルウェア。</p>
 <pre><code>&gt; npm install --save redux-thunk</code></pre>
 <p>インストールできたらミドルウェアを適用します。</p>
-<pre class="javascript"><code>import { createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
-import thunk from 'redux-thunk';
-import reducers from './reducers';
+<pre class="javascript"><code>import { createStore, applyMiddleware } from &#39;redux&#39;;
+import logger from &#39;redux-logger&#39;;
+import thunk from &#39;redux-thunk&#39;;
+import reducers from &#39;./reducers&#39;;
 
 const middlewares = [logger, thunk];
 
@@ -1660,9 +1780,9 @@ export default store;</code></pre>
 <h3>非同期アクション</h3>
 <p>thunkミドルウェアの適用により、非同期で実行されるActionを書けるようになりました。</p>
 <p>次のコードサンプルで使っているshortidパッケージはユニークなIDを自動で生成してくれるものです。 インストールは <code>npm install --save shortid</code> でできます。</p>
-<pre class="javascript"><code>import shortid from 'shortid';
+<pre class="javascript"><code>import shortid from &#39;shortid&#39;;
 
-import * as types from '../types/todo';
+import * as types from &#39;../types/todo&#39;;
 
 // 同期 ActionCreator
 export function addTodo(title) {
@@ -1766,7 +1886,7 @@ function updateInput(value) {
 export function addTodoAndClear(title) {
   return (dispatch) =&gt; {
     dispatch(addTodo(title));
-    dispatch(updateInput(''));
+    dispatch(updateInput(&#39;&#39;));
   };
 }</code></pre>
 <p>1つの操作で複数の処理を行うときのアプローチとして、以下が考えられます。</p>
@@ -1875,8 +1995,8 @@ export default Button;</code></pre>
 <p><code>src/components/TodoApp.js</code>を修正します。</p>
 <ol>
 <li><p>インポートを追加します。</p>
-<pre class="javascript"><code>import Reboot from 'material-ui/Reboot';
-import Button from 'material-ui/Button';</code></pre></li>
+<pre class="javascript"><code>import Reboot from &#39;material-ui/Reboot&#39;;
+import Button from &#39;material-ui/Button&#39;;</code></pre></li>
 <li><p>Rebootコンポーネントを追加します。 場所はどこでもよいですが、今回はルート要素の最初の子要素にしました。</p>
 <pre class="javascript"><code>export default function TodoApp({ task, tasks, inputTask, addTask, redirectToError }) {
   return (
@@ -1949,9 +2069,9 @@ import Button from 'material-ui/Button';</code></pre></li>
 <pre class="javascript"><code>// 受け取ったstateをそのまま返すReducer
 export const noop = (state = {}) =&gt; state;</code></pre>
 <p>[<code>src\store\index.js</code>]にreduxのcreateStore関数を定義します。</p>
-<pre class="javascript"><code>import { createStore, combineReducers, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
-import * as reducers from '../reducers';
+<pre class="javascript"><code>import { createStore, combineReducers, applyMiddleware } from &#39;redux&#39;;
+import logger from &#39;redux-logger&#39;;
+import * as reducers from &#39;../reducers&#39;;
 
 // Storeを生成するための関数を定義
 export default function createStoreEx() {
@@ -1963,11 +2083,11 @@ export default function createStoreEx() {
   );
 }</code></pre>
 <p>［<code>src\index.js</code>］でStoreを生成し、react-reduxのProviderコンポーネントでAppコンポーネントに関連付ける処理を記述します。</p>
-<pre class="javascript"><code>import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import App from './App';
-import createStoreEx from './store';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import ReactDOM from &#39;react-dom&#39;;
+import { Provider } from &#39;react-redux&#39;;
+import App from &#39;./App&#39;;
+import createStoreEx from &#39;./store&#39;;
 
 // Storeの生成
 const store = createStoreEx();
@@ -1977,7 +2097,7 @@ ReactDOM.render(
   &lt;Provider store={store}&gt;
     &lt;App /&gt;
   &lt;/Provider&gt;,
-  document.getElementById('root')
+  document.getElementById(&#39;root&#39;)
 );</code></pre></li>
 <li><p>ルーティングライブラリの導入</p>
 <p>こちらも開発開始時に導入しておきます。</p>
@@ -1989,10 +2109,10 @@ ReactDOM.render(
 <pre><code>&gt; npm install --save react-router-dom history react-router-redux@next</code></pre>
 <p>Storeを生成する関数に、routerReducerとrouterMiddlewareを追加します。</p>
 <p>[<code>src\store\index.js</code>]</p>
-<pre class="javascript"><code>import { createStore, combineReducers, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
-import * as reducers from '../reducers';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
+<pre class="javascript"><code>import { createStore, combineReducers, applyMiddleware } from &#39;redux&#39;;
+import logger from &#39;redux-logger&#39;;
+import * as reducers from &#39;../reducers&#39;;
+import { routerReducer, routerMiddleware } from &#39;react-router-redux&#39;;
 
 // Storeを生成するための関数を定義
 // history は src/index.js から受け渡す
@@ -2014,13 +2134,13 @@ export default function createStoreEx(history) {
   );
 }</code></pre>
 <p>[<code>src\index.js</code>]</p>
-<pre class="javascript"><code>import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
-import createBrowserHistory from 'history/createBrowserHistory';
-import App from './App';
-import createStoreEx from './store';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import ReactDOM from &#39;react-dom&#39;;
+import { Provider } from &#39;react-redux&#39;;
+import { ConnectedRouter } from &#39;react-router-redux&#39;;
+import createBrowserHistory from &#39;history/createBrowserHistory&#39;;
+import App from &#39;./App&#39;;
+import createStoreEx from &#39;./store&#39;;
 
 // history のインスタンスを生成
 const history = createBrowserHistory();
@@ -2041,13 +2161,13 @@ ReactDOM.render(
       &lt;App /&gt;
     &lt;/ConnectedRouter&gt;
   &lt;/Provider&gt;,
-  document.getElementById('root')
+  document.getElementById(&#39;root&#39;)
 );</code></pre></li>
 <li><p>ルーティングの実装</p>
 <p>コンポーネントを作ります。</p>
 <p>[<code>src\components\Ranking.js</code>]</p>
-<pre class="javascript"><code>import React from 'react';
-import PropTypes from 'prop-types';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import PropTypes from &#39;prop-types&#39;;
 
 export default function Ranking({ categoryId }) {
   // TODO: 最終的には categoryId をもとにAPIから情報を取得する
@@ -2069,9 +2189,9 @@ Ranking.defaultProps = {
   categoryId: &quot;1&quot;
 };</code></pre>
 <p>ルーティングの設定は [<code>src\App.js</code>] に記述します。</p>
-<pre class="javascript"><code>import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
-import Ranking from './components/Ranking';
+<pre class="javascript"><code>import React, { Component } from &#39;react&#39;;
+import { Route, Link } from &#39;react-router-dom&#39;;
+import Ranking from &#39;./components/Ranking&#39;;
 
 class App extends Component {
   render() {
@@ -2108,11 +2228,11 @@ export default App;</code></pre></li>
 </dd>
 </dl>
 <p>ミドルウェアに redux-thunk を追加するため、[<code>src\store\index.js</code>]を修正します。</p>
-<pre class="javascript"><code>import { createStore, combineReducers, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
-import thunk from 'redux-thunk';
-import * as reducers from '../reducers';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
+<pre class="javascript"><code>import { createStore, combineReducers, applyMiddleware } from &#39;redux&#39;;
+import logger from &#39;redux-logger&#39;;
+import thunk from &#39;redux-thunk&#39;;
+import * as reducers from &#39;../reducers&#39;;
+import { routerReducer, routerMiddleware } from &#39;react-router-redux&#39;;
 
 // Storeを生成するための関数を定義
 // history は src/index.js から受け渡す
@@ -2137,8 +2257,8 @@ export default function createStoreEx(history) {
 <p>APIからデータを取得し、ReduxのStoreを経由してコンポーネントに表示する処理を実装します。</p>
 <p>ComponentからActionを呼び出す部分。</p>
 <p>[<code>src\components\Ranking.js</code>]</p>
-<pre class="javascript"><code>import React from 'react';
-import PropTypes from 'prop-types';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import PropTypes from &#39;prop-types&#39;;
 
 // ライフサイクルメソッドを使うので function から class に変更
 export default class Ranking extends React.Component {
@@ -2184,8 +2304,8 @@ Ranking.defaultProps = {
 <li>レスポンス受信 Action - receiveData</li>
 <li>リクエスト完了 Action - finishRequest</li>
 </ul>
-<pre class="javascript"><code>import fetchJsonp from 'fetch-jsonp';
-import qs from 'qs';
+<pre class="javascript"><code>import fetchJsonp from &#39;fetch-jsonp&#39;;
+import qs from &#39;qs&#39;;
 
 const API_URL = &quot;http://hoge.co.jp/v1/json/hoge&quot;; // TODO: api のURL
 const APP_ID = &quot;APP_ID&quot;;                          // TODO: 不要だが定義しておく
@@ -2236,9 +2356,9 @@ export const fetchRanking = categoryId =&gt; {
 <li>ActionCreator をコンポーネントのprops.onMountedから呼び出すため、Container Component を定義します。</li>
 <li>mapDispatchToPropsで、props.onMountedとactions.fetchRankingを接続します。</li>
 </ul>
-<pre class="javascript"><code>import { connect } from 'react-redux';
-import Ranking from '../components/Ranking';
-import * as actions from '../actions/Ranking';
+<pre class="javascript"><code>import { connect } from &#39;react-redux&#39;;
+import Ranking from &#39;../components/Ranking&#39;;
+import * as actions from &#39;../actions/Ranking&#39;;
 
 // TODO: Reducerを定義するまでの仮の処理
 const mapStateToProps = (state, ownProps) =&gt; ({
@@ -2257,9 +2377,9 @@ const mapDispatchToProps = dispatch =&gt; ({
 export default connect(mapStateToProps, mapDispatchToProps)(Ranking);</code></pre>
 <p>[<code>src\App.js</code>]</p>
 <p>定義したContainer Componentを使うように修正します。</p>
-<pre class="javascript"><code>import Ranking from './components/Ranking';</code></pre>
+<pre class="javascript"><code>import Ranking from &#39;./components/Ranking&#39;;</code></pre>
 <p>↓</p>
-<pre class="javascript"><code>import Ranking from './containers/Ranking';</code></pre></li>
+<pre class="javascript"><code>import Ranking from &#39;./containers/Ranking&#39;;</code></pre></li>
 <li><p>Reducerの実装</p>
 <p>Reducerを実装し、取得したデータを表示します。</p>
 <ul>
@@ -2305,7 +2425,7 @@ const getRanking = response =&gt; {
   // TODO: ダウンロードできるサンプルに第10章が含まれていない
 
   for (let index = 0; index &lt; itemLength; index++) {
-    const item = response.ResultSet['0'].Result[index + &quot;&quot;];
+    const item = response.ResultSet[&#39;0&#39;].Result[index + &quot;&quot;];
     ranking.push({
       code: item.Code,
       name: item.Name,
@@ -2355,13 +2475,13 @@ export default (state = initialState, action) =&gt; {
 <pre class="javascript"><code>// 受け取ったstateをそのまま返すReducer
 export const noop = (state = {}) =&gt; state;
 
-export { default as shopping } from './shopping';
-export { default as Ranking } from './Ranking';</code></pre>
+export { default as shopping } from &#39;./shopping&#39;;
+export { default as Ranking } from &#39;./Ranking&#39;;</code></pre>
 <p>[<code>src\App.js</code>] のリンクの部分を Nav コンポーネントに移動する。</p>
 <p>[<code>src\components\Nav.js</code>]</p>
-<pre class="javascript"><code>import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import PropTypes from &#39;prop-types&#39;;
+import { Link } from &#39;react-router-dom&#39;;
 
 export default function Nav({ categories }) {
   // 移動先パスの生成
@@ -2398,8 +2518,8 @@ Nav.propTypes = {
 };</code></pre>
 <p>Nav コンポーネントの Container Component を作成します。</p>
 <p>[<code>src\containers\Nav.js</code>]</p>
-<pre class="javascript"><code>import { connect } from 'react-redux';
-import Nav from '../components/Nav';
+<pre class="javascript"><code>import { connect } from &#39;react-redux&#39;;
+import Nav from &#39;../components/Nav&#39;;
 
 const mapStateToProps = state =&gt; ({
   // state.shopping.categories を props.categories に関連付ける
@@ -2409,10 +2529,10 @@ const mapStateToProps = state =&gt; ({
 export default connect(mapStateToProps)(Nav);</code></pre>
 <p>App コンポーネントに Nav コンポーネントを組み込みます。</p>
 <p>[<code>src\App.js</code>]</p>
-<pre class="javascript"><code>import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import Ranking from './containers/Ranking';
-import Nav from './containers/Nav';
+<pre class="javascript"><code>import React, { Component } from &#39;react&#39;;
+import { Route, Switch, Redirect } from &#39;react-router-dom&#39;;
+import Ranking from &#39;./containers/Ranking&#39;;
+import Nav from &#39;./containers/Nav&#39;;
 
 class App extends Component {
   render() {
@@ -2454,9 +2574,9 @@ export default App;</code></pre></li>
 <li>ランキング情報の表示</li>
 </ul>
 <p>[<code>src\actions\Ranking.js</code>]</p>
-<pre class="javascript"><code>import fetchJsonp from 'fetch-jsonp';
-import qs from 'qs';
-import { replace } from 'react-router-redux';
+<pre class="javascript"><code>import fetchJsonp from &#39;fetch-jsonp&#39;;
+import qs from &#39;qs&#39;;
+import { replace } from &#39;react-router-redux&#39;;
 
 const API_URL = &quot;http://hoge.co.jp/v1/json/hoge&quot;; // TODO: api のURL
 const APP_ID = &quot;APP_ID&quot;;                          // TODO: 不要だが定義しておく
@@ -2538,8 +2658,8 @@ const initialState = {
 });</code></pre>
 <p>Rankingコンポーネントは、受け取ったカテゴリ情報、ランキング情報、エラーフラグを表示します。</p>
 <p>[<code>src\components\Ranking.js</code>]</p>
-<pre class="javascript"><code>import React from 'react';
-import PropTypes from 'prop-types';
+<pre class="javascript"><code>import React from &#39;react&#39;;
+import PropTypes from &#39;prop-types&#39;;
 
 export default class Ranking extends React.Component {
 
@@ -2673,7 +2793,7 @@ Ranking.defaultProps = {
 
 const ListItemLink = ({ to, ...rest }) =&gt; (
   &lt;Route path={to} children={({ match }) =&gt; (
-    &lt;li className={match ? 'active' : ''}&gt;
+    &lt;li className={match ? &#39;active&#39; : &#39;&#39;}&gt;
       &lt;Link to={to} {...rest}/&gt;
     &lt;/li&gt;
   )}/&gt;
@@ -2697,18 +2817,18 @@ HTML5 の history API を使うか、URLハッシュを使うか選べます。<
 <li><p><code>createStore</code>関数にReducerとMiddlewareを適用します。<br />
 Reducerの指定は「router」キーに「routerReducer」を指定します。</p></li>
 </ol>
-<pre class="javascript"><code>import React from 'react'
-import ReactDOM from 'react-dom'
+<pre class="javascript"><code>import React from &#39;react&#39;
+import ReactDOM from &#39;react-dom&#39;
 
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { Provider } from 'react-redux'
+import { createStore, combineReducers, applyMiddleware } from &#39;redux&#39;
+import { Provider } from &#39;react-redux&#39;
 
-import createHistory from 'history/createBrowserHistory'
-import { Route } from 'react-router'
+import createHistory from &#39;history/createBrowserHistory&#39;
+import { Route } from &#39;react-router&#39;
 
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from &#39;react-router-redux&#39;
 
-import reducers from './reducers' // Or wherever you keep your reducers
+import reducers from &#39;./reducers&#39; // Or wherever you keep your reducers
 
 // (1) history の生成
 const history = createHistory()
@@ -2728,7 +2848,7 @@ const store = createStore(
 )
 
 // これでどこからでもナビゲーションのアクションを送信できます。
-// store.dispatch(push('/foo'))
+// store.dispatch(push(&#39;/foo&#39;))
 
 ReactDOM.render(
   &lt;Provider store={store}&gt;
@@ -2741,7 +2861,7 @@ ReactDOM.render(
       &lt;/div&gt;
     &lt;/ConnectedRouter&gt;
   &lt;/Provider&gt;,
-  document.getElementById('root')
+  document.getElementById(&#39;root&#39;)
 )</code></pre>
 <h2>head要素内の各要素を書き換える</h2>
 <p>React Helmet パッケージを使います。</p>
