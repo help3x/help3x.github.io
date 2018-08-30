@@ -61,6 +61,14 @@ git archive --format=tar --worktree-attributes HEAD | tar -C ../export/ -xf -
 ```
 
 
+### タグ指定
+
+```
+git archive --format=tar --worktree-attributes v1.0.0 | tar -C ../export/ -xf -
+```
+
+
+
 Memo:  
 　コマンドでファイル名を指定するとき、ハイフンを指定すると標準入力（標準出力）として解釈してくれる。
 
