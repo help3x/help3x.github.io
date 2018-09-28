@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Note for 2018.09.28</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Note for 2018.09.28</h1>
+</header>
+<h2>背景色の設定パターン</h2>
+<dl>
+<dt>DBから検索したとき</dt>
+<dd>元の値が0であれば、背景色が灰色になる。そうでなければ既定色。
+</dd>
+<dt>行削除したとき</dt>
+<dd>セルの値が0でも0でなくても、背景色が削除の色（濃い灰色）になる。
+</dd>
+<dt>削除選択した行のセルに値を入力したとき</dt>
+<dd>入力した値が0でも0でなくても、背景色は削除の色（濃い灰色）のまま。
+</dd>
+<dt>行削除を解除したとき</dt>
+<dd>セルの値が0であれば、背景色が灰色になる。そうでなければ規定色。
+</dd>
+</dl>
+<h2>Render のサンプル</h2>
+<pre><code>floatRoundRender = ui =&gt; {
+  this.deleteCellRender(ui);
+
+  if (Object.prototype.toString.call(ui.data[ui.rowIndx][&quot;pq_cellcls&quot;]) !== &quot;[object Object]&quot;) {
+    ui.data[ui.rowIndx][&quot;pq_cellcls&quot;] = {};
+  } else {
+    // スタイルの初期化（「real-zero」クラスを取り除く）
+    const cellcls = ui.data[ui.rowIndx][&quot;pq_cellcls&quot;][ui.dataIndx];
+    if (cellcls) {
+      const realZeroIndex = cellcls.indexOf(&quot;real-zero&quot;);
+      if (realZeroIndex &gt; -1) {
+        const splitTexts = cellcls.split(&quot; &quot;);
+        const classNames = [];
+        splitTexts.forEach((className, index, ar) =&gt; {
+          if (className &amp;&amp; className !== &quot;real-zero&quot;) {
+            classNames.push(className);
+          }
+        });
+        ui.data[ui.rowIndx][&quot;pq_cellcls&quot;][ui.dataIndx] = classNames.join(&quot; &quot;);
+      }
+    }
+  }
+
+  // 未入力なら空文字を表示する
+  if (NumberValidator.isNullOrEmpty(ui.cellData)) {
+    return &quot;&quot;;
+  }
+
+  // 数値でないなら変換前の値をそのまま表示する
+  const parsedVal = CommonFunctions.parseNumber(ui.cellData);
+  if (isNaN(parsedVal)) {
+    return ui.cellData;
+  }
+
+  // 本当の値がゼロであればスタイルを適用する
+  if (parsedVal === 0) {
+    const classNames = [&quot;real-zero&quot;];
+    const cellcls = ui.data[ui.rowIndx][&quot;pq_cellcls&quot;][ui.dataIndx];
+    if (cellcls) {
+      cellcls.split(&quot; &quot;).forEach((className, index, ar) =&gt; {
+        if (className) {
+          classNames.push(className);
+        }
+      })
+    }
+    ui.data[ui.rowIndx][&quot;pq_cellcls&quot;][ui.dataIndx] = classNames.join(&quot; &quot;);
+    return &quot;0&quot;;
+  }
+
+  // 丸めに失敗したら、処理前の値をそのまま表示する
+  const roundedVal = CommonFunctions.round(ui.cellData, 3);
+  if (isNaN(roundedVal)) {
+    return ui.cellData;
+  }
+
+  const dispVal = CommonFunctions.parseNumberToFixedString(roundedVal);
+  return dispVal;
+};</code></pre>
+<h2>売れない時代に売れるビールとは ●日経BP Mail：2018/09/28（発信：日経BP社）</h2>
+<p>森永氏が語る！「一番搾り」絶好調の理由<br />
+≫≫≫ &lt;http://h.nikkeibp.co.jp/h.jsp?no=370744 &gt;</p>
+<p>キリンビール「一番搾り」缶の売上が絶好調だ。 2017年9月のリニューアル後、売上は右肩上がりで上昇し、 2018年は【対前年比117%で伸長中】だ。 ビールを始め、アルコール飲料の選択肢が多様化する中、 「一番搾り」はなぜ、多くの消費者に評価されているのか。 そこには、これからのビジネスにも共通するヒントが見てとれる。</p>
+<p>今回は、経済アナリストの森永卓郎氏に、 「一番搾り」のおいしさ、ヒットの秘密を大いに語っていただいた。</p>
+<p>詳細はこちら<br />
+≫≫≫ &lt;http://h.nikkeibp.co.jp/h.jsp?no=370744 &gt;</p>
+<pre><code>■□＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+           ビールが売れない時代に一番搾りが絶好調な理由とは？
+                   森永氏が語る「３つのヒットのツボ」
+        --------------------------------------------------------
+                 &lt;http://h.nikkeibp.co.jp/h.jsp?no=370744&gt;
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝□■</code></pre>
+<ul>
+<li><p>ヒットのツボ１★ビールが売れない時代に、なぜ「一番搾り」は売れたのか！？<br />
+⇒多くの消費者がビールに求める本質的な価値である「おいしさ」を評価！</p></li>
+<li><p>ヒットのツボ２★ヒットを支える「一番搾り」のおいしさ<br />
+⇒リニューアル前の「一番搾り」からさらにバランスの良い味わいに！</p></li>
+<li><p>ヒットのツボ３★ヒットの裏にコミュニケーションあり<br />
+⇒「銘柄別CM好感度ランキング」で、2017年9月から何度も第1位を獲得！</p></li>
+</ul>
+<p>詳細はこちら≫≫≫ <a href="http://h.nikkeibp.co.jp/h.jsp?no=370744" class="uri">http://h.nikkeibp.co.jp/h.jsp?no=370744</a></p>
+<h2>今年の戦力</h2>
+<ul>
+<li>写真
+<ul>
+<li>GM1K + Panasonic LEICA DG VARIO-ELMARIT 50-200mm / F2.8-4.0 ASPH.</li>
+</ul></li>
+<li>動画
+<ul>
+<li>VX980M</li>
+</ul></li>
+</ul>
+<p>GM1Kの予備バッテリーを2個調達した。</p>
+<p>望遠域が足りない反省から長めのレンズをレンタルした。超高級レンズ。買えません。晴れますように。</p>
+<h3>参考: 去年までの戦力</h3>
+<ul>
+<li>2017年（長男: もも / 長女: いちご）
+<ul>
+<li>写真
+<ul>
+<li>GM1K + Panasonic G X VARIO 35-100mm / F2.8</li>
+<li>TX1（予備）</li>
+</ul></li>
+<li>動画
+<ul>
+<li>VX980M</li>
+</ul></li>
+</ul></li>
+<li>2016年（長男: りんご）
+<ul>
+<li>写真
+<ul>
+<li>LUMIX FZ1000</li>
+</ul></li>
+<li>動画
+<ul>
+<li>★忘れた。フルHDのPanasonicのやつ。</li>
+</ul></li>
+</ul></li>
+<li>2015年（長男: いちご）
+<ul>
+<li>写真
+<ul>
+<li>LUMIX FZ1000</li>
+</ul></li>
+<li>動画
+<ul>
+<li>★忘れた。フルHDのPanasonicのやつ。</li>
+</ul></li>
+</ul></li>
+</ul>
+</body>
+</html>
