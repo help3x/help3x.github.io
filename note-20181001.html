@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Note for 2018.10.01</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Note for 2018.10.01</h1>
+</header>
+<h2>normalize.css (v8.0.0) のCDN</h2>
+<ul>
+<li><a href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css" class="uri">https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css</a></li>
+<li><a href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" class="uri">https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css</a></li>
+<li><a href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css.map" class="uri">https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css.map</a></li>
+</ul>
+<h2>ParamQuery Grid</h2>
+<h3>フィルターの解除と再指定</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">// いまのフィルター条件を取得する</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">const</span> similarMcGroupFilterValue <span class="op">=</span> <span class="kw">this</span>.<span class="va">grid</span>.<span class="at">getColumn</span>(<span class="op">{</span> <span class="dt">dataIndx</span><span class="op">:</span> <span class="kw">this</span>.<span class="va">dataIndexes</span>.<span class="at">similarMcGroup</span><span class="op">,</span> <span class="op">}</span>).<span class="va">filter</span>.<span class="at">value</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">// 一度フィルター条件を消去する</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">this</span>.<span class="va">grid</span>.<span class="at">filter</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">  <span class="dt">oper</span><span class="op">:</span> <span class="st">&quot;replace&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">  <span class="dt">data</span><span class="op">:</span> []<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co">// もう一度フィルター条件を指定する</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="cf">if</span> (<span class="op">!</span><span class="va">StringValidator</span>.<span class="at">isNullOrEmpty</span>(similarMcGroupFilterValue)) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">  <span class="kw">this</span>.<span class="va">grid</span>.<span class="at">filter</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">    <span class="dt">oper</span><span class="op">:</span> <span class="st">&quot;replace&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">    <span class="dt">data</span><span class="op">:</span> [</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">      <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">        <span class="dt">dataIndx</span><span class="op">:</span> <span class="kw">this</span>.<span class="va">dataIndexes</span>.<span class="at">similarMcGroup</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">        <span class="dt">condition</span><span class="op">:</span> <span class="st">&quot;equal&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">        <span class="dt">value</span><span class="op">:</span> similarMcGroupFilterValue<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">      <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-20" data-line-number="20">    ]<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">  <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="op">}</span></a></code></pre></div>
+<h2>参考</h2>
+<ul>
+<li><p><a href="https://innova-jp.com/201504-cmk-kis-writers-block/">あなたが文章を書けない本当の理由とは？ :: 株式会社イノーバ</a></p>
+<p>2015/04/02 - コンテンツマーケティングをやる上で最大の障壁は、「書きなきゃと思っても書けない」という事。コンテンツマーケティング … では、このライターズブロックを防ぎ、すらすらと文章を書くためにはどうしたらいいのでしょうか？私は、以下の3ステップ …</p></li>
+<li><p><a href="https://murashun.jp/blog/20180811-01.html">ブログを速く書くための文章術 | murashun.jp</a></p>
+<p>2018/08/11 - 文章を書くことが苦手な悩みを持つ人は少なくありません。 学生や社会人など、職業を問わず文章を速く書くためのスキルが求められています。 メール、レポート、企画書、プレゼン資料、議事録、そしてブログや SNS も例外ではありません。</p></li>
+</ul>
+</body>
+</html>
