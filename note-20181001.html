@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Note for 2018.10.01</title>
+  <title>Note for 2018.10.01 - 02</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -81,8 +81,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Note for 2018.10.01</h1>
+<h1 class="title">Note for 2018.10.01 - 02</h1>
 </header>
+<style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+html {
+  font-size: 62.5%;   /* BaseFontSize 10px */
+  line-height: 1.5;   /* デフォルトフォントサイズ 16px x 1.5 = ベースライン 24px */
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'Segoe UI', Meiryo, sans-serif;
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+}
+
+main {
+  display: block;   /* IE11 は inline が規定値なので block にする */
+}
+pre,
+code {
+  font-family: "MS Gothic", monospace;
+}
+
+@media all and (min-width: 768px) {
+  body {
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  body {
+    padding-left: 4.8rem;
+    padding-right: 4.8rem;
+  }
+}
+</style>
 <h2>normalize.css (v8.0.0) のCDN</h2>
 <ul>
 <li><a href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css" class="uri">https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css</a></li>
@@ -113,6 +162,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb1-20" data-line-number="20">    ]<span class="op">,</span></a>
 <a class="sourceLine" id="cb1-21" data-line-number="21">  <span class="op">}</span>)</a>
 <a class="sourceLine" id="cb1-22" data-line-number="22"><span class="op">}</span></a></code></pre></div>
+<h3>セルの入力値をフィルターの選択肢に追加する</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">const</span> grid <span class="op">=</span> <span class="at">$</span>(<span class="st">&quot;#grid&quot;</span>).<span class="at">pqGrid</span>(<span class="st">&quot;getInstance&quot;</span>).<span class="at">grid</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">const</span> column <span class="op">=</span> <span class="va">grid</span>.<span class="at">getColumn</span>(<span class="op">{</span> <span class="dt">dataIndx</span><span class="op">:</span> <span class="st">&quot;officeName&quot;</span> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">const</span> filter <span class="op">=</span> <span class="va">column</span>.<span class="at">filter</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="va">filter</span>.<span class="at">cache</span> <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="va">filter</span>.<span class="va">options</span>.<span class="at">push</span>(<span class="op">{</span> <span class="dt">officeName</span><span class="op">:</span> <span class="st">&quot;(大分)&quot;</span> <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="va">grid</span>.<span class="at">refresh</span>()<span class="op">;</span></a></code></pre></div>
+<h2>レンタルサーバーの検討</h2>
+<p>WordPress を2つ運営したい。 一つは公開用、もう一つは自分用で外部公開はしない。</p>
+<p>GitHubのプライベートリポジトリにファイルを上げるより、WordPressのほうが楽そう。</p>
+<p>費用をかけたくないので、さくらのレンタルサーバーのスタンダードプランを候補にしました。 初期費用が￥1,029で、月額は￥515です。</p>
+<p>wpXクラウドは初期費用が￥0で、月額は￥500ですが、1契約につき1つしか設置できないため見送ります。 将来的にはこちらに移行するかもしれませんが。。。</p>
 <h2>参考</h2>
 <ul>
 <li><p><a href="https://innova-jp.com/201504-cmk-kis-writers-block/">あなたが文章を書けない本当の理由とは？ :: 株式会社イノーバ</a></p>
