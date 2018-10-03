@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Note for 2018.10.03</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Note for 2018.10.03</h1>
+</header>
+<style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+html {
+  font-size: 62.5%;   /* BaseFontSize 10px */
+  line-height: 1.5;   /* デフォルトフォントサイズ 16px x 1.5 = ベースライン 24px */
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'Segoe UI', Meiryo, sans-serif;
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+}
+
+main {
+  display: block;   /* IE11 は inline が規定値なので block にする */
+}
+pre,
+code {
+  font-family: "MS Gothic", monospace;
+}
+
+@media all and (min-width: 768px) {
+  body {
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  body {
+    padding-left: 4.8rem;
+    padding-right: 4.8rem;
+  }
+}
+</style>
+<h2>JavaScriptでfalseとみなされる（falsyとなる）値</h2>
+<ul>
+<li>false</li>
+<li>空文字</li>
+<li>NaN</li>
+<li>0</li>
+<li>undefined</li>
+<li>null</li>
+</ul>
+<h2>ParamQuery Grid</h2>
+<h3>オブジェクトの配列から指定した列を抽出し、重複を除いた配列を返す。</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="va">fn</span>.<span class="at">getData</span> <span class="op">=</span> <span class="kw">function</span>(objP) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="kw">var</span> dataIndices <span class="op">=</span> <span class="va">objP</span>.<span class="at">dataIndx</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">    dILen <span class="op">=</span> <span class="va">dataIndices</span>.<span class="at">length</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">    data <span class="op">=</span> <span class="va">objP</span>.<span class="at">data</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">    DM <span class="op">=</span> <span class="kw">this</span>.<span class="va">options</span>.<span class="at">dataModel</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">    DMData <span class="op">=</span> <span class="va">DM</span>.<span class="at">data</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">    DMDataUF <span class="op">=</span> <span class="va">DM</span>.<span class="at">dataUF</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">    arr <span class="op">=</span> []<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">    pr <span class="op">=</span> <span class="kw">function</span>(data) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">      <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> len <span class="op">=</span> <span class="va">data</span>.<span class="at">length</span><span class="op">;</span> i <span class="op">&lt;</span> len<span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">        <span class="kw">var</span> rowData <span class="op">=</span> data[i]<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">        <span class="kw">var</span> row <span class="op">=</span> <span class="op">{};</span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">        <span class="cf">for</span> (<span class="kw">var</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> dILen<span class="op">;</span> j<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">          <span class="kw">var</span> dataIndx <span class="op">=</span> dataIndices[j]<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">          row[dataIndx] <span class="op">=</span> rowData[dataIndx]</a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">        <span class="va">arr</span>.<span class="at">push</span>(row)</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">      <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">    <span class="op">};</span></a>
+<a class="sourceLine" id="cb1-20" data-line-number="20">  </a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">  <span class="co">// 元にするデータが指定されているときはそれを使う</span></a>
+<a class="sourceLine" id="cb1-22" data-line-number="22">  <span class="co">// 指定されていなければ、dataModelが持つdataとdataUFを使う</span></a>
+<a class="sourceLine" id="cb1-23" data-line-number="23">  <span class="cf">if</span> (data) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">    <span class="at">pr</span>(data)</a>
+<a class="sourceLine" id="cb1-25" data-line-number="25">  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-26" data-line-number="26">    <span class="cf">if</span> (DMData) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-27" data-line-number="27">      <span class="at">pr</span>(DMData)</a>
+<a class="sourceLine" id="cb1-28" data-line-number="28">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-29" data-line-number="29">    <span class="cf">if</span> (DMDataUF) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-30" data-line-number="30">      <span class="at">pr</span>(DMDataUF)</a>
+<a class="sourceLine" id="cb1-31" data-line-number="31">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-32" data-line-number="32">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-33" data-line-number="33">  </a>
+<a class="sourceLine" id="cb1-34" data-line-number="34">  <span class="co">// 列ごとの並べ替えの設定</span></a>
+<a class="sourceLine" id="cb1-35" data-line-number="35">  <span class="kw">var</span> sorters <span class="op">=</span> []<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-36" data-line-number="36">  <span class="cf">for</span> (<span class="kw">var</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> dILen<span class="op">;</span> j<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-37" data-line-number="37">    <span class="kw">var</span> dataIndx <span class="op">=</span> dataIndices[j]<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-38" data-line-number="38">    <span class="kw">var</span> column <span class="op">=</span> <span class="kw">this</span>.<span class="at">getColumn</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb1-39" data-line-number="39">      <span class="dt">dataIndx</span><span class="op">:</span> dataIndx</a>
+<a class="sourceLine" id="cb1-40" data-line-number="40">    <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-41" data-line-number="41">    <span class="va">sorters</span>.<span class="at">push</span>(<span class="op">{</span></a>
+<a class="sourceLine" id="cb1-42" data-line-number="42">      <span class="dt">dataIndx</span><span class="op">:</span> dataIndx<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-43" data-line-number="43">      <span class="dt">dir</span><span class="op">:</span> <span class="st">&quot;up&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb1-44" data-line-number="44">      <span class="dt">dataType</span><span class="op">:</span> <span class="va">column</span>.<span class="at">dataType</span></a>
+<a class="sourceLine" id="cb1-45" data-line-number="45">    <span class="op">}</span>)</a>
+<a class="sourceLine" id="cb1-46" data-line-number="46">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-47" data-line-number="47">  </a>
+<a class="sourceLine" id="cb1-48" data-line-number="48">  <span class="co">// 並べ替え実行</span></a>
+<a class="sourceLine" id="cb1-49" data-line-number="49">  arr <span class="op">=</span> <span class="kw">this</span>.<span class="va">iSort</span>.<span class="at">_sortLocalData</span>(sorters<span class="op">,</span> arr)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-50" data-line-number="50">  </a>
+<a class="sourceLine" id="cb1-51" data-line-number="51">  <span class="co">// 重複するレコードを省く</span></a>
+<a class="sourceLine" id="cb1-52" data-line-number="52">  <span class="kw">var</span> arr2 <span class="op">=</span> []<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-53" data-line-number="53">    item2 <span class="op">=</span> <span class="kw">undefined</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb1-54" data-line-number="54">  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">arr</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-55" data-line-number="55">    <span class="kw">var</span> rowData <span class="op">=</span> arr[i]<span class="op">,</span></a>
+<a class="sourceLine" id="cb1-56" data-line-number="56">      item <span class="op">=</span> <span class="va">JSON</span>.<span class="at">stringify</span>(rowData)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-57" data-line-number="57">    <span class="cf">if</span> (item <span class="op">!==</span> item2) <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-58" data-line-number="58">      <span class="va">arr2</span>.<span class="at">push</span>(rowData)<span class="op">;</span></a>
+<a class="sourceLine" id="cb1-59" data-line-number="59">      item2 <span class="op">=</span> item</a>
+<a class="sourceLine" id="cb1-60" data-line-number="60">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-61" data-line-number="61">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb1-62" data-line-number="62">  </a>
+<a class="sourceLine" id="cb1-63" data-line-number="63">  <span class="cf">return</span> arr2</a>
+<a class="sourceLine" id="cb1-64" data-line-number="64"><span class="op">};</span></a></code></pre></div>
+<h3>オブジェクトの配列を並べ替えます。</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="va">_pSort</span>.<span class="at">_sortLocalData</span> <span class="op">=</span> <span class="kw">function</span>(sorters<span class="op">,</span> data) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="cf">if</span> (data <span class="op">==</span> <span class="kw">null</span> <span class="op">||</span> <span class="va">data</span>.<span class="at">length</span> <span class="op">==</span> <span class="dv">0</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="cf">return</span> []</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">  <span class="cf">if</span> (<span class="op">!</span>sorters <span class="op">||</span> <span class="op">!</span><span class="va">sorters</span>.<span class="at">length</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">    <span class="cf">return</span> data</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">  <span class="kw">function</span> <span class="at">sort_integer</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx<span class="op">,</span> dir) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">    <span class="kw">var</span> val1 <span class="op">=</span> obj1[dataIndx]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">    <span class="kw">var</span> val2 <span class="op">=</span> obj2[dataIndx]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">    val1 <span class="op">=</span> val1 <span class="op">?</span> <span class="at">parseInt</span>(val1<span class="op">,</span> <span class="dv">10</span>) : <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">    val2 <span class="op">=</span> val2 <span class="op">?</span> <span class="at">parseInt</span>(val2<span class="op">,</span> <span class="dv">10</span>) : <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">    <span class="cf">return</span> ((val1 <span class="op">-</span> val2) <span class="op">*</span> dir)</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17">  <span class="kw">function</span> <span class="at">sort_date</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx<span class="op">,</span> dir) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18">    <span class="kw">var</span> val1 <span class="op">=</span> obj1[dataIndx]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19">    <span class="kw">var</span> val2 <span class="op">=</span> obj2[dataIndx]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-20" data-line-number="20">    val1 <span class="op">=</span> val1 <span class="op">?</span> <span class="va">Date</span>.<span class="at">parse</span>(val1) : <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-21" data-line-number="21">    val2 <span class="op">=</span> val2 <span class="op">?</span> <span class="va">Date</span>.<span class="at">parse</span>(val2) : <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-22" data-line-number="22">    <span class="cf">return</span> ((val1 <span class="op">-</span> val2) <span class="op">*</span> dir)</a>
+<a class="sourceLine" id="cb2-23" data-line-number="23">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb2-25" data-line-number="25">  <span class="kw">function</span> <span class="at">sort_custom</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx<span class="op">,</span> dir<span class="op">,</span> dataType) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-26" data-line-number="26">    <span class="kw">var</span> val1 <span class="op">=</span> obj1[dataIndx]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-27" data-line-number="27">    <span class="kw">var</span> val2 <span class="op">=</span> obj2[dataIndx]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-28" data-line-number="28">    <span class="cf">return</span> (<span class="at">dataType</span>(val1<span class="op">,</span> val2) <span class="op">*</span> dir)</a>
+<a class="sourceLine" id="cb2-29" data-line-number="29">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb2-31" data-line-number="31">  <span class="kw">function</span> <span class="at">sort_custom2</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx<span class="op">,</span> dir<span class="op">,</span> sortType) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-32" data-line-number="32">    <span class="cf">return</span> (<span class="at">sortType</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx) <span class="op">*</span> dir)</a>
+<a class="sourceLine" id="cb2-33" data-line-number="33">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-34" data-line-number="34"></a>
+<a class="sourceLine" id="cb2-35" data-line-number="35">  <span class="kw">function</span> <span class="at">sort_float</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx<span class="op">,</span> dir) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-36" data-line-number="36">    <span class="kw">var</span> val1 <span class="op">=</span> (obj1[dataIndx] <span class="op">+</span> <span class="st">&quot;&quot;</span>).<span class="at">replace</span>(<span class="ss">/,/g</span><span class="op">,</span> <span class="st">&quot;&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-37" data-line-number="37">    <span class="kw">var</span> val2 <span class="op">=</span> (obj2[dataIndx] <span class="op">+</span> <span class="st">&quot;&quot;</span>).<span class="at">replace</span>(<span class="ss">/,/g</span><span class="op">,</span> <span class="st">&quot;&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-38" data-line-number="38">    val1 <span class="op">=</span> val1 <span class="op">?</span> <span class="at">parseFloat</span>(val1) : <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-39" data-line-number="39">    val2 <span class="op">=</span> val2 <span class="op">?</span> <span class="at">parseFloat</span>(val2) : <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-40" data-line-number="40">    <span class="cf">return</span> ((val1 <span class="op">-</span> val2) <span class="op">*</span> dir)</a>
+<a class="sourceLine" id="cb2-41" data-line-number="41">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb2-43" data-line-number="43">  <span class="kw">function</span> <span class="at">sort_string</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx<span class="op">,</span> dir) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-44" data-line-number="44">    <span class="kw">var</span> val1 <span class="op">=</span> obj1[dataIndx]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-45" data-line-number="45">    <span class="kw">var</span> val2 <span class="op">=</span> obj2[dataIndx]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-46" data-line-number="46">    val1 <span class="op">=</span> val1 <span class="op">?</span> val1 : <span class="st">&quot;&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-47" data-line-number="47">    val2 <span class="op">=</span> val2 <span class="op">?</span> val2 : <span class="st">&quot;&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-48" data-line-number="48">    <span class="kw">var</span> ret <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-49" data-line-number="49">    <span class="cf">if</span> (val1 <span class="op">&gt;</span> val2) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-50" data-line-number="50">      ret <span class="op">=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb2-51" data-line-number="51">    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-52" data-line-number="52">      <span class="cf">if</span> (val1 <span class="op">&lt;</span> val2) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-53" data-line-number="53">        ret <span class="op">=</span> <span class="dv">-1</span></a>
+<a class="sourceLine" id="cb2-54" data-line-number="54">      <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-55" data-line-number="55">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-56" data-line-number="56">    <span class="cf">return</span> (ret <span class="op">*</span> dir)</a>
+<a class="sourceLine" id="cb2-57" data-line-number="57">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-58" data-line-number="58"></a>
+<a class="sourceLine" id="cb2-59" data-line-number="59">  <span class="kw">function</span> <span class="at">sort_stringi</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx<span class="op">,</span> dir) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-60" data-line-number="60">    <span class="kw">var</span> val1 <span class="op">=</span> obj1[dataIndx]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-61" data-line-number="61">    <span class="kw">var</span> val2 <span class="op">=</span> obj2[dataIndx]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-62" data-line-number="62">    val1 <span class="op">=</span> val1 <span class="op">?</span> <span class="va">val1</span>.<span class="at">toUpperCase</span>() : <span class="st">&quot;&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-63" data-line-number="63">    val2 <span class="op">=</span> val2 <span class="op">?</span> <span class="va">val2</span>.<span class="at">toUpperCase</span>() : <span class="st">&quot;&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-64" data-line-number="64">    <span class="kw">var</span> ret <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-65" data-line-number="65">    <span class="cf">if</span> (val1 <span class="op">&gt;</span> val2) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-66" data-line-number="66">      ret <span class="op">=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb2-67" data-line-number="67">    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-68" data-line-number="68">      <span class="cf">if</span> (val1 <span class="op">&lt;</span> val2) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-69" data-line-number="69">        ret <span class="op">=</span> <span class="dv">-1</span></a>
+<a class="sourceLine" id="cb2-70" data-line-number="70">      <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-71" data-line-number="71">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-72" data-line-number="72">    <span class="cf">return</span> (ret <span class="op">*</span> dir)</a>
+<a class="sourceLine" id="cb2-73" data-line-number="73">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-74" data-line-number="74"></a>
+<a class="sourceLine" id="cb2-75" data-line-number="75">  <span class="kw">function</span> <span class="at">sort_bool</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx<span class="op">,</span> dir) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-76" data-line-number="76">    <span class="kw">var</span> val1 <span class="op">=</span> obj1[dataIndx]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-77" data-line-number="77">    <span class="kw">var</span> val2 <span class="op">=</span> obj2[dataIndx]<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-78" data-line-number="78">    <span class="kw">var</span> ret <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-79" data-line-number="79">    <span class="cf">if</span> ((val1 <span class="op">&amp;&amp;</span> <span class="op">!</span>val2) <span class="op">||</span> (val1 <span class="op">===</span> <span class="kw">false</span> <span class="op">&amp;&amp;</span> val2 <span class="op">===</span> <span class="kw">null</span>)) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-80" data-line-number="80">      ret <span class="op">=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb2-81" data-line-number="81">    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-82" data-line-number="82">      <span class="cf">if</span> ((val2 <span class="op">&amp;&amp;</span> <span class="op">!</span>val1) <span class="op">||</span> (val2 <span class="op">===</span> <span class="kw">false</span> <span class="op">&amp;&amp;</span> val1 <span class="op">===</span> <span class="kw">null</span>)) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-83" data-line-number="83">        ret <span class="op">=</span> <span class="dv">-1</span></a>
+<a class="sourceLine" id="cb2-84" data-line-number="84">      <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-85" data-line-number="85">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-86" data-line-number="86">    <span class="cf">return</span> (ret <span class="op">*</span> dir)</a>
+<a class="sourceLine" id="cb2-87" data-line-number="87">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-88" data-line-number="88"></a>
+<a class="sourceLine" id="cb2-89" data-line-number="89">  <span class="kw">function</span> <span class="at">innerSort</span>() <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-90" data-line-number="90">    <span class="kw">var</span> arrFn <span class="op">=</span> []<span class="op">,</span></a>
+<a class="sourceLine" id="cb2-91" data-line-number="91">      arrDataIndx <span class="op">=</span> []<span class="op">,</span></a>
+<a class="sourceLine" id="cb2-92" data-line-number="92">      arrDir <span class="op">=</span> []<span class="op">,</span></a>
+<a class="sourceLine" id="cb2-93" data-line-number="93">      sortersLength <span class="op">=</span> <span class="va">sorters</span>.<span class="at">length</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-94" data-line-number="94"></a>
+<a class="sourceLine" id="cb2-95" data-line-number="95">    <span class="kw">function</span> <span class="at">sort_composite</span>(obj1<span class="op">,</span> obj2) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-96" data-line-number="96">      <span class="kw">var</span> ret <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-97" data-line-number="97">      <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> sortersLength<span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-98" data-line-number="98">        ret <span class="op">=</span> arrFn[i](obj1<span class="op">,</span> obj2<span class="op">,</span> arrDataIndx[i]<span class="op">,</span> arrDir[i])<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-99" data-line-number="99">        <span class="cf">if</span> (ret <span class="op">!=</span> <span class="dv">0</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-100" data-line-number="100">          <span class="cf">break</span></a>
+<a class="sourceLine" id="cb2-101" data-line-number="101">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-102" data-line-number="102">      <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-103" data-line-number="103">      <span class="cf">return</span> ret</a>
+<a class="sourceLine" id="cb2-104" data-line-number="104">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-105" data-line-number="105"></a>
+<a class="sourceLine" id="cb2-106" data-line-number="106">    <span class="co">// arrFn配列に、dataTypeに応じたソート関数を入れる</span></a>
+<a class="sourceLine" id="cb2-107" data-line-number="107">    <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> sortersLength<span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-108" data-line-number="108">      <span class="kw">var</span> sorter <span class="op">=</span> sorters[i]<span class="op">,</span></a>
+<a class="sourceLine" id="cb2-109" data-line-number="109">        dataIndx <span class="op">=</span> <span class="va">sorter</span>.<span class="at">dataIndx</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-110" data-line-number="110">        dir <span class="op">=</span> (<span class="va">sorter</span>.<span class="at">dir</span> <span class="op">==</span> <span class="st">&quot;up&quot;</span>) <span class="op">?</span> <span class="dv">1</span> : <span class="dv">-1</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-111" data-line-number="111">        sortType <span class="op">=</span> <span class="va">sorter</span>.<span class="at">sortType</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb2-112" data-line-number="112">        dataType <span class="op">=</span> <span class="va">sorter</span>.<span class="at">dataType</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb2-113" data-line-number="113">      </a>
+<a class="sourceLine" id="cb2-114" data-line-number="114">      arrDataIndx[i] <span class="op">=</span> dataIndx<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-115" data-line-number="115">      arrDir[i] <span class="op">=</span> dir<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-116" data-line-number="116">      </a>
+<a class="sourceLine" id="cb2-117" data-line-number="117">      <span class="co">// ソート関数を決める</span></a>
+<a class="sourceLine" id="cb2-118" data-line-number="118">      <span class="co">//   1. dataType === &quot;integer&quot;</span></a>
+<a class="sourceLine" id="cb2-119" data-line-number="119">      <span class="co">//   2. dataType === &quot;float&quot;</span></a>
+<a class="sourceLine" id="cb2-120" data-line-number="120">      <span class="co">//   3. typeof dataType === &quot;function&quot;</span></a>
+<a class="sourceLine" id="cb2-121" data-line-number="121">      <span class="co">//   4. sortType</span></a>
+<a class="sourceLine" id="cb2-122" data-line-number="122">      <span class="co">//   5. dataType === &quot;date&quot;</span></a>
+<a class="sourceLine" id="cb2-123" data-line-number="123">      <span class="co">//   6. dataType === &quot;stringi&quot;</span></a>
+<a class="sourceLine" id="cb2-124" data-line-number="124">      <span class="co">//   7. dataType === &quot;bool&quot;</span></a>
+<a class="sourceLine" id="cb2-125" data-line-number="125">      <span class="co">//   8. 上記以外のときは 文字列として並べ替える</span></a>
+<a class="sourceLine" id="cb2-126" data-line-number="126">      <span class="cf">if</span> (dataType <span class="op">==</span> <span class="st">&quot;integer&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-127" data-line-number="127">        arrFn[i] <span class="op">=</span> sort_integer</a>
+<a class="sourceLine" id="cb2-128" data-line-number="128">      <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-129" data-line-number="129">        <span class="cf">if</span> (dataType <span class="op">==</span> <span class="st">&quot;float&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-130" data-line-number="130">          arrFn[i] <span class="op">=</span> sort_float</a>
+<a class="sourceLine" id="cb2-131" data-line-number="131">        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-132" data-line-number="132">          <span class="cf">if</span> (<span class="kw">typeof</span> dataType <span class="op">==</span> <span class="st">&quot;function&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-133" data-line-number="133">            arrFn[i] <span class="op">=</span> (<span class="kw">function</span>(dataType) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-134" data-line-number="134">              <span class="cf">return</span> <span class="kw">function</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx<span class="op">,</span> dir) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-135" data-line-number="135">                <span class="cf">return</span> <span class="at">sort_custom</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx<span class="op">,</span> dir<span class="op">,</span> dataType)</a>
+<a class="sourceLine" id="cb2-136" data-line-number="136">              <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-137" data-line-number="137">            <span class="op">}</span>)(dataType)</a>
+<a class="sourceLine" id="cb2-138" data-line-number="138">          <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-139" data-line-number="139">            <span class="cf">if</span> (sortType) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-140" data-line-number="140">              arrFn[i] <span class="op">=</span> (<span class="kw">function</span>(sortType) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-141" data-line-number="141">                <span class="cf">return</span> <span class="kw">function</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx<span class="op">,</span> dir) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-142" data-line-number="142">                  <span class="cf">return</span> <span class="at">sort_custom2</span>(obj1<span class="op">,</span> obj2<span class="op">,</span> dataIndx<span class="op">,</span> dir<span class="op">,</span> sortType)</a>
+<a class="sourceLine" id="cb2-143" data-line-number="143">                <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-144" data-line-number="144">              <span class="op">}</span>)(sortType)</a>
+<a class="sourceLine" id="cb2-145" data-line-number="145">            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-146" data-line-number="146">              <span class="cf">if</span> (dataType <span class="op">==</span> <span class="st">&quot;date&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-147" data-line-number="147">                arrFn[i] <span class="op">=</span> sort_date</a>
+<a class="sourceLine" id="cb2-148" data-line-number="148">              <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-149" data-line-number="149">                <span class="cf">if</span> (dataType <span class="op">==</span> <span class="st">&quot;stringi&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-150" data-line-number="150">                  arrFn[i] <span class="op">=</span> sort_stringi</a>
+<a class="sourceLine" id="cb2-151" data-line-number="151">                <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-152" data-line-number="152">                  <span class="cf">if</span> (dataType <span class="op">==</span> <span class="st">&quot;bool&quot;</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-153" data-line-number="153">                    arrFn[i] <span class="op">=</span> sort_bool</a>
+<a class="sourceLine" id="cb2-154" data-line-number="154">                  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-155" data-line-number="155">                    arrFn[i] <span class="op">=</span> sort_string</a>
+<a class="sourceLine" id="cb2-156" data-line-number="156">                  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-157" data-line-number="157">                <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-158" data-line-number="158">              <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-159" data-line-number="159">            <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-160" data-line-number="160">          <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-161" data-line-number="161">        <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-162" data-line-number="162">      <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-163" data-line-number="163">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-164" data-line-number="164">    data <span class="op">=</span> <span class="va">data</span>.<span class="at">sort</span>(sort_composite)    <span class="co">// ＝ Array.prototype.sort()  :: sort_composite に従う</span></a>
+<a class="sourceLine" id="cb2-165" data-line-number="165">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-166" data-line-number="166">  </a>
+<a class="sourceLine" id="cb2-167" data-line-number="167">  <span class="at">innerSort</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb2-168" data-line-number="168">  <span class="cf">return</span> data</a>
+<a class="sourceLine" id="cb2-169" data-line-number="169"><span class="op">};</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">var</span> convertA <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">1000000</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">    <span class="kw">var</span> text <span class="op">=</span> i <span class="op">+</span> <span class="st">&quot;&quot;</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">  <span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="fl">302.3</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="fl">235.6</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="fl">224.0</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="kw">var</span> convertB <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">  <span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">1000000</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">    <span class="kw">var</span> num <span class="op">=</span> <span class="at">Number</span>(i <span class="op">+</span> <span class="st">&quot;&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">  <span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="fl">570.7</span></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="fl">539.5</span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="fl">550.2</span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb3-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb3-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb3-29" data-line-number="29"><span class="kw">var</span> convertC <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-30" data-line-number="30">  <span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-31" data-line-number="31">  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">1000000</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-32" data-line-number="32">    <span class="kw">var</span> num <span class="op">=</span> <span class="op">+</span>(i <span class="op">+</span> <span class="st">&quot;&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-33" data-line-number="33">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-34" data-line-number="34">  <span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-35" data-line-number="35"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-36" data-line-number="36"></a>
+<a class="sourceLine" id="cb3-37" data-line-number="37"><span class="fl">283.4</span></a>
+<a class="sourceLine" id="cb3-38" data-line-number="38"><span class="fl">281.0</span></a>
+<a class="sourceLine" id="cb3-39" data-line-number="39"><span class="fl">290.8</span></a>
+<a class="sourceLine" id="cb3-40" data-line-number="40"></a>
+<a class="sourceLine" id="cb3-41" data-line-number="41"></a>
+<a class="sourceLine" id="cb3-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb3-43" data-line-number="43"><span class="kw">var</span> convertD <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-44" data-line-number="44">  <span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-45" data-line-number="45">  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">1000000</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-46" data-line-number="46">    <span class="kw">var</span> text <span class="op">=</span> <span class="at">String</span>(i)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-47" data-line-number="47">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-48" data-line-number="48">  <span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-49" data-line-number="49"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-50" data-line-number="50"></a>
+<a class="sourceLine" id="cb3-51" data-line-number="51"><span class="fl">353.0</span></a>
+<a class="sourceLine" id="cb3-52" data-line-number="52"><span class="fl">309.5</span></a>
+<a class="sourceLine" id="cb3-53" data-line-number="53"><span class="fl">306.4</span></a>
+<a class="sourceLine" id="cb3-54" data-line-number="54"></a>
+<a class="sourceLine" id="cb3-55" data-line-number="55"></a>
+<a class="sourceLine" id="cb3-56" data-line-number="56"></a>
+<a class="sourceLine" id="cb3-57" data-line-number="57"><span class="kw">var</span> convertE <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-58" data-line-number="58">  <span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-59" data-line-number="59">  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">1000000</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-60" data-line-number="60">    <span class="kw">var</span> text <span class="op">=</span> <span class="kw">typeof</span> i<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-61" data-line-number="61">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-62" data-line-number="62">  <span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-63" data-line-number="63"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-64" data-line-number="64"></a>
+<a class="sourceLine" id="cb3-65" data-line-number="65"><span class="fl">69.1</span></a>
+<a class="sourceLine" id="cb3-66" data-line-number="66"><span class="fl">45.1</span></a>
+<a class="sourceLine" id="cb3-67" data-line-number="67"><span class="fl">45.2</span></a>
+<a class="sourceLine" id="cb3-68" data-line-number="68"></a>
+<a class="sourceLine" id="cb3-69" data-line-number="69"></a>
+<a class="sourceLine" id="cb3-70" data-line-number="70"></a>
+<a class="sourceLine" id="cb3-71" data-line-number="71"><span class="kw">var</span> convertF <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-72" data-line-number="72">  <span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-73" data-line-number="73">  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">1000000</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-74" data-line-number="74">    <span class="kw">var</span> text <span class="op">=</span> <span class="va">Object</span>.<span class="va">prototype</span>.<span class="va">toString</span>.<span class="at">call</span>(i)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-75" data-line-number="75">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-76" data-line-number="76">  <span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-77" data-line-number="77"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-78" data-line-number="78"></a>
+<a class="sourceLine" id="cb3-79" data-line-number="79"><span class="fl">472.1</span></a>
+<a class="sourceLine" id="cb3-80" data-line-number="80"><span class="fl">456.5</span></a>
+<a class="sourceLine" id="cb3-81" data-line-number="81"><span class="fl">464.2</span></a>
+<a class="sourceLine" id="cb3-82" data-line-number="82"></a>
+<a class="sourceLine" id="cb3-83" data-line-number="83"></a>
+<a class="sourceLine" id="cb3-84" data-line-number="84"></a>
+<a class="sourceLine" id="cb3-85" data-line-number="85"><span class="kw">var</span> convertG <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-86" data-line-number="86">  <span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-87" data-line-number="87">  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">1000000</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-88" data-line-number="88">    <span class="kw">var</span> text <span class="op">=</span> <span class="at">isNaN</span>(<span class="dv">1000</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-89" data-line-number="89">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-90" data-line-number="90">  <span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-91" data-line-number="91"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-92" data-line-number="92"></a>
+<a class="sourceLine" id="cb3-93" data-line-number="93"><span class="fl">204.2</span></a>
+<a class="sourceLine" id="cb3-94" data-line-number="94"><span class="fl">186.3</span></a>
+<a class="sourceLine" id="cb3-95" data-line-number="95"><span class="dv">187</span></a>
+<a class="sourceLine" id="cb3-96" data-line-number="96"></a>
+<a class="sourceLine" id="cb3-97" data-line-number="97"></a>
+<a class="sourceLine" id="cb3-98" data-line-number="98"></a>
+<a class="sourceLine" id="cb3-99" data-line-number="99"><span class="kw">var</span> convertH <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-100" data-line-number="100">  <span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-101" data-line-number="101">  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">1000000</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-102" data-line-number="102">    <span class="kw">var</span> text <span class="op">=</span> <span class="va">i</span>.<span class="at">toString</span>()<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-103" data-line-number="103">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-104" data-line-number="104">  <span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-105" data-line-number="105"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-106" data-line-number="106"></a>
+<a class="sourceLine" id="cb3-107" data-line-number="107"><span class="fl">399.5</span></a>
+<a class="sourceLine" id="cb3-108" data-line-number="108"><span class="fl">398.1</span></a>
+<a class="sourceLine" id="cb3-109" data-line-number="109"><span class="fl">428.2</span></a>
+<a class="sourceLine" id="cb3-110" data-line-number="110"></a>
+<a class="sourceLine" id="cb3-111" data-line-number="111"></a>
+<a class="sourceLine" id="cb3-112" data-line-number="112"></a>
+<a class="sourceLine" id="cb3-113" data-line-number="113"></a>
+<a class="sourceLine" id="cb3-114" data-line-number="114"></a>
+<a class="sourceLine" id="cb3-115" data-line-number="115"><span class="kw">var</span> convertI <span class="op">=</span> <span class="kw">function</span> () <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-116" data-line-number="116">  <span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-117" data-line-number="117">  <span class="cf">for</span> (<span class="kw">var</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">1000000</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-118" data-line-number="118">    <span class="kw">var</span> text <span class="op">=</span> <span class="va">Array</span>.<span class="at">isArray</span>(i)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-119" data-line-number="119">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-120" data-line-number="120">  <span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;parse&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-121" data-line-number="121"><span class="op">};</span></a>
+<a class="sourceLine" id="cb3-122" data-line-number="122"></a>
+<a class="sourceLine" id="cb3-123" data-line-number="123"><span class="fl">282.0</span></a>
+<a class="sourceLine" id="cb3-124" data-line-number="124"><span class="fl">266.2</span></a>
+<a class="sourceLine" id="cb3-125" data-line-number="125"><span class="fl">266.6</span></a>
+<a class="sourceLine" id="cb3-126" data-line-number="126"></a>
+<a class="sourceLine" id="cb3-127" data-line-number="127"></a>
+<a class="sourceLine" id="cb3-128" data-line-number="128"></a>
+<a class="sourceLine" id="cb3-129" data-line-number="129"></a>
+<a class="sourceLine" id="cb3-130" data-line-number="130"><span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;parseNumber&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-131" data-line-number="131"><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">1000000</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-132" data-line-number="132">  <span class="kw">const</span> parsedValue <span class="op">=</span> <span class="va">CommonFunctions</span>.<span class="at">parseNumber</span>(<span class="st">&quot;3.1415926535897932384626433832795028841971&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-133" data-line-number="133"><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-134" data-line-number="134"><span class="va">console</span>.<span class="at">log</span>(<span class="va">CommonFunctions</span>.<span class="at">parseNumber</span>(<span class="st">&quot;3.1415926535897932384626433832795028841971&quot;</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-135" data-line-number="135"><span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;parseNumber&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-136" data-line-number="136"></a>
+<a class="sourceLine" id="cb3-137" data-line-number="137"><span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;parseNumber2&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-138" data-line-number="138"><span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">1000000</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-139" data-line-number="139">  <span class="kw">const</span> parsedValue <span class="op">=</span> <span class="va">CommonFunctions</span>.<span class="at">parseNumber2</span>(<span class="st">&quot;3.1415926535897932384626433832795028841971&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-140" data-line-number="140"><span class="op">}</span></a>
+<a class="sourceLine" id="cb3-141" data-line-number="141"><span class="va">console</span>.<span class="at">log</span>(<span class="va">CommonFunctions</span>.<span class="at">parseNumber2</span>(<span class="st">&quot;3.1415926535897932384626433832795028841971&quot;</span>))<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-142" data-line-number="142"><span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;parseNumber2&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-143" data-line-number="143"></a>
+<a class="sourceLine" id="cb3-144" data-line-number="144"><span class="kw">const</span> testValue <span class="op">=</span> [</a>
+<a class="sourceLine" id="cb3-145" data-line-number="145">  <span class="kw">true</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-146" data-line-number="146">  <span class="kw">false</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-147" data-line-number="147">  <span class="st">&quot;&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-148" data-line-number="148">  <span class="kw">NaN</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-149" data-line-number="149">  <span class="dv">0</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-150" data-line-number="150">  <span class="kw">undefined</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-151" data-line-number="151">  <span class="kw">null</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-152" data-line-number="152">  []<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-153" data-line-number="153">  <span class="op">{},</span></a>
+<a class="sourceLine" id="cb3-154" data-line-number="154">  [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">,</span></a>
+<a class="sourceLine" id="cb3-155" data-line-number="155">  <span class="op">{</span><span class="dt">a</span><span class="op">:</span><span class="st">&quot;text&quot;</span><span class="op">,</span><span class="dt">b</span><span class="op">:</span><span class="dv">100</span><span class="op">},</span></a>
+<a class="sourceLine" id="cb3-156" data-line-number="156">  <span class="kw">Infinity</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-157" data-line-number="157">  <span class="op">-</span><span class="kw">Infinity</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-158" data-line-number="158">  <span class="st">&quot;0&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-159" data-line-number="159">  <span class="fl">1e+10</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-160" data-line-number="160">  <span class="st">&quot;.141421356&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-161" data-line-number="161">  <span class="st">&quot;1.0000000000000001&quot;</span><span class="op">,</span></a>
+<a class="sourceLine" id="cb3-162" data-line-number="162">]<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-163" data-line-number="163"><span class="va">testValue</span>.<span class="at">forEach</span>((val<span class="op">,</span> index) <span class="op">=&gt;</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-164" data-line-number="164">  <span class="kw">const</span> parsedValue1 <span class="op">=</span> <span class="va">CommonFunctions</span>.<span class="at">parseNumber</span>(val)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-165" data-line-number="165">  <span class="kw">const</span> parsedValue2 <span class="op">=</span> <span class="va">CommonFunctions</span>.<span class="at">parseNumber2</span>(val)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-166" data-line-number="166">  <span class="cf">if</span> (val <span class="op">!==</span> <span class="kw">null</span> <span class="op">&amp;&amp;</span> <span class="kw">typeof</span> val <span class="op">!==</span> <span class="st">&quot;undefined&quot;</span> <span class="op">&amp;&amp;</span> <span class="va">val</span>.<span class="at">toString</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-167" data-line-number="167">    <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`</span><span class="sc">${</span>val<span class="sc">}\t${</span><span class="va">val</span>.<span class="at">toString</span>()<span class="sc">}\t${</span>parsedValue1<span class="sc">}\t${</span>parsedValue2<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-168" data-line-number="168">  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-169" data-line-number="169">    <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`</span><span class="sc">${</span>val<span class="sc">}\t${</span><span class="st">&quot;toString is undefined&quot;</span><span class="sc">}\t${</span>parsedValue1<span class="sc">}\t${</span>parsedValue2<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb3-170" data-line-number="170">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-171" data-line-number="171"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h2>高さが低い水槽が欲しい</h2>
+<ul>
+<li>グラスガーデン F300
+<ul>
+<li>W300 x D300 x H150mm</li>
+<li>11.4L</li>
+<li>3.5kg（水槽単体）</li>
+</ul></li>
+<li>グラステリアキューブ200
+<ul>
+<li>W200 x D200 x H200mm</li>
+<li>7L</li>
+</ul></li>
+<li>グラステリア メダカ 上見
+<ul>
+<li>W200 x D200 x H140mm</li>
+<li>4.8L</li>
+</ul></li>
+<li>グラステリア メダカ 横見
+<ul>
+<li>W200 x D150 x H200mm</li>
+<li>5.2L</li>
+</ul></li>
+<li>金魚元気　キューブセット250
+<ul>
+<li>W250 x D250 x H250mm</li>
+<li>12.5L</li>
+</ul></li>
+<li>レグラス R200
+<ul>
+<li>W200 x D200 x H200mm</li>
+<li>7L</li>
+<li>コーナー曲げガラスタイプ</li>
+</ul></li>
+<li>10/7
+<ul>
+<li>11:30-, 14:30-</li>
+<li>ジオウ</li>
+</ul></li>
+<li>マリーナスリムL
+<ul>
+<li>W398 x D204 x H280</li>
+<li>20L</li>
+</ul></li>
+</ul>
+<h2>Keywords</h2>
+<ul>
+<li><p>検証に使ったブラウザは、Internet Explorer 11 (v11.0.9600.19100) です。</p></li>
+<li><p>〝50字 文章〟</p></li>
+<li><p><a href="https://oda-nobunaga.info">プレバトで学んだ【50文字】で思いを伝えるトレーニング - 織田信長の生涯</a></p>
+<p>2014/03/11 - プレバト」というテレビのバラエティ番組で「50文字で行きつけの店の看板料理を伝えましょう」というお題がありました。 ゲストの … 50文字で表現するのはコミュニケーションと文章表現の良いトレーニングになると直感したのでまとめてみます。</p></li>
+</ul>
+</body>
+</html>
