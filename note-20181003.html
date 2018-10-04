@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Note for 2018.10.03</title>
+  <title>Note at 2018.10.03</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -81,7 +81,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Note for 2018.10.03</h1>
+<h1 class="title">Note at 2018.10.03</h1>
 </header>
 <style>
 html,
@@ -142,6 +142,13 @@ code {
 <li>null</li>
 </ul>
 <h2>ParamQuery Grid</h2>
+<h3><code>refresh</code> / <code>refreshView</code> / <code>refreshDataAndView</code> の違い</h3>
+<p>公式サイトに説明がありました。</p>
+<p><a href="https://paramquery.com/tutorial#topic-refreshView">How to refresh the data or view of grid</a></p>
+<h3>Free 版の pqGrid は、動的に colModel を作れない</h3>
+<p>Pro版なら動的に作れる。<code>refreshCM</code>メソッドを使う。</p>
+<p>ということらしいのだが、</p>
+<p>フィルターかソートの機能を使わなければ、Free版でも実はできる。 フィルター/ソートを追加するまではできていたし。 なにが原因かあとで調べたい。</p>
 <h3>オブジェクトの配列から指定した列を抽出し、重複を除いた配列を返す。</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="va">fn</span>.<span class="at">getData</span> <span class="op">=</span> <span class="kw">function</span>(objP) <span class="op">{</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="kw">var</span> dataIndices <span class="op">=</span> <span class="va">objP</span>.<span class="at">dataIndx</span><span class="op">,</span></a>
@@ -548,8 +555,61 @@ code {
 <a class="sourceLine" id="cb3-169" data-line-number="169">    <span class="va">console</span>.<span class="at">log</span>(<span class="vs">`</span><span class="sc">${</span>val<span class="sc">}\t${</span><span class="st">&quot;toString is undefined&quot;</span><span class="sc">}\t${</span>parsedValue1<span class="sc">}\t${</span>parsedValue2<span class="sc">}</span><span class="vs">`</span>)<span class="op">;</span></a>
 <a class="sourceLine" id="cb3-170" data-line-number="170">  <span class="op">}</span></a>
 <a class="sourceLine" id="cb3-171" data-line-number="171"><span class="op">}</span>)<span class="op">;</span></a></code></pre></div>
+<h3>フィルターの選択肢を高速に作りたい</h3>
+<p>総データ件数は、hogeレコード×fugaカラム＝piyo個です。</p>
+<p>既定の処理を使うと、だいたい30秒かかります。</p>
+<h4>193,725.6 ミリ秒（194秒）</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;create filter selection items&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">var</span> grid <span class="op">=</span> <span class="at">$</span>(<span class="st">&quot;#grid&quot;</span>).<span class="at">pqGrid</span>(<span class="st">&quot;getInstance&quot;</span>).<span class="at">grid</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">var</span> data <span class="op">=</span> <span class="va">grid</span>.<span class="va">options</span>.<span class="va">dataModel</span>.<span class="at">data</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw">var</span> data2 <span class="op">=</span> <span class="op">{};</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="va">data</span>.<span class="at">forEach</span>(<span class="kw">function</span> (rowData) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">  <span class="va">Object</span>.<span class="at">keys</span>(rowData).<span class="at">forEach</span>(<span class="kw">function</span> (key) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="kw">var</span> list <span class="op">=</span> data2[key] <span class="op">=</span> data2[key] <span class="op">||</span> []<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">    <span class="kw">var</span> item <span class="op">=</span> <span class="op">{};</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">    <span class="kw">var</span> count <span class="op">=</span> <span class="va">list</span>.<span class="at">filter</span>(<span class="kw">function</span> (rowData2) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">      <span class="cf">return</span> rowData2[key] <span class="op">===</span> rowData[key]<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">    <span class="op">}</span>).<span class="at">length</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">    <span class="cf">if</span> (count <span class="op">===</span> <span class="dv">0</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">      item[key] <span class="op">=</span> rowData[key]<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">      <span class="va">list</span>.<span class="at">push</span>(item)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;create filter selection items&quot;</span>)<span class="op">;</span></a></code></pre></div>
+<h4>11,114.2 ミリ秒（11秒）</h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript"><code class="sourceCode javascript"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="va">console</span>.<span class="at">time</span>(<span class="st">&quot;create filter selection items&quot;</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">var</span> grid <span class="op">=</span> <span class="at">$</span>(<span class="st">&quot;#grid&quot;</span>).<span class="at">pqGrid</span>(<span class="st">&quot;getInstance&quot;</span>).<span class="at">grid</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">var</span> data <span class="op">=</span> <span class="va">grid</span>.<span class="va">options</span>.<span class="va">dataModel</span>.<span class="at">data</span><span class="op">;</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">var</span> data2 <span class="op">=</span> <span class="op">{};</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="va">data</span>.<span class="at">forEach</span>(<span class="kw">function</span> (rowData) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">  <span class="va">Object</span>.<span class="at">keys</span>(rowData).<span class="at">forEach</span>(<span class="kw">function</span> (key) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">    <span class="kw">var</span> list <span class="op">=</span> data2[key] <span class="op">=</span> data2[key] <span class="op">||</span> []<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">    <span class="cf">if</span> (<span class="va">list</span>.<span class="at">indexOf</span>(rowData[key]) <span class="op">===</span> <span class="dv">-1</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">      <span class="va">list</span>.<span class="at">push</span>(rowData[key])<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">    <span class="op">}</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="kw">var</span> data3 <span class="op">=</span> <span class="op">{};</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="va">Object</span>.<span class="at">keys</span>(data2).<span class="at">forEach</span>(<span class="kw">function</span> (key) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16">  data2[key].<span class="at">sort</span>(<span class="kw">function</span> (a<span class="op">,</span> b) <span class="op">{</span> <span class="cf">if</span> (a <span class="op">&gt;</span> b) <span class="op">{</span> <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span> <span class="op">}</span> <span class="cf">if</span> (a <span class="op">&lt;</span> b) <span class="op">{</span> <span class="cf">return</span> <span class="dv">-1</span><span class="op">;</span> <span class="op">}</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span> <span class="op">}</span>).<span class="at">forEach</span>(<span class="kw">function</span> (val) <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17">    <span class="kw">var</span> list <span class="op">=</span> data3[key] <span class="op">=</span> data3[key] <span class="op">||</span> []<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18">    <span class="kw">var</span> item <span class="op">=</span> <span class="op">{};</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19">    item[key] <span class="op">=</span> val<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20">    <span class="va">list</span>.<span class="at">push</span>(item)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21">  <span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="op">}</span>)<span class="op">;</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="va">console</span>.<span class="at">timeEnd</span>(<span class="st">&quot;create filter selection items&quot;</span>)<span class="op">;</span></a></code></pre></div>
 <h2>高さが低い水槽が欲しい</h2>
 <ul>
+<li>リトルアクアリウム 水辺の生き物 多目的飼育ケース
+<ul>
+<li>W185 x D185 x H240mm</li>
+<li>6.5L</li>
+</ul></li>
 <li>グラスガーデン F300
 <ul>
 <li>W300 x D300 x H150mm</li>
@@ -599,6 +659,34 @@ code {
 <li><p>〝50字 文章〟</p></li>
 <li><p><a href="https://oda-nobunaga.info">プレバトで学んだ【50文字】で思いを伝えるトレーニング - 織田信長の生涯</a></p>
 <p>2014/03/11 - プレバト」というテレビのバラエティ番組で「50文字で行きつけの店の看板料理を伝えましょう」というお題がありました。 ゲストの … 50文字で表現するのはコミュニケーションと文章表現の良いトレーニングになると直感したのでまとめてみます。</p></li>
+<li><p>『論理的な小論文を書く方法』</p>
+<ul>
+<li>小野田博一</li>
+<li>日本実業出版社</li>
+<li>* 『論理的な作文・小論文を書く方法』の改題。</li>
+</ul>
+<p>核＝主張<br />
+核を支えるものが書き手の意見。<br />
+意見は具体的な事実や書き手が体験したことで支える。</p>
+<p>図示するとこんな感じ。</p>
+<pre><code>  +------+
+  |  核  |
+  +------------+
+  |    意見    |
+  +------------------+
+  |        事実      |
+  +------------------+</code></pre></li>
+<li><p>『エッセイの書き方』</p>
+<p>『エッセイ脳』の改題出版。</p></li>
+<li><p><a href="https://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiahevh1OvdAhWKP48KHaUYCkYQFjAAegQICRAB&amp;url=https%3A%2F%2Fstudyhacker.net%2Fcolumns%2Ftwitter-training&amp;usg=AOvVaw193WmB5f1Tt--Zrg8wimVm">ビジネスの基本スキル “文章力” はTwitterで鍛える！ Twitterで文が上手く …</a></p>
+<p>https://studyhacker.net › コラム</p>
+<p>2017/01/12 - このTwitterによる文章の練習は、『ソーシャルメディアで伝わる文章術』の著者でコピーライターの前田めぐるさんなど、文章ライティングに関わる様々な方が推奨している、とても効果の高いトレーニング法です。身近で手軽なツールを用いた文章 …</p></li>
+<li><p><a href="https://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiahevh1OvdAhWKP48KHaUYCkYQFjABegQICBAB&amp;url=https%3A%2F%2Fstudyhacker.net%2Fcolumns%2Ftwitter-bunsyouryoku&amp;usg=AOvVaw1jk7iGQp1CUA_hYOWXIYjY">文章力はTwitterで磨け！ 東大生がすすめる「Twitter文章力トレーニング」3 …</a></p>
+<p>https://studyhacker.net › コラム</p>
+<p>2017/10/11 - 筋力を伸ばすために筋トレをするように、文章力を伸ばすには繰り返しの訓練が必要なのです。そこで注目されているのが、Twitterを利用した手軽</p></li>
+<li><p><a href="http://www.google.co.jp/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=3&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiahevh1OvdAhWKP48KHaUYCkYQFjACegQIBxAB&amp;url=http%3A%2F%2Fu-note.me%2Fnote%2F47502526&amp;usg=AOvVaw34te7wd0z9Smes05ihxXbt">Twitterが文章養成塾に！ 通勤時間のたった5分でできる「文章の書き方が …</a></p>
+<p>u-note.me › ビジネス</p>
+<p>2015/06/08 - 文章力を上げることは、それほどビジネスパーソンにとって大事なことである。しかし、どうやったら文章力というものが身につくのか、意外と知らない人が多い。そこで今回は、毎日のちょっとした時間でできる「文章が上達する練習方法」を紹介 …</p></li>
 </ul>
 </body>
 </html>
