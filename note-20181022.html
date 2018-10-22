@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Note at 2018.10.22</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Note at 2018.10.22</h1>
+</header>
+<ul>
+<li><p><a href="https://teratail.com/questions/71592">【PHP】作成したメールフォームに脆弱性がないか、アドバイスもらえないでしょうか。</a></p></li>
+<li><p><a href="https://help.sakura.ad.jp/hc/ja/articles/206206041?_ga=2.31689086.1785222062.1540172678-713834695.1540172678&amp;_bdld=3Il+Kc.mqpsCDe">CGI・PHP・SSI について - さくらのサポート情報</a></p></li>
+<li><p><a href="https://help.sakura.ad.jp/hc/ja/articles/206227581">PHP・CGIに関するよくある質問 - さくらのサポート情報</a></p></li>
+<li><p><a href="https://help.sakura.ad.jp/hc/ja/articles/206053142--%E3%81%95%E3%81%8F%E3%82%89%E3%81%AE%E3%83%AC%E3%83%B3%E3%82%BF%E3%83%AB%E3%82%B5%E3%83%BC%E3%83%90-%E5%9F%BA%E6%9C%AC%E4%BB%95%E6%A7%98">【さくらのレンタルサーバ】基本仕様 - さくらのサポート情報</a></p></li>
+<li><p><a href="www.konekto.jp/tech/index.php?セキュリティ指針%2FPHPスクリプトの露呈防止">セキュリティ指針/PHPスクリプトの露呈防止 - コネクト株式会社 技術情報 …</a></p>
+<p>PHPスクリプトの露呈とは、ライブラリファイルや設定ファイル、テンプレートファイルの拡張子をPHP以外としている場合、もしくはWebサーバのバグや設定の問題 … 上記例でいえばindex.php以外のコードをDocument Root外に配置することで対策可能である。</p></li>
+<li><p>wp-config.phpはドキュメントルートよりも上の階層に置いたほうがいい …</p>
+<p>https://sawara.me › php</p>
+<p>2013/04/18 - WordPressの”wp-config.php”はデフォルトでは”index.php”と同じ階層に設置されていますが、これはやめておいた方が無難でしょう。 なぜなら、直接ファイルにアクセスできてしまいconfigの内容を読み取られてしまう可能性があるからです。</p></li>
+<li><p><a href="https://ameblo.jp/toaru-se3/entry-11759966053.html">phpに重要なパスワードなどを扱う場合はドキュメントルートより上の階層へ …</a></p>
+<p>2014/01/28 - phpのコードを記載したファイルが見られる可能性はないかと思い，色々調べていました。 Webアプリケーションは大雑把に2つのファイルに分かれます。 ・クライアンドサイドで動作 ・サーバサイドで動作. PHPはこれのサーバサイドで動作する …</p></li>
+<li><p><a href="https://memorandum.yamasnet.com/archives/Post-358.html">PHPのセキュリティを高めるための個人的メモ | Yama’s Memorandum</a></p>
+<p>2009/08/19 - セキュリティ上重要な情報を含むphpファイル index.php がドキュメントルート直下に置かれている場合、このファイルを下記 … WordPressでは、うえで述べたような手続きを用いないで、単純にドキュメントルートのひとつうえにwp-config.phpを …</p></li>
+<li><p><a href="https://kusanagi.tokyo/document/security/">推奨するセキュリティ対応 – KUSANAGI</a></p>
+<p>wp-config.phpはWordPressをインストールする際に、ドキュメントルート直下に生成されます。 外部からURLで直接 … を高めます。 ※なお以下の手順は1-1にてwp-config.phpをインストールしたディレクトリより1つ上の階層に配置していることを前提に記載しています。 … 次のように入力し、ドキュメントルート上の.htaccessファイルを開きます。</p></li>
+</ul>
+<h2 id="最低限欲しいと思われるページ">最低限欲しい（と思われる）ページ</h2>
+<ul>
+<li><p>プライバシーポリシー［privacy-policy］</p>
+<p>著作権と免責事項もあわせて書いておく。</p>
+<p>リンクはフッターに設ける。</p></li>
+<li><p>サイトマップ</p></li>
+<li><p>お問い合わせフォーム［contact］</p>
+<p>…本当に必要なのか？</p>
+<p>（もし作るなら）リンクはフッターに設ける。</p></li>
+</ul>
+</body>
+</html>
