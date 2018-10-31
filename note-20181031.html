@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document</title>
+  <style>
+    html {
+      font-size: 62.5%;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    body {
+      font-size: 1.6rem;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      font-family: Meiryo, sans-serif;
+    }
+
+    pre,
+    code {
+      font-family: "MS Gothic", monospace;
+    }
+
+    code {
+      background-color: #eee;
+      padding: .1em .4em;
+    }
+
+    .code-frame {
+      background-color: #364549;
+      color: #e3e3e3;
+
+      margin: 1.5em -32px;
+      padding: 1em 32px;
+      font-size: 0.9em;
+    }
+
+    .code-frame > div {
+      padding: .5em;
+      overflow-x: auto;
+    }
+
+    .code-frame > div > pre {
+      display: block;
+    }
+
+    .code-frame pre,
+    .code-frame code {
+      background-color: transparent;
+      margin: 0;
+      padding: 0;
+    }
+
+    .content {
+      padding: 32px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <header>
+      <h1>Note at 2018.10.31</h1>
+    </header>
+
+    <h2>コードブロックのスタイル例</h2>
+
+    <div class="code-frame"><div><pre><code>&lt;BlockUi tag="div" blocking={this.state.gridAndBtnBlocking} className="grid-and-btn-blockui"&gt;
+    {/* 一覧表示領域 */}
+    &lt;div className="grid"&gt;
+      &lt;div id="grid"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/BlockUi&gt;</code></pre></div></div>
+
+    <h2>円記号の表示</h2>
+
+    <ul>
+      <li>文字実体参照 &amp;yen;　&yen;</li>
+      <li>数値文字参照 &amp;#x005C;　&#x005C;</li>
+      <li>数値文字参照 &amp;#x00A5;　&#x00A5;</li>
+      <li>キーボードから円記号を入力　\</li>
+      <li>キーボードからバックスラッシュを入力　\</li>
+      <li>キーボードから全角の円記号を入力　￥</li>
+    </ul>
+    
+    <p>円記号は<code>0x5C</code>番地に割り当てられています。
+    この番地は、ASCIIではバックスラッシュとなります。</p>
+
+    <p>よって、<code>0x5C</code>が円記号とバックスラッシュのどちらをあらわすのかの区別で問題が起きることが多い。</p>
+
+    <p>なお、どちらが表示されるかはフォントによって違うようでした。</p>
+
+    <p>Courier New　<span style="font-family: 'Courier New';">&yen; &#x005C; &#x00A5;</span></p>
+    <p>ＭＳ　ゴシック　<span style="font-family: 'MS Gothic';">&yen; &#x005C; &#x00A5;</span></p>
+    <p>メイリオ　<span style="font-family: Meiryo;">&yen; &#x005C; &#x00A5;</span></p>
+
+    <p>円記号を表示させたいときは<code>0xA5</code>にマッピングされた文字（&#x00A5;）を使うか、全角の円記号（￥）を使いましょう。</p>
+
+
+    <h2>Bookmarks</h2>
+
+    <ul>
+      <li><p><a href="https://haniwaman.com/pc-responsive/">PCサイトのレスポンシブ化で横揺れさせない3つのポイント | HPcode</a></p>
+        <p>2018/01/12 - width： 100%; にしてもはみ出すことがあります。これは、 padding 、 border 、 margin のいずれかが影響している可能性が高いです。 レスポンシブデザインでは、基本的に左右の margin は指定しないこと（親要素の padding で調整する）.</p></li>
+      <li><p><a href="http://ithat.me/2016/12/08/css-margin-top-or-bottom">CSSのmargin-topかmargin-bottomどちらを使うか論争を終結させたい | IT ...</a></p>
+        <p>2016/12/08 - CSS-Tricksというブログに面白そうな記事があったので自分なりに考えてみました。margin は top と bottom どちらを使うべきかという内容です。 ... こんなHTMLがあったとき、p タグと p タグの間だけ margin を指定したいとします。</p></li>
+    </ul>
+
+
+
+    <section>
+      <h2>余白の取り方ルール</h2>
+      <section>
+        <h3>前提</h3>
+        <ul>
+          <li>コンポーネントのルート要素に<code>margin</code>は指定しない。</li>
+          <li>すべての要素は<code>box-sizing: border-box;</code>であること。</li>
+        </ul>
+      </section>
+      <section>
+        <h3>方針</h3>
+        <ul>
+          <li>
+            <p>コンポーネントの中の要素にも、原則、<code>margin</code>は利用しない。<br>
+               つまり、余白は<code>padding</code>で設ける。</p>
+          </li>
+        </ul>
+      </section>
+    </section>
+  </div>
+</body>
+</html>
