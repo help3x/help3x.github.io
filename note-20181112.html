@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>note-20181112</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<p>Excelでファイルの種類をCSV（カンマ区切り）にして保存したとき</p>
+<p>元の内容</p>
+<table>
+<tr>
+<td>
+Header1
+</td>
+<td>
+Header2
+</td>
+<td>
+Header3
+</td>
+</tr>
+<tr>
+<td>
+値1
+</td>
+<td>
+Value1,Value2
+</td>
+<td>
+“Vavlue3”
+</td>
+</tr>
+<tr>
+<td>
+値2
+</td>
+<td>
+v1
+</td>
+<td>
+v2<br>v3
+</td>
+</tr>
+<tr>
+<td>
+値3
+</td>
+<td>
+v1,“v2”,v3
+</td>
+<td>
+v4
+</td>
+</tr>
+</table>
+<p>CSVの内容</p>
+<p>Header1,Header2,Header3 値1,“Value1,Value2”,&quot;&quot;“Vavlue3”&quot;&quot; 値2,v1,“v2 v3” 値3,“v1,”“v2”“,v3”,v4</p>
+<ul>
+<li>
+エンコードはシフトJIS。
+</li>
+<li>
+区切り文字、ダブルクォート、改行コードのいずれかが含まれるときは、値がダブルクォートで囲まれる。
+</li>
+<li>
+値にダブルクォートが含まれるときは、ダブルクォートを二つにする（たとえば、<code>“</code>→<code>”“</code>、<code>”“</code>→<code>”&quot;&quot;&quot;</code>）。
+</li>
+</ul>
+<p><a href="https://teratail.com/questions/136080">c# zip圧縮 マルチスレッド</a></p>
+<section>
+<h2>
+光回線への切り替えによる効果測定
+</h2>
+<p>通信環境</p>
+<p>Wi-Fiルーター</p>
+<p>WZR-HP-G302H</p>
+<p>無線LAN 準拠規格 IEEE802.11n / IEEE802.11g / IEEE802.11b データ転送速度（規格値） 最大300Mbps（IEEE802.11n）、最大54Mbps（IEEE802.11g)、最大11Mbps（IEEE802.11b）</p>
+<p>有線LAN 規格 IEEE802.3ab(1000BASE-T) 、IEEE802.3u(100BASE-TX)、IEEE802.3準拠(10BASE-T) 伝送速度 10M / 100M / 1000Mbps(オートセンス)</p>
+<p>Hub 4ポート（AUTO-MDIX対応）</p>
+<p>WXR-1750DHP2</p>
+<p>無線LAN 準拠規格 IEEE802.11ac/n/a/g/b 準拠規格（最大転送速度） IEEE802.11ac（1300Mbps） IEEE802.11n（450Mbps） IEEE802.11a/g（54Mbps） IEEE802.11b（11Mbps）</p>
+<p>有線LAN 準拠規格：伝送速度 LANポート：最大1000Mbps×4 INTERNETポート：最大1000Mbps×1</p>
+<p>UH75/H</p>
+<p>LAN 1000BASE-T / 100BASE-TX / 10BASE-T準拠、Wakeup on LAN機能対応［専用コネクタ（標準添付）が必要］</p>
+<p>無線LAN IEEE 802.11b/g/n 準拠</p>
+<p>回線速度の測定</p>
+<p>測定時刻も合わせたい。平日夜の10時台。 それまでに回線の設定を終わらせなくては。</p>
+<p>既存環境での測定</p>
+<p>YahooBB!モデムと直接接続、Wi-Fiルーター（WZR-HP-G302H）経由での有線LANと無線LANの3パターンで計測する。</p>
+<ol type="1">
+<li><p>ONUと直接接続</p>
+<p>ケーブルのカテゴリーによる差を確かめたい。 カテゴリー5・5e・6・6a・7 のうち、5/5e, 6/6a, 7 で一本ずつ測定する。</p></li>
+<li><p>Wi-Fiルーター（WZR-HP-G302H）経由</p>
+<ul>
+<li><p>有線接続</p>
+<p>ONUとWi-Fiルーターを接続する。 Wi-Fiルーターの有線LANポートとPCをつないで測定する。</p></li>
+</ul></li>
+<li><p>Wi-Fiルーター（WXR-1750DHP2）経由</p>
+<ul>
+<li><p>有線接続</p>
+<p>上記と同様。 こちらのほうがいい結果になってもらいたい。 IPv6対応もしているし。</p></li>
+</ul></li>
+</ol>
+</section>
+<section>
+<h2>
+やること
+</h2>
+<ul>
+<li>
+Googleサーチコンソール連携を追加する。
+</li>
+<li>
+Googleアナリティクス連携を追加する。
+</li>
+<li>
+<p>
+LANケーブルを買う。
+</p>
+<pre><code>  &lt;p&gt;カテゴリー5e、6/6aの2種類は必ず手に入れたい。7は値段次第。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://tech.nikkeibp.co.jp/it/atcl/column/17/012300631/&quot;&gt;LANケーブルの正しい使い方&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;</code></pre>
+</ul>
+<section>
+<h3>
+買う物
+</h3>
+<ul>
+<li>
+LANケーブル Cat.6a - 1m - 細いやつが理想 - ONUとWi-Fiルーター
+</li>
+<li>
+LANケーブル Cat.6a - 0.5m - 細いやつが理想 - Wi-FiルーターとPLCアダプター
+</li>
+<li>
+電源タップ - 2m - 4口 - 天井→電話台まで。用途は以下のとおり
+<ul>
+<li>
+ONU
+</li>
+<li>
+Wi-Fiルーター
+</li>
+<li>
+金魚・熱帯魚
+</li>
+</ul>
+</li>
+<li>
+</li>
+<li>
+</li>
+<li>
+</li>
+</ul>
+</section>
+<table>
+<thead>
+<tr>
+<th>
+</th>
+<th>
+Cat.8
+</th>
+<th>
+Cat.7
+</th>
+<th>
+Cat.6A
+</th>
+<th>
+Cat.6
+</th>
+<th>
+Cat.5e
+</th>
+<th>
+Cat.5
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+通信速度
+</th>
+<td>
+40Gbps
+</td>
+<td>
+10Gbps
+</td>
+<td>
+10Gbps
+</td>
+<td>
+1Gbps
+</td>
+<td>
+1Gbps
+</td>
+<td>
+100Mbps
+</td>
+</tr>
+<tr>
+<th>
+伝送帯域
+</th>
+<td>
+2000MHz
+</td>
+<td>
+600MHz
+</td>
+<td>
+500MHz
+</td>
+<td>
+250MHz
+</td>
+<td>
+100MHz
+</td>
+<td>
+100MHz
+</td>
+</tr>
+<tr>
+<th>
+対ノイズ性能
+</th>
+<td>
+◎
+</td>
+<td>
+◎
+</td>
+<td>
+○
+</td>
+<td>
+×
+</td>
+<td>
+×
+</td>
+<td>
+×
+</td>
+</tr>
+<tr>
+<th>
+特長
+</th>
+<td>
+次世代40ギガビットイーサネット「40GBASE-T」に対応したカテゴリー8対応LANケーブルです。
+</td>
+<td>
+次世代10ギガビットイーサネット「10GBASE-T」に完全対応する、カテゴリー7対応ケーブルです。
+</td>
+<td>
+次世代10ギガビットイーサネット「10GBASE-T」に対応する、オーグメンテッド・カテゴリー6対応ケーブルです。
+</td>
+<td>
+ギガビットLANの規格に最適な、カテゴリー6対応ケーブルです。
+</td>
+<td>
+エンハンスド・カテゴリー5に対応した、スタンダードなケーブルです。
+</td>
+<td>
+「100BASE-TX」に対応した、カテゴリー5対応のケーブルです。
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<p>Cat.6aのケーブルを買えばいいと思う。</p>
+Cat.7は性能の割りに高そう（費用分の効果を得られるかわからない）。
+</p>
+<p>
+<p>カテゴリー7のケーブルは、規格で認められていないRJ-45プラグを使ったものもある。 これらはカテゴリー7相当の能力を持つケーブルとして売っているらしい。</p>
+<p>シールドされているケーブルのほうがノイズに強い。 ただし、アース（接地）されていないと本来の性能は出せない。 さらに適切なアースでないと性能が悪くなるケースもある。</p>
+出典：日経NETWORK 2016年11月号 p.44-53
+</p>
+</section>
+</body>
+</html>
