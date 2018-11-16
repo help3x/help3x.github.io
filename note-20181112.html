@@ -55,7 +55,7 @@
   <!-- Start Navbar -->
   <header class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4 ">
     <div role="button" aria-label="open sidebar" on="tap:header-sidebar.toggle" tabindex="0" class="ampstart-navbar-trigger  pr2  ">☰</div>
-      <amp-img src="/public/assets/image/logo.png" 
+      <amp-img src="http://localhost/public/assets/images/logo.png" 
                width="185" 
                height="60" 
                layout="fixed" 
@@ -193,11 +193,7 @@ v4
 </tr>
 </table>
 <h3 id="csvの内容">CSVの内容</h3>
-<pre><code>Header1,Header2,Header3
-    値1,&quot;Value1,Value2&quot;,&quot;&quot;&quot;Vavlue3&quot;&quot;&quot;
-    値2,v1,&quot;v2
-    v3&quot;
-    値3,&quot;v1,&quot;&quot;v2&quot;&quot;,v3&quot;,v4</code></pre>
+<p>Header1,Header2,Header3 値1,“Value1,Value2”,&quot;&quot;“Vavlue3”&quot;&quot; 値2,v1,“v2 v3” 値3,“v1,”“v2”“,v3”,v4</p>
 <ul>
 <li>
 エンコードはシフトJIS。
@@ -504,17 +500,28 @@ ADSLで新Wi-Fiルーターを経由したときの通信速度
 <h2>
 Pandocテスト
 </h2>
-<span>次の文字列は置き換えられていますか？ → </span><span><span class="math inline"><em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>U</em><em>r</em><em>l</em></span></span>
 <section>
 <h3>
-結論
+＄を使った変数は置き換えられるのか
 </h3>
+<span>次の文字列は置き換えられていますか？ → </span><span><span class="math inline"><em>p</em><em>u</em><em>b</em><em>l</em><em>i</em><em>c</em><em>U</em><em>r</em><em>l</em></span></span>
+<section>
+<h4>
+結論
+</h4>
 <p>
 置き換えられなかった。
 </p>
 <p>
 Pandocが吐いたファイルに対して、もう一度変換するしかなさそうです。
 </p>
+</section>
+</section>
+<section>
+<h3>
+Luaフィルターを使って Mustache 構文の内容を置き換える
+</h3>
+<span>フィルターを使っていれば置き換えられているはずです。 → </span><span>http://localhost/public</span>
 </section>
 </section>
 <section>
@@ -682,6 +689,37 @@ PPシート（厚さ1.2mmがお薦め）
   </footer>
   <!-- End Footer -->
 
+
+  <!-- Start JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http://localhost/public/note-at-2018-11-12/index.html"
+    },
+    "headline": "お試し article",
+    "datePublished": "2018-11-14T18:30+09:00",
+    "dateModified": "2018-11-19T22:30+09:00",
+    "author": {
+      "@type": "Person",
+      "name": "John Doe"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ＳｉｔｅＮａｍｅ",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://localhost/public/assets/images/logo.png",
+        "width": 185,
+        "height": 60
+      }
+    },
+    "articleSection": "雑記",
+  }
+  </script>
+  <!-- End JSON-LD -->
 
 </body>
 </html>
