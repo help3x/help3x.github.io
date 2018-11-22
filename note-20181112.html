@@ -54,7 +54,7 @@
 
   <!-- Start Navbar -->
   <header class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4 ">
-    <div role="button" aria-label="open sidebar" on="tap:header-sidebar.toggle" tabindex="0" class="ampstart-navbar-trigger  pr2  ">☰</div>
+    <div role="button" aria-label="open sidebar" on="tap:header-sidebar.toggle" tabindex="0" class="ampstart-navbar-trigger  pr2">☰</div>
       <amp-img src="http://localhost/public/assets/images/logo.png" 
                width="185" 
                height="60" 
@@ -193,7 +193,11 @@ v4
 </tr>
 </table>
 <h3 id="csvの内容">CSVの内容</h3>
-<p>Header1,Header2,Header3 値1,“Value1,Value2”,&quot;&quot;“Vavlue3”&quot;&quot; 値2,v1,“v2 v3” 値3,“v1,”“v2”“,v3”,v4</p>
+<pre><code>Header1,Header2,Header3
+値1,&quot;Value1,Value2&quot;,&quot;&quot;&quot;Vavlue3&quot;&quot;&quot;
+値2,v1,&quot;v2
+v3&quot;
+値3,&quot;v1,&quot;&quot;v2&quot;&quot;,v3&quot;,v4</code></pre>
 <ul>
 <li>
 エンコードはシフトJIS。
@@ -565,111 +569,189 @@ PPシート（厚さ1.2mmがお薦め）
 </ul>
 </section>
 </section>
+<p>かつて使っていたEeePC 10型ワイド液晶 解像度は1024x600ドット（WSVGA） Atom N270 RAM 1GB→2GB</p>
+<p>日本hp 2bd70pa-aaaa 15-bw002au ベーシックモデル</p>
+<h3 id="visual-studio-2017-のシステム要件">Visual Studio 2017 のシステム要件</h3>
+<p><a href="https://docs.microsoft.com/ja-jp/visualstudio/productinfo/vs2017-system-requirements-vs%3E">Visual Studio 2017 製品ファミリのシステム要件</a> より。</p>
+<dl>
+<dt>CPU</dt>
+<dd>1.8 GHz 以上でデュアルコア以上を推奨。
+</dd>
+<dt>RAM</dt>
+<dd>2GB（4GB 以上を推奨）。
+</dd>
+<dt>ほか</dt>
+<dd><ul>
+<li>SSDにインストールするとパフォーマンスが上げられる。</li>
+<li>720p（720x1280）以上のディスプレイ解像度が必要。WXGA（768x1366）以上の解像度であれば快適に動作する。</li>
+</ul>
+</dd>
+</dl>
+<h3 id="visual-studio-code-のシステム要件">Visual Studio Code のシステム要件</h3>
+<p><a href="https://code.visualstudio.com/docs/supporting/requirements">Requirements for Visual Studio Code</a> より。</p>
+<dl>
+<dt>CPU</dt>
+<dd>1.6 GHz 以上を推奨。
+</dd>
+<dt>RAM</dt>
+<dd>1GB 以上を推奨。
+</dd>
+</dl>
+<p>動かしたいソフト</p>
+<ul>
+<li>Dropbox</li>
+<li>Google 同期ツール？</li>
+<li>テキストエディタ</li>
+<li>Visual Studio Code（Visual Studio までは求めない）</li>
+<li>Webサーバー（IIS？　nginx？　Apache？）</li>
+<li>Chrome</li>
+<li>コマンドプロンプト（Node.js とか Pandoc とか）</li>
+<li>JPEG Photography</li>
+</ul>
+<p>Atomじゃ無理じゃね？</p>
+<p>Panasonic Let’s note CF-LX3ED0CS (Core i5 4300U 1.90GHz/4GB/SSD 128GB/-/14.0HD+/WLAN/W7P64 DtoD)</p>
+<p>¥27,900 (+税)</p>
+<p>UH75/Hのバックスペースキーがきかなくなった（つぶれた）。 さて、どうする？</p>
+<ul>
+<li><p>我慢してこのまま使う。</p></li>
+<li><p>外付けキーボードをつなぐ。</p></li>
+<li>修理する。
+<ul>
+<li>修理費用の目安は ¥11,880 ～ ¥24,300。<br />
+<a href="https://azby.fmworld.net/support/repair/syuribin/charge.html">概算修理料金表 - FMVサポート</a>より。</li>
+<li>部品保有期限は2019年6月末までなので、まだ過ぎていない。 <a href="http://azby.fmworld.net/support/repair/info/list_lifebook.html">【LIFEBOOK】 修理対応期間（補修用性能部品の保有期間）一覧 - FMVサポート</a>より。</li>
+</ul></li>
+<li>新しいPCを買う。
+<ul>
+<li>どの程度の性能のPCを買うのか。
+<ul>
+<li>間に合わせで安いものにするのか。</li>
+<li>いまと同水準であればよいのか。</li>
+<li>当時と同じ予算（10万～最大でも15万円程度）にするのか。</li>
+</ul></li>
+<li>そもそも買えるのか。
+<ul>
+<li>メインPCとなる性能を持つものは買えない。</li>
+</ul></li>
+</ul></li>
+<li><p>中古PCを買う。</p></li>
+</ul>
+<p>UH75/Hにリモートデスクトップ接続するのはどうか。 ↓ 無理だった。 Windows 7 Home Premium だとリモートサーバーになれないから。</p>
+<section>
+<h2>
+パーマリンク メモ
+</h2>
+<p>
+次の点だけ守ればOK。
+</p>
+<ul>
+<li>
+意味のある文字を使う。
+</li>
+<li>
+シンプルな構造にする。
+</li>
+<li>
+区切り記号はアンダースコア（<code>_</code>）ではなくハイフン（<code>-</code>）を使う。
+</li>
+</ul>
+<p>
+<a href="https://support.google.com/webmasters/answer/76329?hl=ja">シンプルな URL 構造を維持する - Search Console ヘルプ</a>より。
+</p>
+</section>
+<section>
+<h2>
+業務メモ at 2018.11.21
+</h2>
+<p><a href="" hef="http://bbs.wankuma.com/index.cgi?mode=al2&namber=84065&KLOG=143">有効桁数３桁まででJIS丸めがしたい - C# と VB.NET の質問掲示板</a></p>
+Decimal型の変数に<code>-56.521011217143813828896701825</code>を保存。<br />
+↓<br />
+テーブルに登録。<br />
+↓<br />
+テーブルを検索。<br />
+↓<br />
+Decimal型の変数に入れようとしたが例外発生。無効なキャストらしい。なぜ？
+</section>
+<section>
+<h2>
+一括エクスポート処理の圧縮ファイルコピーで発生する可能性のある例外
+</h2>
+<p>アクセス権がない UnauthorizedAccessException</p>
+<p><em>System.UnauthorizedAccessException</em>System.UnauthorizedAccessException: パス ’\iwapseigi【Virtual Fab System DB】_20181122114537.zip’ へのアクセスが拒否されました。</p>
+<p>指定した出力先フォルダが存在しない System.IO.DirectoryNotFoundException</p>
+<p><em>System.IO.DirectoryNotFoundException</em>System.IO.DirectoryNotFoundException: パス ’\iwaeccsv●VFabラインバランスシステム_20181122114700.zip’ の一部が見つかりませんでした。</p>
+<p>出力先フォルダを指定していない 能力試算結果の一括出力を中止しました。圧縮ファイルの出力先が指定されていません。 {“事業所（ログインユーザー所属）”:“(岩手)”}</p>
+<p>* 例外ではなくログに吐くだけです。</p>
+<p>設定ファイルを壊した（プロパティ名を変えた等） YamlDotNet.Core.YamlException</p>
+能力試算結果の一括出力に失敗しました。 {“事業所（ログインユーザー所属）”:“(岩手)”,“能力試算名称”:“TEST”} (Line: 10, Col: 3, Idx: 227) - (Line: 10, Col: 3, Idx: 227): Exception during deserialization<em>YamlDotNet.Core.YamlException</em>YamlDotNet.Core.YamlException: (Line: 10, Col: 3, Idx: 227) - (Line: 10, Col: 3, Idx: 227): Exception during deserialization —&gt; System.Runtime.Serialization.SerializationException: Property ‘Outputer’ not found on type ‘VFab.Item.BulkExportConfig’.
+</section>
+<section>
+<h2>
+C#でフォルダのセキュリティ情報を取得する方法
+</h2>
+<p>
+答えは載っていなかったが、次の内容が参考になった。
+</p>
+<p>
+<a href="http://www.atmarkit.co.jp/bbs/phpBB/viewtopic.php?topic=11813&forum=7">フォルダのセキュリティ情報を取得したい - <span class="citation" data-cites="IT">@IT</span></a>
+</p>
+<p>
+プラットフォームSDKを参考に調べた結果、<code>GetFileSecurity</code>、<code>GetAclInformation</code>あたりを使えば取得できそうとのこと。
+</p>
+<p>
+気になるのは、.NETの<code>DirectoryInfo.GetAccessControl</code>ではだめなのかということ。
+</p>
+</section>
+<section>
+<h2>
+Note at 2018.11.22
+</h2>
+<section>
+<h3>
+考える力をつける
+</h3>
+考える力＝問題を解決する力。
+<p>
+問題を解決するためにすぐできること（やらなければならないこと）をひとつ紙に書く。書いたことをやったら線を引いてそれを消す。そうしたらまた、すぐできそうなことをひとつ紙に書く。それをやったら線を引いて消す。
+</p>
+<p>
+これを繰り返していくうちに問題は解決できるはず。
+</p>
+<p>
+慣れるにつれて、物事を細分化して考え、解決までの道筋を立てられるようになっていく。
+</p>
+</section>
+<section>
+<h3>
+伝える力をつけるための効率的なテンプレート
+</h3>
+<p>
+闇雲にアウトプットするより最初はテンプレートに従ったほうがいい。
+</p>
+<p>
+SNSで発信するときに便利なフォーマット。
+</p>
+<ul>
+<li>
+「What happened：何が起こった」
+</li>
+<li>
+「How：どのようにして」
+</li>
+<li>
+「Felt：感じた」
+</li>
+</ul>
+</section>
+</section>
       </div>
 
-      <p class="mb4 px3">Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere.</p>
-
-      <p class="mb4 px3">Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. </p>
-      <amp-img src="../img/blog/ingredient1.jpg" width="683" height="1024" layout="responsive" alt="strawberries" class="mb4 mx3"></amp-img>
-
-      <amp-img src="../img/blog/ingredient3.jpg" width="1280" height="960" layout="responsive" alt="strawberries lemons and mint" class="mb4 mx3"></amp-img>
-
-      <amp-img src="../img/blog/ingredient2.jpg" width="683" height="1024" layout="responsive" alt="lemon in a bowl" class="mb4 mx3"></amp-img>
-
-      <amp-img src="../img/blog/spritzer.jpg" width="1280" height="853" layout="responsive" alt="The final spritzer" class="mb4 mx3"></amp-img>
-
-      <section class="px3 mb4">
-        <h2 class="mb2">Ingredients</h2>
-        <span class="ampstart-hint block mb3">SERVINGS 4</span>
-        <ul class="mb4">
-          <li>2 bunches of strawberries</li>
-          <li>1 lemon</li>
-          <li>1 bunch of mint</li>
-          <li>1 piece of ginger chopped</li>
-          <li>1 bottle of sparkling water</li>
-        </ul>
-
-        <section class="mb4">
-          <h2 class="mb3">Instructions</h2>
-
-          <ol class="">
-            <li class="mb4">Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.</li>
-            <li class="mb4"> Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo.</li>
-            <li class="mb4"> Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</li>
-            <li class="mb4">Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. </li>
-            <li class="mb4"> Duis leo. Sed fringilla mauris sit  amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue.  Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</li>
-          </ol>
-        </section>
-
-        <section class="recipe-comments">
-          <h2 class="mb3">4 Responses</h2>
-          <ul class="list-reset">
-            <li class="mb4">
-              <h3 class="ampstart-subtitle">Sriram</h3>
-              <span class="h5 block mb3">02.24.17 at 6:01 pm</span>
-              <p>This is perfect for a summer patio party. Thanks for another great one!</p>
-            </li>
-            <li class="mb4">
-              <h3 class="ampstart-subtitle">Eric</h3>
-              <span class="h5 block mb3">02.24.17 at 5:14 am</span>
-              <p>These were so good I woke up dreaming about them. Regards, Eric.</p>
-            </li>
-          </ul>
-        </section>
-
-        <section class="recipe-popular-articles">
-          <h2 class="mb4">Popular Articles</h2>
-
-          <amp-img src="../img/blog/popular1.jpg" width="1280" height="853" layout="responsive" alt="The sandy beach walk" class="mb1"></amp-img>
-          <h3 class="mb4">Beach Getaway</h3>
-
-          <amp-img src="../img/blog/popular2.png" width="649" height="497" layout="responsive" alt="Dinner on a plate" class="mb1"></amp-img>
-          <h3 class="mb4">Dinner party tips</h3>
-        </section>
-
-        <!--<section>
-          <h2 class="mb4">Want</h2>
-          <amp-carousel type="carousel" layout="fixed-height" height="285" controls="" class="mb4">
-            <amp-img src="../img/blog/want1.png" width="205" height="285" alt="Want1"></amp-img>
-            <amp-img src="../img/blog/want2.png" width="205" height="285" alt="Want2"></amp-img>
-            <amp-img src="../img/blog/want3.png" width="205" height="285" alt="Want3"></amp-img>
-            <amp-img src="../img/blog/want1.png" width="205" height="285" alt="Want1"></amp-img>
-            <amp-img src="../img/blog/want2.png" width="205" height="285" alt="Want2"></amp-img>
-            <amp-img src="../img/blog/want3.png" width="205" height="285" alt="Want3"></amp-img>
-          </amp-carousel>
-        </section>-->
-
-        <!--<section>
-          <h2 class="mb4">Meet Lola</h2>
-          <amp-img src="../img/blog/meetloloa.jpg" width="1280" height="853" layout="responsive" class="mb3" alt="Lola hanging out in the beach"></amp-img>
-          <p class="mb4">
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci. Phasellus consectetuer vestibulum elit. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Vestibulum fringilla pede sit amet augue. In turpis. Pellentesque posuere. Praesent turpis.
-          </p>
-        </section>-->
 
         
 
 
 
 
-        <section>
-          <h2 class="mb3">Categories</h2>
-          <ul class="list-reset p0 m0 mb4">
-            <li class="mb2">
-              <a href="#" class="text-decoration-none h3">Fashion</a>
-            </li>
-            <li class="mb2">
-              <a href="#" class="text-decoration-none h3">Travel</a>
-            </li>
-            <li class="mb2">
-              <a href="#" class="text-decoration-none h3">Decor</a>
-            </li>
-            <li class="mb2">
-              <a href="#" class="text-decoration-none h3">Beauty</a>
-            </li>
-          </ul>
-        </section>
-      </section>
     </article>
   </main>
 
@@ -680,7 +762,6 @@ PPシート（厚さ1.2mmがお薦め）
       <ul class="list-reset flex flex-wrap mb3">
         <li class="px1"><a class="text-decoration-none ampstart-label" href="#">About</a></li>
         <li class="px1"><a class="text-decoration-none ampstart-label" href="#">Contact</a></li>
-        <li class="px1"><a class="text-decoration-none ampstart-label" href="#">Terms</a></li>
       </ul>
     </nav>
     <div>
