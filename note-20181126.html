@@ -1,0 +1,575 @@
+<p>技術者のためのテクニカルライティング入門講座 https://www.seshop.com/product/detail/22040?utm_source=seid&amp;utm_medium=referral&amp;utm_campaign=topbanner_20181126_seid 販売価格：￥2,376（税込）</p>
+<p>How to spawn a process that runs under the context of the impersonated user in Microsoft ASP.NET pages https://support.microsoft.com/en-us/help/889251/how-to-spawn-a-process-that-runs-under-the-context-of-the-impersonated</p>
+<p>偽装されたユーザーのコンテキストで実行されるプロセスを起動する方法</p>
+<p>Microsoft ASP.NET ページでは、偽装ユーザーのコンテキストで実行されるプロセスを生成する方法 https://support.microsoft.com/ja-jp/help/889251/how-to-spawn-a-process-that-runs-under-the-context-of-the-impersonated</p>
+<p>偽装ユーザーでプロセスを実行する方法の日本語ページもあった。</p>
+<p>ASP.NETを利用した共有リソースへのアクセス方法 https://codezine.jp/article/detail/143</p>
+<p>COM+のサービスを利用するサービスコンポーネントの作成</p>
+<p>サービスコンポーネントのさまざまな配置方法 https://codezine.jp/article/detail/364</p>
+<p>COM+サービスを.NET Frameworkのクラスで利用できるようにする</p>
+<p>ASP.NET C# WORKGROUP上の共有フォルダからファイルをコピーしたい(IIS10) https://teratail.com/questions/74521</p>
+<p>Windows​Identity.​Impersonate - Microsoft Docs https://docs.microsoft.com/ja-jp/dotnet/api/system.security.principal.windowsidentity.impersonate?view=netframework-4.7.2</p>
+<p>コードによって別の Windows ユーザーを偽装できるようにします。</p>
+<p>ポイント</p>
+<p><code>CreateProcessAsUser</code>関数の呼び出しにはプライマリートークンを使う。 偽装されたトークンをプライマリートークンに変換する必要がある。</p>
+<p><code>DuplicateTokenEx</code>関数は偽装されたトークンをプライマリートークンに変換する。 <code>CreateProcessAsUser</code>関数を呼び出すときに、このプライマリートークンを使う。</p>
+<p>ワーカープロセスのアクセストークンを調べる</p>
+<p>?System.Security.Principal.WindowsIdentity.GetCurrent().Name “IIS APPPOOL\DefaultAppPool”</p>
+<p>?System.Security.Principal.WindowsIdentity.GetCurrent().Name “IIS APPPOOL\DefaultAppPool”</p>
+<p>偽装前も偽装後も変わっていない。 ↓ ASP.NET偽装が無効のときは、ワーカープロセスの実行アカウントが取れるため。 つまり、この結果で問題ない。</p>
+<p>LocalServiceアカウントはアップロードしたファイルへのアクセス権がなかった</p>
+<p><code>MultipartFormDataStreamProvider</code>の<code>FileData</code>プロパティを見て、アップロードされたファイルを取得している。</p>
+<pre><code>foreach (var file in provider.FileData)
+{
+    // オリジナルのファイル名を取得
+    var originalFileName = file.Headers.ContentDisposition.FileName;
+    if (originalFileName.StartsWith(&quot;\&quot;&quot;) &amp;&amp;
+        originalFileName.EndsWith(&quot;\&quot;&quot;))
+    {
+        originalFileName = originalFileName.Trim(&#39;&quot;&#39;);
+    }
+
+    if (originalFileName.Contains(&quot;\\&quot;) || originalFileName.Contains(&quot;/&quot;))
+    {
+        originalFileName = Path.GetFileName(originalFileName);
+    }
+
+    var destPath = Path.Combine(appTempPath, originalFileName);
+    File.Move(file.LocalFileName, destPath);
+
+    reqDto.LithoCapaExcelFilePath = destPath;
+}</code></pre>
+<p><code>File.Move()</code>は元のファイルのアクセス権を引き継いでいるのかもしれない。 <code>File.Move()</code>ではなく<code>File.Copy()</code>にしてみれば解決する可能性あり。</p>
+<p>Sending HTML Form Data in ASP.NET Web API: File Upload and Multipart MIMEASP.NET Web API で HTML フォーム データを送信しますファイルのアップロードとマルチパート MIME。 https://docs.microsoft.com/ja-jp/aspnet/web-api/overview/advanced/sending-html-form-data-part-2</p>
+<p>機械翻訳された記事。読みにくい。</p>
+<p>英語に切り替えて、適宜翻訳したほうが分かりやすい。</p>
+<p>Zipで圧縮したファイルの名前が文字化けする原因</p>
+<p>Windowsで作ったZipをMacまたはLinuxで開くとき、あるいはその逆をするときに起きる。</p>
+<p>WindowsはシフトJIS（CP932）、Mac/Linuxはutf-8を使うのが原因。</p>
+<section>
+<h2>
+ベストな環境を目指して
+</h2>
+<p>ベストとは？</p>
+<p>飼育者にとって？　生物にとって？　それとも両方？</p>
+<p>それぞれのフィルターの特徴</p>
+<p>底面フィルター</p>
+<p>フィルターに乗せた底砂すべてがろ材になる。 生物ろ過に優れるが、物理ろ過は期待できない（TODO: 優れるの反対は何？）。 底砂表面に沈殿したゴミやフンは、人手で取り除かなければならない。</p>
+<p>フィルターの目詰まりによって、ろ過能力が一気に落ちることがある。</p>
+<p>メンテナンスが面倒。 フィルターを掃除するには底砂を取り除く必要があるため、水槽のリセットと同じになってしまう。</p>
+<p>アカヒレがベタのヒレをつついていた。エサが足りていない？</p>
+</section>
+<section>
+<h2>
+<a href="https://www.oracle.com/technetwork/jp/database/articles/plsql101/o52plsql-1709862-ja.html">BULK COLLECTとFORALLによるバルク処理</a>
+</h2>
+<h3 id="bulk-collectについて">BULK COLLECTについて</h3>
+<p>バルク処理を利用して問合せを行うには、BULK COLLECTをINTOキーワードの前に置いて、1つ以上のコレクションをINTOキーワードの後に指定します。BULK COLLECTの動作方法について知っておくべきことは次のとおりです。</p>
+<ul>
+<li>3つのコレクション型（連想配列、ネストした表、VARRAY）のすべてで使用できる。</li>
+<li>フェッチした情報を個々のコレクション（SELECTリスト内の式ごとに1つ）に格納することも、レコードの1つのコレクションに格納することもできる。</li>
+<li>コレクションは常に、インデックス値1から開始し、密に移入される。</li>
+<li>1行もフェッチされなかった場合、コレクションからすべての要素が削除される。</li>
+</ul>
+<h3 id="forallについて">FORALLについて</h3>
+<p>ループ内でDML文を実行するときは常に、FORALLを使用するようにそのコードを変換してください。その変換によるパフォーマンス向上に開発者は驚き、ユーザーも満足するでしょう。</p>
+<p>FORALL文はループではなく、PL/SQLエンジンに対して次のことを伝える宣言文です。</p>
+<p>“通常なら1行ずつ実行されるDML文をすべて生成し、それらのDML文を1回のコンテキスト・スイッチでSQLエンジンに送信する”</p>
+<p>FORALL文の“ヘッダー”の見た目は数値によるFORループと同じですが、LOOPキーワードやEND LOOPキーワードはありません。</p>
+<p>FORALLについて知っておくべきことは次のとおりです。</p>
+<ul>
+<li>各FORALL文には1つのDML文のみを記述できる。ループに2回の更新と1回の削除が含まれる場合は、3つのFORALL文を記述する必要がある。</li>
+<li>PL/SQLでは、FORループの場合と同様に、FORALLイテレータ（リスト4の30行目のindx）を整数として宣言する。このイテレータと同じ名前の変数を宣言する必要はなく、また宣言すべきではない。</li>
+<li>DML文の少なくとも1か所で、コレクションを参照して、そのコレクションのインデックス値としてFORALLイテレータを使用する必要がある（リスト4の35行目を参照）。</li>
+<li>FORALLヘッダーでIN low_value . . . high_value構文を使用する場合、FORALL文の内部で参照するコレクションは密に入力されている必要がある。つまり、low_valueからhigh_valueまでのすべてのインデックス値が定義済みである必要がある。</li>
+<li>コレクションが密に入力されていない場合は、FORALLヘッダーでINDICES OF構文またはVALUES OF構文を使用する必要がある。</li>
+</ul>
+<h3 id="参考">参考</h3>
+<p><a href="http://otndnld.oracle.co.jp/document/products/oracle11g/111/doc_dvd/appdev.111/E05670-03/collections.htm">PL/SQLのコレクションおよびレコードの使用</a></p>
+</section>
+<section>
+<h2>
+JScriptメモ
+</h2>
+<p>
+ソースファイルの文字コードはシフトJISで保存する。
+</p>
+<p>
+SQL内の日本語が化けてしまい、<code>Command.Execute</code>でエラーが発生した。
+</p>
+<p>
+コマンドプロンプトの文字コードがシフトJIS（CP932）になっているのが原因であろう。
+</p>
+<p>
+（<code>cscript.exe</code>を使ってスクリプトを実行した）
+</p>
+<ul>
+<li>
+<a href="https://msdn.microsoft.com/ja-jp/library/cc389790.aspx">DataTypeEnum - Developer Network</a>
+</li>
+<li>
+<a href="https://msdn.microsoft.com/ja-jp/library/cc364140.aspx">CreateParameter メソッド</a>
+</li>
+<li>
+<a href="https://msdn.microsoft.com/ja-jp/library/cc364124.aspx">Execute メソッド (ADO Command)</a>
+</li>
+</ul>
+</section>
+<p>統合能力試算 Note</p>
+<ul>
+<li>計算ボタン押下すると、入力していた調整Gr、調整充足率が消える。</li>
+<li><p>調整充足率の入力値をパーセンテージ⇔数値で変換する処理を追加する。</p>
+<p>リクエストパラメーターはパーセンテージから数値にする。</p>
+<p>レスポンスするときは数値からパーセンテージに変換する。</p></li>
+<li>調整充足率のレンダーにパーセンテージ（充足率）のレンダーを設定する。</li>
+<li><p>調整区分の幅を広げた。72px→88px。「充足率で調整」が折り返して表示されない幅。</p></li>
+<li><p>coalesce 式っていうのね。</p>
+<pre><code>  source.NecessaryManHours.HasValue ? source.NecessaryManHours.Value : decimal.Zero</code></pre>
+<p>↓</p>
+<pre><code>  source.NecessaryManHours ?? decimal.Zero</code></pre></li>
+</ul>
+<section>
+<p>マリーナスリムL W398 x D204 x H280 mm 20L</p>
+<p>水作スペースパワーフィットプラス</p>
+<p>S: 高さ 165mm</p>
+<p>水作パネルフィルター</p>
+<p>S: W72 x D18 x H203 mm W: W128 x D18 x H203 mm</p>
+<p>水作エイトコアにエアパイプユニットをつける。 泡しぶきが軽減できる。</p>
+<p>製品名称 スライド全長（エイト底部⇔吐出口） 水作エイトコアS+エアパイプミニ スライドなし：190㎜/スライドあり205～270㎜ 水作エイトコアM+エアパイプミニ スライドなし：225㎜/スライドあり240～305㎜ 水作エイトコアS+エアパイプS スライドなし：215㎜/スライドあり230～320㎜ 水作エイトコアM+エアパイプS スライドなし：250㎜/スライドあり265～355㎜ 水作エイトコアS+エアパイプM スライドなし：255㎜/スライドあり270～400㎜ 水作エイトコアM+エアパイプM スライドなし：290㎜/スライドあり305～435㎜</p>
+<p>水作エイトコアLには、パイプユニットをつけられない。 SまたはMのみ。</p>
+<p>M+エアパイプミニがいいかもしれない。 マリーナスリムL水槽の底面から225mmがどの位置か確かめておく。</p>
+<p>いまのSPF+＋ボトムプレートと比べて高くなるのか低くなるのか。</p>
+</section>
+<section>
+<p><a href="https://technet.microsoft.com/ja-jp/windows/ff467974.aspx">ヒント: メモリ管理と重要なメモリ測定値について理解する</a></p>
+<dl>
+<dt>
+ワーキングセット
+</dt>
+<dd>
+プロセスで現在使われているメモリの量。
+</dd>
+<dt>
+プライベートワーキングセット
+</dt>
+<dd>
+そのプロセスだけが使えるメモリの量。ほかのプログラムで使うことはできない。
+</dd>
+<dt>
+ピークワーキングセット
+</dt>
+<dd>
+プロセスが使った最大のメモリの量。
+</dd>
+<dt>
+コミットチャージ（コミットサイズ）
+</dt>
+<dd>
+現在のセッションのプログラムで操作している（コミットしている）仮想メモリの合計。
+</dd>
+</dl>
+</section>
+<section>
+<h2>
+プログラム開発に向いた〝メモリ消費量が少ない〟テキストエディタは？
+</h2>
+<p>きっかけ。</p>
+<p>VSCodeを使っているが、メモリ消費量が 433MB だった。 ほかの開発ツールも起動しているので、エディタにこんなにメモリを使われるのは困る。</p>
+<section>
+<h3>
+いまの開発環境
+</h3>
+<dl>
+<dt>
+OS
+</dt>
+<dd>
+Microsoft Windows 7 Professional (6.1.7601 Service Pack 1 ビルド 7601) (x86)
+</dd>
+<dt>
+CPU
+</dt>
+<dd>
+x64 Family 6 Model 58 Stepping 9 GenuineIntel ~1568 Mhz
+</dd>
+<dd>
+Intel Core i5-3470 CPU 3.20GHz
+</dd>
+<dt>
+物理メモリの合計
+</dt>
+<dd>
+4GB（使用可能: 3487MB）
+</dd>
+<dt>
+モデル
+</dt>
+<dd>
+TOSHIBA EQUIUM 4020
+</dd>
+</dl>
+</section>
+<h3>
+参考
+</h3>
+<p>フロントエンド開発に必要なメモリ量はどのぐらい？｜Yuichiro_Matsuda … https://note.mu › Yuichiro_Matsuda 2018/01/03 - 僕個人の環境になりますが、普段開発で起動しているツールと、使用メモリ量を大まかに見てみました。 … JetBrainsはIDE、エディタの中ではメモリ使用量は多い方だとは思いますが、最大でも2.5GB程度です。 … Mac自体が4GBぐらい常に使っているので、概ね14GB程度あれば快適な開発ができそうです。 … 8GBでも開発自体はできますが、他のソフトを落としてからこっちを起動するといったことや、積んでいるメモリが少ないために多少使いづらいIDEを選ばなければいけない、という状況を減らせること …</p>
+<p>Notepad++ から SublimeText への乗り換えを残念な理由で断念したお話 … https://web-atelier-midori.com/blog/開発/1316/ 2014/03/06 - と思いました。 Notepad++ はタブを20個くらい開いていても、メモリの消費量は SublimeTextひとつ分程度です。 いまどきのPCを使えない中小企業ならではの残念な理由で使用は断念しましたが、自宅のPCならメモリは8GBだし、SSDなので …</p>
+<p>テキストを書くプロな私がおすすめするテキストエディタ群 - 知の壺 https://chinotsubo.com › 文章術 2017/03/19 - PHPを書くときは大体NetBeansを使用しています。 … 小さなプログラムの編集であれば、notepad++を愛用しています。 … ぶっちゃけ巨大ファイルを開いたりしたらクソ重くなるor落ちるのと、ベースのメモリ消費量も結構多いので、エディタの …</p>
+</section>
+<section>
+<h2>
+C#のenumでdefaultを使うと何が返るのか
+</h2>
+<p>
+C# の列挙体の規定値は何か。
+</p>
+<p>
+具体的には<code>default</code>キーワードを使うと何が返るのか。
+</p>
+<p>
+結論
+</p>
+<p>
+<code>0</code>が返る。
+</p>
+</section>
+<p>マーチン・ファウラー氏「リファクタリング 2nd Edition」で20年ぶり内容刷新 … https://www.publickey1.jp › 開発ツール / 言語 / プログラミング 2018/04/05 - マーチン・ファウラー氏が20年ぶりに大幅に内容を刷新した書籍「リファクタリング 2nd Edition」を今年秋に出版する計画だ。サンプルコードはJavaからJavaScriptに変わる。また、コンテンツ本体はWebサイトとなり、書籍はそのエッセンシャル …</p>
+<section>
+<h2>
+入力値検証の方針… いまさら
+</h2>
+<p>入力値を取得してから、その値が falsy ならはじくようにする。 少なくとも次の内容は入ってこない。</p>
+<ul>
+<li>false</li>
+<li>null</li>
+<li>undefined</li>
+<li>0</li>
+<li>NaN</li>
+<li>空文字（’’, &quot;&quot;, ``）</li>
+<li>document.all</li>
+</ul>
+<p>{}（オブジェクト）とか[]（配列）とかどうすんのってのはあるが、そもそもテキストボックスから入力できないから考慮しない。</p>
+<p>過剰にやると処理が重くなるので、ライトにやる方針で。。。</p>
+</section>
+<section>
+<h2>
+登録更新削除の判定
+</h2>
+<section>
+<h3>
+削除
+</h3>
+<p>
+次のいずれかを満たすものを削除と判定する。
+</p>
+<ul>
+<li>
+編集状態が「NDE」または「UDE」である。
+</li>
+<li>
+既存レコードで、主キーの値が変更されている。
+</li>
+</ul>
+</section>
+<section>
+<h3>
+登録
+</h3>
+<p>
+次のいずれかを満たすものを登録と判定する。
+</p>
+<ul>
+<li>
+編集状態が「ADD」である。
+</li>
+<li>
+<p>
+主キーの値が変更されている。
+</p>
+<p>
+ただし、変更後のキーと同じレコードが存在したらキー重複エラーとする。
+</p>
+</li>
+</ul>
+</section>
+<section>
+<h3>
+更新
+</h3>
+<p>
+次のいずれかを満たすものを更新と判定する。
+</p>
+<ul>
+<li>
+編集状態が「UPD」で、主キーの値が変更されていない。
+</li>
+<li>
+<del>
+<p>
+主キーの値が変更されていて、変更後の主キーの値に該当するデータが存在する。
+</p>
+<p>
+：
+</p>
+<p>
+このケースはアウトではないだろうか。変更後のキーに該当するデータがあるなら、初めからそっちを直せよって話でしょう？
+</p>
+<p>
+：
+</p>
+<p>
+というわけでこのパターンはキー重複エラーにします。
+</p>
+</del>
+</li>
+</ul>
+</section>
+<p>課題 これだと複数人が同じタイミングで保存したとき、後勝ちになってしまう。 ほかのマスタメンテは、行追加したデータに該当する内容がDBに存在したときはエラーにしている。</p>
+<p>一人で使ったとき ブラウザ側は、主キーが重複していればエラーとし要求を送信しない。 サーバー側は、主キーが重複していたら後勝ち。それともコレクションの中に同じ主キーがいたらエラー？　最初のやつが優先？</p>
+<p>DBに存在するのに削除→登録の流れで更新するやつが発生する。 新規系　Insert 更新系　Update or Delete→Insert 削除系　Delete</p>
+<p>①A　A　A　新規 ②A　A　A　更新（元はA　A　Bだった）</p>
+<p>クライアントでは入力エラー。重複しているので。</p>
+<p>どうするかは決めの問題か？</p>
+<p>前提 要求として送信される内容には、キー重複はない。</p>
+<p>入力値検証する前に並び替える。</p>
+<ol type="1">
+<li>既存レコード
+<ol type="1">
+<li>キー変更なし</li>
+<li>キー変更あり</li>
+</ol></li>
+<li>新規レコード</li>
+<li>事業所名</li>
+<li>工程</li>
+<li>MCグループ1</li>
+<li>行ID</li>
+</ol>
+<section>
+<h3>
+主キーの設定はこれでOK？
+</h3>
+<p>装置照合マスタの主キーは、事業所名、工程、MCグループ1。</p>
+<p>MCグループ1が同じで、MCグループ2が違うものを異なるグループにすることはない？</p>
+<p>MCGrp1 MCGrp2 ASHER 一般 ←こちらをGroupA ASHER Diode ←こちらをGroupB</p>
+</section>
+</section>
+<section>
+<h2>
+XF10 の検討
+</h2>
+<p>特徴をまとめる。</p>
+<ul>
+<li>センサーが大きい（APS-Cサイズ）。</li>
+<li>28mm/F2.8のレンズ。</li>
+<li>35mm/50mmでクロップ撮影ができる。</li>
+<li><p>Bluetoothに対応している。撮った写真を自動でスマホに転送できる。</p></li>
+<li>X-Transセンサーではない。</li>
+<li>ファインダーがない。</li>
+<li>液晶が動かない。</li>
+<li><p>AFが遅い。</p></li>
+</ul>
+</section>
+<section>
+<h2>
+CSS Framework
+</h2>
+<ul>
+<li>
+Tailwind CSS - GitHub Star 7,867 - <a href="https://github.com/tailwindcss/tailwindcss">Link</a>
+</li>
+<li>
+Basscss - GitHub Star 5,059 - <a href="https://github.com/basscss/basscss">Link</a>
+</li>
+<li>
+turretcss - GitHub Star 547 - <a href="https://github.com/turretcss/turretcss">Link</a>
+</li>
+<li>
+normalize.css - GitHub Star 33,157 - <a href="https://github.com/necolas/normalize.css/">Link</a>
+</li>
+<li>
+</li>
+</ul>
+<section>
+<h3>
+Basscssの構成
+</h3>
+<p>
+Core, Base styles, Addons, Ace.cssがあります。
+</p>
+<dl>
+<dt>
+Core
+</dt>
+<dd>
+コアパッケージ。
+</dd>
+<dt>
+Base styles
+</dt>
+<dd>
+基本要素のスタイルが含まれる。
+</dd>
+<dt>
+Addons
+</dt>
+<dd>
+Coreに加えて、応答マージン、パディング、レイアウト、およびタイポグラフィスタイルなどのオプションモジュール。
+</dd>
+<dt>
+Ace.css
+</dt>
+<dd>
+Coreとすべてのオプションモジュールを含むバンドル。
+</dd>
+</dl>
+</section>
+<section>
+<h3>
+Basscss 備忘録
+</h3>
+<ul>
+<li>
+<a href="http://basscss.com/">Homepage</a>
+</li>
+<li>
+<a href="https://github.com/basscss/basscss/">GitHub</a>
+</li>
+<li>
+<a href="https://github.com/basscss/basscss/tree/master/docs">GitHub - Docs</a>
+</li>
+</ul>
+可読性を上げるため、クラスを指定する順序に一貫性を持たせる。 お薦めは次の順序。
+<ol>
+<li>
+Typography（文字の体裁）
+</li>
+<li>
+Positioning（配置）
+</li>
+<li>
+Layout（レイアウト）
+</li>
+<li>
+Color &amp; Theme（配色・テーマ）
+</li>
+<li>
+State（状態）
+</li>
+</ol>
+<p>
+v8での破壊的変更（GitHubのリリースノートより）
+</p>
+<ul>
+<li>
+単純なリセットやユーザー定義のスタイルを使用するために、すべての基本要素スタイル（本文、タイポグラフィ、フォーム、および表スタイルを含む）が削除されました。移行を助けるために、新しいbasscss-basicパッケージをそのまま使用するために、またはカスタム基本スタイルの出発点として使用するためにまとめました。
+</li>
+<li>
+<code>btn</code>、<code>btn-primary</code>、および<code>btn-outline</code>モジュールは、コアパッケージから削除されました。オプションでbasscss-addonsで利用可能です。
+</li>
+<li>
+カラーフォームモジュールがコアパッケージから削除されました。新しいオプションのbasscss-formsモジュールを置き換えることができます。
+</li>
+<li>
+すべてのカラースタイルがコアから削除され、ユーザー定義スタイルとより個別のカラースタイルモジュールが採用されました。インスピレーションのためにいくつかのカラーモジュールがbasscss-addonsまたは<code>checkout basscss/themes</code>で利用可能です。
+</li>
+<li>
+フレックスオブジェクトモジュールは、より一般的で強力なユーティリティスイートであるbasscss-flexboxに置き換えられました。
+</li>
+<li>
+<code>.container</code>スタイルは<code>basscss-grid</code>から削除され、<code>basscss-layout</code>の<code>max-width</code>ユーティリティーに置き換えられました。
+</li>
+<li>
+<code>basscss-border</code>モジュールには、境界色のスタイルは含まれません。デフォルトでは、罫線は前景色を継承します。色を調整するには、境界色のユーティリティを使用します。
+</li>
+<li>
+<code>basscss-responsive-states</code>モジュールは、<code>basscss-hide</code>モジュールに置き換えられました。
+</li>
+</ul>
+<p>
+コアから削除されたモジュールは<code>basscss/addons</code>から入手できる。これらのモジュールを使うには、コアモジュールに加えてアドオンのモジュールをインポートします。
+</p>
+<p>
+基本要素のスタイルは、カスタムスタイルまたは<code>basscss-basic</code>のようなものに定義します。次の基本要素が影響を受けます。
+</p>
+<ul>
+<li>
+<code>body</code>
+</li>
+<li>
+<code>img</code>
+</li>
+<li>
+<code>svg</code>
+</li>
+<li>
+<code>input</code>
+</li>
+<li>
+<code>select</code>
+</li>
+<li>
+<code>textarea</code>
+</li>
+<li>
+<code>fieldset</code>
+</li>
+<li>
+<code>label</code>
+</li>
+<li>
+<code>table</code>
+</li>
+<li>
+<code>th</code>
+</li>
+<li>
+<code>td</code>
+</li>
+<li>
+<code>h1</code>
+</li>
+<li>
+<code>h2</code>
+</li>
+<li>
+<code>h3</code>
+</li>
+<li>
+<code>h4</code>
+</li>
+<li>
+<code>h5</code>
+</li>
+<li>
+<code>h6</code>
+</li>
+<li>
+<code>p</code>
+</li>
+<li>
+<code>dl</code>
+</li>
+<li>
+<code>ol</code>
+</li>
+<li>
+<code>ul</code>
+</li>
+<li>
+<code>pre</code>
+</li>
+<li>
+<code>samp</code>
+</li>
+<li>
+<code>code</code>
+</li>
+<li>
+<code>a</code>
+</li>
+<li>
+<code>hr</code>
+</li>
+</ul>
+</section>
+</section>
