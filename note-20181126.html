@@ -1,219 +1,44 @@
 <!DOCTYPE html>
-<html amp>
+<html >
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-  <title>Note at 2018.12.04</title>
-  <style type="text/css">
-
-
-html {
-line-height: 1.15; 
--webkit-text-size-adjust: 100%; 
-}
-
-
-body {
-margin: 0;
-}
-
-h1 {
-font-size: 2em;
-margin: 0.67em 0;
-}
-
-
-hr {
-box-sizing: content-box; 
-height: 0; 
-overflow: visible; 
-}
-
-pre {
-font-family: monospace, monospace; 
-font-size: 1em; 
-}
-
-
-a {
-background-color: transparent;
-}
-
-abbr[title] {
-border-bottom: none; 
-text-decoration: underline; 
-text-decoration: underline dotted; 
-}
-
-b,
-strong {
-font-weight: bolder;
-}
-
-code,
-kbd,
-samp {
-font-family: monospace, monospace; 
-font-size: 1em; 
-}
-
-small {
-font-size: 80%;
-}
-
-sub,
-sup {
-font-size: 75%;
-line-height: 0;
-position: relative;
-vertical-align: baseline;
-}
-sub {
-bottom: -0.25em;
-}
-sup {
-top: -0.5em;
-}
-
-
-img {
-border-style: none;
-}
-
-
-button,
-input,
-optgroup,
-select,
-textarea {
-font-family: inherit; 
-font-size: 100%; 
-line-height: 1.15; 
-margin: 0; 
-}
-
-button,
-input { 
-overflow: visible;
-}
-
-button,
-select { 
-text-transform: none;
-}
-
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
--webkit-appearance: button;
-}
-
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-border-style: none;
-padding: 0;
-}
-
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-outline: 1px dotted ButtonText;
-}
-
-fieldset {
-padding: 0.35em 0.75em 0.625em;
-}
-
-legend {
-box-sizing: border-box; 
-color: inherit; 
-display: table; 
-max-width: 100%; 
-padding: 0; 
-white-space: normal; 
-}
-
-progress {
-vertical-align: baseline;
-}
-
-textarea {
-overflow: auto;
-}
-
-[type="checkbox"],
-[type="radio"] {
-box-sizing: border-box; 
-padding: 0; 
-}
-
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-height: auto;
-}
-
-[type="search"] {
--webkit-appearance: textfield; 
-outline-offset: -2px; 
-}
-
-[type="search"]::-webkit-search-decoration {
--webkit-appearance: none;
-}
-
-::-webkit-file-upload-button {
--webkit-appearance: button; 
-font: inherit; 
-}
-
-
-details {
-display: block;
-}
-
-summary {
-display: list-item;
-}
-
-
-template {
-display: none;
-}
-
-[hidden] {
-display: none;
-}
-</style>
-  <style type="text/css">body,html{margin:0;padding:0;width:100%}html{line-height:1.5;box-sizing:border-box}*,:after,:before{box-sizing:inherit}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Meiryo,sans-serif;color:#111;background-color:#fff;word-break:break-all}img{max-width:100%;height:auto}svg{max-height:100%}a{color:#07c}h1,h2,h3,h4,h5,h6{font-weight:600;line-height:1.25;margin-top:1em;margin-bottom:.5em}h1{font-size:2rem}h2{font-size:1.5rem}h3{font-size:1.25rem}h4{font-size:1rem}h5{font-size:.875rem}h6{font-size:.75rem}blockquote,dl,ol,p,pre,ul{margin-top:1em;margin-bottom:1em}code,pre,samp{font-family:Roboto Mono,Source Code Pro,Menlo,Consolas,Liberation Mono,MS Gothic,monospace}samp{font-size:87.5%;padding:.125em}code{background-color:#eee;padding:.1em .4em}blockquote{font-size:1.25rem;font-style:italic;margin-left:0}hr{margin-top:1.5em;margin-bottom:1.5em;border:0;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#ccc}.text-transparent{color:transparent}.text-codeframe{color:#e3e3e3}.font-hairline{font-weight:100}.font-thin{font-weight:200}.font-light{font-weight:300}.font-normal{font-weight:400}.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-black{font-weight:900}.line-height-none{line-height:1}.line-height-tight{line-height:1.25}.line-height-normal{line-height:1.5}.line-height-loose{line-height:2}.overflow-x-auto{overflow-x:auto}.bg-transparent{background-color:transparent}.bg-codeframe{background-color:#364549}.blockquote{position:relative;border:1px solid #666;padding:0;margin:4.8rem 0 1.6rem 4.8rem}.blockquote:before{position:absolute;top:0;left:0;content:url(data:image/gif;base64,R0lGODlhHgAeALMAAHBwcI+Pj7i4uKOjo+Dg4Ovr662trdbW1vX19ZmZmczMzHp6esLCwoWFhWZmZv///yH5BAAAAAAALAAAAAAeAB4AAASJ8MlJq7046827/2AojiRGDIAjXAeqcoYjO4wVz8o2zEBe7TLAYSPgESzF4FGDSMlWlYLzReRdko5FJzALXBrdzkxmWE7GjvIGLUsgzuyBhv2Es6EXusMr0csxC3R8D1NjgxZAaH8PiWN4Fk1sQxJSbAUaBQMBmwmTE5mbAQk+JaWmp6ipqqusIxEAOw==)}.blockquote:after{position:absolute;bottom:0;right:0;content:url(data:image/gif;base64,R0lGODlhHgAeALMAAMLCwnBwcMzMzJmZmY+Pj62trfX19Xp6eri4uNbW1uDg4GZmZv///wAAAAAAAAAAACH5BAAAAAAALAAAAAAeAB4AAAR9kMlJq7046827/2AojmT5FcGiHkKFpGubJWqtJhNg10pW7KrBZABcCDGE4mKSBAZ8ymEUI5gydEUNAGajvIAcAXdZEdeenOaCcFEfNQYuwGKwzTe/lcGSXxw4WDcWgQs4Ggh2fImHZzJeNSxhBAMAe4OTlSaam5ydnp+gHhEAOw==)}.blockquote-text{padding:1.6rem 3.2rem}.blockquote-cite{display:block;padding:0 3.2rem 1.6rem 1.6rem;text-align:right}.h00{font-size:4rem}.h0{font-size:3rem}.h1{font-size:2rem}.h2{font-size:1.5rem}.h3{font-size:1.25rem}.h4{font-size:1rem}.h5{font-size:.875rem}.h6{font-size:.75rem}.font-family-inherit{font-family:inherit}.font-size-inherit{font-size:inherit}.text-decoration-none{text-decoration:none}.bold{font-weight:700}.regular{font-weight:400}.italic{font-style:italic}.caps{text-transform:uppercase;letter-spacing:.2em}.left-align{text-align:left}.center{text-align:center}.right-align{text-align:right}.justify{text-align:justify}.nowrap{white-space:nowrap}.break-word{word-wrap:break-word}.line-height-1{line-height:1}.line-height-2{line-height:1.125}.line-height-3{line-height:1.25}.line-height-4{line-height:1.5}.list-style-none{list-style:none}.underline{text-decoration:underline}.truncate{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.list-reset{list-style:none;padding-left:0}.inline{display:inline}.block{display:block}.inline-block{display:inline-block}.table{display:table}.table-cell{display:table-cell}.overflow-hidden{overflow:hidden}.overflow-scroll{overflow:scroll}.overflow-auto{overflow:auto}.clearfix:after,.clearfix:before{content:" ";display:table}.clearfix:after{clear:both}.left{float:left}.right{float:right}.fit{max-width:100%}.max-width-1{max-width:24rem}.max-width-2{max-width:32rem}.max-width-3{max-width:48rem}.max-width-4{max-width:64rem}.border-box{box-sizing:border-box}.align-baseline{vertical-align:baseline}.align-top{vertical-align:top}.align-middle{vertical-align:middle}.align-bottom{vertical-align:bottom}.m0{margin:0}.mt0{margin-top:0}.mr0{margin-right:0}.mb0{margin-bottom:0}.ml0,.mx0{margin-left:0}.mx0{margin-right:0}.my0{margin-top:0;margin-bottom:0}.m1{margin:.5rem}.mt1{margin-top:.5rem}.mr1{margin-right:.5rem}.mb1{margin-bottom:.5rem}.ml1,.mx1{margin-left:.5rem}.mx1{margin-right:.5rem}.my1{margin-top:.5rem;margin-bottom:.5rem}.m2{margin:1rem}.mt2{margin-top:1rem}.mr2{margin-right:1rem}.mb2{margin-bottom:1rem}.ml2,.mx2{margin-left:1rem}.mx2{margin-right:1rem}.my2{margin-top:1rem;margin-bottom:1rem}.m3{margin:2rem}.mt3{margin-top:2rem}.mr3{margin-right:2rem}.mb3{margin-bottom:2rem}.ml3,.mx3{margin-left:2rem}.mx3{margin-right:2rem}.my3{margin-top:2rem;margin-bottom:2rem}.m4{margin:4rem}.mt4{margin-top:4rem}.mr4{margin-right:4rem}.mb4{margin-bottom:4rem}.ml4,.mx4{margin-left:4rem}.mx4{margin-right:4rem}.my4{margin-top:4rem;margin-bottom:4rem}.mxn1{margin-left:-.5rem;margin-right:-.5rem}.mxn2{margin-left:-1rem;margin-right:-1rem}.mxn3{margin-left:-2rem;margin-right:-2rem}.mxn4{margin-left:-4rem;margin-right:-4rem}.m-auto{margin:auto}.mt-auto{margin-top:auto}.mr-auto{margin-right:auto}.mb-auto{margin-bottom:auto}.ml-auto,.mx-auto{margin-left:auto}.mx-auto{margin-right:auto}.my-auto{margin-top:auto;margin-bottom:auto}.p0{padding:0}.pt0{padding-top:0}.pr0{padding-right:0}.pb0{padding-bottom:0}.pl0,.px0{padding-left:0}.px0{padding-right:0}.py0{padding-top:0;padding-bottom:0}.p1{padding:.5rem}.pt1{padding-top:.5rem}.pr1{padding-right:.5rem}.pb1{padding-bottom:.5rem}.pl1{padding-left:.5rem}.py1{padding-top:.5rem;padding-bottom:.5rem}.px1{padding-left:.5rem;padding-right:.5rem}.p2{padding:1rem}.pt2{padding-top:1rem}.pr2{padding-right:1rem}.pb2{padding-bottom:1rem}.pl2{padding-left:1rem}.py2{padding-top:1rem;padding-bottom:1rem}.px2{padding-left:1rem;padding-right:1rem}.p3{padding:2rem}.pt3{padding-top:2rem}.pr3{padding-right:2rem}.pb3{padding-bottom:2rem}.pl3{padding-left:2rem}.py3{padding-top:2rem;padding-bottom:2rem}.px3{padding-left:2rem;padding-right:2rem}.p4{padding:4rem}.pt4{padding-top:4rem}.pr4{padding-right:4rem}.pb4{padding-bottom:4rem}.pl4{padding-left:4rem}.py4{padding-top:4rem;padding-bottom:4rem}.px4{padding-left:4rem;padding-right:4rem}.col{float:left}.col,.col-right{box-sizing:border-box}.col-right{float:right}.col-1{width:8.33333%}.col-2{width:16.66667%}.col-3{width:25%}.col-4{width:33.33333%}.col-5{width:41.66667%}.col-6{width:50%}.col-7{width:58.33333%}.col-8{width:66.66667%}.col-9{width:75%}.col-10{width:83.33333%}.col-11{width:91.66667%}.col-12{width:100%}@media (min-width:40em){.sm-col{float:left;box-sizing:border-box}.sm-col-right{float:right;box-sizing:border-box}.sm-col-1{width:8.33333%}.sm-col-2{width:16.66667%}.sm-col-3{width:25%}.sm-col-4{width:33.33333%}.sm-col-5{width:41.66667%}.sm-col-6{width:50%}.sm-col-7{width:58.33333%}.sm-col-8{width:66.66667%}.sm-col-9{width:75%}.sm-col-10{width:83.33333%}.sm-col-11{width:91.66667%}.sm-col-12{width:100%}}@media (min-width:52em){.md-col{float:left;box-sizing:border-box}.md-col-right{float:right;box-sizing:border-box}.md-col-1{width:8.33333%}.md-col-2{width:16.66667%}.md-col-3{width:25%}.md-col-4{width:33.33333%}.md-col-5{width:41.66667%}.md-col-6{width:50%}.md-col-7{width:58.33333%}.md-col-8{width:66.66667%}.md-col-9{width:75%}.md-col-10{width:83.33333%}.md-col-11{width:91.66667%}.md-col-12{width:100%}}@media (min-width:64em){.lg-col{float:left;box-sizing:border-box}.lg-col-right{float:right;box-sizing:border-box}.lg-col-1{width:8.33333%}.lg-col-2{width:16.66667%}.lg-col-3{width:25%}.lg-col-4{width:33.33333%}.lg-col-5{width:41.66667%}.lg-col-6{width:50%}.lg-col-7{width:58.33333%}.lg-col-8{width:66.66667%}.lg-col-9{width:75%}.lg-col-10{width:83.33333%}.lg-col-11{width:91.66667%}.lg-col-12{width:100%}}.flex{display:-ms-flexbox;display:flex}@media (min-width:40em){.sm-flex{display:-ms-flexbox;display:flex}}@media (min-width:52em){.md-flex{display:-ms-flexbox;display:flex}}@media (min-width:64em){.lg-flex{display:-ms-flexbox;display:flex}}.flex-column{-ms-flex-direction:column;flex-direction:column}.flex-wrap{-ms-flex-wrap:wrap;flex-wrap:wrap}.items-start{-ms-flex-align:start;align-items:flex-start}.items-end{-ms-flex-align:end;align-items:flex-end}.items-center{-ms-flex-align:center;align-items:center}.items-baseline{-ms-flex-align:baseline;align-items:baseline}.items-stretch{-ms-flex-align:stretch;align-items:stretch}.self-start{-ms-flex-item-align:start;align-self:flex-start}.self-end{-ms-flex-item-align:end;align-self:flex-end}.self-center{-ms-flex-item-align:center;-ms-grid-row-align:center;align-self:center}.self-baseline{-ms-flex-item-align:baseline;align-self:baseline}.self-stretch{-ms-flex-item-align:stretch;-ms-grid-row-align:stretch;align-self:stretch}.justify-start{-ms-flex-pack:start;justify-content:flex-start}.justify-end{-ms-flex-pack:end;justify-content:flex-end}.justify-center{-ms-flex-pack:center;justify-content:center}.justify-between{-ms-flex-pack:justify;justify-content:space-between}.justify-around{-ms-flex-pack:distribute;justify-content:space-around}.justify-evenly{-ms-flex-pack:space-evenly;justify-content:space-evenly}.content-start{-ms-flex-line-pack:start;align-content:flex-start}.content-end{-ms-flex-line-pack:end;align-content:flex-end}.content-center{-ms-flex-line-pack:center;align-content:center}.content-between{-ms-flex-line-pack:justify;align-content:space-between}.content-around{-ms-flex-line-pack:distribute;align-content:space-around}.content-stretch{-ms-flex-line-pack:stretch;align-content:stretch}.flex-auto{-ms-flex:1 1 auto;flex:1 1 auto;min-width:0;min-height:0}.flex-none{-ms-flex:none;flex:none}.order-0{-ms-flex-order:0;order:0}.order-1{-ms-flex-order:1;order:1}.order-2{-ms-flex-order:2;order:2}.order-3{-ms-flex-order:3;order:3}.order-last{-ms-flex-order:99999;order:99999}.relative{position:relative}.absolute{position:absolute}.fixed{position:fixed}.top-0{top:0}.right-0{right:0}.bottom-0{bottom:0}.left-0{left:0}.z1{z-index:1}.z2{z-index:2}.z3{z-index:3}.z4{z-index:4}.border{border-style:solid;border-width:1px}.border-top{border-top-style:solid;border-top-width:1px}.border-right{border-right-style:solid;border-right-width:1px}.border-bottom{border-bottom-style:solid;border-bottom-width:1px}.border-left{border-left-style:solid;border-left-width:1px}.border-none{border:0}.rounded{border-radius:3px}.circle{border-radius:50%}.rounded-top{border-radius:3px 3px 0 0}.rounded-right{border-radius:0 3px 3px 0}.rounded-bottom{border-radius:0 0 3px 3px}.rounded-left{border-radius:3px 0 0 3px}.not-rounded{border-radius:0}</style>
+  <title>HeadingTop (Headling)</title>
+  <link rel="stylesheet" href="./assets/css1/normalize.min.css" />
+  <link rel="stylesheet" href="./assets/css1/base.min.css" />
 </head>
 <body>
-<div style="min-height: 100vh; background-color: #f6f6f6;">
+<div class="flex flex-column overflow-hidden bg-white-smoke">
+<div class="flex flex-column min-h-screen">
 
-<div>
-<div class="px2" style="background-color: #55c500; color: #fff;">
-<div class="flex items-center justify-between mx-auto" style="height: 56px; max-width: 1100px;">
-<div class="flex items-center justify-center relative" style="color: #fff; height: 100%;">
-</div>
-<div class="flex items-center justify-center" style="color: #fff;">
-</div>
-</div>
-</div>
-</div>
 
-<div style="">
-<div style="background-color: #f6f6f6;">
-<div class="lg-flex mx-auto pt2 pb3" style="width: calc(100% - 50px); max-width: 1280px;">
-<div class="lg-col-9 p2">
-<div class="p3" style="background-color: #fff;">
-<header id="title-block-header">
-<h1 class="title">example</h1>
+<!-- GlobalHeader >>> -->
+<header class="global-header">
+<div class="text-white px2 bg-lime-green">
+<div class="flex items-center justify-between mx-auto global-header-container">
+<div class="text-white flex items-center justify-center relative h-full">
+</div>
+<div class="text-white flex items-center justify-center">
+</div>
+</div>
+</div>
 </header>
-<h2 class="h2 font-bold line-height-normal mt4 mb3 pb1 border-bottom"  id="bookmarksお気に入り">Bookmarks（お気に入り）</h2>
+<!-- GlobalHeader <<< -->
+
+<!-- MainContent >>> -->
+<div class="flex-auto">
+<div class="bg-white-smoke">
+<div class="md-flex mx-auto md-pt2 md-pb3 sm-pb2 main-content">
+
+<!-- content >>> -->
+<div class="md-col-9 md-p2">
+<div class="md-p3 py1 px2 bg-white">
+<header>
+<h1 class="vr-h1">HeadingTop (Headling)</h1>
+</header>
+
+<h2 class="vr-h2"  id="bookmarksお気に入り">Bookmarks（お気に入り）</h2>
 
 <p><a href="https://qiita.com/zenwerk/items/699a8b73245fcf61c426">Lua 5.1 言語仕様メモ</a></p>
 
@@ -262,10 +87,10 @@ https://docs.microsoft.com/ja-jp/dotnet/api/system.security.principal.windowside
 <p>ワーカープロセスのアクセストークンを調べる</p>
 
 <p>?System.Security.Principal.WindowsIdentity.GetCurrent().Name
-</p>
+&quot;IIS APPPOOL\DefaultAppPool&quot;</p>
 
 <p>?System.Security.Principal.WindowsIdentity.GetCurrent().Name
-</p>
+&quot;IIS APPPOOL\DefaultAppPool&quot;</p>
 
 <p>偽装前も偽装後も変わっていない。
 ↓
@@ -276,7 +101,7 @@ ASP.NET偽装が無効のときは、ワーカープロセスの実行アカウ�
 
 <p><code>MultipartFormDataStreamProvider</code>の<code>FileData</code>プロパティを見て、アップロードされたファイルを取得している。</p>
 
-<div class="my2 mxn3 py2 px3 bg-codeframe text-codeframe"><div class="p1 bg-transparent text-codeframe overflow-x-auto"><pre class="m0"><code class="bg-transparent" >foreach (var file in provider.FileData)
+<div class="md-my2 md-mxn3 mxn2 md-py2 py1 md-px3 px2 bg-codeframe text-codeframe"><div class="p1 bg-transparent text-codeframe overflow-x-auto"><pre class="m0"><code class="bg-transparent" >foreach (var file in provider.FileData)
 {
     // オリジナルのファイル名を取得
     var originalFileName = file.Headers.ContentDisposition.FileName;
@@ -344,13 +169,13 @@ https://docs.microsoft.com/ja-jp/aspnet/web-api/overview/advanced/sending-html-f
 
 <section>
 
-<h2 class="h2 font-bold line-height-normal mt4 mb3 pb1 border-bottom">
+<h2 class="vr-h2">
 
 <a href="https://www.oracle.com/technetwork/jp/database/articles/plsql101/o52plsql-1709862-ja.html">BULK COLLECTとFORALLによるバルク処理</a>
 
 </h2>
 
-<h3 id="bulk-collectについて">BULK COLLECTについて</h3>
+<h3 class="vr-h3"  id="bulk-collectについて">BULK COLLECTについて</h3>
 
 <p>バルク処理を利用して問合せを行うには、BULK COLLECTをINTOキーワードの前に置いて、1つ以上のコレクションをINTOキーワードの後に指定します。BULK COLLECTの動作方法について知っておくべきことは次のとおりです。</p>
 
@@ -361,15 +186,15 @@ https://docs.microsoft.com/ja-jp/aspnet/web-api/overview/advanced/sending-html-f
 <li>1行もフェッチされなかった場合、コレクションからすべての要素が削除される。</li>
 </ul>
 
-<h3 id="forallについて">FORALLについて</h3>
+<h3 class="vr-h3"  id="forallについて">FORALLについて</h3>
 
 <p>ループ内でDML文を実行するときは常に、FORALLを使用するようにそのコードを変換してください。その変換によるパフォーマンス向上に開発者は驚き、ユーザーも満足するでしょう。</p>
 
 <p>FORALL文はループではなく、PL/SQLエンジンに対して次のことを伝える宣言文です。</p>
 
-<p></p>
+<p>&quot;通常なら1行ずつ実行されるDML文をすべて生成し、それらのDML文を1回のコンテキスト・スイッチでSQLエンジンに送信する&quot;</p>
 
-<p>FORALL文のの見た目は数値によるFORループと同じですが、LOOPキーワードやEND LOOPキーワードはありません。</p>
+<p>FORALL文の&quot;ヘッダー&quot;の見た目は数値によるFORループと同じですが、LOOPキーワードやEND LOOPキーワードはありません。</p>
 
 <p>FORALLについて知っておくべきことは次のとおりです。</p>
 
@@ -381,7 +206,7 @@ https://docs.microsoft.com/ja-jp/aspnet/web-api/overview/advanced/sending-html-f
 <li>コレクションが密に入力されていない場合は、FORALLヘッダーでINDICES OF構文またはVALUES OF構文を使用する必要がある。</li>
 </ul>
 
-<h3 id="参考">参考</h3>
+<h3 class="vr-h3"  id="参考">参考</h3>
 
 <p><a href="http://otndnld.oracle.co.jp/document/products/oracle11g/111/doc_dvd/appdev.111/E05670-03/collections.htm">PL/SQLのコレクションおよびレコードの使用</a></p>
 
@@ -389,7 +214,7 @@ https://docs.microsoft.com/ja-jp/aspnet/web-api/overview/advanced/sending-html-f
 
 <section>
 
-<h2 class="h2 font-bold line-height-normal mt4 mb3 pb1 border-bottom">
+<h2 class="vr-h2">
 
 JScriptメモ
 
@@ -456,11 +281,11 @@ SQL内の日本語が化けてしまい、<code>Command.Execute</code>でエラ�
 <li><p>調整区分の幅を広げた。72px→88px。「充足率で調整」が折り返して表示されない幅。</p></li>
 <li><p>coalesce 式っていうのね。</p>
 
-<div class="my2 mxn3 py2 px3 bg-codeframe text-codeframe"><div class="p1 bg-transparent text-codeframe overflow-x-auto"><pre class="m0"><code class="bg-transparent" >  source.NecessaryManHours.HasValue ? source.NecessaryManHours.Value : decimal.Zero</code></pre></div></div>
+<div class="md-my2 md-mxn3 mxn2 md-py2 py1 md-px3 px2 bg-codeframe text-codeframe"><div class="p1 bg-transparent text-codeframe overflow-x-auto"><pre class="m0"><code class="bg-transparent" >  source.NecessaryManHours.HasValue ? source.NecessaryManHours.Value : decimal.Zero</code></pre></div></div>
 
 <p>↓</p>
 
-<div class="my2 mxn3 py2 px3 bg-codeframe text-codeframe"><div class="p1 bg-transparent text-codeframe overflow-x-auto"><pre class="m0"><code class="bg-transparent" >  source.NecessaryManHours ?? decimal.Zero</code></pre></div></div></li>
+<div class="md-my2 md-mxn3 mxn2 md-py2 py1 md-px3 px2 bg-codeframe text-codeframe"><div class="p1 bg-transparent text-codeframe overflow-x-auto"><pre class="m0"><code class="bg-transparent" >  source.NecessaryManHours ?? decimal.Zero</code></pre></div></div></li>
 </ul>
 
 <section>
@@ -559,7 +384,7 @@ SまたはMのみ。</p>
 
 <section>
 
-<h2 class="h2 font-bold line-height-normal mt4 mb3 pb1 border-bottom">
+<h2 class="vr-h2">
 
 プログラム開発に向いた〝メモリ消費量が少ない〟テキストエディタは？
 
@@ -997,7 +822,26 @@ XF10 の検討
 <li>ファインダーがない。</li>
 <li>液晶が動かない。</li>
 <li><p>AFが遅い。</p></li>
+<li><p>スナップショットモードにすると距離のほか、絞りも固定される。</p></li>
 </ul>
+
+<table>
+<tr class="header">
+<th align="left">距離</th>
+<th align="left">絞り</th>
+<th align="left">ピントが合う範囲</th>
+</tr>
+<tr class="odd">
+<td align="left">5m</td>
+<td align="left">F5.6</td>
+<td align="left">約1.8m～∞</td>
+</tr>
+<tr class="even">
+<td align="left">2m</td>
+<td align="left">F8</td>
+<td align="left">約1.0m～∞</td>
+</tr>
+</table>
 
 </section>
 
@@ -1036,6 +880,8 @@ normalize.css - GitHub Star 33,157 - <a href="https://github.com/necolas/normali
 </li>
 
 <li>
+
+TACHYONS - GitHub Star 8133 - <a href="https://github.com/tachyons-css/tachyons/">tachyons-css/tachyons </a>
 
 </li>
 
@@ -1408,7 +1254,7 @@ v8での破壊的変更（GitHubのリリースノートより）
 
 <p><a href="https://github.com/basscss/basscss/issues/185">Custom Properties not working in basscss v8 #185</a></p>
 
-<blockquote class="blockquote">
+<blockquote class="blockquote md-my4 my3 md-ml3 ml2 mr0">
 
 <p class="blockquote-text m0 py2 px3">
 
@@ -1438,7 +1284,7 @@ Pandoc コマンド
 
 </h3>
 
-<div class="my2 mxn3 py2 px3 bg-codeframe text-codeframe"><div class="p1 bg-transparent text-codeframe overflow-x-auto"><pre class="m0"><code class="bg-transparent" >pandoc [OPTIONS] [FILES]
+<div class="md-my2 md-mxn3 mxn2 md-py2 py1 md-px3 px2 bg-codeframe text-codeframe"><div class="p1 bg-transparent text-codeframe overflow-x-auto"><pre class="m0"><code class="bg-transparent" >pandoc [OPTIONS] [FILES]
   -f FORMAT, -r FORMAT  --from=FORMAT, --read=FORMAT
   -t FORMAT, -w FORMAT  --to=FORMAT, --write=FORMAT
   -o FILE               --output=FILE
@@ -1533,7 +1379,7 @@ Pandoc コマンド
 
 <section>
 
-<h2 class="h2 font-bold line-height-normal mt4 mb3 pb1 border-bottom">
+<h2 class="vr-h2">
 
 メディアクエリ　備忘録
 
@@ -1541,7 +1387,7 @@ Pandoc コマンド
 
 <section>
 
-<h3 class="h3 font-bold line-height-normal mt3 mb2">
+<h3 class="vr-h3">
 
 説明
 
@@ -1579,39 +1425,78 @@ Pandoc コマンド
 
 <section>
 
-<h3 class="h3 font-bold line-height-normal mt3 mb2">
+<h3 class="vr-h3">
 
 例
 
 </h3>
 
-<p><span class="cite" data-citation-ids="media">@media</span> (max-width: 480px) {
-/* 480px 以下の場合 */
-}</p>
+<div class="md-my2 md-mxn3 mxn2 md-py2 py1 md-px3 px2 bg-codeframe text-codeframe">
+<div class="p1 bg-transparent text-codeframe overflow-x-auto">
+<pre class="m0"><code class="bg-transparent">@media (max-width: 480px) {
+  /* 480px 以下の場合 */
+}
 
-<p><span class="cite" data-citation-ids="media">@media</span> (min-width: 770px) {
-/* 770px 以上の場合 */
-}</p>
+@media (min-width: 770px) {
+  /* 770px 以上の場合 */
+}
 
-<p><span class="cite" data-citation-ids="media">@media</span> (min-width: 640px) and (max-width: 800px) {
-/* 640px ～ 800px の場合 */
-}</p>
+@media (min-width: 640px) and (max-width: 800px) {
+  /* 640px ～ 800px の場合 */
+}</code></pre></div></div>
 
 </section>
 
 </section>
+
+<h2 class="vr-h2"  id="oocss">OOCSS</h2>
+
+<h3 class="vr-h3"  id="構造とスキンの分離">構造とスキンの分離</h3>
+
+<p>構造とは要素の形を作るものです。
+たとえば、<code>width</code>, <code>height</code>, <code>border</code>, <code>margin</code>, <code>padding</code>があたります。</p>
+
+<p>スキン（見た目）とは、文字や背景、線の色など見た目（スタイル）のことです。
+<code>color</code>, <code>background-color</code>, <code>border-color</code>があたります。</p>
+
+<p>引用テスト</p>
+
+<blockquote class="blockquote md-my4 my3 md-ml3 ml2 mr0">
+<p>これは引用です。
+これも引用です。</p>
+
+<p>一行空けて引用です。</p>
+
+<p>– <cite><a href='http://localhost:3000/' title=''>Albert Einstein</a></cite></p>
+</blockquote>
+
+<p>BEM派かOOCSS派か、チェックリストを作ってみた | css | Horic Design
+https://horicdesign.com › HOME › css
+2014/09/17 - そして、BEM記法では、以下のようにCSSのクラスを命名します。 Block__Element–Modifier. 例えば、Boxという要素の中のItemという要素で状態が、dangerの場合は. Box__item–modifierとクラスを指定します。 構成するBlockのクラス名 …</p>
+
 </div>
 </div>
 
-<div class="lg-col-3 p2" style="max-height: 100vh;">
-<p>２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。２００文字サンプル。</p>
+<!-- side-content >>> -->
+<aside class="md-col-3 md-p2">
+<div class="md-py3 md-px0 pt4 pb1 px2">
 </div>
+</aside>
+<!-- side-content <<< -->
 
 </div>
 </div>
 </div>
+<!-- MainContent <<< -->
 
 
+<!-- GlobalFooter >>> -->
+<footer class="global-footer">
+<p>&copy; 2018 Your Name</p>
+</footer>
+<!-- GlobalFooter <<< -->
+
+</div>
 </div>
 </body>
 </html>
