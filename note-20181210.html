@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NOTE: 偽装ユーザーでプロセスを実行する方法 | ＳｉｔｅＮａｍｅ</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <style type="text/css">html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}[hidden],template{display:none}</style>
+  <style type="text/css">body,html{margin:0;padding:0;width:100%}html{line-height:1.5;box-sizing:border-box}*,:after,:before{box-sizing:inherit}body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Meiryo,sans-serif;color:#111;background-color:#fff}img{max-width:100%;height:auto}svg{max-height:100%}a{color:#07c}blockquote,dl,ol,p,pre,ul{margin-top:1em;margin-bottom:1em}code,pre,samp{font-family:Roboto Mono,Source Code Pro,Menlo,Consolas,Liberation Mono,MS Gothic,monospace}samp{font-size:87.5%;padding:.125em}code{background-color:#eee;padding:.1em .4em}blockquote{font-size:1.25rem;font-style:italic;margin-left:0}hr{margin-top:1.5em;margin-bottom:1.5em;border:0;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#ccc}.h00{font-size:4rem}.h0{font-size:3rem}.h1{font-size:2rem}.h2{font-size:1.5rem}.h3{font-size:1.25rem}.h4{font-size:1rem}.h5{font-size:.875rem}.h6{font-size:.75rem}.font-family-inherit{font-family:inherit}.font-size-inherit{font-size:inherit}.text-decoration-none{text-decoration:none}.bold{font-weight:700}.regular{font-weight:400}.italic{font-style:italic}.caps{text-transform:uppercase;letter-spacing:.2em}.left-align{text-align:left}.center{text-align:center}.right-align{text-align:right}.justify{text-align:justify}.nowrap{white-space:nowrap}.break-word{word-wrap:break-word}.line-height-1{line-height:1}.line-height-2{line-height:1.125}.line-height-3{line-height:1.25}.line-height-4{line-height:1.5}.list-style-none{list-style:none}.underline{text-decoration:underline}.truncate{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.list-reset{list-style:none;padding-left:0}.inline{display:inline}.block{display:block}.inline-block{display:inline-block}.table{display:table}.table-cell{display:table-cell}.clearfix:after,.clearfix:before{content:" ";display:table}.clearfix:after{clear:both}.left{float:left}.right{float:right}.fit{max-width:100%}.max-width-1{max-width:24rem}.max-width-2{max-width:32rem}.max-width-3{max-width:48rem}.max-width-4{max-width:64rem}.border-box{box-sizing:border-box}.align-baseline{vertical-align:baseline}.align-top{vertical-align:top}.align-middle{vertical-align:middle}.align-bottom{vertical-align:bottom}.m0{margin:0}.mt0{margin-top:0}.mr0{margin-right:0}.mb0{margin-bottom:0}.ml0,.mx0{margin-left:0}.mx0{margin-right:0}.my0{margin-top:0;margin-bottom:0}.m1{margin:.5rem}.mt1{margin-top:.5rem}.mr1{margin-right:.5rem}.mb1{margin-bottom:.5rem}.ml1,.mx1{margin-left:.5rem}.mx1{margin-right:.5rem}.my1{margin-top:.5rem;margin-bottom:.5rem}.m2{margin:1rem}.mt2{margin-top:1rem}.mr2{margin-right:1rem}.mb2{margin-bottom:1rem}.ml2,.mx2{margin-left:1rem}.mx2{margin-right:1rem}.my2{margin-top:1rem;margin-bottom:1rem}.m3{margin:2rem}.mt3{margin-top:2rem}.mr3{margin-right:2rem}.mb3{margin-bottom:2rem}.ml3,.mx3{margin-left:2rem}.mx3{margin-right:2rem}.my3{margin-top:2rem;margin-bottom:2rem}.m4{margin:4rem}.mt4{margin-top:4rem}.mr4{margin-right:4rem}.mb4{margin-bottom:4rem}.ml4,.mx4{margin-left:4rem}.mx4{margin-right:4rem}.my4{margin-top:4rem;margin-bottom:4rem}.mxn1{margin-left:-.5rem;margin-right:-.5rem}.mxn2{margin-left:-1rem;margin-right:-1rem}.mxn3{margin-left:-2rem;margin-right:-2rem}.mxn4{margin-left:-4rem;margin-right:-4rem}.m-auto{margin:auto}.mt-auto{margin-top:auto}.mr-auto{margin-right:auto}.mb-auto{margin-bottom:auto}.ml-auto,.mx-auto{margin-left:auto}.mx-auto{margin-right:auto}.my-auto{margin-top:auto;margin-bottom:auto}.p0{padding:0}.pt0{padding-top:0}.pr0{padding-right:0}.pb0{padding-bottom:0}.pl0,.px0{padding-left:0}.px0{padding-right:0}.py0{padding-top:0;padding-bottom:0}.p1{padding:.5rem}.pt1{padding-top:.5rem}.pr1{padding-right:.5rem}.pb1{padding-bottom:.5rem}.pl1{padding-left:.5rem}.py1{padding-top:.5rem;padding-bottom:.5rem}.px1{padding-left:.5rem;padding-right:.5rem}.p2{padding:1rem}.pt2{padding-top:1rem}.pr2{padding-right:1rem}.pb2{padding-bottom:1rem}.pl2{padding-left:1rem}.py2{padding-top:1rem;padding-bottom:1rem}.px2{padding-left:1rem;padding-right:1rem}.p3{padding:2rem}.pt3{padding-top:2rem}.pr3{padding-right:2rem}.pb3{padding-bottom:2rem}.pl3{padding-left:2rem}.py3{padding-top:2rem;padding-bottom:2rem}.px3{padding-left:2rem;padding-right:2rem}.p4{padding:4rem}.pt4{padding-top:4rem}.pr4{padding-right:4rem}.pb4{padding-bottom:4rem}.pl4{padding-left:4rem}.py4{padding-top:4rem;padding-bottom:4rem}.px4{padding-left:4rem;padding-right:4rem}.col{float:left}.col,.col-right{box-sizing:border-box}.col-right{float:right}.col-1{width:8.33333%}.col-2{width:16.66667%}.col-3{width:25%}.col-4{width:33.33333%}.col-5{width:41.66667%}.col-6{width:50%}.col-7{width:58.33333%}.col-8{width:66.66667%}.col-9{width:75%}.col-10{width:83.33333%}.col-11{width:91.66667%}.col-12{width:100%}@media (min-width:40em){.sm-col{float:left;box-sizing:border-box}.sm-col-right{float:right;box-sizing:border-box}.sm-col-1{width:8.33333%}.sm-col-2{width:16.66667%}.sm-col-3{width:25%}.sm-col-4{width:33.33333%}.sm-col-5{width:41.66667%}.sm-col-6{width:50%}.sm-col-7{width:58.33333%}.sm-col-8{width:66.66667%}.sm-col-9{width:75%}.sm-col-10{width:83.33333%}.sm-col-11{width:91.66667%}.sm-col-12{width:100%}}@media (min-width:50em){.md-col{float:left;box-sizing:border-box}.md-col-right{float:right;box-sizing:border-box}.md-col-1{width:8.33333%}.md-col-2{width:16.66667%}.md-col-3{width:25%}.md-col-4{width:33.33333%}.md-col-5{width:41.66667%}.md-col-6{width:50%}.md-col-7{width:58.33333%}.md-col-8{width:66.66667%}.md-col-9{width:75%}.md-col-10{width:83.33333%}.md-col-11{width:91.66667%}.md-col-12{width:100%}}@media (min-width:64em){.lg-col{float:left;box-sizing:border-box}.lg-col-right{float:right;box-sizing:border-box}.lg-col-1{width:8.33333%}.lg-col-2{width:16.66667%}.lg-col-3{width:25%}.lg-col-4{width:33.33333%}.lg-col-5{width:41.66667%}.lg-col-6{width:50%}.lg-col-7{width:58.33333%}.lg-col-8{width:66.66667%}.lg-col-9{width:75%}.lg-col-10{width:83.33333%}.lg-col-11{width:91.66667%}.lg-col-12{width:100%}}.flex{display:-ms-flexbox;display:flex}@media (min-width:40em){.sm-flex{display:-ms-flexbox;display:flex}}@media (min-width:50em){.md-flex{display:-ms-flexbox;display:flex}}@media (min-width:64em){.lg-flex{display:-ms-flexbox;display:flex}}.flex-column{-ms-flex-direction:column;flex-direction:column}.flex-wrap{-ms-flex-wrap:wrap;flex-wrap:wrap}.items-start{-ms-flex-align:start;align-items:flex-start}.items-end{-ms-flex-align:end;align-items:flex-end}.items-center{-ms-flex-align:center;align-items:center}.items-baseline{-ms-flex-align:baseline;align-items:baseline}.items-stretch{-ms-flex-align:stretch;align-items:stretch}.self-start{-ms-flex-item-align:start;align-self:flex-start}.self-end{-ms-flex-item-align:end;align-self:flex-end}.self-center{-ms-flex-item-align:center;-ms-grid-row-align:center;align-self:center}.self-baseline{-ms-flex-item-align:baseline;align-self:baseline}.self-stretch{-ms-flex-item-align:stretch;-ms-grid-row-align:stretch;align-self:stretch}.justify-start{-ms-flex-pack:start;justify-content:flex-start}.justify-end{-ms-flex-pack:end;justify-content:flex-end}.justify-center{-ms-flex-pack:center;justify-content:center}.justify-between{-ms-flex-pack:justify;justify-content:space-between}.justify-around{-ms-flex-pack:distribute;justify-content:space-around}.justify-evenly{-ms-flex-pack:space-evenly;justify-content:space-evenly}.content-start{-ms-flex-line-pack:start;align-content:flex-start}.content-end{-ms-flex-line-pack:end;align-content:flex-end}.content-center{-ms-flex-line-pack:center;align-content:center}.content-between{-ms-flex-line-pack:justify;align-content:space-between}.content-around{-ms-flex-line-pack:distribute;align-content:space-around}.content-stretch{-ms-flex-line-pack:stretch;align-content:stretch}.flex-auto{-ms-flex:1 1 auto;flex:1 1 auto;min-width:0;min-height:0}.flex-none{-ms-flex:none;flex:none}.order-0{-ms-flex-order:0;order:0}.order-1{-ms-flex-order:1;order:1}.order-2{-ms-flex-order:2;order:2}.order-3{-ms-flex-order:3;order:3}.order-last{-ms-flex-order:99999;order:99999}.relative{position:relative}.absolute{position:absolute}.fixed{position:fixed}.top-0{top:0}.right-0{right:0}.bottom-0{bottom:0}.left-0{left:0}.z1{z-index:1}.z2{z-index:2}.z3{z-index:3}.z4{z-index:4}.border{border-style:solid;border-width:1px}.border-top{border-top-style:solid;border-top-width:1px}.border-right{border-right-style:solid;border-right-width:1px}.border-bottom{border-bottom-style:solid;border-bottom-width:1px}.border-left{border-left-style:solid;border-left-width:1px}.border-none{border:0}.rounded{border-radius:3px}.circle{border-radius:50%}.rounded-top{border-radius:3px 3px 0 0}.rounded-right{border-radius:0 3px 3px 0}.rounded-bottom{border-radius:0 0 3px 3px}.rounded-left{border-radius:3px 0 0 3px}.not-rounded{border-radius:0}@media (min-width:40em){.sm-m0{margin:0}.sm-mt0{margin-top:0}.sm-mr0{margin-right:0}.sm-mb0{margin-bottom:0}.sm-ml0,.sm-mx0{margin-left:0}.sm-mx0{margin-right:0}.sm-my0{margin-top:0;margin-bottom:0}.sm-m1{margin:.5rem}.sm-mt1{margin-top:.5rem}.sm-mr1{margin-right:.5rem}.sm-mb1{margin-bottom:.5rem}.sm-ml1,.sm-mx1{margin-left:.5rem}.sm-mx1{margin-right:.5rem}.sm-my1{margin-top:.5rem;margin-bottom:.5rem}.sm-m2{margin:1rem}.sm-mt2{margin-top:1rem}.sm-mr2{margin-right:1rem}.sm-mb2{margin-bottom:1rem}.sm-ml2,.sm-mx2{margin-left:1rem}.sm-mx2{margin-right:1rem}.sm-my2{margin-top:1rem;margin-bottom:1rem}.sm-m3{margin:2rem}.sm-mt3{margin-top:2rem}.sm-mr3{margin-right:2rem}.sm-mb3{margin-bottom:2rem}.sm-ml3,.sm-mx3{margin-left:2rem}.sm-mx3{margin-right:2rem}.sm-my3{margin-top:2rem;margin-bottom:2rem}.sm-m4{margin:4rem}.sm-mt4{margin-top:4rem}.sm-mr4{margin-right:4rem}.sm-mb4{margin-bottom:4rem}.sm-ml4,.sm-mx4{margin-left:4rem}.sm-mx4{margin-right:4rem}.sm-my4{margin-top:4rem;margin-bottom:4rem}.sm-mxn1{margin-left:-.5rem;margin-right:-.5rem}.sm-mxn2{margin-left:-1rem;margin-right:-1rem}.sm-mxn3{margin-left:-2rem;margin-right:-2rem}.sm-mxn4{margin-left:-4rem;margin-right:-4rem}.sm-ml-auto{margin-left:auto}.sm-mr-auto,.sm-mx-auto{margin-right:auto}.sm-mx-auto{margin-left:auto}}@media (min-width:50em){.md-m0{margin:0}.md-mt0{margin-top:0}.md-mr0{margin-right:0}.md-mb0{margin-bottom:0}.md-ml0,.md-mx0{margin-left:0}.md-mx0{margin-right:0}.md-my0{margin-top:0;margin-bottom:0}.md-m1{margin:.5rem}.md-mt1{margin-top:.5rem}.md-mr1{margin-right:.5rem}.md-mb1{margin-bottom:.5rem}.md-ml1,.md-mx1{margin-left:.5rem}.md-mx1{margin-right:.5rem}.md-my1{margin-top:.5rem;margin-bottom:.5rem}.md-m2{margin:1rem}.md-mt2{margin-top:1rem}.md-mr2{margin-right:1rem}.md-mb2{margin-bottom:1rem}.md-ml2,.md-mx2{margin-left:1rem}.md-mx2{margin-right:1rem}.md-my2{margin-top:1rem;margin-bottom:1rem}.md-m3{margin:2rem}.md-mt3{margin-top:2rem}.md-mr3{margin-right:2rem}.md-mb3{margin-bottom:2rem}.md-ml3,.md-mx3{margin-left:2rem}.md-mx3{margin-right:2rem}.md-my3{margin-top:2rem;margin-bottom:2rem}.md-m4{margin:4rem}.md-mt4{margin-top:4rem}.md-mr4{margin-right:4rem}.md-mb4{margin-bottom:4rem}.md-ml4,.md-mx4{margin-left:4rem}.md-mx4{margin-right:4rem}.md-my4{margin-top:4rem;margin-bottom:4rem}.md-mxn1{margin-left:-.5rem;margin-right:-.5rem}.md-mxn2{margin-left:-1rem;margin-right:-1rem}.md-mxn3{margin-left:-2rem;margin-right:-2rem}.md-mxn4{margin-left:-4rem;margin-right:-4rem}.md-ml-auto{margin-left:auto}.md-mr-auto,.md-mx-auto{margin-right:auto}.md-mx-auto{margin-left:auto}}@media (min-width:64em){.lg-m0{margin:0}.lg-mt0{margin-top:0}.lg-mr0{margin-right:0}.lg-mb0{margin-bottom:0}.lg-ml0,.lg-mx0{margin-left:0}.lg-mx0{margin-right:0}.lg-my0{margin-top:0;margin-bottom:0}.lg-m1{margin:.5rem}.lg-mt1{margin-top:.5rem}.lg-mr1{margin-right:.5rem}.lg-mb1{margin-bottom:.5rem}.lg-ml1,.lg-mx1{margin-left:.5rem}.lg-mx1{margin-right:.5rem}.lg-my1{margin-top:.5rem;margin-bottom:.5rem}.lg-m2{margin:1rem}.lg-mt2{margin-top:1rem}.lg-mr2{margin-right:1rem}.lg-mb2{margin-bottom:1rem}.lg-ml2,.lg-mx2{margin-left:1rem}.lg-mx2{margin-right:1rem}.lg-my2{margin-top:1rem;margin-bottom:1rem}.lg-m3{margin:2rem}.lg-mt3{margin-top:2rem}.lg-mr3{margin-right:2rem}.lg-mb3{margin-bottom:2rem}.lg-ml3,.lg-mx3{margin-left:2rem}.lg-mx3{margin-right:2rem}.lg-my3{margin-top:2rem;margin-bottom:2rem}.lg-m4{margin:4rem}.lg-mt4{margin-top:4rem}.lg-mr4{margin-right:4rem}.lg-mb4{margin-bottom:4rem}.lg-ml4,.lg-mx4{margin-left:4rem}.lg-mx4{margin-right:4rem}.lg-my4{margin-top:4rem;margin-bottom:4rem}.lg-mxn1{margin-left:-.5rem;margin-right:-.5rem}.lg-mxn2{margin-left:-1rem;margin-right:-1rem}.lg-mxn3{margin-left:-2rem;margin-right:-2rem}.lg-mxn4{margin-left:-4rem;margin-right:-4rem}.lg-ml-auto{margin-left:auto}.lg-mr-auto,.lg-mx-auto{margin-right:auto}.lg-mx-auto{margin-left:auto}}@media (min-width:40em){.sm-p0{padding:0}.sm-pt0{padding-top:0}.sm-pr0{padding-right:0}.sm-pb0{padding-bottom:0}.sm-pl0,.sm-px0{padding-left:0}.sm-px0{padding-right:0}.sm-py0{padding-top:0;padding-bottom:0}.sm-p1{padding:.5rem}.sm-pt1{padding-top:.5rem}.sm-pr1{padding-right:.5rem}.sm-pb1{padding-bottom:.5rem}.sm-pl1,.sm-px1{padding-left:.5rem}.sm-px1{padding-right:.5rem}.sm-py1{padding-top:.5rem;padding-bottom:.5rem}.sm-p2{padding:1rem}.sm-pt2{padding-top:1rem}.sm-pr2{padding-right:1rem}.sm-pb2{padding-bottom:1rem}.sm-pl2,.sm-px2{padding-left:1rem}.sm-px2{padding-right:1rem}.sm-py2{padding-top:1rem;padding-bottom:1rem}.sm-p3{padding:2rem}.sm-pt3{padding-top:2rem}.sm-pr3{padding-right:2rem}.sm-pb3{padding-bottom:2rem}.sm-pl3,.sm-px3{padding-left:2rem}.sm-px3{padding-right:2rem}.sm-py3{padding-top:2rem;padding-bottom:2rem}.sm-p4{padding:4rem}.sm-pt4{padding-top:4rem}.sm-pr4{padding-right:4rem}.sm-pb4{padding-bottom:4rem}.sm-pl4,.sm-px4{padding-left:4rem}.sm-px4{padding-right:4rem}.sm-py4{padding-top:4rem;padding-bottom:4rem}}@media (min-width:50em){.md-p0{padding:0}.md-pt0{padding-top:0}.md-pr0{padding-right:0}.md-pb0{padding-bottom:0}.md-pl0,.md-px0{padding-left:0}.md-px0{padding-right:0}.md-py0{padding-top:0;padding-bottom:0}.md-p1{padding:.5rem}.md-pt1{padding-top:.5rem}.md-pr1{padding-right:.5rem}.md-pb1{padding-bottom:.5rem}.md-pl1,.md-px1{padding-left:.5rem}.md-px1{padding-right:.5rem}.md-py1{padding-top:.5rem;padding-bottom:.5rem}.md-p2{padding:1rem}.md-pt2{padding-top:1rem}.md-pr2{padding-right:1rem}.md-pb2{padding-bottom:1rem}.md-pl2,.md-px2{padding-left:1rem}.md-px2{padding-right:1rem}.md-py2{padding-top:1rem;padding-bottom:1rem}.md-p3{padding:2rem}.md-pt3{padding-top:2rem}.md-pr3{padding-right:2rem}.md-pb3{padding-bottom:2rem}.md-pl3,.md-px3{padding-left:2rem}.md-px3{padding-right:2rem}.md-py3{padding-top:2rem;padding-bottom:2rem}.md-p4{padding:4rem}.md-pt4{padding-top:4rem}.md-pr4{padding-right:4rem}.md-pb4{padding-bottom:4rem}.md-pl4,.md-px4{padding-left:4rem}.md-px4{padding-right:4rem}.md-py4{padding-top:4rem;padding-bottom:4rem}}@media (min-width:64em){.lg-p0{padding:0}.lg-pt0{padding-top:0}.lg-pr0{padding-right:0}.lg-pb0{padding-bottom:0}.lg-pl0,.lg-px0{padding-left:0}.lg-px0{padding-right:0}.lg-py0{padding-top:0;padding-bottom:0}.lg-p1{padding:.5rem}.lg-pt1{padding-top:.5rem}.lg-pr1{padding-right:.5rem}.lg-pb1{padding-bottom:.5rem}.lg-pl1,.lg-px1{padding-left:.5rem}.lg-px1{padding-right:.5rem}.lg-py1{padding-top:.5rem;padding-bottom:.5rem}.lg-p2{padding:1rem}.lg-pt2{padding-top:1rem}.lg-pr2{padding-right:1rem}.lg-pb2{padding-bottom:1rem}.lg-pl2,.lg-px2{padding-left:1rem}.lg-px2{padding-right:1rem}.lg-py2{padding-top:1rem;padding-bottom:1rem}.lg-p3{padding:2rem}.lg-pt3{padding-top:2rem}.lg-pr3{padding-right:2rem}.lg-pb3{padding-bottom:2rem}.lg-pl3,.lg-px3{padding-left:2rem}.lg-px3{padding-right:2rem}.lg-py3{padding-top:2rem;padding-bottom:2rem}.lg-p4{padding:4rem}.lg-pt4{padding-top:4rem}.lg-pr4{padding-right:4rem}.lg-pb4{padding-bottom:4rem}.lg-pl4,.lg-px4{padding-left:4rem}.lg-px4{padding-right:4rem}.lg-py4{padding-top:4rem;padding-bottom:4rem}}.text-transparent{color:transparent}.text-codeframe{color:#e3e3e3}.text-white{color:#fff}.font-hairline{font-weight:100}.font-thin{font-weight:200}.font-light{font-weight:300}.font-normal{font-weight:400}.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-black{font-weight:900}.text-xs{font-size:.75rem}.text-sm{font-size:.875rem}.text-base{font-size:1rem}.text-lg{font-size:1.125rem}.text-xl{font-size:1.25rem}.text-2xl{font-size:1.5rem}.text-3xl{font-size:1.875rem}.text-4xl{font-size:2.25rem}.text-5xl{font-size:3rem}.line-height-none{line-height:1}.line-height-tight{line-height:1.25}.line-height-normal{line-height:1.5}.line-height-loose{line-height:2}.line-height-16{line-height:4}.overflow-auto{overflow:auto}.overflow-hidden{overflow:hidden}.overflow-visible{overflow:visible}.overflow-scroll{overflow:scroll}.overflow-x-auto{overflow-x:auto}.bg-transparent{background-color:transparent}.bg-codeframe{background-color:#364549}.bg-white{background-color:#fff}.bg-white-smoke{background-color:#f6f6f6}.bg-lime-green{background-color:#32cd32}.h-auto{height:auto}.h-full{height:100%}.h-screen{height:100vh}.min-h-0{min-height:0}.min-h-full{min-height:100%}.min-h-screen{min-height:100vh}.max-h-full{max-height:100%}.max-h-screen{max-height:100vh}.max-w-vga-landscape{max-width:40rem}.shadow{box-shadow:0 .125rem .25rem 0 rgba(0,0,0,.1)}.shadow-md{box-shadow:0 .25rem .5rem 0 rgba(0,0,0,.12),0 .125rem .25rem 0 rgba(0,0,0,.08)}.shadow-lg{box-shadow:0 .9375rem 1.875rem 0 rgba(0,0,0,.11),0 .3125rem .9375rem 0 rgba(0,0,0,.08)}.shadow-inner{box-shadow:inset 0 .125rem .25rem 0 rgba(0,0,0,.06)}.shadow-outline{box-shadow:0 0 0 .1875rem rgba(52,144,220,.5)}.shadow-none{box-shadow:none}.blockquote{position:relative;border:1px solid #666;padding:0;margin:4.8rem 0 1.6rem 4.8rem}.blockquote:before{position:absolute;top:0;left:0;content:url(data:image/gif;base64,R0lGODlhHgAeALMAAHBwcI+Pj7i4uKOjo+Dg4Ovr662trdbW1vX19ZmZmczMzHp6esLCwoWFhWZmZv///yH5BAAAAAAALAAAAAAeAB4AAASJ8MlJq7046827/2AojiRGDIAjXAeqcoYjO4wVz8o2zEBe7TLAYSPgESzF4FGDSMlWlYLzReRdko5FJzALXBrdzkxmWE7GjvIGLUsgzuyBhv2Es6EXusMr0csxC3R8D1NjgxZAaH8PiWN4Fk1sQxJSbAUaBQMBmwmTE5mbAQk+JaWmp6ipqqusIxEAOw==)}.blockquote:after{position:absolute;bottom:0;right:0;content:url(data:image/gif;base64,R0lGODlhHgAeALMAAMLCwnBwcMzMzJmZmY+Pj62trfX19Xp6eri4uNbW1uDg4GZmZv///wAAAAAAAAAAACH5BAAAAAAALAAAAAAeAB4AAAR9kMlJq7046827/2AojmT5FcGiHkKFpGubJWqtJhNg10pW7KrBZABcCDGE4mKSBAZ8ymEUI5gydEUNAGajvIAcAXdZEdeenOaCcFEfNQYuwGKwzTe/lcGSXxw4WDcWgQs4Ggh2fImHZzJeNSxhBAMAe4OTlSaam5ydnp+gHhEAOw==)}.blockquote-text{padding:1.6rem 3.2rem}.blockquote-cite{display:block;padding:0 3.2rem 1.6rem 1.6rem;text-align:right}@media (min-width:50em){.contents-inner{max-width:64rem}}@media (min-width:50em){.content{max-width:43.25rem;width:67.578125%}}@media (min-width:50em){.aside{max-width:20.75rem;width:32.421875%}}.global-header{height:4rem}.vr-h1{font-size:2rem;margin-top:0;margin-bottom:0}.vr-h1,.vr-h2{line-height:1.5;font-weight:700}.vr-h2{font-size:1.5rem;margin-top:4.5rem;margin-bottom:2.25rem;border-bottom-style:solid;border-bottom-width:1px}.vr-h3{font-size:1.25rem;margin-top:3rem;margin-bottom:1.125rem;border-left-style:solid;border-left-width:.5rem;padding-left:.5rem}.vr-h3,.vr-h4{line-height:1.5;font-weight:700}.vr-h4{font-size:1rem;margin-top:1.5rem;margin-bottom:0}.codeframe{background-color:#364549;color:#e3e3e3;margin:1.5rem -1rem;padding:1rem;font-size:.875rem;overflow-x:auto}.codeframe>code{background-color:transparent;padding:0}@media (min-width:50em){.codeframe{margin:1.5rem -2rem;padding:1rem 2rem}}.vertical-line-before:before{content:"\0007c";padding:0 .75rem}</style>
+</head>
+<body>
+
+
+  <div class="flex flex-column overflow-hidden bg-white-smoke">
+    <div class="flex flex-column min-h-screen">
+
+
+      <!-- global header >>> -->
+      <header class="global-header py0 px2 shadow-md">
+        <div class="line-height-16">ＳｉｔｅＮａｍｅ</div>
+      </header>
+      <!-- global header <<< -->
+      
+      <!-- content body >>> -->
+      <div class="contents mt3 md-px3 md-pt2 md-pb3 bg-white-smoke">
+        <div class="contents-inner md-flex justify-between md-mx-auto">
+          <!-- Content >>> -->
+          <article class="content pt2 py0 px2 flex-auto md-pt3 md-px3 bg-white">
+            <header>
+              <h1 class="vr-h1">NOTE: 偽装ユーザーでプロセスを実行する方法</h1>
+              <div class="mt2 flex flex-wrap">
+                <div><span class="pr1">投稿日:</span><time class datetime="2018-11-14T18:30+09:00">2018.11.14</time></div>
+                <div class="vertical-line-before"><span class="pr1">更新日:</span><time class datetime="2018-11-19T22:30+09:00">2018.11.19</time></div>
+                <!-- <div> -->
+                  <!-- <div><span class="pr1">カテゴリー:</span><span>雑記</span> -->
+                <!-- </div> -->
+              </div>
+            </header>
+            <div>
+<table>
+<thead>
+<tr class="header">
+<th>測定日時</th>
+<th>水温</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>12/2 1 3:23</td>
+<td>16℃</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12/4 8:14</td>
+<td>8℃</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>12/5 8:17</td>
+<td>10.5℃</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12/6 7:57</td>
+<td>4℃</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>12/7 8:18</td>
+<td>4℃</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12/8 9:22</td>
+<td>3℃</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>12/9 10:31</td>
+<td>2℃</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12/10 7:53</td>
+<td>0.5℃</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>12/11 8:05</td>
+<td>0℃ *1</td>
+<td>タライの水は表面が凍っていたので、エアレーションしていなければこちらも凍っていたと思われる。</td>
+</tr>
+<tr class="even">
+<td>12/12</td>
+<td>℃</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>12/13</td>
+<td>℃</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12/14</td>
+<td>℃</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>12/15</td>
+<td>℃</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12/16</td>
+<td>℃</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>12/17</td>
+<td>℃</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>*1 水温計の最低が0℃なのでそれ以下は不明。</p>
+<blockquote>
+<p>例えば新書は普通、12万字程度の分量があります。これは400字詰め原稿用紙にすると300枚くらいになります。</p>
+<p>– p18</p>
+</blockquote>
+<ul>
+<li><p><a href="https://headlines.yahoo.co.jp/hl?a=20181210-00000018-zdn_mkt-bus_all">ジオンとその系譜に見る、「国力」とは何か？</a></p></li>
+<li><p><a href="https://qiita.com/teradonburi/items/5b8f79d26e1b319ac44f">お前らのReactは遅い</a></p></li>
+<li><p><a href="https://qiita.com/teradonburi/items/fd2c34a52c0c4cfd0d22">Headless CMSとWordPressの囚人</a></p></li>
+<li><p><a href="https://qiita.com/takehora/items/04b8aca8f26cb519573d">Webパフォーマンス管理の基本 1</a></p></li>
+<li><p><a href="https://qiita.com/takehora/items/6b047a7d5e1a3a5f8d13">Webパフォーマンス管理の基本 2</a></p></li>
+<li><p><a href="http://www.atmarkit.co.jp/fdotnet/chushin/greatblogentry_06/greatblogentry_06_01.html">.NET開発者中心 厳選ブログ記事 - LINQの仕組み＆遅延評価の正しい基礎知識</a></p></li>
+<li><p><a href="https://headlines.yahoo.co.jp/article?a=20181212-00026923-president-bus_all&amp;p=3">日本一の行列店が絶対予約を取らない理由</a></p>
+<blockquote>
+<p>林真理子さんはうちの店を舞台に小説を書いてくれた。『四歳の雌牛』って短編はスタミナ苑が舞台だよ。</p>
+</blockquote></li>
+<li><p><a href="https://naitoisao.com/6171/">WordPressをアメブロ以上に集客できるブログにするためのコツ</a></p>
+<p>これまでアメブロをメインで使ってきて、WordPressをメインに切り替えたい場合。 アメブロ以上のブログにするには、アメブロも使うと効果的です。 まずアメブロには、こんな特徴があります。 …</p></li>
+<li><p>Excel と Markdown のテーブルを双方向変換</p>
+<dl>
+<dt>窓の杜ニュースページ</dt>
+<dd><a href="https://forest.watch.impress.co.jp/docs/news/1135371.html">Excel」とMarkdownのテーブルを双方向変換 ～「CopyToMarkdown」アドインv2.0が公開</a>
+</dd>
+<dt>Link to GitHub</dt>
+<dd><a href="https://github.com/nuitsjp/CopyToMarkdownAddIn">nuitsjp/CopyToMarkdownAddIn</a>
+</dd>
+</dl></li>
+<li><p><a href="https://blogs.adobe.com/japan/web-best-practices-for-animated-progress-indicators/">アニメーション付きプログレスバーの種類別おすすめの使い方 - Adobe Blog</a></p>
+<p>2017/03/21 - すなわち、常に現在の状況を理解したい気持ちを持ちますし、システムの作業を待たされているときならなおさらです。 … ユーザーの不安を減らすには、1秒以上かかる全ての処理に、プログレスインジケーターと待たせる理由を表示すべきです。</p></li>
+<li><p><a href="https://blog.mudatobunka.org/entry/2015/08/30/195802">サーバーでの重い処理の経過をリアルタイムに通知する - 無駄と文化</a></p>
+<p>2015/08/30 - Webアプリケーションを作るとき、サーバーで重い処理を実行する際にはどうしても途中経過を通知したくなります。 … 現在想定している本番の状況では約300回のHTTPリクエストを繰り返して、最終的にまとめた結果を返す、そんな処理です。 …. 途中経過を問い合わせるためのURIや // 処理結果を取りに行くURIを教えてあげる “location” =&gt; “/progress/${id}”, // タイムスタンプなども返す “time” =&gt; time(), ); // JSONに …</p></li>
+</ul>
+<h2 id="note-asp.net" class="vr-h2">NOTE:: ASP.NET</h2>
+<ul>
+<li><p>ワーカープロセスがシャットダウンしていても、ログアウト情報が書き込まれた。</p></li>
+<li><p>プロジェクトを発行してビルドしなおさないとどうなるの？</p>
+<p><code>Error: Request failed with status code 500</code>にハンドリングされる。</p>
+<p>実際には<code>title</code>が「パーサーエラー」という HTML が返されている。</p>
+<pre><code>アプリケーションでサーバー エラーが発生しました。
+この要求の処理に必要なリソースの解析中にエラーが発生しました。以下の解析エラーの詳細を確認し、ソース ファイルに変更を加えてください。
+パーサー エラー メッセージ: 型 &#39;VFab.WebApiApplication&#39; を読み込めませんでした。</code></pre>
+<p>とのこと。</p>
+<p>原因は分からないが、まぁ<code>500 Internal Server Error</code>になるということで……。</p></li>
+<li><p>アプリケーションプールを停止したときは？</p>
+<p><code>503 Service Unavailable</code>になる。</p>
+<p><code>error.response</code>をみるときは<code>status</code>と<code>statusText</code>を捕捉情報として表示する？？？</p></li>
+<li><p>Web サイトを停止したときは？</p>
+<p><code>error.response</code>は<code>undefined</code>になる。</p>
+<p><code>error.request</code>には<code>XMLHttpRequest</code>のオブジェクトが入ってくる。</p>
+<p>要求に対する応答がない（Network Error）エラーとして扱う。</p></li>
+</ul>
+<h2 id="氷点下まで測れる水温計にしたい" class="vr-h2">氷点下まで測れる水温計にしたい</h2>
+<p>外の越冬水槽は ND-X がいい。 SMARTは0℃以下が測れないため。 家の中で使うなら SMART がいい。</p>
+<ul>
+<li><p>NISSO デジタル水温計 ND-X ¥658 ヨドバシ.com（2018-12-11時点）</p>
+<p>LR44 1個 -10℃～50℃</p></li>
+<li><p>NISSO デジタル水温計 SMART ¥？</p>
+<p>LR1130 1個 0℃～70℃</p></li>
+</ul>
+<h2 id="blog-サービス" class="vr-h2">Blog サービス</h2>
+<p>Wordpress 最強という言葉に踊らされていた。 適切に設定できれば、確かに最強なんだろう。だが設定する時間がもったいない。 SEO 対策をやりたいのではなく、文章を書きたいのだ。</p>
+<p>ということで、wpX クラウドの契約は今月で終わりにする。</p>
+<p>Pandoc で HTML を作る、AMP 対応する、静的サイトジェネレーターを使う、AWS/Azure/Netlify で公開　等々は、目的に直接関係しないため、いまは保留する。</p>
+<p>はてなでできること</p>
+<dl>
+<dt>Markdown で書けるか。</dt>
+<dd><p>書ける。</p>
+<p>編集方法は全部で3つ。「見たまま」モード、Markdown、はてな記法から選べる。</p>
+</dd>
+<dt>Google アドセンスは設置できるか。</dt>
+<dd>設置できる。
+</dd>
+<dt>Google アナリティクスは使えるか。</dt>
+<dd>導入可能。ちなみに、はてな標準のアクセス解析サービスもある。
+</dd>
+<dt>独自ドメインは使えるか。</dt>
+<dd>Pro版なら可。
+</dd>
+<dt>画像ファイルなどの遅延読み込み（LazyLoad）はできるか。</dt>
+<dd>不明。Pro 版だと AMP 対応するらしいので、その機能にお任せしたほうが良さそう。
+</dd>
+<dt>どのテーマを使おうか。</dt>
+<dd>Zen（禅） …たしかこんな名前だったはず。
+</dd>
+<dt>バックアップは？</dt>
+<dd>できるよう。形式はなに？
+</dd>
+<dt>API は？</dt>
+<dd><p>準備されている。</p>
+<p>AtomAPI は2018年10月31日で廃止。REST API を使う。</p>
+<p>上ははてなブックマークの話。 AtomAPI を使う。</p>
+</dd>
+<dt>API でできることは？</dt>
+<dd><p>デベロッパーセンターを参照。</p>
+<p><a href="http://developer.hatena.ne.jp/ja/documents/bookmark/apis/rest">はてなブックマーク REST API - Hatena Developer Center</a></p>
+</dd>
+</dl>
+<h2 id="文章" class="vr-h2">文章</h2>
+<h3 id="仕様を確かめる決める" class="vr-h3">仕様を確かめる・決める</h3>
+<ol type="1">
+<li><p>読者</p>
+<p>必ず設定する。</p>
+<p>文章は読み手のために書くものである。</p>
+<p>読み手が決まれば、文体や言葉の難易度はおのずと決まる。</p></li>
+<li><p>目的</p>
+<p>何のために書くのかを明確にする。</p>
+<p>読者を楽しませるのか、自分の主張を伝えて読者の行動を変えるのか、など。</p></li>
+<li><p>分量</p>
+<p>字数を制限する。 手持ちの素材をすべて詰め込むより、優先順位をつけて絞り込んだほうが、文章が引き締まる。</p></li>
+<li><p>締め切り</p>
+<p>もし締め切りがなくても、自分の締め切りを設定するクセをつける。</p></li>
+</ol>
+<h3 id="スケルトンを作る" class="vr-h3">スケルトンを作る</h3>
+<p>仕様が固まったら、それに従い文章の設計図（スケルトン）を作る。</p>
+<ol type="1">
+<li><p>仮見出し（15～25字）</p></li>
+<li><p>要約、要旨（150～200字）</p></li>
+<li><p>本文の構成（1段落文で1行）</p></li>
+</ol>
+<p>原稿を書くための見出しと読者に読ませる見出しは違うもの。 ここで立てる「仮見出し」というのは、原稿を書くための見出しのこと。 これには記事に含まれている5W1Hのうち、最も重要な要素を盛り込む。 「結論」や「主張」が一目でわかる見出しを立てる。</p>
+<p>「～について」というテーマのような見出しではいけない。</p>
+<h3 id="基本4パターン" class="vr-h3">基本4パターン</h3>
+<ol type="1">
+<li>逆三角形（伝える）</li>
+<li>三部構成（論じる）</li>
+<li>起承転結（心を動かす）</li>
+<li>起承展転結（心を動かす）</li>
+</ol>
+<h3 id="読みやすい文章の三原則" class="vr-h3">読みやすい文章の三原則</h3>
+<ol type="1">
+<li><p>一文は40字、長くても60字におさめる。</p></li>
+<li><p>一文一意の原則。</p></li>
+<li><p>能動態だけで書く。受動態は原則禁止。</p>
+<p>「～された」という表現は、行為の主体が曖昧になりやすいため。 たとえば、「○月×日に運動会が開かれた」という表現は文法として間違ってはいないが、「誰が」という情報が抜け落ちている。</p></li>
+</ol>
+<h2 id="react-static-introduction" class="vr-h2">React-Static Introduction</h2>
+<p>Powered by Google 翻訳。</p>
+<h3 id="dev-stage" class="vr-h3">Dev Stage</h3>
+<ol type="1">
+<li><p>サイトがレンダリングする必要があるすべてのデータは、必要な手段を使用して設定ファイルにまとめられます。このデータは、Markdownファイル、ヘッドレスCMS、Graphqlエンドポイント、パブリックAPIのどこからでも来ることができます。</p></li>
+<li><p>次に、サイトのすべてのルートのリストを生成し、それをレンダリングするためのテンプレートを定義し、それぞれに適切なデータを提供します。props を渡すのと同じくらい簡単です！</p></li>
+<li><p><code>RouteProps</code>や<code>SiteProps</code>のような React-Static のコンポーネントを使用すると、通常どおりルートごとにデータにアクセスしてアプリを書くことができます。</p></li>
+<li><p>React-Staticは、サイト内のすべてのページを高速かつ正確にエクスポートできます。</p></li>
+<li><p>お気に入りの静的サイトホストまたは CDN にサイトをアップロードしてください！</p></li>
+</ol>
+<h3 id="client-stage" class="vr-h3">Client Stage</h3>
+<ol type="1">
+<li><p>ユーザーの最初のページで、静的にエクスポートされた HTML と CSS がダウンロードされ、できるだけ早くコンテンツが表示されます。</p></li>
+<li><p>同時に JS の最低限のものが、レンダリングされた HTML の上に React to bootstrap のためにダウンロードされます。</p></li>
+<li><p>できるだけ早く、ウェブサイトの残りの部分は楽観的にプリフェッチされ、コード分割とデータ分割によってキャッシュされます。</p></li>
+<li><p>それ以上のナビゲーションはすべて即時です！</p></li>
+</ol>
+<h3 id="開発時に意味すること" class="vr-h3">開発時に意味すること</h3>
+<ul>
+<li><p>ライフサイクルセキュリティ、ルートアニメーションなどこのフードでは、react-staticは <code>react-router</code> v4を使用し、カスタムライフサイクルメソッドを決して使用しません。つまり、<code>dangerouslySetInnerHTML</code> や他の破壊メソッドがナビゲーションに使用されていません。 それはちょうどいい古い React なので、コンポーネントのライフサイクルや <code>state</code> の管理者など、あなたが通常期待していることをすべて機能していることに徹底的に頼ることができます。</p></li>
+<li><p>データとクエリの不可知論。 Webサイトのすべてのデータを作成して整理するだけで十分な作業をしたので、データとページの間に余計なGraphQLレイヤーやカスタムコンポーネントのライフサイクルを置く必要があります。 <code>react-static</code>では、あなたのルートにデータを供給するのが簡単です。 必要なものを取り出し、ルートに一度にデータを渡してください。 さまざまな<code>react-static</code>コンポーネントを使用して、サイト内のどこでもこのデータを使用することができます（render props、HOC’s、私たちはすべてそれを持っています）。 データの取り込み、クエリー、マッピングのすべてを単一の場所に移動することで、データパイプラインのコードを3倍少なくして、データの形状を管理する中心的な場所を確保できます。</p></li>
+<li><p>今から2年後には、Leanが構築されています。 <code>react-static</code>のデータ分割手法は非常にユニークで、すべてのルートのテンプレートとデータが最適化され、マテリアライズされた分散APIとして提供されることを保証します。 つまり、サイトを数万ページに拡張しても、即座に読み込むことができます。 繰り返しますが、すべてのデータフェッチが同じ単一ステージで実行されるため、 <code>react-static</code>のビルド時間は信じられないほど速いです。</p></li>
+</ul>
+<h3 id="結論" class="vr-h3">結論</h3>
+<p>自前で作り込む内容が多い。 たとえば、Markdown および front-matter の読み込み。</p>
+<p>経路は<code>static.config.js</code>で定義できるが、その前に読み込みと加工が終わっていなければならない。</p>
+<p>お膳立てしてあげなければいけないことが、思っていたより多いかもしれない。</p>
+<p>大元の内容を Markdown で書けば、あとはいいようにやってくれるというツールではなかった。</p>
+<h2 id="ログアウトのエラー通知" class="vr-h2">ログアウトのエラー通知</h2>
+<p>App コンポーネントにダイアログコンポーネントがない。</p>
+<p>追加するしか方法はないだろうか。</p>
+<p>Material UI のデモページのメモ。</p>
+<ul>
+<li><p>ダイアログコンポーネントは state を持たない。初期値や閉じる処理は props でもらう。</p></li>
+<li><p>呼び出し元の state にダイアログのオープン／クローズを持つ。</p></li>
+<li><p>ダイアログのクローズ処理を props で渡す。</p></li>
+<li><p>Dialog の props.open でダイアログの表示／非表示を制御できる。</p></li>
+</ul>
+<p>自作した AlertDialog コンポーネントの話。</p>
+<p>props</p>
+<ul>
+<li><p>open</p>
+<p>ダイアログを開くのであれば true を、閉じるのであれば false を指定する。</p></li>
+<li><p>onClose</p>
+<p>ダイアログを閉じたときの処理を指定する。</p></li>
+<li><p>onYesClick</p>
+<p>OK ボタンをクリックしたときの処理を指定する。</p></li>
+<li><p>title</p>
+<p>タイトルを表示したければ指定する（任意）。</p></li>
+<li><p>messages</p>
+<p>表示する文字列を配列で指定する。</p>
+<p>配列内の値が falsy であれば無視される。ただし、空文字は空行として表示される。<code>\n</code>は改行に変換される。<code>\\n</code>は改行ではなく<code>\n</code>と表示される。</p>
+<p>最大表示数を超えた分は表示されず、「上記のほか、n 件のメッセージがあります。」になる。</p></li>
+</ul>
+<h2 id="hugo" class="vr-h2">Hugo</h2>
+<p>Hugo がベストな選択肢か。 ビルドは速いし、バイナリファイルがあるから簡単に始められる。</p>
+<h3 id="始め方" class="vr-h3">始め方</h3>
+<ol type="1">
+<li><p>バイナリファイルをダウンロードする。</p></li>
+<li><p>解凍する。できたファイル群を適当な場所に置く。パスを通す。</p></li>
+<li><p>コマンドプロンプトを開いてパスが通っているか確かめる。</p>
+<p>次のコマンドを実行する。</p>
+<pre><code>hugo version</code></pre>
+<p>以下のようにバージョンが表示されれば問題ない。</p>
+<pre><code>Hugo Static Site Generator v0.52 windows/386 BuildDate: 2018-11-28T14:07:26Z</code></pre></li>
+<li><p>作業ディレクトリを作り、その中で <code>hugo new site quickstart</code> コマンドを実行する。</p>
+<p>quickstart フォルダーが作られる。</p></li>
+<li><p>quickstart フォルダーに移動する。</p></li>
+<li><p>テーマをダウンロードするか作る。</p>
+<p>テーマは <a href="https://themes.gohugo.io/" class="uri">https://themes.gohugo.io/</a> からダウンロードできる。</p>
+<p>自分で作るなら <code>hugo new theme &lt;THEMENAME&gt;</code> コマンドを実行する。</p>
+<p><code>config.toml</code>ファイルに <code>theme = &quot;&lt;THEMENAME&gt;&quot;</code> を追加する。</p></li>
+<li><p>コンテンツを追加する。</p>
+<p><code>hugo new &lt;SECTIONNAME&gt;\&lt;FILENAME&gt;.&lt;FORMAT&gt;</code> コマンドを実行する。</p>
+<p>たとえば <code>hugo new posts/my-first-post.md</code></p></li>
+<li><p>ビルトインのサーバーを起動して、コンテンツにアクセスする。</p>
+<p>ビルトインサーバーは <code>hugo server</code> コマンドで実行できる。</p></li>
+</ol>
+<p>大事なのはファイルサイズではなく、ユーザーの操作感。</p>
+<p><code>static.config.js</code> の構成</p>
+<dl>
+<dt><code>getRoute</code></dt>
+<dd><p><code>route</code> オブジェクトの配列を返す非同期関数。</p>
+<p>サイトのすべてのルートを構築するために必要なデータを要求することができる。 本番ビルドで実行されているかどうかを示すブール値 <code>dev</code> が引数として渡される。</p>
+</dd>
+</dl>
+<h3 id="code-data-and-prop-splitting" class="vr-h3">Code, Data, and Prop Splitting</h3>
+<dl>
+<dt>ルート（経路）</dt>
+<dd><code>static.config.js</code>にルートを定義する。
+</dd>
+<dt>ルート（経路）データと共有データ</dt>
+<dd><p>各ルートの<code>getData</code>関数は、格納されている各経路ごとに個別のデータファイルを生成する。</p>
+<p>このデータをエクスポートする際には、各データオブジェクトの個々のキーが互いに等しいかどうかチェックされる。 データキーが複数のルートで使用されることが判明した場合、データキーは共有データフラグメントにプロモートされ、それ自身のファイルに格納されます。</p>
+<p>（…なんのこっちゃ？）</p>
+</dd>
+<dt>Universalを使った手動のデータ分割</dt>
+<dd><p>React Static は<code>react-universal-component</code>をサポートしている。</p>
+<p>これは React Static が提供する自動コード分割とは別に、非常に大きなコンポーネントを手作業でコーディングすることもできる。 詳しくは About ページを参照。</p>
+</dd>
+</dl>
+<h2 id="react-static-でルーティングに失敗する現象の対策" class="vr-h2">React-Static でルーティングに失敗する現象の対策</h2>
+<h3 id="現象" class="vr-h3">現象</h3>
+<p>リンクをクリックしても 404 ページが表示される。 開発者ツールには以下のエラーが表示される。</p>
+<pre><code>Unhandled promise rejection TypeError: 未定義または NULL 参照のプロパティ &#39;templateLoaded&#39; は設定できません</code></pre>
+<h3 id="原因" class="vr-h3">原因</h3>
+<p>MIME の種類に json ファイルが登録されていない。</p>
+<p><code>routeInfo.json</code>がダウンロードできないことで発生しているエラーのよう。</p>
+<h3 id="対応" class="vr-h3">対応</h3>
+<p>MIME の種類に json ファイルを追加する。</p>
+<p>追加する内容は以下のとおり。</p>
+<dl>
+<dt>ファイル名の拡張子</dt>
+<dd><code>.json</code>
+</dd>
+<dt>MIME の種類</dt>
+<dd><code>application/json</code>
+</dd>
+</dl>
+<h2 id="どうするか" class="vr-h2">どうするか</h2>
+<!-- コメントにする -->
+<!--
+
+
+
+ZW01
+ワイルドライガー
+［ライオン種］
+
+発売中
+
+3,000円（税抜）
+￥2,150（税込）
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW02
+ギルラプター
+［ディノニクス種］
+
+発売中
+
+3,000円（税抜）
+￥2,150
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW03
+カブター
+［カブトムシ種］
+
+発売中
+
+1,200円（税抜）
+￥907
+
+ヨドバシ.comでは、「予定数の販売を終了しました」ため販売終了。
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW04
+スコーピア
+［サソリ種］
+
+発売中
+
+1,200円（税抜）
+￥907
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW05
+ガノンタス
+［プロガノケリス種］
+
+発売中
+
+3,000円（税抜）
+￥2,340
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW06
+ガブリゲーター
+［サルコスクス種］
+
+発売中
+
+3,000円（税抜）
+￥2,270
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW07
+クワーガ
+［クワガタムシ種］
+
+発売中
+
+1,200円（税抜）
+￥907
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW08
+グラキオサウルス
+［ブラキオサウルス種］
+
+発売中
+
+6,800円（税抜）
+￥4,970
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW09
+ラプトール
+［ヴェロキラプトル種］
+
+発売中
+
+1,200円（税抜）
+￥1,000
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW10
+ナックルコング
+［ゴリラ種］
+
+発売中
+
+3,000円（税抜）
+￥2,170
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW11
+トリケラドゴス
+［トリケラトプス種］
+
+発売中
+
+4,500円（税抜）
+￥3,190
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW12
+デスレックス
+［ティラノサウルス種］
+
+12月8日発売
+
+6,800円（税抜）
+￥6,600
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW13
+グソック
+［ダイオウグソクムシ種］
+
+11月24日発売
+
+1,200円（税抜）
+￥1,140
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW14
+ステゴゼーゲ
+［ステゴザウルス種］
+
+11月24日発売
+
+4,500円（税抜）
+￥3,750
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW15
+覚醒ワイルドライガー
+［ライオン種］
+
+発売中
+
+4,000円（税抜）
+￥3,780
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW16
+ハンターウルフ
+［オオカミ種］
+
+12月27日発売
+
+3,000円（税抜）
+
+
+
+商品詳細
+
+
+購入する
+
+ 
+
+
+
+ZW17
+キャタルガ
+［カイコガ種］
+
+12月27日発売
+
+4,000円（税抜）
+
+-->
+<h2 id="いろんなサービスがある" class="vr-h2">いろんなサービスがある</h2>
+<ul>
+<li><p><a href="https://qiita.com/zonbitamago/items/4e215e305062dde016bb">無料で爆速なWebアプリケーションを作ろう！</a></p></li>
+<li><p>[Qiitaいいね数ランキングAPIの作成] (https://qiita.com/zonbitamago/items/1027b532b174e5ee04b3)</p></li>
+</ul>
+<h2 id="react-を使うなら覚えておきたいこと" class="vr-h2">React を使うなら覚えておきたいこと</h2>
+<ul>
+<li>コンポーネントとは？</li>
+<li><code>state</code>と<code>props</code>。</li>
+<li>2種類のコンポーネントがある。<code>state</code>を持たないコンポーネント（Functional Component）と<code>state</code>を持つコンポーネント（Functional Component）。</li>
+<li><p>HOC（Higher-Order Components）とは？</p>
+<p>コンポーネントを引数にとり、コンポーネントを返す関数のこと。</p>
+<p>コンポーネントは Props を引数に受け取り、仮想 DOM の要素を返す。</p>
+<p>つまり …</p>
+<pre><code>HOC: Component =&gt; NewComponent;</code></pre>
+<p><a href="https://qiita.com/numanomanu/items/2b66d8b2887d44f857dc">React の Higher-order Components の利用方法 - Qiita</a></p></li>
+</ul>
+<h3 id="thinking-in-react" class="vr-h3">Thinking in React</h3>
+<p>Step 1: Break The UI Into A Component Hierarchy<br />
+ステップ1：UIをコンポーネント階層に分割する</p>
+<p>Step 2: Build A Static Version in React<br />
+ステップ2：静的バージョンを作成する</p>
+<p>Step 3: Identify The Minimal (but complete) Representation Of UI State<br />
+ステップ3：最小限の（しかし完全な）UI状態の表現を特定する</p>
+<p>Step 4: Identify Where Your State Should Live<br />
+ステップ4：あなたの State が生きるべき場所を特定する</p>
+<p>Step 5: Add Inverse Data Flow<br />
+手順5：逆データフローを追加する</p>
+<p>And That’s It<br />
+以上です</p>
+<p>Hopefully, this gives you an idea of how to think about building components and applications with React. While it may be a little more typing than you’re used to, remember that code is read far more than it’s written, and it’s extremely easy to read this modular, explicit code. As you start to build large libraries of components, you’ll appreciate this explicitness and modularity, and with code reuse, your lines of code will start to shrink. :)<br />
+うまくいけば、Reactを使ってコンポーネントやアプリケーションを構築する方法を考える方法がわかります。以前よりも少しタイピングするかもしれませんが、コードは書かれているよりはるかに読み込まれていることを覚えておいてください。このモジュラーで明示的なコードを読むのは非常に簡単です。あなたがコンポーネントの大きなライブラリを構築し始めると、この明示とモジュール性に感謝し、コードの再利用によって、コード行が縮小し始めるでしょう。 :)</p>
+<h2 id="cms.js" class="vr-h2">CMS.js</h2>
+<p>クライアントサイドで動作する JavaScript Markdown サイトジェネレーターとのこと。</p>
+<p>コンテンツの取り込み、Markdown のレンダリングをして、完全なウェブサイトを SPA で提供する。</p>
+<p>Node.js や PHP 、Ruby といったサーバーサイドスクリプトは使わない。</p>
+<p>IE11 でデモページを見たが動かなかった。 Polyfill を入れる必要がある。</p>
+<p><code>Object.assign()</code> が IE11 にないため。</p>
+<pre><code>オブジェクトは &#39;assign&#39; プロパティまたはメソッドをサポートしていません。</code></pre>
+<p>Link to GitHub –&gt; <a href="https://github.com/chrisdiana/cms.js">chrisdiana/cms.js</a></p>
+<p>動作モードには次の2つがある。</p>
+<ul>
+<li><p>Github モード</p>
+<p>GitHub API を使ってリポジトリの内容を取得し、サイトを構築する。</p></li>
+<li><p>Server モード</p>
+<p>サーバーから取得したディレクトリインデックスを使って、サイトを構築する。<br />
+Markdown または HTML ファイルを対象とする。</p>
+<p>個人的には、セキュリティを考慮するとあまり使いたくないモード。</p></li>
+</ul>
+<h2 id="サニタイジング" class="vr-h2">サニタイジング</h2>
+<h3 id="テキスト" class="vr-h3">テキスト</h3>
+<p>HTML のタグではない部分に入力値を埋め込む場合、次の3文字を置き換える。</p>
+<ul>
+<li><code>&amp;</code> –&gt; <code>&amp;amp;</code></li>
+<li><code>&lt;</code> –&gt; <code>&amp;lt;</code></li>
+<li><code>&gt;</code> –&gt; <code>&amp;gt;</code></li>
+</ul>
+<h3 id="タグ属性値" class="vr-h3">タグ属性値</h3>
+<p>HTML タグの属性値に入力値を埋め込む場合、次の5つの文字を置き換える。 そして置き換えた文字をダブルクォート（またはシングルクォート）で囲み、属性値に指定する。</p>
+<ul>
+<li><code>&amp;</code> –&gt; <code>&amp;amp;</code></li>
+<li><code>&lt;</code> –&gt; <code>&amp;lt;</code></li>
+<li><code>&gt;</code> –&gt; <code>&amp;gt;</code></li>
+<li><code>&quot;</code> –&gt; <code>&amp;quot;</code></li>
+<li><code>&#39;</code> –&gt; <code>&amp;#39;</code></li>
+</ul>
+<p>属性値は必ずダブルクォートまたはシングルクォートでくくること！</p>
+<p>これは安全。</p>
+<pre><code>&lt;img src=&quot;$selected_icon&quot;&gt;</code></pre>
+<p>これは危険。</p>
+<pre><code>&lt;img src=$selected_icon&gt;</code></pre>
+<p>もし<code>$selected_icon</code>の値が<code>no_such_icon onerror=alert(document.cookie);</code>であると、次のように展開されてしまう。</p>
+<pre><code>&lt;img src=no_such_icon onerror=alert(document.cookie);&gt;</code></pre>
+<h3 id="参考" class="vr-h3">参考</h3>
+<p><a href="https://www.ipa.go.jp/security/awareness/vendor/programmingv1/a01_02_main.html">クロスサイトスクリプティング - IPA</a></p>
+<h2 id="pandoc-パイプテーブルのメモ" class="vr-h2">Pandoc パイプテーブルのメモ</h2>
+<ul>
+<li><p>パイプテーブルのセルには、段落やリストなどのブロック要素を含められない。また、複数の行にまたがることもできない。</p></li>
+<li><p>パイプテーブルに列の幅よりも広い行が含まれている場合、テーブルは全文の幅を占める。セルの内容は折り返され、相対的なセルの幅は、表の見出しと表の本文を区切る行にダッシュが表示される（どういうこと？）。</p>
+<p>たとえば、<code>---|-</code>とした場合、最初の列の幅は 3/4 、二番目の列の幅は 1/4 になります。</p>
+<p>列の幅は <code>--columns</code> オプションで指定できる。規定値は 72 。</p>
+<p>符号なし 16 ビット整数の最大値は指定できた ⇒ <code>--columns=65536</code></p>
+<p>符号付き 32 ビット整数の最大値も指定できた ⇒ <code>--columns=2147483647</code></p>
+<p>符号なし 32 ビット整数の最大値は指定できなかった ⇒ <code>--columns=4294967295</code>としたら<code>columns must be a number greater than 0</code>が出た。「列は 0 より大きい数値でなければなりません」とのこと。</p>
+<p>この時点でアウト。符号付き 32 ビット整数の最大値＋１ ⇒ <code>--columns=2147483648</code>　エラーの内容は同じ。</p>
+<p>ということで、最大の幅を指定したいときは符号付き 32 ビット整数の最大値（<code>--columns=2147483647</code>）を指定する。</p></li>
+<li><p>列の幅よりも幅の広い行がない場合、セルの内容は折り返されない。セルの幅は内容の長さに合わせられる。</p></li>
+</ul>
+<h2 id="ログインユーザーへの権限付与" class="vr-h2">ログインユーザーへの権限付与</h2>
+<p>ログイン時に編集可否を判定する。</p>
+<p>編集可否の判定は、その時点のログイン情報をもとにする。 もし、ユーザーのログイン情報が残っていても、それは考慮しない。 （ログイン情報が残る＝ログアウトせずにブラウザ・タブを閉じた場合）</p>
+<p>例1:<br />
+Ａさんがログインして編集権限を付与された。 そのあと、Ｂさんがログインした。Ａさんが先にログインしているため、参照権限が付与された。 Ａさんはログアウトせずにブラウザを閉じた。 Ａさんがもう一度ログインした。Ａさんより先にＢさんがログインしているため、参照権限が付与された。</p>
+<p>例2:<br />
+Ａさんがログインして編集権限を付与された。 Ａさんはログアウトせずにブラウザを閉じた。 Ａさんがもう一度ログインした。Ａさんより先にログインしているユーザーはいないため、参照権限を付与された。</p>
+<h2 id="単体テストケース" class="vr-h2">単体テストケース</h2>
+<h3 id="ラインバランスグラフ表示" class="vr-h3">ラインバランスグラフ表示</h3>
+<div class="md-table" data-markdown="1">
+<table>
+<thead>
+<tr class="header">
+<th>操作</th>
+<th>期待値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>画面を初期表示する。</td>
+<td>・不足表示は「あり」が選ばれる。<br>・不足％指定の１には「100」、２には「120」が入力される。</td>
+</tr>
+<tr class="even">
+<td>不足表示の「なし」を選ぶ。</td>
+<td>100%不足、120%不足のグラフが表示されなくなる。</td>
+</tr>
+<tr class="odd">
+<td>不足表示の「あり」を選ぶ。</td>
+<td>100%不足、120%不足のグラフが表示される。</td>
+</tr>
+<tr class="even">
+<td>不足％指定１に「40」を入力する。</td>
+<td>100%不足グラフが入力された比率で表示される。</td>
+</tr>
+<tr class="odd">
+<td>不足％指定２に「80」を入力する。</td>
+<td>120%不足グラフが入力された比率で表示される。</td>
+</tr>
+<tr class="even">
+<td>不足％指定１を消去する。</td>
+<td>100%不足グラフが表示されなくなる。</td>
+</tr>
+<tr class="odd">
+<td>不足％指定２を消去する。</td>
+<td>120%不足グラフが表示されなくなる。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="統合能力試算-充足率調整の追加" class="vr-h3">統合能力試算: 充足率調整の追加</h3>
+<table>
+<thead>
+<tr class="header">
+<th>操作</th>
+<th>期待値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>事業所内調整の調整区分をクリックする。</td>
+<td>選択肢の内容が「台数で調整」「充足率で調整」「Answer装置」である。</td>
+</tr>
+<tr class="even">
+<td>事業所内調整の調整区分から「台数で調整」を選ぶ。</td>
+<td>・調整Gr、調整台数の入力が許可される。<br>・調整工数、調整充足率の入力が禁止される。値も消去される。</td>
+</tr>
+<tr class="odd">
+<td>事業所内調整の調整区分から「充足率で調整」を選ぶ。</td>
+<td>・調整Gr、調整充足率の入力が許可される。<br>・調整工数、調整台数の入力が禁止される。値も消去される。</td>
+</tr>
+<tr class="even">
+<td>事業所内調整の調整区分から「Answer装置」を選ぶ。</td>
+<td>・調整Grの入力が許可される。<br>・調整工数、調整台数、調整充足率の入力が禁止される。値も消去される。</td>
+</tr>
+<tr class="odd">
+<td>事業所内調整の調整区分を空にする。</td>
+<td>・調整Gr、調整工数、調整台数、調整充足率の入力が禁止される。値も消去される。</td>
+</tr>
+<tr class="even">
+<td>計算ボタンをクリックする。<br>（台数で調整）</td>
+<td>調整工数が計算される。</td>
+</tr>
+<tr class="odd">
+<td>計算ボタンをクリックする。<br>（充足率で調整）</td>
+<td>調整台数、調整工数が計算される。</td>
+</tr>
+<tr class="even">
+<td>計算ボタンをクリックする。<br>（Answer装置）</td>
+<td>調整台数、調整工数が計算される。</td>
+</tr>
+<tr class="odd">
+<td>計算ボタンをクリックする。<br>（調整区分が空）</td>
+<td>調整工数、調整台数、調整充足率は計算されない。</td>
+</tr>
+<tr class="even">
+<td>登録ボタンをクリックする。</td>
+<td>・表の内容が統合能力試算データに反映される。<br>・更新後の統合能力試算データの内容で再表示される。<br>・事業所内調整の内容が、一括エクスポートの統合能力試算.csvに出力される。</td>
+</tr>
+<tr class="odd">
+<td>EXCEL出力ボタンをクリックする。</td>
+<td>・表の内容が Excel に出力される。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="メニュー" class="vr-h3">メニュー</h3>
+<table>
+<thead>
+<tr class="header">
+<th>操作</th>
+<th>期待値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>「装置照合マスタ」ボタンをクリックする。</td>
+<td>装置照合マスタ画面に移動される。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="装置照合マスタ" class="vr-h3">装置照合マスタ</h3>
+<table>
+<thead>
+<tr class="header">
+<th>操作</th>
+<th>期待値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>画面を初期表示する。</td>
+<td>装置照合マスタの内容が表示される。</td>
+</tr>
+<tr class="even">
+<td>事業所名をクリックする。</td>
+<td>汎用マスタの事業所が選択肢に表示される。</td>
+</tr>
+<tr class="odd">
+<td>工程をクリックする。</td>
+<td>統合マシンマスタのユニットが選択肢に表示される。</td>
+</tr>
+<tr class="even">
+<td>MCグループ1をクリックする。</td>
+<td>統合マシンマスタの優先1_MCグループ1が選択肢に表示される。</td>
+</tr>
+<tr class="odd">
+<td>MCグループ2をクリックする。</td>
+<td>統合マシンマスタの優先1_MCグループ2が選択肢に表示される。</td>
+</tr>
+<tr class="even">
+<td>MCグループ3をクリックする。</td>
+<td>統合マシンマスタの優先1_MCグループ3が選択肢に表示される。</td>
+</tr>
+<tr class="odd">
+<td>事業所名を変更する。</td>
+<td>工程、MCグループ1、MCグループ2、MCグループ3 の値が消去される。</td>
+</tr>
+<tr class="even">
+<td>工程を変更する。</td>
+<td>MCグループ1、MCグループ2、MCグループ3 の値が消去される。</td>
+</tr>
+<tr class="odd">
+<td>MCグループ1を変更する。</td>
+<td>MCグループ2、MCグループ3 の値が消去される。</td>
+</tr>
+<tr class="even">
+<td>MCグループ2を変更する。</td>
+<td>MCグループ3 の値が消去される。</td>
+</tr>
+<tr class="odd">
+<td>「行追加」ボタンをクリックする。</td>
+<td>表の一番下に空行が追加される。</td>
+</tr>
+<tr class="even">
+<td>「行削除」ボタンをクリックする。</td>
+<td>表で選択した行に次の処理が行われる。<br>・削除選択されていれば、削除選択が解除される。<br>・削除選択されていなければ、削除選択される。</td>
+</tr>
+<tr class="odd">
+<td>「登録実行」ボタンをクリックする。</td>
+<td>・表の内容が装置照合マスタに反映される。<br>・更新後の装置照合マスタの内容で、表が再表示される。</td>
+</tr>
+<tr class="even">
+<td>「閉じる」ボタンをクリックする。</td>
+<td>・メニュー画面に移動される。</td>
+</tr>
+<tr class="odd">
+<td>（編集権限のユーザーで行う）<br>画面を初期表示する。</td>
+<td>装置照合マスタより、ユーザーの所属事業所に該当する内容が表示される。</td>
+</tr>
+<tr class="even">
+<td>（編集権限のユーザーで行う）<br>事業所名をクリックする。</td>
+<td>汎用マスタの事業所より、ユーザーの所属事業所に該当する内容が表示される。</td>
+</tr>
+<tr class="odd">
+<td>（編集権限のユーザーで行う）<br>「登録実行」ボタンをクリックする。</td>
+<td>・表の内容が装置照合マスタに反映される。<br>・更新後の装置照合マスタより、ユーザーの所属事業所に該当する内容が表示される。</td>
+</tr>
+<tr class="even">
+<td>（参照権限のユーザーで行う）<br>画面を初期表示する。</td>
+<td>・装置照合マスタより、ユーザーの所属事業所に該当する内容が表示される。<br>・行追加ボタンが無効化される。<br>・行削除ボタンが無効化される。<br>・登録実行ボタンが無効化される。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ログインログアウト情報の登録" class="vr-h3">ログイン／ログアウト情報の登録</h3>
+<table>
+<thead>
+<tr class="header">
+<th>操作</th>
+<th>期待値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ログイン画面で、ログインボタンをクリックする。</td>
+<td>ログイン情報テーブルにログイン情報が登録される。</td>
+</tr>
+<tr class="even">
+<td>ログアウトボタンをクリックする。</td>
+<td>ログイン情報テーブルにログアウト情報が登録される。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="問い" class="vr-h2">問い</h2>
+<ul>
+<li>Excel の表をコピーしたとき、クリップボードにはどのような形式で格納されるのか。</li>
+</ul>
+            </div>
+          </article>
+          <!-- Content <<< -->
+          
+          <!-- aside >>> -->
+          <aside class="aside pt2 py0 px2 md-pt3">
+          </aside>
+          <!-- aside <<< -->
+        </div>
+      </div>
+      <!-- content body <<< -->
+      
+      <!-- global footer >>> -->
+      <footer class="global-footer pt3 pb0 px2 bg-white">
+        <div class="center text-sm line-height-16">© 2018 ＳｉｔｅＮａｍｅ</div>
+      </footer>
+      <!-- global footer <<< -->
+
+
+    </div>
+  </div>
+
+<!-- JSON-LD >>> -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http://localhost/public/note-at-2018-11-12/index.html"
+    },
+    "headline": "NOTE: 偽装ユーザーでプロセスを実行する方法",
+    "image": [
+      "http://localhost/publichttp://via.placeholder.com/1280x960"
+    ],
+    "datePublished": "2018-11-14T18:30+09:00",
+    "dateModified": "2018-11-19T22:30+09:00",
+    "author": {
+      "@type": "Person",
+      "name": "John Doe"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ＳｉｔｅＮａｍｅ",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://via.placeholder.com/185x60",
+        "width": 185,
+        "height": 60
+      }
+    },
+    "articleSection": "雑記",
+  }
+  </script>
+<!-- JSON-LD <<< -->
+
+</body>
+</html>
