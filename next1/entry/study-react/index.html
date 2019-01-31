@@ -1,0 +1,2886 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8" class="next-head"/><meta http-equiv="X-UA-Compatible" content="IE=edge" class="next-head"/><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" class="next-head"/><link rel="stylesheet" href="/next1/static/css/bootstrap-reboot.css" class="next-head"/><link rel="stylesheet" href="/next1/static/css/base.css" class="next-head"/><title class="jsx-2286642602 next-head">React 事始め | NOTE:: 技術メモ</title><meta name="description" class="jsx-2286642602 next-head"/><link rel="preload" href="/next1/_next/static/23~FedX5gsdk8xHAI8unQ/pages/post.js" as="script"/><link rel="preload" href="/next1/_next/static/23~FedX5gsdk8xHAI8unQ/pages/_app.js" as="script"/><link rel="preload" href="/next1/_next/static/23~FedX5gsdk8xHAI8unQ/pages/_error.js" as="script"/><link rel="preload" href="/next1/_next/static/runtime/webpack-42652fa8b82c329c0559.js" as="script"/><link rel="preload" href="/next1/_next/static/chunks/commons.37591bd26960181b8be9.js" as="script"/><link rel="preload" href="/next1/_next/static/runtime/main-79c24ca3b44ce7a04a40.js" as="script"/><style id="__jsx-3432564821">.global-header.jsx-3432564821{height:auto;box-shadow:none;background-color:#24292e;}
+.site-name.jsx-3432564821{color:whiteSmoke;font-weight:bold;}
+.site-name.jsx-3432564821:hover{-webkit-text-decoration:none;text-decoration:none;}
+.cursor-pointer.jsx-3432564821{cursor:pointer;}
+.text-white-smoke.jsx-3432564821{color:whiteSmoke;}
+.line-height-3x.jsx-3432564821{line-height:3;}</style><style id="__jsx-2286642602">body{word-wrap:break-word;}
+.article-header .breadcrumbs-item:not(:first-of-type){margin-left:.5rem;}
+.article-header .breadcrumbs-item:not(:first-of-type)::before{content:">";margin-right:.5rem;}
+.article-header h1{font-size:2rem;line-height:1.25;}
+.article-body h2{font-size:1.5rem;line-height:1.3333333333;margin-top:3rem;padding-top:1rem;padding-bottom:1rem;border-top:solid 1px #000;border-bottom:solid 1px #000;}
+.article-body h3{font-size:1.25rem;line-height:1.4;padding-top:.75rem;}
+.article-body h4{font-size:1rem;line-height:1.5;padding-top:1rem;}
+.article-body h5{font-size:.875rem;line-height:1.5714285714;padding-top:1.125rem;}
+.article-body h6{font-size:.75rem;line-height:1.6666666667;padding-top:1.25rem;}
+.article-body div.sourceCode{margin:0;margin-left:-1rem;margin-right:-1rem;margin-bottom:1rem;padding:0;}
+.article-body pre.sourceCode{madgin:0;padding:1rem;overflow-x:auto;color:#333;background:#f8f8f8;border:1px solid #ddd;border-radius:.25rem;font-size:.75rem;max-width:100%;}
+.article-body code.sourceCode,pre>code{background-color:transparent;padding:0;}
+@media all and (min-width:50em){.article-body div.sourceCode{margin-left:-2rem;margin-right:-2rem;}.article-body pre.sourceCode{padding-left:2rem;padding-right:2rem;}}</style><style id="__jsx-3331426913">.copyright.jsx-3331426913{background-color:dimGray;color:whiteSmoke;}</style></head><body><div id="__next"><div class="flex flex-column overflow-hidden bg-white-smoke"><div class="flex flex-column min-h-screen"><header class="jsx-3432564821 global-header mb3 py0 px2 shadow-md bg-white"><div class="jsx-3432564821"><a class="jsx-3432564821 h4 regular m0 site-name text-bg line-height-3x cursor-pointer" href="/next1/">NOTE:: 技術メモ</a><p class="jsx-3432564821 mt0 text-sm text-white-smoke">自分のための技術メモを残しています。</p></div></header><div class="flex-auto contents mb3 md-px3 md-pt2 md-pb3 bg-white-smoke"><article class="jsx-2286642602 p2 md-pt3 md-px3 bg-white"><header class="jsx-2286642602 article-header mb3"><div class="jsx-2286642602"><ul class="jsx-2286642602 breadcrumbs list-reset m0 mb2 text-sm flex"><li class="jsx-2286642602 breadcrumbs-item"><a class="jsx-2286642602" href="/next1/">ホーム</a></li><li class="jsx-2286642602 breadcrumbs-item"><a class="jsx-2286642602" href="/next1/category/no-category/">雑記</a></li><li class="jsx-2286642602 breadcrumbs-item">React 事始め</li></ul></div><h1 class="jsx-2286642602">React 事始め</h1><div class="jsx-2286642602 flex flex-wrap"><div class="jsx-2286642602"><time dateTime="2018-01-25T11:59+09:00" class="jsx-2286642602 ">2018.01.25</time></div></div></header><div class="jsx-2286642602 article-body"><h2 id="実施環境">実施環境</h2>
+<ul>
+<li>Windows 7 Professional Service Pack 1</li>
+<li>node v8.9.4</li>
+<li>npm 4.0.5</li>
+<li>create-react-app 1.5.2</li>
+</ul>
+<h2 id="はじめに">はじめに</h2>
+<p>React
+:   Webの見た目を作ることに特化したJavaScriptライブラリ。
+    Viewに関連する機能だけを持つ。</p>
+<p>Flux
+:   次のように、データの流れを一方向に限定する設計パターン。
+    不整合が発生しにくい仕組みになっている。</p>
+<pre><code>                  ┌─── Action ←─┐
+                  ↓                  ｜
+    Action → Dispatcher → Store → View
+
+&lt;!-- --&gt;
+
+1. View はユーザーの入力から Action を作成する。
+2. Action を Dispatch することで Store にデータを保存する。
+3. Store を View に反映する。</code></pre><p>Redux
+:   Fluxアーキテクチャの実装。</p>
+<!--
+- View
+- Action
+- Store
+- Dispatcher
+- Reducer
+    状態を変化させるための関数です。Actionの内容によって既存の状態を変化させます。
+-->
+
+<p>オブジェクトや配列の操作を行う場合は、基本的には参照渡しでなく値のコピーを渡します。
+参照を切る方法としてES2015で標準化された<code>Object.assign()</code>メソッドを使ってもよいです。</p>
+<p>Spread Operatorでも可。</p>
+<pre><code class="language-javascript">return {
+  ...state,
+  status: 1,
+};</code></pre>
+<pre><code class="language-javascript">return Object.assign({}, state, {
+  state: 1
+});</code></pre>
+<h2 id="create-react-app">Create React App</h2>
+<p><a href="https://github.com/facebook/create-react-app">GitHub - facebook/create-react-app</a></p>
+<h2 id="環境構築">環境構築</h2>
+<h3 id="nodejsのインストール">node.jsのインストール</h3>
+<p>割愛します。</p>
+<p>Windowsユーザーであれば nodist を入れればよいかと。</p>
+<h3 id="create-react-app-のインストール">create-react-app のインストール</h3>
+<p>作業フォルダを作りその中にインストールします。</p>
+<pre><code>&gt; mkdir react1st &amp; cd react1st
+&gt; npm install create-react-app</code></pre><h3 id="アプリケーションの作成">アプリケーションの作成</h3>
+<p><code>create-react-app</code>コマンドを使ってアプリケーションを作成します。</p>
+<p>構文
+:   <code>create-react-app &lt;application-name&gt;</code></p>
+<p><code>my-app</code>アプリケーションを作成してみます。</p>
+<pre><code>&gt; .\node_modules\.bin\create-react-app my-app</code></pre><p>作成されたアプリケーションの構成は以下のようになっています。</p>
+<pre><code>.
++---node_modules
++---public
+|   +---favicon.ico
+|   +---index.html
+|   `---manifest.json
++---src
+|   +---App.css
+|   +---App.js
+|   +---App.test.js
+|   +---index.css
+|   +---index.js
+|   +---logo.svg
+|   `---registerServiceWorker.js
++---.gitignore
++---package.json
+`---README.md</code></pre><h3 id="開発モードでアプリケーションを起動">開発モードでアプリケーションを起動</h3>
+<p>アプリケーションのルートフォルダ（<code>my-app</code>フォルダ）に移動し、<code>npm start</code>コマンドを実行します。
+ブラウザが自動で起動し、アプリケーションが表示されます。
+もし、ブラウザが起動しなかったときは自分で起動して<code>http://localhost:3000/</code>にアクセスしてください。</p>
+<pre><code>&gt; cd my-app
+&gt; npm start</code></pre><h4 id="開発モードの機能">開発モードの機能</h4>
+<p>開発モードは次の動作になります。
+開発モードを終了するには、Control＋Cキーを押します。</p>
+<ul>
+<li>ソースコードの変更を監視し、アプリケーションを自動でビルドする。</li>
+<li>ブラウザを自動でリロードする。</li>
+<li>コンソールにビルドエラーとlintの警告を表示する。</li>
+</ul>
+<h3 id="hello-world-の表示">Hello, World! の表示</h3>
+<p><code>src\App.js</code>ファイルを以下のように編集します。</p>
+<pre><code class="language-javascript">&lt;h1 className=&quot;App-title&quot;&gt;Welcome to React&lt;/h1&gt;</code></pre>
+<p>↓</p>
+<pre><code class="language-javascript">&lt;h1 className=&quot;App-title&quot;&gt;Hello, World!&lt;/h1&gt;</code></pre>
+<p>保存に伴い、ブラウザが自動でリロードされ、修正内容が反映されます。</p>
+<h2 id="jsx">JSX</h2>
+<p>JSX
+:   JavaScriptを拡張した言語。
+    ReactとJSXを一緒に使うことが推奨されています（必須ではない）。</p>
+<ul>
+<li>JSXでは、JavaScriptのなかにHTMLのタグや属性を（ほぼ）同じように書くことができる。</li>
+<li>最終的にトランスパイラでJavaScriptに変換して使う。
+  このとき、JSXに書いたタグは、<code>React.createElement</code>関数の呼び出しに変換される。</li>
+</ul>
+<p>トランスパイラ
+:   ソースコードを別のソースコードに変換するツールのことです。
+    BabelのほかCoffeeScriptやTypeScriptなどがあります。</p>
+<h3 id="jsxの使い方">JSXの使い方</h3>
+<ul>
+<li><p>JSXのタグは<code>React.createElement</code>に変換されるため、Reactのインポートが必要です。</p>
+<pre><code>  import React from &#39;react&#39;;</code></pre></li>
+<li><p><code>{}</code>で囲むと式をJSXに埋め込むことができます。</p>
+<pre><code>  const fullnames = {
+    ryoma: &#39;坂本竜馬&#39;
+  };
+  const getFullname = nickname =&gt; fullnames[nickname];
+  const element = &lt;h1&gt;Hello, {getFullname(&#39;ryoma&#39;)}&lt;/h1&gt;;</code></pre></li>
+</ul>
+<h2 id="babelのインストール">babelのインストール</h2>
+<ol>
+<li><p>作業ディレクトリを作り、その中に移動します。</p>
+<pre><code> &gt; mkdir babel-cli-example &amp; cd babel-cli-example</code></pre></li>
+<li><p>空のpackage.jsonを作ります。</p>
+<pre><code> &gt; echo {} &gt; package.json</code></pre></li>
+<li><p>Babel関連のパッケージをインストールします。</p>
+<pre><code> &gt; npm install --save-dev babel-cli babel-preset-react</code></pre></li>
+</ol>
+<p>babel-cli
+    BabelをCLI上で動作させるためのパッケージです。
+    Babelを使ったソースコードの変換を行うbabelコマンドと、変換に加えて変換後のソースコードをそのままNode.jsで実行するbabel-nodeコマンドを含んでいます。</p>
+<h3 id="react向けに変換するコマンド">react向けに変換するコマンド</h3>
+<pre><code>.\node_modules\.bin\babel [Options...] target-file</code></pre><p>e.g.,</p>
+<pre><code>.\node_modules\.bin\babel --presets=react input.js</code></pre><p>標準出力ではなくファイルに出力するときは、<code>--out-file</code>オプションにファイル名を指定します。</p>
+<pre><code>.\node_modules\.bin\babel --presets=react input.js --out-file output.js</code></pre><p>webpack
+:   モジュールバンドラー。<br>    ES ModulesやNode.jsで利用されているCommonJSのモジュール方式で記述されたソースファイルを束ねて、ブラウザで実行可能な静的なJavaScriptファイルを出力します。</p>
+<ol>
+<li><p>作業ディレクトリを作り、その中に移動します。</p>
+<pre><code> &gt; mkdir webpack-example &amp; cd webpack-example</code></pre></li>
+<li><p>空のpackage.jsonを作ります。</p>
+<pre><code> &gt; echo {} &gt; package.json</code></pre></li>
+<li><p>開発に使うパッケージをインストールします（<code>--save-dev</code>オプションをつけます）。</p>
+<pre><code> &gt; npm install --save-dev ^
+   webpack ^
+   webpack-cli ^
+   babel-loader ^
+   babel-core ^
+   babel-preset-react</code></pre></li>
+<li><p>実行に使うパッケージをインストールします（<code>--save</code>オプションをつけます）。</p>
+<pre><code> &gt; npm install --save ^
+   react ^
+   react-dom</code></pre></li>
+</ol>
+<!--
+--save-devインストール
+
+- webpack
+- webpack-cli
+- babel-loader
+- babel-core
+- babel-preset-react
+
+--saveインストール
+
+- react
+- react-dom
+-->
+
+
+<p>Webpackのバージョンを表示</p>
+<pre><code>.\node_modules\.bin\webpack --version
+4.1.0</code></pre><p>Hello.js
+:   </p>
+<pre><code>~~~javascript
+import React from &#39;react&#39;;
+
+// export default function で
+// Hello コンポーネントを持っていることを外部に知らせる
+export default function Hello() {
+  return &lt;h1&gt;Hello! webpack&lt;/h1&gt;;
+}
+~~~</code></pre><p>entry.js
+:   </p>
+<pre><code>~~~javascript
+import React from &#39;react&#39;;
+import ReactDOM from &#39;react-dom&#39;;
+import Hello from &#39;./Hello&#39;;    // ← Hello.js の読み込み
+
+ReactDOM.render(
+  &lt;Hello /&gt;,
+  document.getElementById(&#39;root&#39;)
+);
+~~~</code></pre><p>importのパスが絶対パスでも相対パスでもない場合、webpackはnpmモジュールから読み込みます。</p>
+<p>webpack.config.js</p>
+<p>webpackの設定ファイルは、JSON、XML、YAMLなどのフォーマットを記述できます。<br>フォーマットの判別は設定ファイルの拡張子で行います。</p>
+<p>JavaScriptであれば、Node.jsのモジュールとして扱うので、<code>module.exports</code>に代入しているオブジェクトが設定ファイルとして利用されます。</p>
+<pre><code class="language-javascript">module.exports = {
+  // entryフィールド
+  // 実行の起点となるファイルの指定
+  entry: &#39;./entry.js&#39;,
+
+  // outputフィールド
+  // 出力に関する設定
+  output: {
+    filename: &#39;output.js&#39;
+  },
+
+  module: {
+    rules: [
+      // babel-loader の設定
+      // ファイルごとに適応するLoaderの設定を書く
+      {
+        loader: &#39;babel-loader&#39;,
+        test: /\.js$/,
+        options: {
+          presets: [&#39;react&#39;]
+        }
+      }
+    ]
+  }
+};</code></pre>
+<p>webpackを実行</p>
+<p><code>dist\output.js</code>が出力されます。</p>
+<pre><code>&gt; .\node_modules\.bin\webpack --config webpack.config.js</code></pre><p><code>dist\index.html</code>を作成します。</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ja&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+&lt;title&gt;webpack test&lt;/title&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+  &lt;script src=&quot;./output.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>ブラウザで表示。</p>
+<p><code>output.js</code>の読み込みだけで表示されました。
+動作に必要なスクリプト（<code>react.min.js</code>や<code>react-dom.min.js</code>）が、webpackによってすべて<code>output.js</code>に束ねられているからです。</p>
+<h2 id="reactコンポーネント">Reactコンポーネント</h2>
+<p>create-react-app による開発は、自動作成された「src\index.js」や、その中で読み込んでいる「src\App.js」を編集して動作を確かめます。
+ファイルやフォルダを分けてコードを管理するのもありです。</p>
+<h3 id="reactコンポーネントの種類">Reactコンポーネントの種類</h3>
+<h4 id="functional-component">Functional Component</h4>
+<p>関数によって定義されるコンポーネント。</p>
+<pre><code class="language-javascript">import React from &#39;react&#39;;
+
+const Hello = (props) =&gt; {
+  return &lt;div&gt;こんにちは、{props.name}さん&lt;/div&gt;;
+};</code></pre>
+<h4 id="class-component">Class Component</h4>
+<p>クラスによって定義されるコンポーネント。</p>
+<pre><code class="language-javascript">class Hello extends React.Component {
+  render() {
+    return &lt;div&gt;こんにちは、{this.props.name}さん&lt;/div&gt;;
+  }
+};</code></pre>
+<h5 id="functional-componentとの違い">Functional Componentとの違い</h5>
+<ul>
+<li><code>React.Component</code>を明示的に継承している。</li>
+<li>propsの受け取り方がthis.propsとなっている。</li>
+<li>コンポーネントの状態を記録する仕組みがある（state）。</li>
+<li>ライフサイクルメソッドという特殊なメソッドが定義できる。</li>
+</ul>
+<h3 id="コンポーネントの再利用">コンポーネントの再利用</h3>
+<pre><code class="language-javascript">const Hello = () =&gt; {
+  return &lt;div&gt;こんにちは、坂本竜馬さん&lt;/div&gt;;
+};
+
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;Hello /&gt;
+    &lt;Hello /&gt;
+    &lt;Hello /&gt;
+  &lt;/div&gt;,
+  document.getElementById(&quot;root&quot;)
+);</code></pre>
+<p>Reactコンポーネント
+:   設計図のようなもの。
+    オブジェクト指向でいえば〝クラス〟にあたる。</p>
+<p>Reactエレメント
+:   設計図（Reactコンポーネント）を元に作られた実体のこと。
+    オブジェクト指向でいえば〝インスタンス〟にあたる。</p>
+<pre><code class="language-javascript">// こちらはReactコンポーネント
+const Hello = () =&gt; {
+  return &lt;div&gt;こんにちは、坂本竜馬さん&lt;/div&gt;;
+};
+
+ReactDOM.render(
+  &lt;div&gt;
+    { /* 以下のHello3つはどれも React エレメント */ }
+    &lt;Hello /&gt;
+    &lt;Hello /&gt;
+    &lt;Hello /&gt;
+  &lt;/div&gt;,
+  document.getElementById(&quot;root&quot;)
+);</code></pre>
+<h3 id="fragmentコンポーネント">Fragmentコンポーネント</h3>
+<p>Reactコンポーネントは単一の親からなる要素しか表現できません。
+複数の要素をラップする要素を使ってもよいのですが、これではもともと表現したかったHTML構造にならないことがあります。</p>
+<p>React.Fragmentコンポーネントを使うとこの制約をクリアすることができます。</p>
+<p>↓ ダメな例</p>
+<pre><code class="language-javascript">const Hello = () =&gt; {
+  return (
+    &lt;div&gt;こんにちは&lt;/div&gt;
+    &lt;div&gt;坂本竜馬さん&lt;/div&gt;
+  );
+};</code></pre>
+<p>↓ ラップして対処する方法</p>
+<pre><code class="language-javascript">const Hello = () =&gt; {
+  return (
+    &lt;div&gt;
+      &lt;div&gt;こんにちは&lt;/div&gt;
+      &lt;div&gt;坂本竜馬さん&lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+<p>↓ <code>React.Fragment</code>で対処する方法</p>
+<pre><code class="language-javascript">const Hello = () =&gt; {
+  return (
+    &lt;React.Fragment&gt;
+      &lt;div&gt;こんにちは&lt;/div&gt;
+      &lt;div&gt;坂本竜馬さん&lt;/div&gt;
+    &lt;/React.Fragment&gt;
+  );
+};</code></pre>
+<h3 id="データの受け渡し（props）">データの受け渡し（props）</h3>
+<pre><code class="language-javascript">const Hello = (props) =&gt; {
+  return &lt;div&gt;こんにちは、{props.name}さん&lt;/div&gt;;
+};
+
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;Hello name=&quot;A&quot; /&gt;
+    &lt;Hello name=&quot;B&quot; /&gt;
+    &lt;Hello name=&quot;C&quot; /&gt;
+  &lt;/div&gt;,
+  document.getElementById(&quot;root&quot;)
+);</code></pre>
+<p>Helloの関数の引数に<code>props</code>を追加します。引数の名前はなんでもいいですが、<code>props</code>にするのが一般的。</p>
+<p><code>props</code>の引数にはコンポーネントを使う側で指定した内容が入ります。</p>
+<p>上記でいえば、<code>&lt;Hello name=&quot;A&quot; /&gt;</code>として使っているので、<code>props</code>には<code>name</code>というプロパティが追加され、「A」が格納されます。同様に<code>&lt;Hello name=&quot;B&quot; /&gt;</code>であれば、<code>props.name</code>の値は「B」になります。</p>
+<p><code>props</code>には文字列、数値、配列、オブジェクト、関数など任意の値を指定できます。
+渡す値は<code>{}</code>で囲みます。</p>
+<pre><code class="language-javascript">// 文字列
+&lt;Component stringValue={ &quot;坂本竜馬&quot; } /&gt;
+
+// 数値
+&lt;Component numberValue={42} /&gt;
+
+// 真偽値
+&lt;Component boolValue={true} /&gt;
+
+// 配列
+&lt;Component arrayValue={[&quot;Aさん&quot;, &quot;Bさん&quot;, &quot;Cさん&quot;]} /&gt;
+
+// オブジェクト
+&lt;Component objectValue={{name: &quot;Aさん&quot;, birthDay: &quot;1836/01/03&quot;}} /&gt;
+
+// 関数
+&lt;Component funcValue={(name) =&gt; console.log(name);} /&gt;
+
+// 変数
+const name = &quot;Aさん&quot;;
+&lt;Component value={name} /&gt;
+
+// 複数の値も渡せます
+&lt;Component name={ &quot;Aさん&quot; } birthDay={ new Date(1836, 0, 3) } /&gt;</code></pre>
+<p><code>props.children</code></p>
+<p>Reactコンポーネントの子要素が渡されるプロパティです。</p>
+<p>次の場合、<code>props.children</code>には「坂本竜馬」が渡されます。</p>
+<pre><code class="language-javascript">const Hello = (props) =&gt; {
+  return &lt;div&gt;こんにちは、{props.children}さん&lt;/div&gt;;
+};
+
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;Hello&gt;
+      坂本竜馬      ←Helloコンポーネントの子要素が渡される
+    &lt;/Hello&gt;
+  &lt;/div&gt;,
+  document.getElementById(&quot;root&quot;)
+);</code></pre>
+<h3 id="propsの型チェック">propsの型チェック</h3>
+<p>コンポーネントがどのようなpropsを受け取るのか記述することができます。
+インターフェイスに合わない値が渡されたときに、エディタや実行時に警告を受け取ることができます。</p>
+<p>別パッケージになっているので追加でインストールします。</p>
+<pre><code>&gt; npm install --save prop-types</code></pre><p>ReactコンポーネントのpropTypesプロパティに型情報を記述します。
+Functional Component/Class Componentのどちらでも記述できます。</p>
+<pre><code class="language-javascript">import PropTypes from &#39;prop-types&#39;;
+
+const Hello = (props) =&gt; {
+  return &lt;div&gt;こんにちは、{props.name}さん&lt;/div&gt;;
+};
+
+// ここに型情報を書きます
+// ↓
+Hello.propTypes = {
+  name: PropTypes.string    // nameの型はstring
+}</code></pre>
+<p>propTypesの種類</p>
+<pre><code class="language-javascript">import React from &#39;react&#39;;
+import PropTypes from &#39;prop-types&#39;;
+
+class SomeComponent extends React.Component {
+}
+
+SomeComponent.propTypes = {
+  someString: PropTypes.string, // 文字列
+  someNumber: PropTypes.number, // 数値
+  someBool:   PropTypes.bool,   // 真偽値
+  someArray:  PropTypes.array,  // 配列
+  someObject: PropTypes.object, // オブジェクト
+  someFunc:   PropTypes.func,   // 関数
+  someSymbol: PropTypes.symbol, // シンボル
+
+  // 配列の中身を指定
+  someArray2: PropTypes.arayOf(PropTypes.number),
+
+  // オブジェクトの中身を指定
+  someObj2:   PropTypes.objectOf(PropTypes.number),
+
+  // オブジェクトの個別のプロパティの中身を指定
+  someObj3:   PropTypes.shape({
+    name: PropTypes.string,
+    age:  PropTypes.number
+  }),
+
+  // Reactエレメント
+  someElement: PropTypes.element,
+
+  // コンポーネントの子要素となるもの
+  // （string, number, element, array ならOK）
+  someNode: PropTypes.node,
+
+  // Helloコンポーネントのインスタンスを指定
+  helloElement: PropTypes.instanceOf(Hello),
+
+  // 指定した値のいずれかであること
+  dayOfTheWeek: PropTypes.oneOf([&quot;月&quot;, &quot;火&quot;, &quot;水&quot;]),
+
+  // 配列で指定した型のいずれかであること
+  union: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.instanceOf(Hello),
+  ]),
+
+  // 何でもオーケー
+  any: PropTypes.any,
+
+  // 必須項目
+  requiredString: PropTypes.string.isRequired,
+
+  // どんな型でもいいから何かしら指定
+  requiredAny: PropTypes.any.isRequired,
+};
+
+// propsの値が undefined だったときの規定値を指定する
+SomeComponent.defaultProps = {
+  name: &quot;坂本竜馬&quot;    // name が undefined のときに設定する内容
+};</code></pre>
+<p><code>Array.map</code>メソッド
+:   配列の各要素について、引数に与えられた関数の処理に従って処理をし、新たな配列を返すメソッド。</p>
+<pre><code>~~~javascript
+// tasksの各要素をTodoItemコンポーネントにして返す
+const list = this.props.tasks.map(todo =&gt; {
+  return &lt;TodoItem {...todo} key={todo.id} /&gt;;
+});
+~~~</code></pre><h3 id="stateの初期値">stateの初期値</h3>
+<p><code>constructor</code>で設定します。</p>
+<pre><code class="language-javascript">constructor(props) {
+  super(props);
+  this.state = {
+    tasks: [
+      { title: &quot;Todo-1&quot;, id: 0 },
+      { title: &quot;Todo-2&quot;, id: 1 },
+    ],
+    uniqueId: 1,
+  };
+}</code></pre>
+<ul>
+<li><code>state</code>の名前は変更できません。</li>
+<li><code>this.state</code>に直接値を入れていいのは<code>constructor</code>で初期値を設定するときだけです。
+  それ以外の場面で直接編集してしまうと、Reactコンポーネントに値の変更を通知することができません。</li>
+<li><code>this.state</code>を更新するときは<code>this.setState</code>メソッドを使います。
+  いまあるstateと比べて、変更があった内容を反映します。stateをごっそり置き換えるわけではありません。</li>
+<li><code>this.state</code>を直接参照するのはありです。</li>
+</ul>
+<pre><code class="language-javascript">constructor(props) {
+  ...略
+
+  // bindメソッド
+  // 指定したメソッドでAppコンポーネントのstateを変更するために必要
+  // ↓
+  this.methodName = this.methodName.bind(this);</code></pre>
+<p><code>bind</code>メソッド
+:   関数の中で使用する<code>this</code>を強制する（バインドする）メソッド。</p>
+<pre><code>methodNameメソッドを実行するのは、Appコンポーネントではない別のコンポーネントやDOMになります。
+それらのコンテキストである`this`には`state`が存在しないのでエラーが発生します。</code></pre><p>ほかのバインドの方法</p>
+<ul>
+<li><p>アロー関数を使う</p>
+<p>  アロー関数を使うときは、constructorにbindメソッドを書く必要がありません。
+  ですが、同じメソッドを複数のコンポーネントに渡したい場合、その数だけアロー関数を書く必要があります。</p>
+<p>  毎回新しいアロー関数を作ることになるので、パフォーマンスも少し劣ります。</p>
+<pre><code class="language-javascript">  // アロー関数を使う
+  &lt;Component methodName={ (hoge) =&gt; { this.methodName(hoge) } } /&gt;</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>property initializer syntax を使う</p>
+<p>  最初からバインドされたメソッドを作ることができます。
+  アロー関数のようなパフォーマンスの懸念もありません。</p>
+<p>  ただし、ECMAScriptに公式なシンタックスとして採用されていないため、babelにプラグインを追加しておく必要があります。</p>
+<p>  Class properties transform・Babel（transform-class-properties）</p>
+</li>
+</ul>
+<h3 id="イベントハンドリング">イベントハンドリング</h3>
+<p>イベントハンドラを追加します。</p>
+<p>下記の例では、クリック時のイベントを<code>handleClick</code>メソッドに定義しています。
+イベントとの関連付けは、button要素のonClick属性に<code>handleClick</code>メソッドを設定しています。</p>
+<p>Reactでは<code>onClick</code>といった属性に関数を渡して、イベントの関連付けをします。</p>
+<pre><code class="language-javascript">constructor(props) {
+  super(props);
+  this.handleClick = this.handleClick.bind(this);   // バインドする
+}
+// Eventオブジェクトを引数に持つ
+handleClick(e) {
+  this.props.methodName(&quot;hoge&quot;);
+}
+render() {
+  return (
+    &lt;div&gt;
+      &lt;input placeholder=&quot;何か入力してください&quot; /&gt;
+      &lt;button onClick={ this.handleClick } &gt;登録&lt;/button&gt;
+  );
+}</code></pre>
+<p>イベントハンドラの引数は、Eventオブジェクトを受け取ります。
+ブラウザ本来のEventオブジェクトとほぼ同じものです。</p>
+<h3 id="formの操作">formの操作</h3>
+<p>Reactではフォームに入力された値も<code>state</code>として扱います。</p>
+<p>以下は、ユーザーの入力で state を変更するコードです。</p>
+<pre><code class="language-javascript">constructor(props) {
+  super(props);
+  this.state = {
+    inputValue: &quot;&quot;,
+  };
+  this.handleChange = this.handleChange.bind(this);
+  this.handleClick = this.handleClick.bind(this);
+}
+handleChange(e) {
+  // ユーザーの入力した値をstate.inputValueに格納する
+  this.setState({
+    inputValue: e.target.value,
+  });
+}
+handleClick() {
+  const inputValue = this.state.inputValue;
+  this.props.methodName(inputValue);
+}
+render() {
+  return (
+    &lt;div className=&quot;TodoInput&quot;&gt;
+      ▼valueにstate.inputValueを設定、onChangeにhandleChangeメソッドを関連付け
+      &lt;input placeholder=&quot;何か入力してください&quot; value={this.state.inputValue} onChange={this.handleChange} /&gt;
+      &lt;button onClick={this.handleClick} &gt;登録&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+<h3 id="まとめ--reactコンポーネントの作成手順">まとめ:  Reactコンポーネントの作成手順</h3>
+<ol>
+<li>UIをコンポーネントに分割する</li>
+<li>propsやstateによって、どのようにUIが変化するかを定義する（JSXの作成）</li>
+<li>ユーザー操作によって、どのようにstateが変化するかを定義する（メソッドの作成）</li>
+<li>UIとメソッドを関連付ける（onClick属性などを設定）</li>
+</ol>
+<p>コンポーネントごとの責務を明らかにすること。</p>
+<h3 id="ライフサイクル">ライフサイクル</h3>
+<p>Reactコンポーネントにはライフサイクルメソッドと呼ばれる特殊なメソッドがあります。
+Reactコンポーネントの状態に応じて、次の3つのうち対応するメソッドが呼ばれます。</p>
+<ul>
+<li>コンポーネントのマウントに対応して呼ばれるメソッド。</li>
+<li>コンポーネントで扱うデータの変化に対応して呼ばれるメソッド。</li>
+<li>エラーハンドリングに用いるメソッド。</li>
+</ul>
+<h4 id="マウントに関するライフサイクルメソッド">マウントに関するライフサイクルメソッド</h4>
+<p>Reactコンポーネントが新しく配置されるときに呼び出されるメソッドです。
+コンポーネントの<code>render</code>メソッドが初めて呼ばれたときに、コンポーネントがマウントされた状態となります。</p>
+<ul>
+<li>コンポーネントのマウント ＝ コンポーネントの<code>render</code>メソッドが初めて呼ばれたとき</li>
+<li>コンポーネントのアップデート ＝ 2回目以降の<code>render</code>メソッドの呼び出し</li>
+<li>コンポーネントのアンマウント ＝ DOM上からなくなったとき</li>
+</ul>
+<p>componentWillMount
+:   コンポーネントがマウントされる直前に呼ばれます。
+    コンポーネントを描画する<code>render</code>メソッドよりも先に呼ばれます。</p>
+<pre><code>ただ、コンストラクターも`render`メソッドより先に呼ばれるので、マウント前にしたい処理はここではなくコンストラクターで実行すれば十分です。</code></pre><p>componentDidMount
+:   コンポーネントがマウントされた直後に呼ばれます。
+    DOMがブラウザにレンダリングされたあとなので、DOMに対してイベントリスナーを設定したりサブスクライブなどの処理をしたりします。</p>
+<pre><code>TODO: サブスクライブって何でしょう？？
+
+`setState`は行わないこと。
+
+stateが変更されるとrenderメソッドが実行されます。
+render → componentDidMount → setState → renderとなり、renderメソッドが2回実行されてしまうためです。</code></pre><p>componentWillUnmount
+:   コンポーネントがアンマウントされる直前に呼ばれます。
+    各種コンポーネントに関連付けた処理の後始末をします。</p>
+<pre><code>たとえば、setInterval関数に対するclearIntervalの実行や、APIリクエストのキャンセルなどです。</code></pre><h4 id="データのアップデートに関するライフサイクルメソッド">データのアップデートに関するライフサイクルメソッド</h4>
+<p>アップデートはコンポーネントのpropsかstateが変更されたときに行われます。
+初回のレンダリングはマウントとして扱われるため、マウント時にはこれらのメソッドは実行されません。</p>
+<p>componentWillReceiveProps
+:   引数に受け取る予定のpropsをとります。</p>
+<pre><code>~~~javascript
+componentWillReceiveProps(nextProps)
+~~~
+
+propsがアップデートされようとしているときのみ実行されます。
+propsの受け取りで実行されるため、変更の有無は関係なく実行されます。
+
+this.propsには以前に受け取ったpropsが入っています。
+引数のnextPropsと比較する処理をすることができます。
+
+setStateをすることも可能です。</code></pre><p>shouldComponentUpdate
+:   propsやstateに変更が合った場合に呼ばれます。
+    引数は次に受け取るpropsとstateです。
+    this.propsとthis.stateには前回の内容が入っています。</p>
+<pre><code>~~~javascript
+shouldComponentUpdate(nextProps, nextStaet)
+~~~
+
+renderを行うべきかどうかをtrue/falseで返す必要があります。
+
+このメソッドを指定しなかった場合、どのような変更でもrenderメソッドが呼び出されます（常にtrueを返すように指定したのと同じ）。
+
+このメソッドはパフォーマンスチューニングをする際に利用します。
+表示に使っていないpropを受け取ったときや、そもそもpropsやstateに変更がなかったときは不要なrenderを行わないようにします。
+
+変更がないpropやstateを受け取ったときに再描画させないようにするもう一つの方法。
+
+`React.Component`を継承する代わりに`React.PureComponent`を継承すると、Reactが自動的に浅い比較（オブジェクトや配列の中身までは確認しない比較）を行うので、通常はこちらを利用する方が便利です。
+なにか特別な比較を行い、renderの有無を決めるときだけ`shouldComponentUpdate`を利用することを推奨します。</code></pre><p>componentWillUpdate
+:   renderが呼ばれる前に呼ばれる最後のメソッドです。</p>
+<pre><code>引数は次に受け取るpropsとstateです。
+this.propsとthis.stateには前回の内容が入っています。
+
+~~~javascript
+componentWillUpdate(nextProps, nextStaet)
+~~~
+
+`setState`などコンポーネントの再レンダリングを促すような処理はしないこと。
+変更に対して`componentWillUpdate`、`render`が実行され、処理がループする可能性があるためです。
+
+propsの値を使ってstateを変更したいときは`componentWillReceiveProps`メソッドを使います。
+
+`shouldComponentUpdate`でfalseを返した場合、このメソッドは呼ばれません。</code></pre><p>componentDidUpdate
+:   renderの直後に呼ばれます。</p>
+<pre><code>引数は前のpropsとstateです。
+this.propsとthis.stateは、いまの値（renderに使った内容）が格納されています。
+
+~~~javascript
+componentDidUpdate(prevProps, prevStaet)
+~~~
+
+アップデート後のDOMにアクセスするときや、変更が完了したことをAPIに通知するときなどに利用します。
+
+`shouldComponentUpdate`でfalseを返した場合、このメソッドは呼ばれません。</code></pre><h4 id="エラーハンドリングに関するライフサイクルメソッド">エラーハンドリングに関するライフサイクルメソッド</h4>
+<p>エラーが起きたときだけ呼ばれるライフサイクルメソッドです。
+React v16 から実装されています。</p>
+<p>componentDidCatch
+:   子コンポーネントでエラーが起こったときに呼ばれます。</p>
+<pre><code>~~~Javascript
+componentDidCatch(error, info)
+~~~
+
+引数にスタックとレースが入ったerror、その他の情報が入ったinfoをとります。
+
+infoはオブジェクトで、現時点では`componentStack`プロパティしか持っていません。
+これにはどのコンポーネントでエラーが発生したかが入っています。
+
+エラー解析の手がかりとなるので、どちらもログとして送信するようにしておくと便利。
+
+`setState`などの処理を行うことも可能。
+
+このメソッドを記述したコンポーネント自体のエラーは検知できません。
+子コンポーネントのエラーを検知するためのメソッドです。</code></pre><h2 id="reduxによるアプリケーションの状態管理">Reduxによるアプリケーションの状態管理</h2>
+<p><code>create-react-app</code>で新しいアプリケーションを作成します。</p>
+<h3 id="reduxのインストール">Reduxのインストール</h3>
+<pre><code>&gt; npm install --save redux</code></pre><h3 id="reduxの構成">Reduxの構成</h3>
+<p>Store
+:   アプリケーションの状態（<code>state</code>）とロジックを保持している居場所。</p>
+<p>Reducer
+:   Storeが保持している状態を変化させるための関数。</p>
+<p>Action
+:   何らかの状態変化を引き起こす現象。たとえば、ユーザー入力、APIから取得した情報。</p>
+<pre><code>Actionの形式を標準化した〝Flux Standard Action〟というものがあります。
+Actionを扱うライブラリ（`redux-actions`や`redux-promise`など）でも、これを採用したものが多いので、この形式に沿っておくのがよいでしょう。
+
+Actionオブジェクトには、次のプロパティを持たせることができます。
+
+- type
+
+  必須プロパティです。
+  どのような操作をしたのかが分かる内容を指定します。
+
+- payload
+
+  Actionに伴うデータ。オブジェクト形式で扱うのが一般的。
+  errorプロパティがtrueのときはErrorオブジェクトを返すべき。
+
+- error
+
+  エラーを表現するときはtrueにします。
+
+- meta
+
+  payloadとは別に、ほかの情報をActionとして含めたいときに使う項目です。</code></pre><h3 id="reducerの定義">Reducerの定義</h3>
+<p>Storeの初期状態［index.js］</p>
+<pre><code class="language-javascript">const initialState = {
+  tasks: []
+};</code></pre>
+<p>tasksReducerの定義［index.js］</p>
+<pre><code class="language-javascript">// Reducerの定義
+// 第1引数は、現在の状態を表すstateオブジェクト
+// 第2引数は、どのような操作をしたのかを示すActionオブジェクト
+function tasksReducer(state = initialState, action) {
+  switch (action.type) {
+    case &#39;ADD_TASK&#39;:
+      return {
+        ...state,
+        tasks: state.tasks.concat([action.task])    // TODO: action.payload.taskでは？　→　そのとおりでした。
+      };
+    default:
+      return state;
+  }
+}</code></pre>
+<p>Actionオブジェクトのイメージ</p>
+<pre><code class="language-javascript">{
+  type: &#39;ADD_TASK&#39;,
+  payload: {
+    task: &#39;Study Reducer&#39;
+  }
+}</code></pre>
+<h3 id="actioncreatorの定義">ActionCreatorの定義</h3>
+<p>ActionCreatorとはActionを生成するための関数です。</p>
+<p>Actionを生成する関数の定義［index.js］</p>
+<pre><code class="language-javascript">// ActionCreatorの定義
+// 追加するtaskを引数に取り、Actionオブジェクトを返す
+const addTask = (task) =&gt; ({
+  type: &#39;ADD_TASK&#39;,
+  payload: {
+    task
+  }
+});</code></pre>
+<h3 id="storeの定義">Storeの定義</h3>
+<p>Reduxの<code>createStore</code>関数を使ってStoreを生成します。
+生成したStoreはアプリケーション内で唯一のものです。
+アプリケーション全体のさまざまな状態をこのStoreで集約管理します。</p>
+<p>ReduxのStoreを生成するにはReducerが必要となります。</p>
+<p>Storeの作成［index.js］</p>
+<pre><code class="language-javascript">import { createStore } from &#39;redux&#39;;
+
+// Reducerの定義
+function tasksReducer(state = initialState, action) {
+  // ...略
+}
+
+// Storeの生成
+const store = createStore(tasksReducer);</code></pre>
+<pre><code class="language-javascript">createStore(reducer, [preloadedState], [enhancer])</code></pre>
+<p>引数</p>
+<p>reducer
+:   Reducerを指定します。</p>
+<p>preloadedState
+:   Storeの初期値を指定します。
+    サーバーサイドやユーザーセッションで事前にデータを保持しているときに利用することが想定されます。</p>
+<p>enhancer
+:   Storeの機能を拡張するサードパーティ製のツールを指定できます。</p>
+<p>戻り値</p>
+<p>Storeオブジェクト</p>
+<p>Storeオブジェクトは次の4つのメソッドを持ちます。</p>
+<ul>
+<li><p>dispatch</p>
+<p>  ActionCreatorで生成したActionを発行します。</p>
+<pre><code class="language-javascript">  // ActionCreatorの定義
+  const addTask = (task) =&gt; ({
+    ... 略
+  });
+
+  store.dispatch(addTask(&quot;Study Store&quot;));</code></pre>
+</li>
+<li><p>getState</p>
+<p>  Storeの現在の状態を取得します。</p>
+<pre><code class="language-javascript">  console.log(store.getState());
+  ↓
+  {
+    tasks: [&#39;Study Store&#39;]
+  }</code></pre>
+</li>
+<li><p>subscribe</p>
+<p>  Storeの状態が変更されたときに呼び出されるコールバック関数を指定します。</p>
+<p>  ActionのdispatchによってStoreの状態が変わったときに、その変換を監視する役目を担う処理。</p>
+<p>  <code>store.subscribe</code>で監視を開始します。
+  <code>store.subscribe</code>の戻り値である<code>unsubscribe</code>を実行することで、<code>subscribe</code>を解除することができます。</p>
+<p>  実際にReactと組み合わせるときは、<code>react-redux</code>というライブラリを使います。
+  <code>react-redux</code>が<code>subscribe</code>の仕組みを隠蔽するため、Storeの状態が変化するとReactのViewが更新されるというシンプルな流れになります。</p>
+<pre><code class="language-javascript">  function handleChange() {
+    console.log(store.getState());
+  }
+
+  // Storeの状態が変化したときに handleChange 関数が呼ばれる。
+  // subscribeの戻り値は unsubscribe という関数。
+  // これを実行すると状態変化の通知が解除され、handleChange 関数は呼ばれなくなる。
+  const unsubscribe = store.subscribe(handleChange);</code></pre>
+</li>
+<li><p>replaceReducer</p>
+<p>  createStoreで関連付けたReducerを、別のReducerに差し替えるメソッドです。</p>
+<p>  createStoreで関連付けることができるReducerは1つだけです。
+  複数あるReducerを動的にロードしたいときにこのメソッドで差し替えをします。</p>
+<p>  Storeに関連付けられているReducerのみしか適用されないので、特別な理由がない限り、combineReducerによって一つにまとめたReducerを関連付けてしまう方が楽。</p>
+</li>
+</ul>
+<pre><code>combineReducer
+:   Reduxに備わっているメソッドで、複数のReducerを合成します。
+
+    通常、一つのReducer内で処理分岐して定義して問題ありませんが、規模が大きくなってくると見通しが悪くなってくるのでReducerを分割したくなります。
+    そんなときにどうぞ。
+
+    Storeはアプリケーション内で一つということに変わりはありませんが、Reducerを分割することで、Storeを擬似的に分割できる点がメリットです。</code></pre><h3 id="reactと組み合わせる">Reactと組み合わせる</h3>
+<p>次の機能を持たせます。</p>
+<ul>
+<li>Reactを使って状態の変化をViewに反映する。</li>
+<li>ブラウザからのタスク入力を可能にする。</li>
+</ul>
+<ol>
+<li><p>タスク入力用のActionCreatorの定義</p>
+<pre><code class="language-javascript"> // タスク入力用のActionCreator
+ const inputTask = (task) =&gt; ({
+   type: &quot;INPUT_TASK&quot;,
+   payload: {
+     task
+   }
+ });</code></pre>
+</li>
+</ol>
+<ol start="2">
+<li><p>タスク入力用のActionを受け取りStoreを変更できるように、Reducerを変更する</p>
+<pre><code class="language-javascript"> const initialState = {
+   task: &quot;&quot;,       // ←追加
+   tasks: []
+ };
+
+ function tasksReducer(state = initialState, action) {
+   switch (action.type) {
+     case &#39;INPUT_TASK&#39;:    // INPUT_TASKのCaseを追加
+       return {
+         ...state,
+         task: action.payload.task
+       };
+     case &#39;ADD_TASK&#39;:
+       return {
+         ...state,
+         tasks: state.tasks.concat([action.payload.task])
+       };
+     default:
+       return state;
+   }
+ }</code></pre>
+</li>
+</ol>
+<ol start="3">
+<li><p>Reactコンポーネントの定義を追加する</p>
+<pre><code class="language-javascript"> function TodoApp({ store }) {
+   const { task, tasks } = store.getState();
+   return (
+     &lt;div&gt;
+       &lt;input type=&quot;text&quot; onChange={(e) =&gt; store.dispatch(inputTask(e.target.value))} /&gt;
+       &lt;input type=&quot;button&quot; value=&quot;add&quot; onClick={() =&gt; store.dispatch(addTask(task))} /&gt;
+       &lt;ul&gt;
+         {
+           tasks.map(function(item, i) {
+             return (
+               &lt;li key={i}&gt;{item}&lt;/li&gt;
+             );
+           })
+         }
+       &lt;/ul&gt;
+     &lt;/div&gt;
+   );
+ }</code></pre>
+</li>
+</ol>
+<ol start="4">
+<li><p>Reactコンポーネントを描画する関数の準備</p>
+<p> importを次のように変更する。</p>
+<pre><code class="language-javascript"> import ReactDOM from &#39;react-dom&#39;;</code></pre>
+<p> ↓</p>
+<pre><code class="language-javascript"> import { render } from &#39;react-dom&#39;;</code></pre>
+<p> Viewを描画する関数を追加する。</p>
+<pre><code class="language-javascript"> function renderApp(store) {
+   render(
+     &lt;TodoApp store={store} /&gt;,
+     document.getElementById(&#39;root&#39;)
+   );
+ }</code></pre>
+<p> もともとあった描画の処理は削除する。</p>
+<pre><code class="language-javascript"> ReactDOM.render(&lt;App /&gt;, document.getElementById(&#39;root&#39;));
+ registerServiceWorker();</code></pre>
+</li>
+</ol>
+<ol start="5">
+<li><p>Viewに反映する関数の準備</p>
+<p> Storeの状態変化に応じてViewを変化させる関数を定義します。
+ Storeの<code>subscribe</code>メソッドを使います。</p>
+<pre><code class="language-javascript"> store.subscribe(() =&gt; renderApp(store));</code></pre>
+<p> 上記処理の次に描画する関数の呼び出しを追加する。<br> 初期表示用？</p>
+<pre><code class="language-javascript"> renderApp(store);</code></pre>
+</li>
+</ol>
+<h3 id="indexjsの全体">index.jsの全体</h3>
+<pre><code class="language-javascript">import React from &#39;react&#39;;
+import { render } from &#39;react-dom&#39;;
+import { createStore } from &#39;redux&#39;;
+
+// Note: 使わないのでコメント化 &gt;&gt;&gt;
+// import &#39;./index.css&#39;;
+// import App from &#39;./App&#39;;
+// import registerServiceWorker from &#39;./registerServiceWorker&#39;;
+/// Note: &lt;&lt;&lt; 使わないのでコメント化
+
+const initialState = {
+  task: &quot;&quot;,
+  tasks: []
+};
+
+// Reducerの定義
+// 第1引数は、現在の状態を表すstateオブジェクト
+// 第2引数は、どのような操作をしたのかを示すActionオブジェクト
+function tasksReducer(state = initialState, action) {
+  switch (action.type) {
+    case &#39;INPUT_TASK&#39;:
+      return {
+        ...state,
+        task: action.payload.task
+      };
+    case &#39;ADD_TASK&#39;:
+      return {
+        ...state,
+        tasks: state.tasks.concat([action.payload.task])
+      };
+    default:
+      return state;
+  }
+}
+
+
+// Storeの生成
+const store = createStore(tasksReducer);
+
+// ActionCreatorの定義
+// 追加するtaskを引数に取り、Actionオブジェクトを返す
+const addTask = (task) =&gt; ({
+  type: &#39;ADD_TASK&#39;,
+  payload: {
+    task
+  }
+});
+
+
+// タスク入力用のActionCreator
+const inputTask = (task) =&gt; ({
+  type: &quot;INPUT_TASK&quot;,
+  payload: {
+    task
+  }
+});
+
+
+function TodoApp({ store }) {
+  const { task, tasks } = store.getState();
+  return (
+    &lt;div&gt;
+      &lt;input type=&quot;text&quot; onChange={(e) =&gt; store.dispatch(inputTask(e.target.value))} /&gt;
+      &lt;input type=&quot;button&quot; value=&quot;add&quot; onClick={() =&gt; store.dispatch(addTask(task))} /&gt;
+      &lt;ul&gt;
+        {
+          tasks.map(function(item, i) {
+            return (
+              &lt;li key={i}&gt;{item}&lt;/li&gt;
+            );
+          })
+        }
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}
+
+
+function renderApp(store) {
+  render(
+    &lt;TodoApp store={store} /&gt;,
+    document.getElementById(&#39;root&#39;)
+  );
+}
+
+
+store.subscribe(() =&gt; renderApp(store));
+renderApp(store);</code></pre>
+<h3 id="ファイルを機能ごとに分割する">ファイルを機能ごとに分割する</h3>
+<p>ActionCreator、Store、Reducer、Componentの定義を、1ファイルにまとめて書きました。
+これを役割ごとにファイルを分割したほうが視認性がよくなります。</p>
+<p>次のフォルダ構造でファイルを分割します。</p>
+<pre><code>src/
++---index.js
++---containers/
+|     ... Container Component を置く
++---components/
+|     ... Presentational Component を置く
++---actions/
+|     ... ActionCreator を置く
+`---reducers/
+      ... Reducer を置く</code></pre><ol>
+<li><p>Reducerの定義を<code>src/reducers/tasks.js</code>に移動します。</p>
+<p> function には <code>export default</code> を付けてください。</p>
+<pre><code class="language-javascript"> const initialState = {
+   task: &quot;&quot;,
+   tasks: []
+ };
+
+ // Reducerの定義
+ // 第1引数は、現在の状態を表すstateオブジェクト
+ // 第2引数は、どのような操作をしたのかを示すActionオブジェクト
+ export default function tasksReducer(state = initialState, action) {
+   switch (action.type) {
+     case &#39;INPUT_TASK&#39;:
+       return {
+         ...state,
+         task: action.payload.task
+       };
+     case &#39;ADD_TASK&#39;:
+       return {
+         ...state,
+         tasks: state.tasks.concat([action.payload.task])
+       };
+     default:
+       return state;
+   }
+ }</code></pre>
+</li>
+</ol>
+<ol start="2">
+<li><p>ActionCreatorの定義を <code>src/actions/tasks.js</code> に移動します。</p>
+<p> const に <code>export</code> を付けてください。</p>
+<pre><code class="language-javascript"> // ActionCreatorの定義
+ // 追加するtaskを引数に取り、Actionオブジェクトを返す
+ export const addTask = (task) =&gt; ({
+   type: &#39;ADD_TASK&#39;,
+   payload: {
+     task
+   }
+ });
+
+</code></pre>
+</li>
+</ol>
+<pre><code>// タスク入力用のActionCreator
+export const inputTask = (task) =&gt; ({
+  type: &quot;INPUT_TASK&quot;,
+  payload: {
+    task
+  }
+});
+~~~</code></pre><ol start="3">
+<li><p>Componentの定義を <code>src/components/TodoApp.js</code> に移動します。</p>
+<p> componentsからActionをDispatchするため、先ほど移動したActionCreatorのファイルをインポートします。</p>
+<p> （<code>import { inputTask, addTask } from &#39;../actions/tasks&#39;;</code> の部分）</p>
+<p> 関数には <code>export default</code> を付けてください。</p>
+<pre><code class="language-javascript"> import React from &#39;react&#39;;
+ import { inputTask, addTask } from &#39;../actions/tasks&#39;;
+
+ export default function TodoApp({ store }) {
+   const { task, tasks } = store.getState();
+   return (
+     &lt;div&gt;
+       &lt;input type=&quot;text&quot; onChange={(e) =&gt; store.dispatch(inputTask(e.target.value))} /&gt;
+       &lt;input type=&quot;button&quot; value=&quot;add&quot; onClick={() =&gt; store.dispatch(addTask(task))} /&gt;
+       &lt;ul&gt;
+         {
+           tasks.map(function(item, i) {
+             return (
+               &lt;li key={i}&gt;{item}&lt;/li&gt;
+             );
+           })
+         }
+       &lt;/ul&gt;
+     &lt;/div&gt;
+   );
+ }</code></pre>
+</li>
+</ol>
+<ol start="4">
+<li><p><code>src\index.js</code> は、分割したファイルをインポートするように変更します。</p>
+<pre><code class="language-javascript"> import React from &#39;react&#39;;
+ import { render } from &#39;react-dom&#39;;
+ import tasksReducer from &#39;./reducers/tasks&#39;;    // Reducerのインポート
+ import TodoApp from &#39;./components/TodoApp&#39;;     // Componentのインポート
+ import { createStore } from &#39;redux&#39;;
+
+ // Note: 使わないのでコメント化 &gt;&gt;&gt;
+ // import &#39;./index.css&#39;;
+ // import App from &#39;./App&#39;;
+ // import registerServiceWorker from &#39;./registerServiceWorker&#39;;
+ /// Note: &lt;&lt;&lt; 使わないのでコメント化
+
+ // Storeの生成
+ const store = createStore(tasksReducer);
+
+ function renderApp(store) {
+   render(
+     &lt;TodoApp store={store} /&gt;,
+     document.getElementById(&#39;root&#39;)
+   );
+ }
+
+ store.subscribe(() =&gt; renderApp(store));
+ renderApp(store);</code></pre>
+</li>
+</ol>
+<!-- TODO: p.108 「最終的な」と書いておきつつ、サンプルコードに最後の2行がない。 -->
+
+
+<h3 id="react-redux">react-redux</h3>
+<p><code>react-redux</code>は、ReactとReduxの連携をサポートするライブラリです。
+Storeの状態変化に応じて該当部分のViewを再描画するのを手助けしてくれます。</p>
+<h3 id="react-reduxのインストール">react-reduxのインストール</h3>
+<pre><code>&gt; npm install --save react-redux</code></pre><!-- TODO: p109 `-save`になっている。半角ハイフンがひとつ足りない。 -->
+
+
+<p>ReactはViewを扱うライブラリなので、Reduxが有するStoreやActionの情報と疎結合になっていることが望ましい。
+そのほうがコンポーネント単体としてもテストしやすいし、コードの可読性も上がります。</p>
+<p>Container Component
+:   Reactコンポーネントをラップしたコンポーネント。</p>
+<pre><code>ReduxのStoreやActionを受け取り、ReactのPropsとして渡す役を担います。
+Container Componentの責務は、ReactとReduxの橋渡しのみなので、JSXを記述するのは誤りです。</code></pre><p>Presentational Component
+:   Redux依存のない純粋なReactコンポーネント。</p>
+<h3 id="react-reduxの機能">react-reduxの機能</h3>
+<p>次の2つの機能があります。</p>
+<ul>
+<li>&lt;Provider&gt;</li>
+<li>connect</li>
+</ul>
+<h4 id="provider-store">&lt;Provider store&gt;</h4>
+<p>dispatchはStoreが持つメソッドなので、ReactコンポーネントからActionをdispatchさせるにはStoreが必要になります。
+dispatchしたいコンポーネントすべてに対し、Storeを最上位から渡していくのは得策ではありません。</p>
+<p>&lt;Provider&gt;を使うことで<code>connect</code>という関数を使えるようになり、任意のコンポーネントに対してStoreとの紐付けができるようになります。</p>
+<pre><code class="language-javascript">// 最上位のコンポーネントを&lt;Provider&gt;でラップして、propsにStoreを与える
+// （内部的にはReactのcontext経由でStoreを保持する仕組み）
+ReactDOM.render(
+  &lt;Provider store={store}&gt;
+    &lt;MyRootComponent /&gt;
+  &lt;/Provider&gt;,
+  document.getElementById(&#39;root&#39;)
+);</code></pre>
+<h4 id="connectmapstatetoprops-mapdispatchtoprops-mergeprops-options">connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])</h4>
+<p>特定のComponentに対して、Reactのcontextで保持しているStoreを提供します。
+Storeさえあれば<code>getState</code>で状態が取得できますし、Actionの<code>dispatch</code>もできます。</p>
+<p>引数</p>
+<p>mapStateToProps(state, [ownProps])
+:   Storeから必要なstateを取り出し、ComponentのPropsに割り当てる関数を指定します。</p>
+<pre><code>第1引数はStoreのstate。
+複数のReducerを組み合わせている場合は、必要な部分のstateのみ取り出して返すようにすれば、不要なコンポーネントを渡さずに済みます。
+
+第2引数はオプションで、親コンポーネントから引き継がれてきたPropsが格納されています（下記の例では未使用）。
+
+~~~javascript
+function mapStateToProps({ task, tasks }) {
+  return {
+    task,
+    tasks,
+  };
+}
+~~~
+
+戻り値のオブジェクトは、connect先のComponentのPropsとして受け取ることができます。</code></pre><p>mapDispatchToProps(dispatch, [ownProps])
+:   Actionのdispatchを行う処理を指定します。そうすることでコンポーネントからdispatchの概念を隠蔽します。</p>
+<pre><code>第1引数に、Storeのdispatchメソッドが渡されてくるので、これを使ってActionをdispatchします。
+
+~~~javascript
+// ActionCreator
+const addTask = (task) =&gt; ({
+  type: &quot;ADD_TASK&quot;,
+  payload: {
+    task
+  }
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addTask(task) {
+      dispatch(addTask(task));
+    }
+  };
+}
+~~~
+
+&lt;!-- TODO: p.112 dispatch(addTask(task});　← } ではなく ) では？ --&gt;</code></pre><p>mergeProps(stateProps, dispatchProps, ownProps)
+:   <code>mapStateToProps</code>と<code>mapDispatchToProps</code>を経たそれぞれのPropsと、親から渡ってきた<code>ownProps</code>をマージして、コンポーネントに渡します。</p>
+<pre><code>既定では、以下のように、`Object.assign`関数を使って単純に3つをマージしたものを返す処理が設定されています。
+
+~~~javascript
+function mergeProps(stateProps, dispatchProps, ownProps) {
+  return Object.assign({}, ownProps, stateProps, dispatchProps);
+}
+~~~</code></pre><p>options
+:   オプションとして次の項目を設定できます。</p>
+<pre><code>pure - Boolean
+:   規定値はtrueです。trueの場合、関連するState/Propsに変化がなければ、connectは再描画および`mapStateToProps`/`mapDispatchToProps`/`mergeProp`を呼び出しません。</code></pre><!-- TODO: p.114 mapStateToPrupsになっている。Propsでは？ -->
+
+<pre><code>areStateEqual - Function
+:   `pure`がtrueの場合、Storeの中身の差分判定をどのようにするか指定します。
+    規定値は、strictEqual（===）です。
+
+areOwnPropsEqual - Function
+:   pureがtrueの場合、OwnPropの中身の差分判定をどのようにするか指定します。
+    規定値は、shallowEqual（==）です。
+
+areStatePropsEqual - Function
+:   pureがtrueの場合、mapStateToPropsの結果の差分判定をどのようにするか指定します。
+    規定値は、shallowEqual（==）です。
+
+areMergedPropsEqual - Function
+:   pureがtrueの場合、mergePropsの結果の差分判定をどのようにするか指定します。
+    規定値は、shallowEqual（==）です。
+
+storeKey - String
+:   もし何らかの理由でStoreを複数用意したいときに指定します。
+
+    通常であれば不要。</code></pre><h3 id="react-reduxの組み込み">react-reduxの組み込み</h3>
+<h4 id="container-componentの作成">Container Componentの作成</h4>
+<p>ファイル<code>src\containers\TodoApp.js</code>を作ります。</p>
+<p>これにより TodoApp コンポーネントには Prop として次の4つが渡されるようになります。</p>
+<ul>
+<li>task - フォームに入力されたタスク</li>
+<li>tasks - タスクの配列</li>
+<li>addTask - タスクを追加する関数</li>
+<li>inputTask - タスクを入力する関数</li>
+</ul>
+<pre><code class="language-javascript">import { connect } from &#39;react-redux&#39;;
+import TodoApp from &#39;../components/TodoApp&#39;;
+import { inputTask, addTask } from &#39;../actions/tasks&#39;;
+
+// Storeにある task と tasks という State を Props に渡す
+function mapStateToProps({ task, tasks }) {
+  return {
+    task,
+    tasks
+  };
+}
+
+// 該当のActionをDispatchさせる関数を Props に渡す
+function mapDispatchToProps(dispatch) {
+  return {
+    addTask(task) {
+      dispatch(addTask(task));
+    },
+    inputTask(task) {
+      dispatch(inputTask(task))
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);</code></pre>
+<h4 id="todoappコンポーネントの修正">TodoAppコンポーネントの修正</h4>
+<p><code>src/components/TodoApp.js</code></p>
+<p>変更前
+:   StoreがPropsに渡ってきて、そこからStateを取得。</p>
+<p>変更後
+:   containersから整形されたオブジェクトがPropsとして渡されてきます。
+    ActionCreatorやActionのDispatchもcontainers側でやるので、コンポーネント側はPropsで渡ってきたinputTaskとaddTaskを呼び出すだけになります。</p>
+<pre><code>これにより、コンポーネントのRedux依存が消え、再利用性も高まりました。</code></pre><pre><code class="language-javascript">import React from &#39;react&#39;;
+
+// 引数を store から変更
+export default function TodoApp({ task, tasks, inputTask, addTask }) {
+  // onChange、onClickの指定時にdispatchが不要になる
+  return (
+    &lt;div&gt;
+      &lt;input type=&quot;text&quot; onChange={(e) =&gt; inputTask(e.target.value)} /&gt;
+      &lt;input type=&quot;button&quot; value=&quot;add&quot; onClick={() =&gt; addTask(task)} /&gt;
+      &lt;ul&gt;
+        {
+          tasks.map(function(item, i) {
+            return (
+              &lt;li key={i}&gt;{item}&lt;/li&gt;
+            );
+          })
+        }
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+<h4 id="indexjsの修正">index.jsの修正</h4>
+<ul>
+<li>Providerのimportを追加</li>
+<li>TodoAppのimportをcomponentsではなくcontainersにする</li>
+<li>Storeのsubscribeでコンポーネントの再描画を行っていた処理を削除する</li>
+<li>function renderApp の処理を外に出す（render()をfunctionではなくする）</li>
+</ul>
+<pre><code class="language-javascript">import React from &#39;react&#39;;
+import { Provider } from &#39;react-redux&#39;;
+import { createStore } from &#39;redux&#39;;
+import { render } from &#39;react-dom&#39;;
+import tasksReducer from &#39;./reducers/tasks&#39;;
+import TodoApp from &#39;./containers/TodoApp&#39;;
+
+// Note: 使わないのでコメント化 &gt;&gt;&gt;
+// import &#39;./index.css&#39;;
+// import App from &#39;./App&#39;;
+// import registerServiceWorker from &#39;./registerServiceWorker&#39;;
+/// Note: &lt;&lt;&lt; 使わないのでコメント化
+
+// Storeの生成
+const store = createStore(tasksReducer);
+
+// &lt;Provider&gt;を追加
+render(
+  &lt;Provider store={store}&gt;
+    &lt;TodoApp /&gt;
+  &lt;/Provider&gt;,
+  document.getElementById(&#39;root&#39;)
+);</code></pre>
+<h4 id="connectadvanced">connectAdvanced</h4>
+<p>通常の<code>connect</code>よりも自由度を高くpropsの受け渡しをしたい場合、<code>connectAdvanced</code>を使うことができます。</p>
+<p><code>mapStateToProps</code>や<code>mapDispatchToProps</code>、<code>mergeProps</code>のあたりの処理を自前で行うイメージです。</p>
+<pre><code class="language-javascript">connectAdvanced(selectorFactory, [connectOptions])</code></pre>
+<p>これらについては必要なときに調べるとしましょう。</p>
+<h2 id="ルーティング">ルーティング</h2>
+<p>ユーザーからの入力をもとに表示させるページを出し分けることをルーティングといいます。</p>
+<p>実装の方法は、どのページにいるのかという情報（URL）をStoreで保持し、変化があった場合にViewを差し替えるようにします。</p>
+<h3 id="実装パターン">実装パターン</h3>
+<p>URL遷移なし
+:   URLを使わずにアプリの内部で状態を保持する方法。</p>
+<pre><code>たとえば、Storeにpageというプロパティを用意し、ここでいまどのページにいるのかを管理します。
+ですが、画面のリロードによって状態が元に戻ってしまうため現実的ではありません。</code></pre><p>URL Hash
+:   URL Hash（<code>#</code>)を使ってクライアントサイドのルーティングを実現する方法です。</p>
+<pre><code>aタグによるページ内移動と同じ仕組みなので、サーバーにリクエストは投げられません。
+
+Hashは`location.hash`で取得できます。
+hashが変更されたときに発火する`hashchange`イベントをハンドリングしてコンポーネントを描画します。</code></pre><p>history API
+:   ブラウザの履歴情報を操作するAPI（history API）を使った方法です。</p>
+<pre><code>- `pushState`で履歴を追加できます。このとき、サーバーにリクエストは飛びません。
+- 画面をリロードされたときは、その時点のURLにリクエストが投げられます。そのため、URLに該当するリソースがないと404エラーになってしまいます。
+- 404エラーに対応するため、サーバーサイトで常にSPAの基点となるべきテンプレートを返すようにします。
+- `webpack-dev-server`を使っているときは、History API Fallback機能を使うとWebサーバーが返すリソースがない場合、自動で index.html を返してくれます。
+- Reduxのconnectを使っている場合は`connect-history-api-fallback`というミドルウェアを使います。</code></pre><h3 id="ルーティングライブラリ">ルーティングライブラリ</h3>
+<p>React Router V4
+:   メジャーなルーティングライブラリ。react-nativeを使ったアプリ開発でも使うことができます。</p>
+<pre><code>Webアプリでは`react-router-dom`パッケージを使います。</code></pre><h4 id="インストール">インストール</h4>
+<pre><code>&gt; npm install --save react-router-dom</code></pre><p>react-router-redux
+:   react-routerをReduxに最適化したもの。</p>
+<pre><code>- react-routerのみでは、URLの変更を`&lt;Link&gt;`や`&lt;Redirect&gt;`経由でしかできません。
+- react-router-reduxでは、ルーティング情報をStoreのStateで管理しつつ、pushやreplaceといったAPIを使ってURLを変更できます。</code></pre><h4 id="インストール-1">インストール</h4>
+<p>react-routerも動作に必要です。react-router-domパッケージも一緒にインストールします。</p>
+<p>Note:
+:   react-router 4.x を使う場合、react-router-redux 5.x が必要です。
+    react-router-reduxに〝@next〟をつけてインストールします。</p>
+<pre><code>[react-router-redux - Installation](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux#installation) より。</code></pre><pre><code>&gt; npm install --save react-router-dom react-router-redux@next history</code></pre><h4 id="特徴">特徴</h4>
+<ul>
+<li>react-routerのAPIはそのまま利用できます。</li>
+<li>react-router-reduxがやっていることは、historyオブジェクトを強化し、その変更をStoreのStateに常に同期することです。</li>
+</ul>
+<h4 id="導入方法">導入方法</h4>
+<p>Storeの生成処理が複雑なので別ファイルとして切り出します。
+その中にStoreを生成する関数を定義します。</p>
+<p><code>src/store/index.js</code>というファイルを作成します。</p>
+<pre><code class="language-javascript">import {
+  // 名前が被るので別名でインポートする
+  createStore as reduxCreateStore,
+  combineReducers,
+  applyMiddleware
+} from &#39;redux&#39;;
+import { routerReducer, routerMiddleware } from &#39;react-router-redux&#39;;
+import tasksReducer from &#39;../reducers/tasks&#39;;
+
+// Storeを生成するための関数を定義
+// historyはsrc/index.jsからもらう
+export default function createStore(history) {
+  return reduxCreateStore(
+    combineReducers({
+      // tasksReducersをtasksというキーに割り当てる
+      tasks: tasksReducer,
+      // react-router-reduxのReducer
+      router: routerReducer
+    }),
+    applyMiddleware(
+      // react-router-reduxのRedux Middleware
+      routerMiddleware(history)
+    )
+  );
+}</code></pre>
+<ul>
+<li>react-router-reduxは<code>routerReducer</code>というルーティングのためのReducerを持っています。</li>
+<li>自前のReducerと一緒に使うために、combineReducerを使ってReducerを合成します。</li>
+<li>react-router-reduxはルーティングのための<code>routerMiddleware</code>というMiddlewareも提供しています。
+このMiddlewareにより、ReduxのAction経由でルーティングを制御できるようになります。</li>
+<li><code>applyMiddleware</code>を使って、<code>routerMiddleware</code>を適用します。</li>
+</ul>
+<p>Storeの生成</p>
+<p><code>src/index.js</code>を変更します。</p>
+<ul>
+<li><code>import { createStore } from &#39;redux&#39;;</code>を消す。</li>
+<li><code>import tasksReducer from &#39;./reducers/tasks&#39;;</code> を消す。</li>
+<li><code>react-router-redux</code>と<code>history</code>、<code>src/store/index.js</code>のインポートを追加。</li>
+<li>historyのインスタンス生成を追加。</li>
+<li><ConnectedRouter>にhistoryを渡す処理を追加。</li>
+<li>createStoreの引数を<code>tasksReducer</code>から<code>history</code>に変更。</li>
+</ul>
+<pre><code class="language-javascript">import React from &#39;react&#39;;
+import { Provider } from &#39;react-redux&#39;;
+import { render } from &#39;react-dom&#39;;
+import { ConnectedRouter } from &#39;react-router-redux&#39;;             // 追加
+import createBrowserHistory from &#39;history/createBrowserHistory&#39;;  // 追加
+import TodoApp from &#39;./containers/TodoApp&#39;;
+import createStore from &#39;./store&#39;;                                // 追加
+
+// Note: 使わないのでコメント化 &gt;&gt;&gt;
+// import &#39;./index.css&#39;;
+// import App from &#39;./App&#39;;
+// import registerServiceWorker from &#39;./registerServiceWorker&#39;;
+/// Note: &lt;&lt;&lt; 使わないのでコメント化
+
+// history のインスタンスを生成
+const history = createBrowserHistory();
+
+// Storeの生成
+const store = createStore(history);
+
+// &lt;ConnectedRouter&gt;を追加
+render(
+  &lt;Provider store={store}&gt;
+    &lt;ConnectedRouter history={history}&gt;
+      &lt;TodoApp /&gt;
+    &lt;/ConnectedRouter&gt;
+  &lt;/Provider&gt;,
+  document.getElementById(&#39;root&#39;)
+);</code></pre>
+<p><code>src/store/index.js</code>でReducerの合成をしたため、Reducerの構成が変更になっています。</p>
+<p>Storeの構成</p>
+<p>↓</p>
+<pre><code class="language-javascript">{
+  tasks: {
+    task: &quot;&quot;,
+    tasks: []
+  },
+  router: {
+    location: {
+      // ルーティング情報
+    }
+  }
+}</code></pre>
+<p>そのため、<code>src/containers/TodoApp.js</code>の<code>mapStateToProps</code>も変更する必要があります。</p>
+<pre><code class="language-javascript">function mapStateToProps({ tasks }) {
+  return {
+    task: tasks.task,
+    tasks: tasks.tasks
+  };
+}</code></pre>
+<h4 id="action経由によるルーティング">Action経由によるルーティング</h4>
+<p><code>routerMiddleware</code>を適用することで、Action経由でルーティングをすることができます。</p>
+<p><code>react-router-redux</code>が用意している次のようなActionCreatorを用いたルーティングができるようになります。</p>
+<p>push
+:   履歴に新しいlocationを追加します。</p>
+<p>replace
+:   現在の履歴を新しいlocationに置き換えます。</p>
+<p>go
+:   相対値（1 や -2 など）を指定して、履歴を移動します。</p>
+<p>goForward
+:   履歴を1つ進めます。</p>
+<p>goBack
+:   履歴を1つ戻ります。</p>
+<h4 id="ボタンを押すとエラーページに移動するサンプル">ボタンを押すとエラーページに移動するサンプル</h4>
+<p><code>src/components/Error.js</code>ファイルを作成します。</p>
+<pre><code class="language-javascript">import React from &#39;react&#39;;
+import { Link } from &#39;react-router-dom&#39;;
+
+export default function Error() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;エラーページ&lt;/h1&gt;
+      &lt;Link to=&quot;/&quot;&gt;戻る&lt;/Link&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+<p><code>src/index.js</code>を変更して、エラーページに移動できるようにします。</p>
+<pre><code class="language-javascript">import React from &#39;react&#39;;
+import { render } from &#39;react-dom&#39;;
+import { Route } from &#39;react-router-dom&#39;;     // 追加
+import { Provider } from &#39;react-redux&#39;;
+import { ConnectedRouter } from &#39;react-router-redux&#39;;
+import createBrowserHistory from &#39;history/createBrowserHistory&#39;;
+import TodoApp from &#39;./containers/TodoApp&#39;;
+import Error from &#39;./components/Error&#39;;       // 追加
+import createStore from &#39;./store&#39;;
+
+// Note: 使わないのでコメント化 &gt;&gt;&gt;
+// import &#39;./index.css&#39;;
+// import App from &#39;./App&#39;;
+// import registerServiceWorker from &#39;./registerServiceWorker&#39;;
+/// Note: &lt;&lt;&lt; 使わないのでコメント化
+
+// history のインスタンスを生成
+const history = createBrowserHistory();
+
+// Storeの生成
+const store = createStore(history);
+
+// &lt;ConnectedRouter&gt;を追加
+render(
+  &lt;Provider store={store}&gt;
+    &lt;ConnectedRouter history={history}&gt;
+      &lt;div&gt;
+        { /* ルーティングさせる */ }
+        &lt;Route exact path=&quot;/&quot; component={TodoApp} /&gt;
+        &lt;Route exact path=&quot;/error&quot; component={Error} /&gt;
+      &lt;/div&gt;
+    &lt;/ConnectedRouter&gt;
+  &lt;/Provider&gt;,
+  document.getElementById(&#39;root&#39;)
+);</code></pre>
+<p><code>react-router-dom</code>のRouteコンポーネントを使ってルーティングを用意しています。</p>
+<p><code>/</code> であれば、Todoアプリを表示。
+<code>/error</code>であれば、エラーページを表示。</p>
+<p><code>src/containers/TodoApp.js</code>にエラーページにリダイレクトさせる処理を追加します。</p>
+<pre><code class="language-javascript">import { connect } from &#39;react-redux&#39;;
+import { push } from &#39;react-router-redux&#39;;    // 追加
+import TodoApp from &#39;../components/TodoApp&#39;;
+import { inputTask, addTask } from &#39;../actions/tasks&#39;;
+
+// Storeにある task と tasks という State を Props に渡す
+function mapStateToProps({ tasks }) {
+  return {
+    task: tasks.task,
+    tasks: tasks.tasks
+  };
+}
+
+// 該当のActionをDispatchさせる関数を Props に渡す
+function mapDispatchToProps(dispatch) {
+  return {
+    addTask(task) {
+      dispatch(addTask(task));
+    },
+    inputTask(task) {
+      dispatch(inputTask(task))
+    },
+    // リダイレクト処理を追加
+    // react-router-reduxが提供しているpushというActionCreatorを使う
+    redirectToError() {
+      dispatch(push(&#39;/error&#39;));
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);</code></pre>
+<p>リダイレクトする処理を呼び出せるように、<code>src/components/TodoApp.js</code>を変更します。</p>
+<pre><code class="language-javascript">import React from &#39;react&#39;;
+
+// 引数に redirectToError を追加
+export default function TodoApp({ task, tasks, inputTask, addTask, redirectToError }) {
+  return (
+    &lt;div&gt;
+      &lt;input type=&quot;text&quot; onChange={(e) =&gt; inputTask(e.target.value)} /&gt;
+      &lt;input type=&quot;button&quot; value=&quot;add&quot; onClick={() =&gt; addTask(task)} /&gt;
+      &lt;ul&gt;
+        {
+          tasks.map(function(item, i) {
+            return (
+              &lt;li key={i}&gt;{item}&lt;/li&gt;
+            );
+          })
+        }
+      &lt;/ul&gt;
+      { /* 追加 */ }
+      &lt;button onClick={() =&gt; redirectToError()}&gt;エラーページへ移動&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+<h2 id="redux-middleware">Redux Middleware</h2>
+<p>Redux Middleware とは、Reduxの機能を拡張する仕組みです。</p>
+<p>Middleware ＝ 拡張機能</p>
+<p>Redux自体は軽量なアーキテクチャなので、単体では提供していない機能もある。</p>
+<ul>
+<li>Actionのログを取るミドルウェア</li>
+<li>非同期処理を可能にするミドルウェア</li>
+<li>クラッシュレポートを送信するためのミドルウェア</li>
+<li>ルーティングのためのミドルウェア</li>
+<li>etc...</li>
+</ul>
+<h3 id="actionのログを取るミドルウェア">Actionのログを取るミドルウェア</h3>
+<p><code>redux-logger</code>はActionがDispatchされる前後のstateと、DispatchされたActionをコンソールに表示します。
+開発時に有用なミドルウェアなのでインストールしたほうがよいでしょう。</p>
+<h4 id="インストール-2">インストール</h4>
+<pre><code>&gt; npm install --save redux-logger</code></pre><!-- TODO: p.143 install が insta'l になっている -->
+
+
+<h4 id="ミドルウェアの適用">ミドルウェアの適用</h4>
+<p>Reduxにミドルウェアを適用するには、<code>applyMiddleware</code>関数を利用します。</p>
+<pre><code class="language-javascript">// ミドルウェアの適用に必要な applyMiddleware 関数をインポートします
+import { createStore, applyMiddleware } from &#39;redux&#39;;
+
+// ミドルウェアをインポートします
+import logger from &#39;redux-logger&#39;;
+
+// createStoreの第2引数に applyMiddleware を指定し、その引数にミドルウェアを指定します
+const store = createStore(
+  reducer,
+  applyMiddleware(logger)
+);</code></pre>
+<p><code>applyMiddleware</code>の引数は可変数なので、複数のミドルウェアを指定するときは、以下のようにカンマ区切りで並べて指定します。</p>
+<pre><code class="language-javascript">applyMiddleware(middleware1, middleware2, middleware3)</code></pre>
+<h2 id="非同期処理">非同期処理</h2>
+<h3 id="同期処理と非同期処理">同期処理と非同期処理</h3>
+<p>同期処理
+:   書いた順に実行される処理</p>
+<pre><code>~~~Javascript
+console.log(&quot;start&quot;);
+console.log(1 + 1);
+console.log(&quot;end&quot;);
+~~~</code></pre><p>非同期処理
+:   必ずしも書いた順には実行されない処理</p>
+<pre><code>~~~javascript
+console.log(&quot;start&quot;);
+setTimeout(function () {
+  console.log(1 + 1);
+}, 1000);
+console.log(&quot;end&quot;);
+~~~
+
+非同期処理のあとに任意の処理を実行する方法として、コールバック関数やPromise、Async/Awaitなどがあります。</code></pre><h3 id="redux-thunkによる非同期処理">redux-thunkによる非同期処理</h3>
+<p>ReduxではAPIから何かレスポンスが返ってきたら、これをActionとして扱うという作法があります。
+これを通常のActionCreatorで記述しようとすると、実はうまく書けません。</p>
+<pre><code class="language-javascript">const requestAPI = (parameter) =&gt; {
+  const response = 
+    fetch(&#39;APIのURL&#39;, parameter).then((response) =&gt; {
+      // ここで返してもうまく動かない
+      return {
+        type: &quot;REQUEST_API&quot;,
+        data: response
+      };
+    });
+};</code></pre>
+<p>Action自体は単なるオブジェクトです。これをstore.dispatch()に与えることでActionが実行されます。
+どうにかしてdispatch関数をコード中で使いたい。というときにこのミドルウェアの出番です。</p>
+<h3 id="thunk-ミドルウェア">thunk ミドルウェア</h3>
+<p>Reduxで非同期処理をする代表的なミドルウェア。</p>
+<pre><code>&gt; npm install --save redux-thunk</code></pre><p>インストールできたらミドルウェアを適用します。</p>
+<pre><code class="language-javascript">import { createStore, applyMiddleware } from &#39;redux&#39;;
+import logger from &#39;redux-logger&#39;;
+import thunk from &#39;redux-thunk&#39;;
+import reducers from &#39;./reducers&#39;;
+
+const middlewares = [logger, thunk];
+
+const store = createStore(
+  reducers,
+  applyMiddleware(...middlewares)
+);
+
+export default store;</code></pre>
+<h3 id="非同期アクション">非同期アクション</h3>
+<p>thunkミドルウェアの適用により、非同期で実行されるActionを書けるようになりました。</p>
+<p>次のコードサンプルで使っているshortidパッケージはユニークなIDを自動で生成してくれるものです。
+インストールは <code>npm install --save shortid</code> でできます。</p>
+<pre><code class="language-javascript">import shortid from &#39;shortid&#39;;
+
+import * as types from &#39;../types/todo&#39;;
+
+// 同期 ActionCreator
+export function addTodo(title) {
+  return {
+    type: types.ADD_TODO,
+    payload: {
+      id: shortid.generate(),
+      title
+    },
+  };
+}
+
+// 非同期 ActionCreator
+export function asyncAddTodo(title) {
+  return (dispatch, getState) =&gt; {
+    setTimeout(() =&gt; {
+      dispatch(addTodo(title));
+    }, 1000);
+  };
+}</code></pre>
+<p>同期 ActionCreator はActionオブジェクトを返しています。</p>
+<p>非同期 ActionCreator は関数を返しています。
+thunkミドルウェアにより、通常のActionオブジェクト以外に関数を返せるようになります。
+ここで返した関数は、引数としてdispatch関数とgetState関数を取ります。</p>
+<p>dispatch関数はActionオブジェクトを受け取りさえすれば、同期的にreducerに処理を移します。</p>
+<p>dispatch関数にさらに関数を渡すこともできます。このときも関数の引数としてdispatch関数とgetState関数を取ります。</p>
+<p>ポイント
+:   Reduxアプリでは、最終的にdispatch関数にActionオブジェクトを渡せばreducerに処理が移るという原則がある。</p>
+<h3 id="thunk-と-promise、asyncawait">thunk と Promise、Async/Await</h3>
+<p>Promise
+:<br>    <del>~</del>javascript
+    const sleep1000ms = () =&gt; {
+      return new Promise(resolve =&gt; {
+        setTimeout(() =&gt; {
+          resolve();
+        }, 1000);
+      });
+    };</p>
+<pre><code>export function addTodo(title) {
+  return {
+    type: types.ADD_TODO,
+    payload: {
+      id: shortid.generate(),
+      title,
+    },
+  };
+}
+
+// Promise 版
+export function asyncAddTodo(title) {
+  return (dispatch) =&gt; {
+    sleep1000ms().then(() =&gt; {
+      dispatch(addTodo(title));
+    });
+  };
+}
+~~~</code></pre><p>Async/Await
+:<br>    <del>~</del>javascript
+    const sleep1000ms = () =&gt; {
+      ... 上記サンプルと同じ
+    };</p>
+<pre><code>export function addTodo(title) {
+  ... 上記サンプルと同じ
+}
+
+// Async/Await 版
+export function asyncAddTodo(title) {
+  return async(dispatch) =&gt; {
+    await sleep1000ms();
+    dispatch(addTodo(title));
+  };
+}
+~~~</code></pre><h3 id="複数のアクションをまとめる">複数のアクションをまとめる</h3>
+<p>通常のActionCreatorでは、1つの関数では1つのActionしか返せませんでした。
+thunkはこれらを1つにまとめたActionとして返すことができます。</p>
+<pre><code class="language-javascript">function addTodo(title) {
+  return {
+    type: types.ADD_TODO,
+    payload: {
+      id: shortid.generate(),
+      title,
+    },
+  };
+}
+
+function updateInput(value) {
+  return {
+    type: types.UPDATE_INPUT,
+    payload: {
+      value,
+    },
+  };
+}
+
+// 上の2つのActionを1つにまとめる
+// これをReactコンポーネントにバインドする
+export function addTodoAndClear(title) {
+  return (dispatch) =&gt; {
+    dispatch(addTodo(title));
+    dispatch(updateInput(&#39;&#39;));
+  };
+}</code></pre>
+<p>1つの操作で複数の処理を行うときのアプローチとして、以下が考えられます。</p>
+<ul>
+<li>ActionCreatorでまとめる。</li>
+<li>1つのActionとして記述し、reducerで2つの操作を行う。</li>
+<li>複数のActionをReactコンポーネントのボタンにバインドする。</li>
+</ul>
+<p>ActionCreatorでまとめるのがベターな方法です。
+理由は次の2つです。</p>
+<ol>
+<li><p>それぞれのActionの処理を独立して考えられる。</p>
+<p> サンプルコードの場合、TODOを追加することと、フォームをクリアすることに直接の関係はありません。
+ TODOをコピーするときなどフォームを使わずにTODOを追加する方法を増やすときは、addTodo関数については再利用ができそうです。</p>
+</li>
+<li><p>ActionCreatorをユーザー操作とひも付けられる。</p>
+<p> ActionCreatorはContainerコンポーネントからpropsとしてUI要素を持つプレゼンテーショナルコンポーネントに渡されるはずです。
+ このとき、プレゼンテーショナルコンポーネントは「このボタンを押すと何が起きるかはわからないが、渡された関数を叩けばよい」というように作られているべきです。</p>
+<p> ボタンを押したら「TODOを追加する関数を叩く」のと「フォームをクリアする関数を叩く」ことをプレゼンテーショナルコンポーネントに書いてしまうと、コンポーネントはビジネスロジックや仕様を反映し、汎用性を失ってしまいます。</p>
+</li>
+</ol>
+<h3 id="getstate関数">getState関数</h3>
+<p>getState関数はstoreが持つ関数と同一で、すべてのstateを返します。
+ActionCreator内でstoreの内容を知ることで、できることが広がります。</p>
+<p>たとえば、登録済みのTODOは追加しないようにする。など。</p>
+<pre><code class="language-javascript">export function addUniqueTodo(title) {
+  return (dispatch, getState) =&gt; {
+    const {
+      todo: {
+        todos,
+      },
+    } = getState();
+
+    // stateに保存されたTodoに同一のタイトルがあったら登録済み
+    const isDuplicated = todos.some(todo =&gt; todo.title === title);
+
+    if (isDuplicated) {
+      return;
+    }
+    dispatch(addTodo(title));
+  };
+}</code></pre>
+<p>この処理はReducerでもできますが、ActionCreatorで処理すると次のメリットがあります。</p>
+<ol>
+<li><p>すべてのstateを参照できる</p>
+<p> 分割されたReducerは、ほかのReducerが持っているstateを参照することができません。
+ ほかのReducerが持っているstateを使ってActionの動作を振り分けたいときは、ActionCreatorでgetStateするのがよいでしょう。</p>
+</li>
+<li><p>Action、Reducerの処理を簡潔にできる</p>
+<p> 〝ActionをどうDispatchするか〟の部分をActionCreatorとして切り出しておくことで、アクションとそれに対応するReducerの処理を簡潔にできます。</p>
+</li>
+</ol>
+<h2 id="uiをきれいにする">UIをきれいにする</h2>
+<h3 id="style属性を使う方法">style属性を使う方法</h3>
+<p>※style属性を使っての指定は非推奨です。</p>
+<ul>
+<li><p>JSXのstyle属性を使って、直接スタイルを適用できる。</p>
+</li>
+<li><p>オブジェクトのキーにCSSプロパティをキャメルケースで指定、オブジェクトの値にCSSの値を指定します。</p>
+</li>
+<li><p>値にNumber型を指定したときは自動でpxが追加されます。px以外の単位を指定するときは、単位付きの値を文字列で指定します。</p>
+<pre><code class="language-javascript">  // font-size: 20px
+  &lt;div style={{ fontSize: 20 }}&gt;
+    Hello World
+  &lt;/div&gt;
+
+  // font-size: 2em
+  &lt;div style={{ fontSize: &quot;2em&quot; }}&gt;
+    Hello World
+  &lt;/div&gt;</code></pre>
+</li>
+<li><p>ベンダープレフィクスは自動で付与されません。自分で指定する必要があります。</p>
+<pre><code class="language-javascript">  const style = {
+    // ベンダープレフィクス付きのスタイル
+    WebkitTransition: &quot;all&quot;,
+    // 通常のスタイル
+    transition: &quot;all&quot;
+  };
+
+  const HelloWorldComponent = () =&gt; {
+    return &lt;div style={ style }&gt;Hello World&lt;/div&gt;
+  }</code></pre>
+</li>
+</ul>
+<h3 id="classname属性を使う方法">className属性を使う方法</h3>
+<p>JSXのclassName属性を使って、CSSクラスの指定ができます。className属性に指定した内容が、HTMLのclass属性となります。</p>
+<pre><code class="language-javascript">const Button = () =&gt; {
+  return &lt;button className=&quot;normal-button&quot;&gt;追加&lt;/button&gt;
+}</code></pre>
+<!-- TODO: p.169 リスト9.4　<button>要素で始まっているのに、閉じタグが</div>　リスト9.6も同様 -->
+
+
+<p><code>webpack</code>、<code>css-loader</code>、<code>style-loader</code>などのライブラリを組み合わせることで、JavaScriptからCSSファイルの読み込みができるようになります。
+<code>create-react-app</code>では、標準でCSSファイルのインポートがサポートされています。</p>
+<pre><code class="language-javascript">import &quot;./style.css&quot;;
+
+const Button = () =&gt;
+  &lt;button className=&quot;normal-button&quot;&gt;追加&lt;/button&gt;;
+
+export default Button;</code></pre>
+<h3 id="uiライブラリを使う">UIライブラリを使う</h3>
+<ul>
+<li><p>Material-UI</p>
+<p>  マテリアルデザインに沿って作られたUIライブラリ。</p>
+</li>
+<li><p>React-Bootstrap</p>
+<p>  BootstrapをReact向けのUIライブラリとして実装したもの。</p>
+</li>
+<li><p>React Desktop</p>
+<p>  デスクトップネイティブアプリの開発を想定したReact向けUIライブラリ。
+  Electronなどで利用します。</p>
+</li>
+<li><p>Onsen UI</p>
+<p>  ネイティブアプリライクなモバイルウェブアプリの作成に特化したUIライブラリ。</p>
+</li>
+</ul>
+<h3 id="material-ui">Material-UI</h3>
+<p>マテリアルデザインに則ったUIを簡単に実装することができます。
+ボタンやフォームなどの基本的なUIパーツが網羅されています。</p>
+<p>各UIパーツはReactコンポーネントとして実装されており、props経由でコンポーネントをカスタマイズできます。</p>
+<p>パッケージは、次のコマンドでインストールできます。</p>
+<p>こちらだと v0.20.0 がインストールされます。</p>
+<pre><code>&gt; npm install --save material-ui</code></pre><p>最新をインストールしたければ次のコマンドにします。
+2018年3月8日時点で v1.0.0-beta.36がインストールされました。</p>
+<pre><code>&gt; npm install --save material-ui@next</code></pre><p>※以降のサンプルは<code>@next</code>でインストールしたものを対象としています。</p>
+<h4 id="使い方">使い方</h4>
+<p><code>src/components/TodoApp.js</code>を修正します。</p>
+<ol>
+<li><p>インポートを追加します。</p>
+<pre><code class="language-javascript"> import Reboot from &#39;material-ui/Reboot&#39;;
+ import Button from &#39;material-ui/Button&#39;;</code></pre>
+</li>
+</ol>
+<ol start="2">
+<li><p>Rebootコンポーネントを追加します。
+ 場所はどこでもよいですが、今回はルート要素の最初の子要素にしました。</p>
+<pre><code class="language-javascript"> export default function TodoApp({ task, tasks, inputTask, addTask, redirectToError }) {
+   return (
+     &lt;div&gt;
+       &lt;input type=&quot;text&quot; onChange={(e) =&gt; inputTask(e.target.value)} /&gt;</code></pre>
+<p>  ↓</p>
+<pre><code class="language-javascript"> export default function TodoApp({ task, tasks, inputTask, addTask, redirectToError }) {
+   return (
+     &lt;div&gt;
+       &lt;Reboot /&gt;
+       &lt;input type=&quot;text&quot; onChange={(e) =&gt; inputTask(e.target.value)} /&gt;</code></pre>
+</li>
+</ol>
+<ol start="3">
+<li><p>input要素で作っていたボタンを、Buttonコンポーネントに変更します。</p>
+<pre><code class="language-javascript"> &lt;input type=&quot;button&quot; value=&quot;add&quot; onClick={() =&gt; addTask(task)} /&gt;</code></pre>
+<p> ↓</p>
+<pre><code class="language-javascript"> &lt;Button variant=&quot;raised&quot; className=&quot;default&quot; onClick={() =&gt; addTask(task)}&gt;add&lt;/Button&gt;</code></pre>
+</li>
+</ol>
+<h2 id="note">Note</h2>
+<h3 id="reduxの三原則">Reduxの三原則</h3>
+<p>Single source of truth
+:   アプリケーション内のすべての状態を一つの大きなオブジェクトとして管理します。</p>
+<p>State in read-only
+:   アプリケーションの状態はコンポーネントから直接参照できますが、直接変更することはできません。
+    Action（どんな動作を行ったのかを示す単純なオブジェクト）をdispatch（発行）することが、アプリケーションの状態を変更する唯一の方法です。</p>
+<p>Changes are made with pure functions
+:   アプリケーションの状態の変更は、副作用のない純粋関数によって行われます。
+    〝純粋関数〟とは〝同じ入力を渡せば、同じ出力が得られる関数〟のことです。</p>
+<h3 id="ie11-arrayprototypefind-メソッドがエラーになる">IE11 Array.prototype.find メソッドがエラーになる</h3>
+<p>IE11 では Array.prototype.find メソッドがサポートされていないのでエラーになります。</p>
+<p>対応させるためには Polyfill で代替コードを実装する必要があります。</p>
+<h2 id="一連の流れを通しで">一連の流れを通しで</h2>
+<ol>
+<li><p>プロジェクトを作成して、ルートフォルダに移動します。</p>
+<pre><code> &gt; .\node_modules\.bin\create-react-app app-1st
+ &gt; cd app-1st</code></pre></li>
+<li><p>propTypesをインストールします。</p>
+<pre><code> &gt; npm install --save prop-types</code></pre><p> propTypesはpropsの型チェック機能を持つパッケージです。</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>アプリケーションを開発モードで起動します。</p>
+<p> ブラウザが自動で起動して、<code>http://localhost:3000/</code>にアクセスします。</p>
+<pre><code> &gt; npm start</code></pre></li>
+<li><p>ファイル/フォルダ構成に則り、フォルダを作ります。
+ あとから作り直せばいいので、構成はあまり悩まなくてよいです。</p>
+<p> 今回はサンプルと同じにします。</p>
+<pre><code> src/
+ +---index.js  ... エントリポイント
+ +---App.js    ... ルートコンポーネント
+ +---components/
+ |     ... Presentational Component を置く
+ +---containers/
+ |     ... Container Component を置く
+ +---actions/
+ |     ... ActionCreator を置く
+ +---reducers/
+ |     ... Reducer を置く
+ `---store/
+       ... Store を置く（createStore関数）</code></pre><pre><code> &gt; mkdir .\src\containers
+ &gt; mkdir .\src\components
+ &gt; mkdir .\src\actions
+ &gt; mkdir .\src\reducers
+ &gt; mkdir .\src\store</code></pre></li>
+</ol>
+<ol start="5">
+<li><p>Reduxをインストールします。</p>
+<p> Reduxを開発で使う場合、開発が進んでからインストールするのは導入コストが高くなるため、開発開始時に導入しておきます。</p>
+<pre><code> &gt; npm install --save redux react-redux redux-logger</code></pre><p> ReduxのStoreの作成にはReducerが必要です。
+ ［<code>src\reducers\index.js</code>］にReducerを追加します。</p>
+<p> この時点では、単純に受け取ったstateをそのまま返すReducerを定義しておきます。</p>
+<p> 1つのReducerでアプリケーションが完結することはまずないので、［<code>src\reducers\index.js</code>］に各Reducerの参照を束ねて、<code>import * as reducers from &quot;./reducers&quot;</code>でまとめてimportできる作りにしておきます。</p>
+<pre><code class="language-javascript"> // 受け取ったstateをそのまま返すReducer
+ export const noop = (state = {}) =&gt; state;</code></pre>
+<p> [<code>src\store\index.js</code>]にreduxのcreateStore関数を定義します。</p>
+<pre><code class="language-javascript"> import { createStore, combineReducers, applyMiddleware } from &#39;redux&#39;;
+ import logger from &#39;redux-logger&#39;;
+ import * as reducers from &#39;../reducers&#39;;
+
+ // Storeを生成するための関数を定義
+ export default function createStoreEx() {
+   return createStore(
+     // 複数のReducerをまとめる
+     combineReducers(reducers),
+     // ミドルウェアを適用する
+     applyMiddleware(logger)
+   );
+ }</code></pre>
+<p> ［<code>src\index.js</code>］でStoreを生成し、react-reduxのProviderコンポーネントでAppコンポーネントに関連付ける処理を記述します。</p>
+<pre><code class="language-javascript"> import React from &#39;react&#39;;
+ import ReactDOM from &#39;react-dom&#39;;
+ import { Provider } from &#39;react-redux&#39;;
+ import App from &#39;./App&#39;;
+ import createStoreEx from &#39;./store&#39;;
+
+ // Storeの生成
+ const store = createStoreEx();
+
+ ReactDOM.render(
+   // Providerコンポーネントを使って、StoreをAppコンポーネントに関連付ける
+   &lt;Provider store={store}&gt;
+     &lt;App /&gt;
+   &lt;/Provider&gt;,
+   document.getElementById(&#39;root&#39;)
+ );</code></pre>
+</li>
+</ol>
+<ol start="6">
+<li><p>ルーティングライブラリの導入</p>
+<p> こちらも開発開始時に導入しておきます。</p>
+<p> Note
+ :   最新版の React Router （ver 4.x）に対応した react-router-redux パッケージのバージョンは ver 5.x なので、<code>@next</code>をつけてインストールします（2018年3月8日時点）。</p>
+<pre><code> &gt; npm install --save react-router-dom history react-router-redux@next</code></pre></li>
+</ol>
+<pre><code>Storeを生成する関数に、routerReducerとrouterMiddlewareを追加します。
+
+[`src\store\index.js`]
+
+~~~javascript
+import { createStore, combineReducers, applyMiddleware } from &#39;redux&#39;;
+import logger from &#39;redux-logger&#39;;
+import * as reducers from &#39;../reducers&#39;;
+import { routerReducer, routerMiddleware } from &#39;react-router-redux&#39;;
+
+// Storeを生成するための関数を定義
+// history は src/index.js から受け渡す
+export default function createStoreEx(history) {
+  return createStore(
+    // 複数のReducerをまとめる
+    //   ・自前で定義したReducer
+    //   ・react-router-redux の Reducer
+    combineReducers({
+      ...reducers,
+      router: routerReducer,
+    }),
+    // ミドルウェアを適用する
+    // react-router-redux の Redux Middleware
+    applyMiddleware(
+      logger,
+      routerMiddleware(history)
+    )
+  );
+}
+~~~
+
+[`src\index.js`]
+
+~~~javascript
+import React from &#39;react&#39;;
+import ReactDOM from &#39;react-dom&#39;;
+import { Provider } from &#39;react-redux&#39;;
+import { ConnectedRouter } from &#39;react-router-redux&#39;;
+import createBrowserHistory from &#39;history/createBrowserHistory&#39;;
+import App from &#39;./App&#39;;
+import createStoreEx from &#39;./store&#39;;
+
+// history のインスタンスを生成
+const history = createBrowserHistory();
+
+// Storeの生成
+const store = createStoreEx(history);
+
+ReactDOM.render(
+  // Providerコンポーネントを使って、StoreをAppコンポーネントに関連付ける
+  &lt;Provider store={store}&gt;
+    {
+      /* Link コンポーネントなどが動作するように、
+         react-router-dom の Router ではなく
+         react-router-redux の ConnectedRouter を使う
+       */
+    }
+    &lt;ConnectedRouter history={history}&gt;
+      &lt;App /&gt;
+    &lt;/ConnectedRouter&gt;
+  &lt;/Provider&gt;,
+  document.getElementById(&#39;root&#39;)
+);
+~~~</code></pre><ol start="7">
+<li><p>ルーティングの実装</p>
+<p> コンポーネントを作ります。</p>
+<p> [<code>src\components\Ranking.js</code>]</p>
+<pre><code class="language-javascript"> import React from &#39;react&#39;;
+ import PropTypes from &#39;prop-types&#39;;
+
+ export default function Ranking({ categoryId }) {
+   // TODO: 最終的には categoryId をもとにAPIから情報を取得する
+   return (
+     &lt;div&gt;
+       &lt;h2&gt;Ranking Component&lt;/h2&gt;
+       &lt;p&gt;Category Id: {categoryId}&lt;/p&gt;
+     &lt;/div&gt;
+   )
+ }
+
+ // propsのデータ型を定義
+ Ranking.propTypes = {
+   categoryId: PropTypes.string
+ };
+
+ // 未指定時の既定値を定義
+ Ranking.defaultProps = {
+   categoryId: &quot;1&quot;
+ };</code></pre>
+<p> ルーティングの設定は [<code>src\App.js</code>] に記述します。</p>
+<pre><code class="language-javascript"> import React, { Component } from &#39;react&#39;;
+ import { Route, Link } from &#39;react-router-dom&#39;;
+ import Ranking from &#39;./components/Ranking&#39;;
+
+ class App extends Component {
+   render() {
+     return (
+       &lt;div className=&quot;App&quot;&gt;
+         { /* カテゴリ名、IDはハードコード。本来であればAPIから取得するのが望ましい。 */ }
+         &lt;ul&gt;
+           &lt;li&gt;&lt;Link to=&quot;/all&quot;&gt;Category All&lt;/Link&gt;&lt;/li&gt;
+           &lt;li&gt;&lt;Link to=&quot;/category/2502&quot;&gt;Category 2502&lt;/Link&gt;&lt;/li&gt;
+           &lt;li&gt;&lt;Link to=&quot;/category/10002&quot;&gt;Category 10002&lt;/Link&gt;&lt;/li&gt;
+         &lt;/ul&gt;
+
+         &lt;Route path=&quot;/all&quot; component={Ranking} /&gt;
+         &lt;Route
+           path=&quot;/category/:id&quot;
+           render={
+             ({ match }) =&gt; &lt;Ranking categoryId={match.params.id} /&gt;
+           } /&gt;
+       &lt;/div&gt;
+     );
+   }
+ }
+
+ export default App;</code></pre>
+</li>
+</ol>
+<ol start="8">
+<li><p>非同期処理の実装</p>
+<p> インストール</p>
+<pre><code> &gt; npm install --save redux-thunk fetch-jsonp qs</code></pre><p> fetch-jsonp
+ :   XMLHttpRequestの後継であるfetch関数と同じインターフェースでJSONPのAPIで通信できるライブラリ。</p>
+<p> qs
+ :   URLのクエリ文字列（URLの ? のあとにつく key=value&amp;hoge=fuga の部分）を扱うライブラリ。</p>
+<p> ミドルウェアに redux-thunk を追加するため、[<code>src\store\index.js</code>]を修正します。</p>
+<pre><code class="language-javascript"> import { createStore, combineReducers, applyMiddleware } from &#39;redux&#39;;
+ import logger from &#39;redux-logger&#39;;
+ import thunk from &#39;redux-thunk&#39;;
+ import * as reducers from &#39;../reducers&#39;;
+ import { routerReducer, routerMiddleware } from &#39;react-router-redux&#39;;
+
+ // Storeを生成するための関数を定義
+ // history は src/index.js から受け渡す
+ export default function createStoreEx(history) {
+   return createStore(
+     // 複数のReducerをまとめる
+     //   ・自前で定義したReducer
+     //   ・react-router-redux の Reducer
+     combineReducers({
+       ...reducers,
+       router: routerReducer,
+     }),
+     // ミドルウェアを適用する
+     // react-router-redux の Redux Middleware
+     applyMiddleware(
+       logger,
+       thunk,
+       routerMiddleware(history)
+     )
+   );
+ }</code></pre>
+<p> APIからデータを取得し、ReduxのStoreを経由してコンポーネントに表示する処理を実装します。</p>
+<p> ComponentからActionを呼び出す部分。</p>
+<p> [<code>src\components\Ranking.js</code>]</p>
+<pre><code class="language-javascript"> import React from &#39;react&#39;;
+ import PropTypes from &#39;prop-types&#39;;
+
+ // ライフサイクルメソッドを使うので function から class に変更
+ export default class Ranking extends React.Component {
+
+   componentWillMount() {
+     this.props.onMount(this.props.categoryId);
+   }
+
+   componentWillReceiveProps(nextProps) {
+     if (this.props.categoryId !== nextProps.categoryId) {
+       // props.categoryId に変化があるので、ページ移動が発生している
+       this.props.onUpdate(nextProps.categoryId);
+     }
+   }
+
+   // TODO: 最終的には categoryId をもとにAPIから情報を取得する
+   render() {
+     return (
+       &lt;div&gt;
+         &lt;h2&gt;Ranking Component&lt;/h2&gt;
+         &lt;p&gt;Category Id: {this.props.categoryId}&lt;/p&gt;
+       &lt;/div&gt;
+     );
+   }
+ }
+
+ // propsのデータ型を定義
+ Ranking.propTypes = {
+   categoryId: PropTypes.string,
+   onMount: PropTypes.func.isRequired,
+   onUpdate: PropTypes.func.isRequired
+ };
+
+ // 未指定時の既定値を定義
+ Ranking.defaultProps = {
+   categoryId: &quot;1&quot;
+ };</code></pre>
+<p> [<code>src\actions\Ranking.js</code>]</p>
+<p> ActionCreator を定義します。</p>
+<ul>
+<li><p>コンポーネントのprops.onMount、props.onUpdateが呼び出されたときに実行するfetchRanking
+  ※redux-thunkを使った非同期処理</p>
+</li>
+<li><p>リクエスト開始 Action - startRequest</p>
+</li>
+<li><p>レスポンス受信 Action - receiveData</p>
+</li>
+<li><p>リクエスト完了 Action - finishRequest</p>
+<pre><code class="language-javascript">import fetchJsonp from &#39;fetch-jsonp&#39;;
+import qs from &#39;qs&#39;;
+
+const API_URL = &quot;http://hoge.co.jp/v1/json/hoge&quot;; // TODO: api のURL
+const APP_ID = &quot;APP_ID&quot;;                          // TODO: 不要だが定義しておく
+
+// リクエスト開始 Action
+const startRequest = categoryId =&gt; ({
+type: &quot;START_REQUEST&quot;,
+payload: { categoryId },
+});
+
+// レスポンス受信 Action
+const receiveData = (categoryId, error, response) =&gt; ({
+type: &quot;RECEIVE_DATA&quot;,
+payload: { categoryId, error, response },
+});
+
+// リクエスト完了 Action
+const finishRequest = categoryId =&gt; ({
+type: &quot;FINISH_REQUEST&quot;,
+payload: { categoryId },
+});
+
+// データ取得
+export const fetchRanking = categoryId =&gt; {
+// redux-thunkを使った非同期処理
+return async dispatch =&gt; {
+  dispatch(startRequest(categoryId));
+
+  const queryString = qs.stringify({
+    appid: APP_ID,
+    category_id: categoryId,
+  });
+
+  try {
+    const response = await fetchJsonp(`${API_URL}?${queryString}`);
+    const data = await response.json();
+    dispatch(receiveData(categoryId, null, data));
+
+  } catch (ex) {
+    dispatch(receiveData(categoryId, ex));
+  }
+
+  dispatch(finishRequest(categoryId));
+};
+};</code></pre>
+<p>[<code>src\containers\Ranking.js</code>]</p>
+</li>
+<li><p>ActionCreator をコンポーネントのprops.onMountedから呼び出すため、Container Component を定義します。</p>
+</li>
+<li><p>mapDispatchToPropsで、props.onMountedとactions.fetchRankingを接続します。</p>
+<pre><code class="language-javascript">import { connect } from &#39;react-redux&#39;;
+import Ranking from &#39;../components/Ranking&#39;;
+import * as actions from &#39;../actions/Ranking&#39;;
+
+// TODO: Reducerを定義するまでの仮の処理
+const mapStateToProps = (state, ownProps) =&gt; ({
+categoryId: ownProps.categoryId
+});
+
+const mapDispatchToProps = dispatch =&gt; ({
+onMount(categoryId) {
+  dispatch(actions.fetchRanking(categoryId));
+},
+onUpdate(categoryId) {
+  dispatch(actions.fetchRanking(categoryId));
+}
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Ranking);</code></pre>
+<p>[<code>src\App.js</code>]</p>
+<p>定義したContainer Componentを使うように修正します。</p>
+<pre><code class="language-javascript">import Ranking from &#39;./components/Ranking&#39;;</code></pre>
+<p>↓</p>
+<pre><code class="language-javascript">import Ranking from &#39;./containers/Ranking&#39;;</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="9">
+<li><p>Reducerの実装</p>
+<p> Reducerを実装し、取得したデータを表示します。</p>
+<ul>
+<li><p><code>src\reducers\shopping.js</code></p>
+<p>  カテゴリ名、カテゴリIDを保持する。
+  ランキングページにもカテゴリ名を表示したいので、<code>src\App.js</code>のハードコードをこちらに移動する。</p>
+</li>
+<li><p><code>src\reducers\Ranking.js</code></p>
+<p>  Ranking コンポーネント用のReducer。
+  ランキング情報を保持します。</p>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>[`src\reducers\shopping.js`]
+
+固定のJSONを常に返すReducerとして実装します。
+
+※本来はAPIから取得した情報を返すようにするべきです。
+
+~~~javascript
+const initialState = {
+  // カテゴリ情報
+  // 本来はAPIから取得した情報を返すべき
+  categories: [
+    {
+      id: &quot;1&quot;,
+      name: &quot;ALL&quot;
+    },
+    {
+      id: &quot;2502&quot;,
+      name: &quot;Category 2502&quot;
+    },
+    {
+      id: &quot;10002&quot;,
+      name: &quot;Category 10002&quot;
+    },
+  ]
+}
+
+export default () =&gt; initialState;
+~~~
+
+
+[`src\reducers\Ranking.js`]
+
+- START_REQUEST Action にフックして、リクエスト開始時に状態をリセットします。
+- RECEIVE_DATA Action にフックして、レスポンスからランキング情報を取得し、状態に設定します。
+  リクエストが失敗したときはエラーフラグを立てます。
+- getRanking関数は、レスポンスから商品名、商品URL、商品画像のURLを抜き出します。
+
+~~~javascript
+// レスポンスからランキング情報だけを抜き出す
+const getRanking = response =&gt; {
+  const ranking = [];
+  const itemLength = response.ResultSet.totalResultsReturned;
+  // TODO: p.206 ↑末尾にセミコロン必要では？
+  // TODO: ダウンロードできるサンプルに第10章が含まれていない
+
+  for (let index = 0; index &lt; itemLength; index++) {
+    const item = response.ResultSet[&#39;0&#39;].Result[index + &quot;&quot;];
+    ranking.push({
+      code: item.Code,
+      name: item.Name,
+      url: item.Url,
+      imageUrl: item.Image.Medium
+    });
+  }
+  return ranking;
+};
+
+
+// 初期状態
+const initialState = {
+  categoryId: undefined,
+  ranking: undefined,
+  error: false
+};
+
+
+export default (state = initialState, action) =&gt; {
+  switch (action.type) {
+    // リクエスト開始時に状態をリセット
+    case &quot;START_REQUEST&quot;:
+      return {
+        categoryId: action.payload.categoryId,
+        ranking: undefined,
+        error: false
+      };
+
+    // データ受信
+    case &quot;RECEIVE_DATA&quot;:
+      return action.payload.error
+        ? {
+            ...state, 
+            error: true
+          }
+        : {
+            ...state,
+            ranking: getRanking(action.payload.response)
+          };
+
+    default:
+      return state;
+  }
+}
+~~~
+
+
+2つのReducerの参照を [`src\reducers\index.js`] に追加します。
+
+~~~javascript
+// 受け取ったstateをそのまま返すReducer
+export const noop = (state = {}) =&gt; state;
+
+export { default as shopping } from &#39;./shopping&#39;;
+export { default as Ranking } from &#39;./Ranking&#39;;
+~~~
+
+
+[`src\App.js`] のリンクの部分を Nav コンポーネントに移動する。
+
+[`src\components\Nav.js`]
+
+~~~javascript
+import React from &#39;react&#39;;
+import PropTypes from &#39;prop-types&#39;;
+import { Link } from &#39;react-router-dom&#39;;
+
+export default function Nav({ categories }) {
+  // 移動先パスの生成
+  //   カテゴリID = &quot;1&quot; であれば &quot;/all&quot;
+  //   上記以外であれば &quot;/category/&lt;カテゴリID&gt;&quot;
+  const to = category =&gt; (
+    category.id === &quot;1&quot;
+      ? &quot;/all&quot;
+      : `/category/${category.id}`
+  );
+
+  return (
+    &lt;ul&gt;
+      { /* props.categories からリンク一覧を生成 */ }
+      {categories.map(category =&gt; (
+        &lt;li key={`nav-item-${category.id}`}&gt;
+          &lt;Link to={to(category)}&gt;
+            {category.name}
+          &lt;/Link&gt;
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+
+Nav.propTypes = {
+  // state.shopping.categories の構造
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    })
+  ).isRequired
+};
+~~~
+
+
+Nav コンポーネントの Container Component を作成します。
+
+[`src\containers\Nav.js`]
+
+~~~javascript
+import { connect } from &#39;react-redux&#39;;
+import Nav from &#39;../components/Nav&#39;;
+
+const mapStateToProps = state =&gt; ({
+  // state.shopping.categories を props.categories に関連付ける
+  categories: state.shopping.categories
+});
+
+export default connect(mapStateToProps)(Nav);
+~~~
+
+
+App コンポーネントに Nav コンポーネントを組み込みます。
+
+[`src\App.js`]
+
+~~~javascript
+import React, { Component } from &#39;react&#39;;
+import { Route, Switch, Redirect } from &#39;react-router-dom&#39;;
+import Ranking from &#39;./containers/Ranking&#39;;
+import Nav from &#39;./containers/Nav&#39;;
+
+class App extends Component {
+  render() {
+    return (
+      &lt;div className=&quot;App&quot;&gt;
+        { /* Nav コンポーネントに差し替える */ }
+        { /*
+        &lt;ul&gt;
+          &lt;li&gt;&lt;Link to=&quot;/all&quot;&gt;Category All&lt;/Link&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;Link to=&quot;/category/2502&quot;&gt;Category 2502&lt;/Link&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;Link to=&quot;/category/10002&quot;&gt;Category 10002&lt;/Link&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        */ }
+        &lt;Nav /&gt;
+
+        &lt;Switch&gt;
+          &lt;Route path=&quot;/all&quot; component={Ranking} /&gt;
+          &lt;Route
+            path=&quot;/category/1&quot;
+            render={
+              () =&gt; &lt;Redirect to=&quot;/all&quot; /&gt;
+            } /&gt;
+          &lt;Route
+            path=&quot;/category/:id&quot;
+            render={
+              ({ match }) =&gt; &lt;Ranking categoryId={match.params.id} /&gt;
+            } /&gt;
+        &lt;/Switch&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default App;
+~~~</code></pre><ol start="10">
+<li><p>機能拡張</p>
+<ul>
+<li>state.shopping.categoriesにないカテゴリIDへのアクセスは、トップページにリダイレクトする。</li>
+<li>カテゴリ名を表示</li>
+<li>ランキング情報の表示</li>
+</ul>
+<p>[<code>src\actions\Ranking.js</code>]</p>
+<pre><code class="language-javascript">import fetchJsonp from &#39;fetch-jsonp&#39;;
+import qs from &#39;qs&#39;;
+import { replace } from &#39;react-router-redux&#39;;
+
+const API_URL = &quot;http://hoge.co.jp/v1/json/hoge&quot;; // TODO: api のURL
+const APP_ID = &quot;APP_ID&quot;;                          // TODO: 不要だが定義しておく
+
+// リクエスト開始 Action
+// categoryId ではなく category を含めるように変更
+const startRequest = category =&gt; ({
+  type: &quot;START_REQUEST&quot;,
+  payload: { category },
+});
+
+// レスポンス受信 Action
+// categoryId ではなく category を含めるように変更
+const receiveData = (category, error, response) =&gt; ({
+  type: &quot;RECEIVE_DATA&quot;,
+  payload: { category, error, response },
+});
+
+// リクエスト完了 Action
+// categoryId ではなく category を含めるように変更
+const finishRequest = category =&gt; ({
+  type: &quot;FINISH_REQUEST&quot;,
+  payload: { category },
+});
+
+// データ取得
+export const fetchRanking = categoryId =&gt; {
+  // redux-thunkを使った非同期処理
+  // getState関数を引数に追加する
+  return async (dispatch, getState) =&gt; {
+    // カテゴリIDに対応する state.shopping.categories の要素を取得
+    const categories = getState().shopping.categories;
+    const category = categories.find(category =&gt; (category.id === categoryId));
+
+    // 対応する情報がなければトップページへリダイレクト
+    if (typeof category === &quot;undefined&quot;) {
+      dispatch(replace(&quot;/&quot;));
+      return;
+    }
+
+    // startRequest Action の引数に category を受け渡す
+    dispatch(startRequest(category));
+
+    const queryString = qs.stringify({
+      appid: APP_ID,
+      category_id: categoryId,
+    });
+
+    try {
+      const response = await fetchJsonp(`${API_URL}?${queryString}`);
+      const data = await response.json();
+      dispatch(receiveData(category, null, data));  // categoryId ではなく category を受け渡す
+
+    } catch (ex) {
+      dispatch(receiveData(category, ex));  // categoryId ではなく category を受け渡す
+    }
+
+    dispatch(finishRequest(category));      // categoryId ではなく category を受け渡す
+  };
+};</code></pre>
+<p>修正したActionに対応できるように、Reducerを変更します。</p>
+<p>[<code>src\reducers\Ranking.js</code>] （変更する initialState の部分のみ抜粋）</p>
+<pre><code class="language-javascript">// 初期状態
+const initialState = {
+  // categoryId → category
+  category: undefined,
+  ranking: undefined,
+  error: false
+};</code></pre>
+<p>Rankingコンポーネントと Store の状態を関連付けます。</p>
+<p>[<code>src\containers\Ranking.js</code>] （mapStateToProps の部分のみ抜粋）</p>
+<pre><code class="language-javascript">const mapStateToProps = (state, ownProps) =&gt; ({
+  categoryId: ownProps.categoryId,
+
+  // カテゴリ情報、ランキング情報を Ranking コンポーネントに渡す
+  category: state.Ranking.category,
+  ranking: state.Ranking.ranking,
+  error: state.Ranking.error
+});</code></pre>
+<p>Rankingコンポーネントは、受け取ったカテゴリ情報、ランキング情報、エラーフラグを表示します。</p>
+<p>[<code>src\components\Ranking.js</code>]</p>
+<pre><code class="language-javascript">import React from &#39;react&#39;;
+import PropTypes from &#39;prop-types&#39;;
+
+export default class Ranking extends React.Component {
+
+  componentWillMount() {
+    this.props.onMount(this.props.categoryId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.categoryId !== nextProps.categoryId) {
+      // props.categoryId に変化があるので、ページ移動が発生している
+      this.props.onUpdate(nextProps.categoryId);
+    }
+  }
+
+  render() {
+    const { category, ranking, error } = this.props;
+
+    return (
+      &lt;div&gt;
+        &lt;h2&gt;{
+          typeof category !== &quot;undefined&quot;
+            ? `Ranking: ${category.name}`
+            : &quot;&quot;
+        }&lt;/h2&gt;
+
+        {(() =&gt; {
+          if (error) {
+            // エラー表示
+            return &lt;p&gt;エラーが発生しました。リロードしてください。&lt;/p&gt;;
+
+          } else if (typeof ranking === &quot;undefined&quot;) {
+            // リクエスト完了前
+            return &lt;p&gt;読み込み中...&lt;/p&gt;;
+
+          } else {
+            // ランキングの表示
+            return (
+              &lt;ol&gt;
+                {ranking.map(item =&gt; (
+                  &lt;li key={`ranking-item-${item.code}`}&gt;
+                    &lt;img alt={item.name} src={item.imageUrl} /&gt;
+                    &lt;a href={item.url} target=&quot;_blank&quot;&gt;{item.name}&lt;/a&gt;
+                  &lt;/li&gt;
+                ))}
+              &lt;/ol&gt;
+            );
+          }
+        })()}
+      &lt;/div&gt;
+    );
+  }
+}
+
+// propsのデータ型を定義
+Ranking.propTypes = {
+  categoryId: PropTypes.string,
+  onMount: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+
+  // category, ranking, error の型を追加
+  category: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
+  ranking: PropTypes.arrayOf(
+    PropTypes.shape({
+      code: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired,
+      imageUrl: PropTypes.string.isRequired
+    })
+  ),
+  error: PropTypes.bool.isRequired
+};
+
+// 未指定時の既定値を定義
+Ranking.defaultProps = {
+  categoryId: &quot;1&quot;
+};</code></pre>
+</li>
+</ol>
+<h2 id="日付を扱う">日付を扱う</h2>
+<p><code>react-moment</code>を使います。
+<code>moment</code>を使ったReactコンポーネントです。</p>
+<h3 id="インストール-3">インストール</h3>
+<pre><code>npm install --save moment react-moment</code></pre><p>タイムゾーンを指定するのであれば、こちらのパッケージもインストールします。</p>
+<pre><code>npm install --save moment-timezone</code></pre><h2 id="note-react-router">Note: React Router</h2>
+<p>Router
+:   すべてのRouterコンポーネントに共通する低レベルインターフェース。根底クラスみたいなもんだと思えばよいでしょう。</p>
+<pre><code>一般的にアプリでは次のRouterのうち、ひとつを使います。
+
+- BrowserRouter
+- HashRouter
+- MemoryRouter
+- NativeRouter
+- StaticRouter</code></pre><p>BrowserRouter
+:   HTML5 の history API を使って、URLとUIを同期するRouterコンポーネント。</p>
+<p>HashRouter
+:   URLのハッシュ（＝window.location.hash）を使って、URLとUIを同期するRouterコンポーネント。</p>
+<p>Link
+:   ナビゲーションコンポーネント。</p>
+<p>NavLink
+:   見た目（スタイルの属性）ができるLinkコンポーネント。</p>
+<p>Route
+:   パスと一致するときに、コンポーネントを描画するコンポーネント。</p>
+<pre><code>Renderコンポーネントを使って、コンポーネントを描画するには次の3つの方法があります。
+が、ほとんどのケースで使うことになるのは、`&lt;Route component&gt;`でしょう。
+
+- `&lt;Route component&gt;`
+
+    パスが一致したときに、指定したコンポーネントを描画します。
+
+    ~~~javascript
+    // Helloコンポーネントを描画
+    &lt;Route path=&quot;/hello&quot; component={Hello}/&gt;
+    ~~~
+
+- `&lt;Route render&gt;`
+
+    パスが一致したときに、render関数に従い描画します。
+
+    ~~~javascript
+    &lt;Route path=&quot;/hello&quot; render={() =&gt; &lt;div&gt;Hello&lt;/div&gt;}/&gt;
+    ~~~
+
+- `&lt;Route children&gt;`
+
+    パスが一致するかどうかを描画するときに使います。
+
+    `children`の関数の引数 `match`には、パスが一致したときはオブジェクト、それ以外は null が渡されます。
+
+    [`match`の詳細は公式ドキュメントを参照。](https://reacttraining.com/react-router/web/api/match){target=&quot;_blank&quot;}
+
+    ~~~javascript
+    &lt;ul&gt;
+      &lt;ListItemLink to=&quot;/somewhere&quot;/&gt;
+      &lt;ListItemLink to=&quot;/somewhere-else&quot;/&gt;
+    &lt;/ul&gt;
+
+    const ListItemLink = ({ to, ...rest }) =&gt; (
+      &lt;Route path={to} children={({ match }) =&gt; (
+        &lt;li className={match ? &#39;active&#39; : &#39;&#39;}&gt;
+          &lt;Link to={to} {...rest}/&gt;
+        &lt;/li&gt;
+      )}/&gt;
+    )
+    ~~~
+
+
+すべての方法で、次の3つのpropsが渡されます。
+
+- match
+- location
+- history</code></pre><h2 id="react-router-redux">React Router Redux</h2>
+<h3 id="基本的な考え方">基本的な考え方</h3>
+<ol>
+<li><p>history を作ります。<br> HTML5 の history API を使うか、URLハッシュを使うか選べます。</p>
+</li>
+<li><p>ミドルウェアを構築します。<br> ナビゲーションアクションのインターセプトとディスパッチのためのミドルウェアを構築。
+ 噛み砕いて言うと？</p>
+</li>
+<li><p><code>createStore</code>関数にReducerとMiddlewareを適用します。<br> Reducerの指定は「router」キーに「routerReducer」を指定します。</p>
+</li>
+</ol>
+<pre><code class="language-javascript">import React from &#39;react&#39;
+import ReactDOM from &#39;react-dom&#39;
+
+import { createStore, combineReducers, applyMiddleware } from &#39;redux&#39;
+import { Provider } from &#39;react-redux&#39;
+
+import createHistory from &#39;history/createBrowserHistory&#39;
+import { Route } from &#39;react-router&#39;
+
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from &#39;react-router-redux&#39;
+
+import reducers from &#39;./reducers&#39; // Or wherever you keep your reducers
+
+// (1) history の生成
+const history = createHistory()
+
+// (2) ミドルウェアを構築
+const middleware = routerMiddleware(history)
+
+// (3) storeの生成
+//      ・Reducerを指定します。router キーに routerReducer を指定します。
+//      ・構築したミドルウェアを適用します。
+const store = createStore(
+  combineReducers({
+    ...reducers,
+    router: routerReducer
+  }),
+  applyMiddleware(middleware)
+)
+
+// これでどこからでもナビゲーションのアクションを送信できます。
+// store.dispatch(push(&#39;/foo&#39;))
+
+ReactDOM.render(
+  &lt;Provider store={store}&gt;
+    { /* ConnectedRouter は Provider コンポーネントに store を自動で使います */ }
+    &lt;ConnectedRouter history={history}&gt;
+      &lt;div&gt;
+        &lt;Route exact path=&quot;/&quot; component={Home}/&gt;
+        &lt;Route path=&quot;/about&quot; component={About}/&gt;
+        &lt;Route path=&quot;/topics&quot; component={Topics}/&gt;
+      &lt;/div&gt;
+    &lt;/ConnectedRouter&gt;
+  &lt;/Provider&gt;,
+  document.getElementById(&#39;root&#39;)
+)</code></pre>
+<h2 id="head要素内の各要素を書き換える">head要素内の各要素を書き換える</h2>
+<p>React Helmet パッケージを使います。</p>
+<h3 id="実施環境-1">実施環境</h3>
+<ul>
+<li>react-helmet 5.2.0</li>
+</ul>
+<h3 id="インストール-4">インストール</h3>
+<pre><code>&gt; npm install --save react-helmet</code></pre><h3 id="使い方-1">使い方</h3>
+<ul>
+<li><code>react-helmet</code>パッケージをインポートします。</li>
+<li><code>Helmet</code>コンポーネントの子要素に書き換える要素を指定します。</li>
+</ul>
+<pre><code class="language-javascript">import React from &quot;react&quot;;
+import {Helmet} from &quot;react-helmet&quot;;
+
+class Application extends React.Component {
+  render () {
+    return (
+        &lt;div className=&quot;application&quot;&gt;
+            &lt;Helmet&gt;
+                &lt;meta charSet=&quot;utf-8&quot; /&gt;
+                &lt;title&gt;My Title&lt;/title&gt;
+                &lt;link rel=&quot;canonical&quot; href=&quot;http://mysite.com/example&quot; /&gt;
+            &lt;/Helmet&gt;
+            ...
+        &lt;/div&gt;
+    );
+  }
+};</code></pre>
+</div></article></div><footer class="jsx-3331426913 global-footer"><div class="jsx-3331426913 px2 center text-sm line-height-16 copyright">© 2019 <!-- -->NOTE:: 技術メモ</div></footer></div></div></div><script>__NEXT_DATA__ = {"props":{"pageProps":{}},"page":"/post","query":{"id":"study-react"},"buildId":"23~FedX5gsdk8xHAI8unQ","assetPrefix":"/next1","runtimeConfig":{"publicUrl":"/next1","siteName":"NOTE:: 技術メモ","siteDescription":"自分のための技術メモを残しています。"},"nextExport":true};__NEXT_LOADED_PAGES__=[];__NEXT_REGISTER_PAGE=function(r,f){__NEXT_LOADED_PAGES__.push([r, f])}</script><script async="" id="__NEXT_PAGE__/post" src="/next1/_next/static/23~FedX5gsdk8xHAI8unQ/pages/post.js"></script><script async="" id="__NEXT_PAGE__/_app" src="/next1/_next/static/23~FedX5gsdk8xHAI8unQ/pages/_app.js"></script><script async="" id="__NEXT_PAGE__/_error" src="/next1/_next/static/23~FedX5gsdk8xHAI8unQ/pages/_error.js"></script><script src="/next1/_next/static/runtime/webpack-42652fa8b82c329c0559.js" async=""></script><script src="/next1/_next/static/chunks/commons.37591bd26960181b8be9.js" async=""></script><script src="/next1/_next/static/runtime/main-79c24ca3b44ce7a04a40.js" async=""></script></body></html>
