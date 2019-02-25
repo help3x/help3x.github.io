@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ブラウザで React を動かす</title>
+</head>
+<body>
+  <div id="output">
+  </div>
+  <div id="root">
+  </div>
+  <script src="https://unpkg.com/@babel/polyfill/dist/polyfill.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>  
+  <script type="text/babel" data-presets="es2015">
+    const getMessage = () => `<h1>Babel 7</h1><p id="helloWorld">Hello world!</p><p id="babelVersion">Babel version: ${Babel.version}</p><h2>Heading レベル２</h2><h3>Heading レベル３</h3><h4>Heading レベル４</h4><h5>Heading レベル５</h5><h6>Heading レベル６</h6>`;
+    console.log(`Babel version: ${Babel.version}`);
+    document.getElementById("output").innerHTML = getMessage();
+
+    document.getElementById("helloWorld").addEventListener("click", (event) => {
+      console.log("Hello world was clicked!", event);
+      alert(`Hello world was clicked!\n\nParameter: ${ this }`);
+    });
+
+    document.getElementById("babelVersion").addEventListener("click", function (event) {
+      console.log("Babel version was clicked!", event);
+      alert(`Babel version was clicked!\n\nParameter: ${ this }`);
+    });
+  </script>
+  <script type="text/babel">
+    const ButtonA = props => {
+      return (
+        <button onClick={ () => alert(props.message || "") }>
+          CLICK ME!
+        </button>
+      );
+    };
+    //const ButtonA = () => <button onClick={ () => alert('I was made by React.') }>CLICK ME!</button>;
+
+    const domContainer = document.querySelector("#root");
+    ReactDOM.render(<ButtonA message="I was made by React." />, domContainer);
+  </script>
+</body>
+</html>
