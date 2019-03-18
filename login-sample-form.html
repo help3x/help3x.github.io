@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <title>ログイン画面のサンプル</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="">
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background: #f6f6f6; height: 100vh;">
+
+  <!-- Place your content here -->
+  <a href="http://sixrevisions.com/html5/html5-template/">Read the tutorial</a>
+  <p>ASP.NET のログインコントロールとの相性はどうだろうか。</p>
+  <form>
+    <div style="max-width: 400px; margin-left: auto; margin-right: auto; background: white; border: solid 1px darkgray;">
+      <div style="padding: .4rem; background: #deeeff; border-bottom: solid 1px darkgray; color: #43484d; font-weight: bold; text-align: center;">
+        <span>Login</span>
+      </div>
+      <div style="padding: 24px;">
+        <div>
+          <label for="userId" style="display: block; margin-bottom: .25rem; font-size: .875rem;">ユーザーID</label>
+          <input type="text" class="form-control" id="userId" style="margin-bottom: 1.25rem;"></input>
+        </div>
+        <div>
+          <label for="password" style="display: block; margin-bottom: .25rem; font-size: .875rem;">パスワード</label>
+          <input type="password" class="form-control" id="password" style="margin-bottom: 1.25rem;"></input>
+        </div>
+        <div>
+          <p style="color: red; font-weight: bold; margin-bottom: 1.25rem;"><!-- ユーザーIDまたはパスワードが違います。 --></p>
+        </div>
+        <div>
+          <div style="display: inline-block; width: 50%; padding-right: .25rem;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">ログイン</button>
+          </div
+          ><div style="display: inline-block; width: 50%; padding-left: .25rem;">
+            <button type="reset" class="btn btn-secondary" style="width: 100%;">クリア</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!-- SCRIPTS -->
+  <!-- Example: <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+</body>
+</html>
