@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Flexboxの基本</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="">
+<!--<link rel="stylesheet" href="file:///C:/Users/q40061wa/Downloads/gridlex-master/dist/gridlex.css">-->
+<!--<link rel="stylesheet" href="https://unpkg.com/mobi-plugin-flexbox/dist/mobi-plugin-flexbox.min.css" />-->
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css" />-->
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="">
+<style>
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+.root-container,
+.wrapper {
+  display: flex;
+  flex-direction: column; /* 縦に並べる */
+}
+
+.root-container {
+  overflow: hidden;
+}
+
+.wrapper {
+  min-height: 100vh;  /* viewportの高さに対する比率 100% を指定 */
+}
+
+.header {
+  height: 100px;
+}
+
+.content {
+  flex: 1;
+}
+
+.footer {
+  height: 2rem;
+}
+
+.content > .main {
+}
+
+.content > .sidebar {
+}
+
+@media all and (min-width: 768px) {
+  /* タブレット */
+}
+
+@media all and (min-width: 1024px) {
+  /* PC */
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- Place your content here -->
+  <div class="root-container">
+    <div class="wrapper">
+    <header class="header">
+      <p>header text</p>
+    </header>
+    <main class="content">
+      <section class="main">
+        <p>ここがメインコンテンツです。</p>
+      </section>
+      <section class="sidebar">
+        <p>ここがサイドバーです。</p>
+      </section>
+    </div>
+    <footer class="footer">
+      <div class="copyright">&copy; 2017-2018 JSC</div>
+    </footer>
+    </div>
+  </div>
+
+<!-- SCRIPTS -->
+<!-- Example: <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+</body>
+</html>
