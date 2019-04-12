@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>C# で Excel のブックを開く方法 &#x007C; 技術NOTE</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./sakura-custom.css">
+</head>
+<body>
+  <header>
+    技術NOTE
+  </header>
+  <main>
+    <article>
+      <header>
+        <h1>C# で Excel のブックを開く方法</h1>
+        <time>2019-04-12</time>
+      </header>
+<h2>環境</h2>
+<ol>
+<li>Windows 7 SP1 (32bit)</li>
+<li>Visual Studio 2017 Professional Version 15.4.4<ul>
+<li>Visual Basic 2017</li>
+<li>Visual C# 2017</li>
+<li>Visual C++ 2017</li>
+<li>Visual F# 4.1</li>
+</ul></li>
+<li>.NET Framework Version 4.6.01590</li>
+<li>EPPlus 4.5.2.1</li>
+</ol>
+<h2>EPPlus のサンプル</h2>
+<pre><code>using (var pck = new ExcelPackage())
+{
+    // テンプレートブックを開きます
+    //
+    Stream stream = null;
+    try
+    {
+        stream = new FileStream(@&quot;C:\Work\tmpl-pep-auto-calc.xlsx&quot;,
+                                FileMode.Open,
+                                FileAccess.Read,
+                                FileShare.ReadWrite);
+        pck.Load(stream);
+    }
+    catch (Exception ex)
+    {
+        System.Diagnostics.Debug.WriteLine(ex.ToString());
+    }
+    finally
+    {
+        if (stream != null)
+        {
+            stream.Dispose();
+        }
+    }
+}</code></pre>
+<h3>課題</h3>
+<p>どのセルに何を出力するのか、ルールを決める。プログラム内で決め打ちするのか、設定ファイルでマッピングするのか、項目名で関連付けるのか、セルに名前をつけて判別するのか。などなど。決めの問題。</p>
+<p>セルに値を出力しても自動計算されない。<code>WorkSheet.Calculate()</code>メソッドを使って再計算させる。</p>
+    </article>
+  </main>
+  <footer>
+    <p>&copy; 2019 技術NOTE.</p>
+  </footer>
+</body>
+</html>
