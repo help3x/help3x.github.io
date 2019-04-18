@@ -14,6 +14,7 @@
 html {
   /*font-size: 62.5%;*/
   font-size: 100%;
+  font-weight: 400;
   line-height: 1.5;
   box-sizing: border-box;
   /*font-family: serif;*/ }
@@ -24,18 +25,18 @@ body {
   /*line-height: 1.5;*/
   /*max-width: 38em;*/
   /*font-size: 9375rem;*/
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   /*max-width: 38rem;*/
-  max-width: 50rem;
-  margin: auto;
+  /*max-width: 50rem;*/
+  /*margin: auto;*/
   /*color: #4a4a4a;*/
   color: #111;
   background-color: #f9f9f9;
   /*padding: 13px;*/
   margin: 0;
   /*padding: .625rem;*/
-  padding: 0 .625rem;
-  /*padding: 0;*/ }
+  /*padding: 0 .625rem;*/
+  padding: 0; }
 
 @media (min-width: 32rem) {   /* 768px */
   body {
@@ -48,11 +49,21 @@ body {
     /*font-size: 1.35rem;*/
     /*font-size: 1rem;*/ } }
 
-main {
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
-  /*padding-left: .625rem;
-  padding-right: .625rem;*/
 }
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+main {
+  padding-left: .625rem;
+  padding-right: .625rem;
+}
+
+
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
@@ -215,13 +226,15 @@ body > div > div > main {
 div > header {
   background-color: white;
   /*margin-top: -.625rem;*/
-  margin-left: -.625rem;
-  margin-right: -.625rem;
-  margin-bottom: 2rem;
+  /*margin-left: -.625rem;*/
+  /*margin-right: -.625rem;*/
+  margin-bottom: 1rem;
   /*padding-top: .625rem;*/
-  padding-top: 1.5rem;
-  padding-left: .625rem;
-  padding-right: .625rem;
+  /*padding-top: 1rem;*/
+  /*padding-left: .625rem;*/
+  /*padding-right: .625rem;*/
+  /*padding-bottom: 1rem;*/
+  padding: 1rem .625rem;
 }
 
 /* サイト名 */
@@ -235,8 +248,8 @@ div > header > p {
 div > footer {
   /*padding-top: 2rem;*/
   margin-top: 2rem;
-  margin-left: -.625rem;
-  margin-right: -.625rem;
+  /*margin-left: -.625rem;*/
+  /*margin-right: -.625rem;*/
   /*margin-bottom: -.625rem;*/
   padding: 1.5rem 0;
   background-color: #131A22;
@@ -248,6 +261,10 @@ div > footer > p {
   text-align: center;
 }
 
+main > article {
+  max-width: 50rem;
+}
+
 article > header {
   margin-bottom: 2rem;
 }
@@ -255,6 +272,7 @@ article > header {
 /* タイトル */
 article > header > h1 {
   margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 article > header > time {
@@ -264,8 +282,8 @@ article > header > time {
 article > section > h2 {
   border-top: solid 1px black;
   border-bottom: solid 1px black;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
 }
 
 article > section > h3 {
