@@ -20,50 +20,50 @@
             <time>2019-04-12</time>
           </header>
           <section>
-    <p>EPPlus を使って Excel ファイルを開きます。</p>
-    <h2>環境</h2>
-    <ol>
-    <li>Windows 7 SP1 (32bit)</li>
-    <li>Visual Studio 2017 Professional Version 15.4.4<ul>
-    <li>Visual Basic 2017</li>
-    <li>Visual C# 2017</li>
-    <li>Visual C++ 2017</li>
-    <li>Visual F# 4.1</li>
-    </ul></li>
-    <li>.NET Framework Version 4.6.01590</li>
-    <li>EPPlus 4.5.2.1</li>
-    </ol>
-    <h2>EPPlus のサンプル</h2>
-    <pre><code>using (var pck = new ExcelPackage())
+<p>EPPlus を使って Excel ファイルを開きます。</p>
+<h2>環境</h2>
+<ol>
+<li>Windows 7 SP1 (32bit)</li>
+<li>Visual Studio 2017 Professional Version 15.4.4<ul>
+<li>Visual Basic 2017</li>
+<li>Visual C# 2017</li>
+<li>Visual C++ 2017</li>
+<li>Visual F# 4.1</li>
+</ul></li>
+<li>.NET Framework Version 4.6.01590</li>
+<li>EPPlus 4.5.2.1</li>
+</ol>
+<h2>EPPlus のサンプル</h2>
+<pre><code>using (var pck = new ExcelPackage())
+{
+    // テンプレートブックを開きます
+    //
+    Stream stream = null;
+    try
     {
-        // テンプレートブックを開きます
-        //
-        Stream stream = null;
-        try
+        stream = new FileStream(@&quot;C:\Work\tmpl-pep-auto-calc.xlsx&quot;,
+                                FileMode.Open,
+                                FileAccess.Read,
+                                FileShare.ReadWrite);
+        pck.Load(stream);
+    }
+    catch (Exception ex)
+    {
+        System.Diagnostics.Debug.WriteLine(ex.ToString());
+    }
+    finally
+    {
+        if (stream != null)
         {
-            stream = new FileStream(@&quot;C:\Work\tmpl-pep-auto-calc.xlsx&quot;,
-                                    FileMode.Open,
-                                    FileAccess.Read,
-                                    FileShare.ReadWrite);
-            pck.Load(stream);
+            stream.Dispose();
         }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine(ex.ToString());
-        }
-        finally
-        {
-            if (stream != null)
-            {
-                stream.Dispose();
-            }
-        }
-    }</code></pre>
-    <h3>課題</h3>
-    <p>どのセルに何を出力するのか、ルールを決める。プログラム内で決め打ちするのか、設定ファイルでマッピングするのか、項目名で関連付けるのか、セルに名前をつけて判別するのか。などなど。決めの問題。</p>
-    <p>セルに値を出力しても自動計算されない。<code>WorkSheet.Calculate()</code>メソッドを使って再計算させる。</p>
-    <h2>アセンブリのバージョン管理</h2>
-    <p>共通言語ランタイムを使用するアセンブリのバージョン管理は、すべてアセンブリ レベルで行われます。 アセンブリの特定のバージョン、および依存する各アセンブリのバージョンは、アセンブリのマニフェストに記録されます。 ランタイムの既定のバージョン ポリシーは、構成ファイル (アプリケーション構成ファイル、発行者ポリシー ファイル、コンピューター管理者の構成ファイル) に指定した明示的なバージョン ポリシーでオーバーライドされない限り、アプリケーションが作成およびテストされた時点のバージョンの場合にだけそのアプリケーションを実行します。</p>
+    }
+}</code></pre>
+<h3>課題</h3>
+<p>どのセルに何を出力するのか、ルールを決める。プログラム内で決め打ちするのか、設定ファイルでマッピングするのか、項目名で関連付けるのか、セルに名前をつけて判別するのか。などなど。決めの問題。</p>
+<p>セルに値を出力しても自動計算されない。<code>WorkSheet.Calculate()</code>メソッドを使って再計算させる。</p>
+<h2>アセンブリのバージョン管理</h2>
+<p>共通言語ランタイムを使用するアセンブリのバージョン管理は、すべてアセンブリ レベルで行われます。 アセンブリの特定のバージョン、および依存する各アセンブリのバージョンは、アセンブリのマニフェストに記録されます。 ランタイムの既定のバージョン ポリシーは、構成ファイル (アプリケーション構成ファイル、発行者ポリシー ファイル、コンピューター管理者の構成ファイル) に指定した明示的なバージョン ポリシーでオーバーライドされない限り、アプリケーションが作成およびテストされた時点のバージョンの場合にだけそのアプリケーションを実行します。</p>
           </section>
         </article>
       </main>
