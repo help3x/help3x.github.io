@@ -280,13 +280,29 @@ article > header > time {
 }
 
 article > section > h2 {
+  font-size: 1.75rem;
   border-top: solid 1px black;
   border-bottom: solid 1px black;
+  margin-top: 3rem;
   padding-top: .75rem;
   padding-bottom: .75rem;
 }
 
 article > section > h3 {
+  font-size: 1.5rem;
   border-bottom: dotted .75px black;
+  margin-top: 3rem;
   padding-bottom: .5rem;
+}
+
+article > section > h4 {
+  font-size: 1.375rem;
+}
+
+article > section > h5 {
+  font-size: 1.25rem;
+}
+
+article > section > h6 {
+  font-size: 1rem;
 }
