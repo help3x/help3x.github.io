@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html amp lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>note-20190530</title>
+  <link rel="canonical" href="/entry-note-20190530.html">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <meta name="dcterms.date" content="2019-05-30" />
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <style amp-custom="">/* Sakura.css v1.0.0
+   * ================
+   * Minimal css theme.
+   * Project: https://github.com/oxalorg/sakura
+   */
+  /* Body */
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  
+  html {
+    /*font-size: 62.5%;*/
+    font-size: 100%;
+    font-weight: 400;
+    line-height: 1.5;
+    box-sizing: border-box;
+    /*font-family: serif;*/ }
+  
+  body {
+    /*font-size: 1.8rem;*/
+    /*line-height: 1.618;*/
+    /*line-height: 1.5;*/
+    /*max-width: 38em;*/
+    /*font-size: 9375rem;*/
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    /*max-width: 38rem;*/
+    /*max-width: 50rem;*/
+    /*margin: auto;*/
+    /*color: #4a4a4a;*/
+    color: #111;
+    background-color: #f9f9f9;
+    /*padding: 13px;*/
+    margin: 0;
+    /*padding: .625rem;*/
+    /*padding: 0 .625rem;*/
+    padding: 0; }
+  
+  @media (min-width: 32rem) {   /* 768px */
+    body {
+      /*font-size: 1.53rem;*/
+      /*font-size: .9375rem;*/
+      /*font-size: 1rem;*/ } }
+  
+  @media (min-width: 64rem) {   /* 60rem: 960px  64rem:1024px */
+    body {
+      /*font-size: 1.35rem;*/
+      /*font-size: 1rem;*/ } }
+  
+  article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+  }
+  
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  
+  main {
+    padding-left: .625rem;
+    padding-right: .625rem;
+  }
+  
+  
+  
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+    /*font-family: Verdana, Geneva, sans-serif;*/
+    font-weight: 700;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
+  
+  h1 {
+    font-size: 2.25em; }
+  
+  h2 {
+    font-size: 2.00em; }
+  
+  h3 {
+    font-size: 1.75em; }
+  
+  h4 {
+    font-size: 1.5em; }
+  
+  h5 {
+    font-size: 1.25em; }
+  
+  h6 {
+    font-size: 1em; }
+  
+  small, sub, sup {
+    font-size: 75%; }
+  
+  hr {
+    border-color: #2c8898; }
+  
+  a {
+    text-decoration: none;
+    color: #2c8898; }
+    a:hover {
+      color: #982c61;
+      border-bottom: 2px solid #4a4a4a; }
+  
+  ul {
+    padding-left: 1.4em; }
+  
+  li {
+    margin-bottom: 0.4em; }
+  
+  blockquote {
+    font-style: italic;
+    margin-left: 1.5em;
+    padding-left: 1em;
+    border-left: 3px solid #2c8898; }
+  
+  img {
+    max-width: 100%; }
+  
+  /* Pre and Code */
+  pre {
+    /*background-color: #f1f1f1;*/
+    background-color: #364549;
+    color: #e3e3e3;
+    display: block;
+    padding: 1em;
+    overflow-x: auto; }
+  
+  code {
+    font-size: 0.9em;
+    padding: 0.2em 0.5em;
+    /*background-color: #f1f1f1;*/
+    background-color: #eee;
+    white-space: pre-wrap; }
+  
+  pre > code {
+    padding: 0;
+    background-color: transparent;
+    white-space: pre; }
+  
+  /* Tables */
+  table {
+    text-align: justify;
+    width: 100%;
+    border-collapse: collapse; }
+  
+  td, th {
+    padding: 0.5em;
+    border-bottom: 1px solid #f1f1f1; }
+  
+  /* Buttons, forms and input */
+  /*input, textarea {
+    border: 1px solid #4a4a4a; }
+    input:focus, textarea:focus {
+      border: 1px solid #2c8898; }*/
+  
+  /*textarea {
+    width: 100%; }*/
+  
+  /*.button, button, input[type="submit"], input[type="reset"], input[type="button"] {
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: #2c8898;
+    color: #f9f9f9;
+    border-radius: 1px;
+    border: 1px solid #2c8898;
+    cursor: pointer;
+    box-sizing: border-box; }*/
+    /*.button[disabled], button[disabled], input[type="submit"][disabled], input[type="reset"][disabled], input[type="button"][disabled] {
+      cursor: default;
+      opacity: .5; }*/
+    /*.button:focus, .button:hover, button:focus, button:hover, input[type="submit"]:focus, input[type="submit"]:hover, input[type="reset"]:focus, input[type="reset"]:hover, input[type="button"]:focus, input[type="button"]:hover {
+      background-color: #982c61;
+      border-color: #982c61;
+      color: #f9f9f9;
+      outline: 0; }*/
+  
+  /*textarea, select, input[type] {
+    color: #4a4a4a;
+    padding: 6px 10px;*/
+    /* The 6px vertically centers text on FF, ignored by Webkit */
+    /*margin-bottom: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+    border-radius: 4px;
+    box-shadow: none;
+    box-sizing: border-box; }*/
+    /*textarea:focus, select:focus, input[type]:focus {
+      border: 1px solid #2c8898;
+      outline: 0; }*/
+  
+  /*input[type="checkbox"]:focus {
+    outline: 1px dotted #2c8898; }
+  
+  label, legend, fieldset {
+    display: block;
+    margin-bottom: .5rem;
+    font-weight: 600; }*/
+  
+  body > div {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  body > div > div {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  body > div > div > main {
+    flex: 1 0 auto;
+  }
+  
+  div > header {
+    background-color: white;
+    /*margin-top: -.625rem;*/
+    /*margin-left: -.625rem;*/
+    /*margin-right: -.625rem;*/
+    margin-bottom: 1rem;
+    /*padding-top: .625rem;*/
+    /*padding-top: 1rem;*/
+    /*padding-left: .625rem;*/
+    /*padding-right: .625rem;*/
+    /*padding-bottom: 1rem;*/
+    padding: 1rem .625rem;
+  }
+  
+  /* サイト名 */
+  div > header > h1,
+  div > header > p {
+    font-size: 1.5rem;
+    line-height: 1;
+    margin: 0;
+  }
+  
+  div > footer {
+    /*padding-top: 2rem;*/
+    margin-top: 2rem;
+    /*margin-left: -.625rem;*/
+    /*margin-right: -.625rem;*/
+    /*margin-bottom: -.625rem;*/
+    padding: 1.5rem 0;
+    background-color: #131A22;
+    color: #ddd;
+  }
+  
+  div > footer > p {
+    margin: 0;
+    text-align: center;
+  }
+  
+  main > article {
+    max-width: 50rem;
+  }
+  
+  article > header {
+    margin-bottom: 2rem;
+  }
+  
+  /* タイトル */
+  article > header > h1 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  
+  article > header > time {
+  
+  }
+  
+  article > section > h2 {
+    font-size: 1.75rem;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    margin-top: 3rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+  }
+  
+  article > section > h3 {
+    font-size: 1.5rem;
+    border-bottom: dotted .75px black;
+    margin-top: 3rem;
+    padding-bottom: .5rem;
+  }
+  
+  article > section > h4 {
+    font-size: 1.375rem;
+  }
+  
+  article > section > h5 {
+    font-size: 1.25rem;
+  }
+  
+  article > section > h6 {
+    font-size: 1rem;
+  }
+  </style>
+</head>
+<body>
+
+
+  <div>
+    <div>
+      <header>
+        <p>Hogera!</p>
+      </header>
+      <main>
+        <article>
+          <header>
+            <h1>note-20190530</h1>
+            <time datetime="2019-05-30">2019-05-30</time>
+          </header>
+
+
+          <section>
+<h2 id="pandoc-コマンドラインメモ">Pandoc コマンドラインメモ</h2>
+<p>ひとまず、これで変換する。</p>
+<pre class="bash"><code>pandoc --from=markdown+link_attributes --to=html5 --output=..\note-20190530.html --standalone --toc --no-highlight --css=./page1/sakura-custom.css note-20190530.md</code></pre>
+<p>メタデータファイル（YAML または JSON）を指定するオプション。</p>
+<p><code>--metadata-file=FILE</code></p>
+<p>メタデータを指定するオプション。「VAL」を指定しないときは<code>true</code>が入る。</p>
+<p><code>--metadata=KEY[:VAL]</code></p>
+<h2 id="mustache.js-をコマンドラインから使う">mustache.js をコマンドラインから使う</h2>
+<p>構文は以下のとおり。</p>
+<pre class="bash"><code>mustache &lt;view&gt; &lt;template&gt; [output]</code></pre>
+<p>実際に使うときは？</p>
+<pre class="bash"><code>.\node_modules\.bin\mustache dataView.json tmpl.mustache output.html</code></pre>
+<p>テンプレートでパーシャル（partials）を使っているときは、<code>-p</code>オプションに場所を指定する。</p>
+<pre class="bash"><code>.\node_modules\.bin\mustache -p path/to/partial1.mustache -p path/to/partial2.mustache dataView.json tmpl.mustache output.html</code></pre>
+<h2 id="型">型</h2>
+<ul>
+<li>序論（コンセプト、どのような内容なのか）</li>
+<li>本論
+<ul>
+<li>各論1（目的、何を達成しようとしているのか）</li>
+<li>各論2（構造、提案に関わる人や組織をイメージできるように）</li>
+<li>各論3（プロセス、進め方や期間、いつ誰が何をするのか）</li>
+</ul></li>
+<li>結論（メリットとお願い）</li>
+</ul>
+<h3 id="アウトライン">アウトライン</h3>
+<p>点検対象項目の検索に時間がかかるようになった。<br />
+↓<br />
+現状の作りはこうで、ｘｘｘだから時間がかかるみたい。<br />
+なので、これをこのように改善するつもり。<br />
+↓<br />
+で、実際に直す処理はこのぐらいある。<br />
+↓<br />
+対策後はこのぐらい改善されると見込み。<br />
+↓<br />
+よろしく。</p>
+<h2 id="books">Books</h2>
+<ul>
+<li><p>150冊執筆売れっ子ライターのもう恥をかかない文章術 – 2018/7/10<br />
+神山 典士 (著)</p></li>
+<li><p>頭の良くなる「短い、短い」文章術　あなたの文章が「劇的に」変わる!</p></li>
+</ul>
+<h2 id="others">Others</h2>
+<p>こまめに水換えしていれば、コケは生えないのか。</p>
+<p>-水作エイトコア（S） -水作ボトムプレート（ハーフ）</p>
+<p>ボトムプレート（スクエアタイプ） 135 x 135mm</p>
+<p>ボトムプレート（ハーフタイプ） 135 x 70mm</p>
+<p>スクエア1枚＋ハーフ1枚で 205mm になる。 水槽の幅（230mm）からガラス厚（5mm × 2）を引いても 220mm なので、計算上は入れられそう。</p>
+<p>グラスガーデン N230 WxDxH 230x150x250mm 水量 約7.3L ガラス厚 5mm</p>
+<h2 id="部屋干しに適した洗濯洗剤を探す">部屋干しに適した洗濯洗剤を探す</h2>
+<p>あなたが最も優先するのは洗浄力ですか。すすぎ回数ですか。 洗浄力なら粉末、すすぎ回数を少なくするなら液体を選ぶ。</p>
+<p>漂白剤、蛍光剤、柔軟剤の配合有無にこだわりはあるか。</p>
+<p>あるいはメーカーにこだわりはあるか。</p>
+<p>LION</p>
+<p>消臭 ブルーダイヤ</p>
+<p>粉末 クリアミントの香り 900g 酸素系漂白剤配合 蛍光剤無配合 使用量の目安：水30L（洗濯物量1.5Kg）に対し30g 価格は？ すすぎ回数は？</p>
+<p>トップ HYGIA（ハイジア）</p>
+<p>液体 ミンティーハーブの香り 水30Lに対して10g 価格は？ すすぎ回数は1回</p>
+<p>部屋干しトップ 除菌EX</p>
+<p>粉末 シトラスフルーティの香り 汚れ・菌・ウイルスまで落とす</p>
+<p>トップ クリアリキッド抗菌</p>
+<p>液体 24時間抗菌で、菌による三大悩みを撃破します。 1) 部屋干し臭、2) 干し忘れ臭、3) 戻り生乾き臭、をしっかり防いで気持ちよく洗えます。</p>
+<p><微香性>フレッシュフローラル すすぎ1回対応。</p>
+<p>花王</p>
+<p>アタック　高浸透リセットパワー</p>
+<p>漂白剤、柔軟剤、蛍光剤の全部入り。</p>
+<p>アタックZERO</p>
+<p>アタック　抗菌EX　クリアジェル？</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>製品名</th>
+<th>部屋干しトップ 除菌EX</th>
+<th>トップ HYGIA（ハイジア）</th>
+<th>トップ クリアリキッド抗菌</th>
+<th>アリエール リビングドライ イオンパワージェル</th>
+<th>アタック高浸透リセットパワー</th>
+<th>アタックZERO</th>
+<th>アタック抗菌EX スーパークリアジェル</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>形状</td>
+<td>粉末</td>
+<td>液体</td>
+<td>液体</td>
+<td>液体</td>
+<td>粉末</td>
+<td>液体</td>
+<td>液体</td>
+</tr>
+<tr class="even">
+<td>液性</td>
+<td>弱アルカリ性</td>
+<td>中性</td>
+<td>弱アルカリ性</td>
+<td>？</td>
+<td>弱アルカリ性</td>
+<td>中性</td>
+<td>弱アルカリ性</td>
+</tr>
+<tr class="odd">
+<td>香り</td>
+<td>シトラスフルーティ</td>
+<td>ミンティーハーブ</td>
+<td><微香性>フレッシュフローラル</td>
+<td>？</td>
+<td>さわやかなフレッシュフローラルの香り</td>
+<td>清々しいリーフィブリーズの香り（微香）</td>
+<td>すっきりしたクリスタルグリーンの香り</td>
+</tr>
+<tr class="even">
+<td>特長、ひとことで</td>
+<td>汚れ・菌・ウイルスまで落とす高い洗浄力</td>
+<td>高い抗菌力。洗うたびに抗菌力が高まる。</td>
+<td>雑菌による臭いを防ぐ。</td>
+<td>？</td>
+<td>除菌・消臭・漂白成分</td>
+<td>抗菌洗剤を超えた消臭力</td>
+<td>干し幅1cmの密集干しでも生乾き臭を防ぐ。</td>
+</tr>
+<tr class="odd">
+<td>使用量の目安（水30Lあたり）（mL）</td>
+<td>30</td>
+<td>10</td>
+<td>25</td>
+<td>0</td>
+<td>21</td>
+<td>10</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<td>内容量（mL）</td>
+<td>900</td>
+<td>660</td>
+<td>900</td>
+<td>910</td>
+<td>800</td>
+<td>610</td>
+<td>900</td>
+</tr>
+<tr class="odd">
+<td>使える回数</td>
+<td>30</td>
+<td>66</td>
+<td>36</td>
+<td>0</td>
+<td>38</td>
+<td>61</td>
+<td>36</td>
+</tr>
+<tr class="even">
+<td>価格</td>
+<td>¥298</td>
+<td>¥498</td>
+<td>¥298</td>
+<td>¥398</td>
+<td>¥298</td>
+<td>¥535</td>
+<td>¥298</td>
+</tr>
+<tr class="odd">
+<td>1回あたりの費用</td>
+<td>¥9.9</td>
+<td>¥7.5</td>
+<td>¥8.3</td>
+<td>¥0.0</td>
+<td>¥7.8</td>
+<td>¥8.8</td>
+<td>¥8.3</td>
+</tr>
+<tr class="even">
+<td>推奨するすすぎ回数</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>漂白剤</td>
+<td>配合</td>
+<td>－</td>
+<td>－</td>
+<td>？</td>
+<td>配合</td>
+<td>－</td>
+<td>－</td>
+</tr>
+<tr class="even">
+<td>柔軟剤</td>
+<td>－</td>
+<td>－</td>
+<td>－</td>
+<td>？</td>
+<td>配合</td>
+<td>－</td>
+<td>－</td>
+</tr>
+<tr class="odd">
+<td>蛍光増白剤</td>
+<td>配合</td>
+<td>－</td>
+<td>－</td>
+<td>？</td>
+<td>配合</td>
+<td>－</td>
+<td>配合</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bookmark-2019-05-29">Bookmark (2019-05-29)</h2>
+<ul>
+<li><p><a href="https://codezine.jp/article/detail/10967">普及期を終え成熟期に入った「Node.js」はこれからどうなる？－コミッターが語る現状と未来【後編】</a></p></li>
+<li><p>Express とは何か。</p>
+<ul>
+<li>Web アプリを作るためのサーバー側の MVC フレームワーク（ASP.NET MVC みたいなもの？）。</li>
+<li>Node.js 上で動作する。</li>
+<li>サーバー側のフレームワークなので、もちろん、クライアントの処理は別で作らなければならない。</li>
+</ul></li>
+<li><p>Express を使うと何ができるのか。Express でないとできないのか。</p></li>
+</ul>
+<h2 id="yamlfrontmatter-に指定する内容2019-05-29">YamlFrontMatter に指定する内容（2019-05-29）</h2>
+<ul>
+<li>lang</li>
+<li>titlePrefix</li>
+<li>title</li>
+<li>siteName</li>
+<li>date</li>
+<li>datePublished</li>
+<li>dateModified</li>
+<li>description</li>
+<li>author</li>
+<li>publicUrl</li>
+<li>pagePathName</li>
+<li>gaTrackingId</li>
+<li>ampExtension
+<ul>
+<li>name</li>
+<li>url</li>
+</ul></li>
+<li>publisher
+<ul>
+<li>logo
+<ul>
+<li>src</li>
+<li>width</li>
+<li>height</li>
+</ul></li>
+</ul></li>
+<li>headlineImage
+<ul>
+<li>src</li>
+<li>width</li>
+<li>height</li>
+<li>alt</li>
+</ul></li>
+</ul>
+<pre class="html"><code>$if(gaTrackingId)$
+  &lt;script custom-element=&quot;amp-analytics&quot; src=&quot;https://cdn.ampproject.org/v0/amp-analytics-0.1.js&quot; async&gt;&lt;/script&gt;
+$endif$</code></pre>
+<pre class="html"><code>$for(ampExtension)$
+  &lt;script custom-element=&quot;$ampExtension.name$&quot; src=&quot;$ampExtension.url$&quot; async&gt;&lt;/script&gt;
+$endfor$</code></pre>
+<pre class="html"><code>  &lt;!-- Start JSON-LD --&gt;
+  &lt;script type=&quot;application/ld+json&quot;&gt;
+  {
+    &quot;@context&quot;: &quot;http://schema.org&quot;,
+    &quot;@type&quot;: &quot;BlogPosting&quot;,
+    &quot;mainEntityOfPage&quot;: {
+      &quot;@type&quot;: &quot;WebPage&quot;,
+      &quot;@id&quot;: &quot;$publicUrl$$pagePathName$&quot;
+    },
+    &quot;headline&quot;: &quot;$pagetitle$&quot;,
+$if(headlineImage)$
+    &quot;image&quot;: [
+      &quot;$publicUrl$$headlineImage.src$&quot;
+    ],
+$endif$
+    &quot;datePublished&quot;: &quot;$datePublished.value$&quot;,
+$if(dateModified.value)$
+    &quot;dateModified&quot;: &quot;$dateModified.value$&quot;,
+$endif$
+    &quot;author&quot;: {
+      &quot;@type&quot;: &quot;Person&quot;,
+      &quot;name&quot;: &quot;$author.name$&quot;
+    },
+    &quot;publisher&quot;: {
+      &quot;@type&quot;: &quot;Organization&quot;,
+      &quot;name&quot;: &quot;$siteName$&quot;,
+      &quot;logo&quot;: {
+        &quot;@type&quot;: &quot;ImageObject&quot;,
+        &quot;url&quot;: &quot;$publisher.logo.src$&quot;,
+        &quot;width&quot;: $publisher.logo.width$,
+        &quot;height&quot;: $publisher.logo.height$
+      }
+    },
+$if(category)$
+    &quot;articleSection&quot;: &quot;$category.name$&quot;,
+$endif$
+$if(description)$
+    &quot;description&quot;: &quot;$description$&quot;
+$endif$
+  }
+  &lt;/script&gt;
+  &lt;!-- End JSON-LD --&gt;</code></pre>
+<h2 id="url-整理2019-05-24">URL 整理（2019-05-24）</h2>
+<ul>
+<li><p>Home（トップページ、インデックスページ）</p>
+<p><code>https://hoge.com/</code></p>
+<p>はじめはアメブロを簡素化したデザインで作る。 記事が増えてきたら記憶カメラのようにカテゴリもつけたトップページにしたい。</p></li>
+<li><p>Theme（カテゴリーページ）</p>
+<p><code>https://hoge.com/theme-xxx.html</code></p>
+<p>ファイルが少ないので当面作らない。</p></li>
+<li><p>Entry（それぞれの記事ページ）</p>
+<p><code>https://hoge.com/entry-xxx.html</code></p></li>
+<li><p>Static（固定ページ）</p>
+<p>上記とかぶらないように任意でよい。<br />
+とりあえず、プライバシーポリシーぐらいは作っておく。</p>
+<p><code>https://hoge.com/about.html</code> とか <code>https://hoge.com/faq.html</code> とか。</p></li>
+</ul>
+<p>Analytics は gtag 版を採用する。</p>
+<p>フォルダ階層のサンプル</p>
+<pre><code>/
++---src
+|   +---entry
+|   |   +---yyyy-MM-dd-title.md
+|   |   +---title-only.md
+|   +---about.md
+|   +---policy.md
+|   +---assets
+|       +---img
+|           +---hoge.jpg
+|           +---fuga.png
++---dest
+    +---assets
+    |   +---img
+    |       +---hoge.jpg
+    |       +---fuga.png
+    +---index.html
+    +---entry-title.html
+    +---entry-title-only.html
+    +---about.html
+    +---policy.html
+    +---theme-name.html</code></pre>
+<p>Entry ソースファイル</p>
+<p>entry フォルダの中にあるファイルの名前で昇順に並べ替える。</p>
+<p>変換したファイルの名前は、次の規則に従う。</p>
+<p>固定値「entry-」＋ソースファイルの名前</p>
+<p>ただし、ソースファイル名の先頭10桁が日付であるときは、先頭から数えて11桁目以降を使う。</p>
+<p>後勝ち？　先勝ち？　は先勝ちにする。<br />
+変換後のファイルと同じ名前のファイルがすでにあるときは、そのファイルの保存をスキップする。</p>
+<p>例）</p>
+<ul>
+<li><p><code>2019-04-01-start-reiwa.md</code><br />
+⇩<br />
+<code>entry-start-reiwa.html</code></p></li>
+<li><p><code>hoge-fuga-title.md</code><br />
+⇩<br />
+<code>entry-hoge-fuga.html</code></p></li>
+</ul>
+          </section>
+        </article>
+      </main>
+
+
+
+
+
+      <footer>
+        <p>&copy; 2019 </p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Start JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/entry-note-20190530.html"
+    },
+    "headline": ">note-20190530",
+    "datePublished": "2019-05-30",
+    "dateModified": "2019-05-31",
+    "author": {
+      "@type": "Person",
+      "name": ""
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "",
+        "width": ,
+        "height": 
+      }
+    },
+  }
+  </script>
+  <!-- End JSON-LD -->
+
+</body>
+</html>
