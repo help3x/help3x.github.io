@@ -361,14 +361,21 @@ main > div {
 @media screen and (min-width: 48rem) {
   main > div {
     padding: .125rem 1.5rem;
+    padding-top: .75rem;
   }
 }
 
 main > div > article {
   box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
   border-radius: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   overflow: hidden;
+}
+
+@media screen and (min-width: 48rem) {
+  main > div > article {
+    margin-bottom: 2rem;
+  }
 }
 
 main > div > article > a {
@@ -399,16 +406,17 @@ main > div > article > a > div > div:nth-child(1) {
   }
 }
 
-main > div > article > a > div > div:nth-child(1):before {
+/*amp-img を使うためコメントにする*/
+/*main > div > article > a > div > div:nth-child(1):before {
   content: "";
-  display: block;
+  display: block;*/
 
   /* 高さを幅の何％にするか。ここで比率を決められる。高さの比率÷幅の比率×100で求める */
-  padding-top: 100%;    /* これだと正方形 */
-  padding-top: 75%;     /* これだと長方形（4:3） */
-}
+  /*padding-top: 100%;*/    /* これだと正方形 */
+  /*padding-top: 75%;*/     /* これだと長方形（4:3） */
+/*}*/
 
-main > div > article > a > div > div:nth-child(1) img {
+main > div > article > a > div > div:nth-child(1) > img {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -502,7 +510,11 @@ main > div > article > a > div > div:nth-child(2) > span {
               <a href="#">
                 <div>
                   <div>
-                    <img src="../img1/blog/720x540.jpg" width="720" height="540">
+                    <amp-img src="../img1/blog/720x540.jpg"
+                             width="720"
+                             height="540"
+                             layout="responsive"
+                             alt="headline image"></amp-img>
                   </div>
                   <div>
                     <h2>:nth-child() 擬似クラスの使い方</h2>
@@ -516,7 +528,11 @@ main > div > article > a > div > div:nth-child(2) > span {
               <a href="#">
                 <div>
                   <div>
-                    <img src="">
+                    <amp-img src="../img1/blog/720x540.jpg"
+                             width="720"
+                             height="540"
+                             layout="responsive"
+                             alt="headline image"></amp-img>
                   </div>
                   <div>
                     <h2>border-radius を指定する方法</h2>
