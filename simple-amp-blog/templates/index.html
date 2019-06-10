@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>$title$ &#x007c; $sitetitle$</title>
-  <link rel="canonical" href="https://help3x.github.io/simple-amp-blog/templates/third-amp.html">
+  <link rel="canonical" href="https://help3x.github.io/simple-amp-blog/templates/index.html">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
@@ -109,16 +109,15 @@ body > div > div {
   min-height: 100vh;
 }
 
-body > div > div > div > main {
+body > div > div > div {
   flex: 1 0 auto;
-  margin-top: 3.5rem;
+  margin-top: 4rem;
   max-width: 48rem;
   /* 幅を指定する。画面の幅が max-width 以下になっても折り返されないため。 */
   width: 100%;
 }
 
 body > div > div > header {
-  /*top: calc(0px + 0px);*/
   background-color: #fff;
   color: #000;
   z-index: 999;
@@ -339,6 +338,102 @@ body > div > div > footer > small {
   font-size: .75rem;
 }
 
+
+body > div > div > div > main {
+  /*width: calc(66.6666666667% - 16.6666666667px);*/  /*段組みするときに使う。メディアクエリで指定する。*/
+  /*margin-left: .75rem;*/
+  width: 100%;
+  text-align: left;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 64rem) {
+  width: calc(67.5% - 50.25px);
+  margin-left: 2rem;
+}
+
+main > div {
+  padding: .125rem 1.5rem;
+  padding-top: .75rem;
+  width: 100%;
+}
+
+main > div > article {
+  box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+main > div > article > a {
+  text-decoration: none;
+}
+
+main > div > article > a > div {
+  display: flex;
+}
+
+main > div > article > a > div > div:nth-child(1) {
+  width: 170px;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  position: relative;
+}
+
+main > div > article > a > div > div:nth-child(1):before {
+  content: "";
+  display: block;
+
+  /* 高さを幅の何％にするか。ここで比率を決められる。高さの比率÷幅の比率×100で求める */
+  padding-top: 100%;    /* これだと正方形 */
+ padding-top: 75%;     /* これだと長方形（4:3） */
+}
+
+main > div > article > a > div > div:nth-child(1) img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+/*@media screen and (min-width: 64rem) {
+  main > div > article > a > div > div:nth-child(1) {
+    width: 314px;
+  }
+}*/
+
+main > div > article > a > div > div:nth-child(1) > img {
+  width: 100%;
+  height: auto;
+}
+
+main > div > article > a > div > div:nth-child(2) {
+  width: calc(100% - 170px);
+  position: relative;
+  padding: .5rem;
+}
+
+/*@media screen and (min-width: 64rem) {
+  main > div > article > a > div > div:nth-child(2) {
+    width: calc(100% - 314px);
+  }
+}*/
+
+main > div > article > a > div > div:nth-child(2) > h2 {
+  font-size: 1.25rem;
+}
+
+main > div > article > a > div > div:nth-child(2) > div {
+  display: none;
+}
+
+main > div > article > a > div > div:nth-child(2) > span {
+  position: absolute;
+  bottom: .5rem;
+  right: .75rem;
+}
+
 /* <<< CustomStyle */
 
   </style>
@@ -371,56 +466,36 @@ body > div > div > footer > small {
       <!-- Contents -->
       <div>
         <main role="main">
-          <article>
-            <header>
-              <address>
-                <time datetime="2016-12-13">2016-12-13</time>
-              </address>
-              <!-- <h1>$title$</h1> -->
-              <h1>エクセルワークブックを読み書きする方法とライブラリを使う理由</h1>
-              <div>
-                <span>#Tag</span>
-                <span>#開発環境</span>
-                <span>#ASP.NET</span>
-              </div>
-              <amp-img src="../img1/blog/spritzer.jpg" 
-                       width="1280" 
-                       height="853" 
-                       layout="responsive" 
-                       alt="The final spritzer"></amp-img>
-            </header>
-            <div>
-              <p>Javaの開発実行環境 Java SE が、2018年9月からは有償版しか提供されなくなる。</p>
-
-              <p>オラクルは、Java SEの有償化の方針を2017年に公表した。同時に打ち出したのが、Java SEのリリースサイクルの変更だ。リリースサイクルに対しては企業ユーザーの関心が高い。日本IBM クラウドソフトウェア第1テクニカルセールスの上野亜紀子部長は「（同社のアプリケーションサーバー製品のユーザーからは）Javaのリリースサイクルの変更の問い合わせが多い」と打ち明ける。</p>
-
-              <p>Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. </p>
-
-              <amp-img src="../img1/blog/ingredient1.jpg" width="683" height="1024" layout="responsive" alt="strawberries"></amp-img>
-
-              <amp-img src="../img1/blog/ingredient3.jpg" width="1280" height="960" layout="responsive" alt="strawberries lemons and mint"></amp-img>
-
-              <amp-img src="../img1/blog/ingredient2.jpg" width="683" height="1024" layout="responsive" alt="lemon in a bowl"></amp-img>
-
-              <amp-img src="../img1/blog/spritzer.jpg" width="1280" height="853" layout="responsive" alt="The final spritzer"></amp-img>
-
-              <h2>アイデア検討はスマホより紙で、思考を加速させる技ありノート</h2>
-              <p>アイデアをメモするとき、あなたは何に書き込むだろうか。PCやスマートフォンなどのデジタルツールを使うより、紙に手書きをした方がはかどるシーンもある。</p>
-              <p>文字ではない情報を書き加えるときが特にそうだ。メモした項目を丸で囲んだり項目同士を矢印で結んだりするとき、手書きなら早い。ちょっとしたスケッチを描く、マトリックス形式やマインドマップで思考を図解するといった少し複雑なメモでも、手書きなら頭に浮かんだ内容をただちに書き表せる。 </p>
-
-              <h3>大量に書き出すスタイルに向くじゃばら式ノート</h3>
-              <p>編集やコピーライティングを仕事にするA氏は、商品やサービスのコンセプトを考えるとき、必ず紙とペンを使う。「フォーマットの決まっているものはデジタルでいいが、ゼロから考えるときはアナログの方が効率的だ」と言う。</p>
-              <p>A氏は1つのテーマについて思い付いた内容を次々と書き出してアイデアを広げていく。企画のコンセプトを考えるときには「ターゲット（顧客）」「課題」「解決方法」といった必要な要素を書き、各項目に当てはまりそうなものを思い付くだけ箇条書きする。ターゲット像を描くときも同様だ。「ターゲットの困りごと」や「そのときの気持ち」を想像し、ひたすらノートに書き出す。</p>
-
-
-              <h3>ニュース</h3>
-              <p>翻訳機「eTalk5」がプロ並みの精度に、KAZUNAがAI翻訳でロゼッタと提携</p>
-              <h4>大成建設とソフトバンク、「おでかけ5G」で建機の自動運転実験</h4>
-              <p>楽天が5G基地局の無線機にNEC製を採用、決め手はあの「スペック」に。米アップルがUI開発「SwiftUI」など発表、iPadとMacを融合。スプリントが米国4都市から5G商用サービス開始、「初期展開では全米最大規模へ」</p>
-              <h4>「OKグーグル」で画面が反応、グーグルがスマートディスプレー「Google Nest Hub」を国内発売</h4>
-              <p>公衆LTEと自営LTE間でスムーズに回線切り替え、東大とIIJが実証実験</p>
-            </div>
-          </article>
+          <div>
+            <article>
+              <a href="#">
+                <div>
+                  <div>
+                    <img src="../img1/blog/720x540.jpg" width="720" height="540">
+                  </div>
+                  <div>
+                    <h2>:nth-child() 擬似クラスの使い方</h2>
+                    <span>2019-06-06</span>
+                    <div>CSS の :nth-child() 擬似クラスは、兄弟要素のグループの中での位置に基づいて選択します。</div>
+                  </div>
+                </div>
+              </a>
+            </article>
+            <article>
+              <a href="#">
+                <div>
+                  <div>
+                    <img src="">
+                  </div>
+                  <div>
+                    <h2>border-radius を指定する方法</h2>
+                    <span>2019-06-10</span>
+                    <div>CSS の border-radius プロパティは、要素の境界の外側の角を丸めます。1つの半径を設定すると円の角になり、2つの半径を設定すると楕円の角になります。</div>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </div>
         </main>
       </div>
 
