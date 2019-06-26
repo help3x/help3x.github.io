@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2019-06-26" />
+  <title>reStructuredText 記法で文章を書く</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">reStructuredText 記法で文章を書く</h1>
+<p class="author"><ul>
+<li>author1</li>
+<li>author2</li>
+<li>author3</li>
+</ul></p>
+<p class="date">2019-06-26</p>
+</header>
+<p>ここから本文開始。</p>
+<p>reStructuredText は、軽量マークアップ言語のひとつ。ソースコードの状態で高い可読性を持つように設計されている。reStructuredText パーサは、テキスト処理フレームワークである Docutils のコンポーネントのひとつであり、Python で実装されている。</p>
+<p>reStructuredText は、RST、reST、ReST と略されることもある。</p>
+<p>同じ段落のすべての行は、インデントを同じにして左揃えにしなければならない。 つまりこれも同じ段落になる。</p>
+<p>インラインマークアップは極めてシンプルである。強調（イタリック）は一つのアスタリスクで<em>テキストを囲む</em>。強い強調（太字）は二つのアスタリスクで<strong>テキストを囲む</strong>。コードサンプルはバッククォートで<code>テキストを囲む</code>。</p>
+<ul>
+<li>箇条書き１</li>
+<li>箇条書き２</li>
+</ul>
+<ol type="1">
+<li>順序リスト１－１</li>
+<li>順序リスト１－２</li>
+<li><code>#</code>でも順序リストになる（１）。</li>
+<li><code>#</code>で作った二つ目の順序リスト（２）。</li>
+</ol>
+<ul>
+<li><p>リスト１－１</p>
+<ul>
+<li><p>ネストしたリスト１－１ インデントを同じにすれば段落になるのだろうか？</p>
+<p>空行にはさまれたリストはどうなる？</p></li>
+<li><p>ネストしたリスト１－２</p></li>
+</ul></li>
+<li><p>リスト２－１</p>
+<p>段落にするとリスト１－１も段落化される？</p></li>
+</ul>
+<p><img src="gnu.png" alt="代替テキスト（alternate text）" width="320" height="240" /></p>
+<p><img src="http://via.placeholder.com/350x150" alt="プレースホルダイメージ" width="350" height="150" /></p>
+<figure>
+<img src="http://via.placeholder.com/640x360" width="160" height="90" />
+</figure>
+<ul>
+<li><p>「ワンメッセージ」投稿から始めよう。</p></li>
+<li><p>「感じたこと」を大切にするとキャラが際立つ。</p></li>
+<li><p>つぶやきながら「自分らしい型」を見つけよう。</p></li>
+<li><p>半径5メートル以内の「ネタ」を書こう。</p></li>
+<li><p>文章や語彙力を磨く。</p>
+<blockquote>
+<ol type="1">
+<li>「一文一義」を意識する。</li>
+<li>主語と述語を近づける。</li>
+<li>修飾語と被修飾語を近づける。</li>
+<li>ムダな言葉・表現は使わない。</li>
+<li>できるだけ具体的に書く。</li>
+</ol>
+</blockquote></li>
+<li><p>自分よりも「少し後ろにいる人」に伝えよう。</p></li>
+</ul>
+<h1 id="テーブルの表現">テーブルの表現</h1>
+<h2 id="gridtable">GridTable</h2>
+<p>+------------------------+------------+----------+----------+ | Header row, column 1 | Header 2 | Header 3 | Header 4 | | (header rows optional) | | | | +========================+============+==========+==========+ | body row 1, column 1 | column 2 | column 3 | column 4 | +------------------------+------------+----------+----------+ | body row 2 | Cells may span columns. | +------------------------+------------+---------------------+ | body row 3 | Cells may | - Table cells | +------------------------+ span rows. | - contain | | body row 4 | | - body elements. | +------------------------+------------+---------------------+</p>
+<h2 id="simpletable">SimpleTable</h2>
+<table>
+<thead>
+<tr class="header">
+<th>A</th>
+<th>B</th>
+<th>A and B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>False</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td>True</td>
+<td>False</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<td>False</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr class="even">
+<td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
